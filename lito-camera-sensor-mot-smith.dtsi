@@ -101,16 +101,17 @@
 };
 
 &cam_cci0 {
-	i2c_freq_100Khz_cci0: qcom,i2c_standard_mode {
+	i2c_freq_custom_cci0: qcom,i2c_custom_mode {
+		hw-thigh = <16>;
+		hw-tlow = <22>;
+		hw-tsu-sto = <17>;
+		hw-tsu-sta = <18>;
+		hw-thd-dat = <16>;
+		hw-thd-sta = <15>;
+		hw-tbuf = <24>;
 		hw-scl-stretch-en = <1>;
-	};
-
-	i2c_freq_400Khz_cci0: qcom,i2c_fast_mode {
-		hw-scl-stretch-en = <1>;
-	};
-
-	i2c_freq_1Mhz_cci0: qcom,i2c_fast_plus_mode {
-		hw-scl-stretch-en = <1>;
+		hw-trdhld = <3>;
+		hw-tsp = <3>;
 	};
 
 	led_flash_rear: qcom,led-flash@0{
