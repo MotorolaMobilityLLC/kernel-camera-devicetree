@@ -38,6 +38,18 @@
 };
 
 &cam_cci0 {
+	actuator_rear_main: qcom,actuator0 {
+		cell-index = <0>;
+		compatible = "qcom,actuator";
+		cci-master = <0>;
+		cam_vaf-supply = <&camera_ldo3>;
+		cam_vio-supply = <&camera_ldo7>;
+		regulator-names = "cam_vaf", "cam_vio";
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <2800000 1800000>;
+		rgltr-max-voltage = <2800000 1800000>;
+		rgltr-load-current = <119000 0>;
+	};
 
 	rear_main: qcom,cam-sensor0 {
 		cell-index = <0>;
@@ -46,6 +58,7 @@
 		sensor-position-roll = <90>;
 		sensor-position-pitch = <0>;
 		sensor-position-yaw = <180>;
+		actuator-src = <&actuator_rear_main>;
 		cam_vio-supply = <&camera_ldo7>;
 		cam_vdig-supply = <&camera_ldo5>;
 		cam_clk-supply = <&cam_cc_titan_top_gdsc>;
@@ -152,6 +165,20 @@
 		clock-rates = <24000000>;
 		status = "ok";
 	};
+
+	actuator_rear_uw: qcom,actuator1 {
+		cell-index = <0>;
+		compatible = "qcom,actuator";
+		cci-master = <0>;
+		cam_vaf-supply = <&L6J>;
+		cam_vio-supply = <&camera_ldo7>;
+		regulator-names = "cam_vaf", "cam_vio";
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <2800000 1800000>;
+		rgltr-max-voltage = <2800000 1800000>;
+		rgltr-load-current = <119000 0>;
+	};
+
 	rear_uw: qcom,cam-sensor2 {
 		cell-index = <2>;
 		compatible = "qcom,cam-sensor";
@@ -159,6 +186,7 @@
 		sensor-position-roll = <90>;
 		sensor-position-pitch = <0>;
 		sensor-position-yaw = <180>;
+		actuator-src = <&actuator_rear_uw>;
 		cam_vio-supply = <&camera_ldo7>;
 		cam_clk-supply = <&cam_cc_titan_top_gdsc>;
 		cam_vana-supply = <&L7J>;
