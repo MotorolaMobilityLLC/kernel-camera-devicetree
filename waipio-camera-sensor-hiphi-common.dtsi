@@ -3,6 +3,62 @@
 */
 #include <dt-bindings/clock/qcom,camcc-waipio.h>
 
+&tlmm {
+	cam_aon_standby_active: cam_aon_standby_active {
+		mux {
+			pins = "gpio206";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio206";
+			bias-disable; /* No Pull */
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
+	cam_aon_standby_suspend: cam_aon_standby_suspend {
+		mux {
+			pins = "gpio206";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio206";
+			bias-pull-down; /* Pull Down */
+			drive-strength = <2>; /* 2 MA */
+			output-low;
+		};
+	};
+};
+
+&BOB {
+	regulator-boot-on;
+	regulator-always-on;
+	regulator-min-microvolt = <3008000>;
+	regulator-max-microvolt = <3960000>;
+	qcom,init-voltage = <3296000>;
+	status = "ok";
+};
+
+&S12B {
+	regulator-boot-on;
+	regulator-always-on;
+	regulator-min-microvolt = <1224000>;
+	regulator-max-microvolt = <1400000>;
+	qcom,init-voltage = <1256000>;
+	status = "ok";
+};
+
+&S1C {
+	regulator-boot-on;
+	regulator-always-on;
+	regulator-min-microvolt = <1800000>;
+	regulator-max-microvolt = <2024000>;
+	qcom,init-voltage = <1856000>;
+	status = "ok";
+};
+
 &soc {
 	led_flash_triple_rear: qcom,camera-flash@1 {
 		cell-index = <1>;
@@ -66,9 +122,9 @@
 		regulator-names = "cam_vio", "cam_vdig",
 			"cam_clk", "cam_vana";
 		rgltr-cntrl-support;
-		rgltr-min-voltage = <1800000 1050000 0 2800000>;
-		rgltr-max-voltage = <1800000 1050000 0 2800000>;
-		rgltr-load-current = <155000 680000 0 50000>;
+		rgltr-min-voltage = <1800000 1200000 0 2800000>;
+		rgltr-max-voltage = <1800000 1200000 0 2800000>;
+		rgltr-load-current = <3000 675000 0 112000>;
 		gpio-no-mux = <0>;
 		pinctrl-names = "cam_default", "cam_suspend";
 		pinctrl-0 = <&cam_sensor_mclk2_active
@@ -142,22 +198,27 @@
 		regulator-names = "cam_vio", "cam_vdig",
 			"cam_clk", "cam_vana";
 		rgltr-cntrl-support;
-		rgltr-min-voltage = <1800000 1056000 0 2800000>;
-		rgltr-max-voltage = <1800000 1056000 0 2800000>;
-		rgltr-load-current = <155000 680000 0 50000>;
+		rgltr-min-voltage = <1800000 952000 0 2800000>;
+		rgltr-max-voltage = <1800000 1144000 0 2800000>;
+		rgltr-load-current = <3000 125000 0 95000>;
 		gpio-no-mux = <0>;
 		pinctrl-names = "cam_default", "cam_suspend";
 		pinctrl-0 = <&cam_sensor_mclk4_active
-			&cam_sensor_active_rst4>;
+			&cam_sensor_active_rst6
+			&cam_aon_standby_active>;
 		pinctrl-1 = <&cam_sensor_mclk4_suspend
-			&cam_sensor_suspend_rst4>;
+			&cam_sensor_suspend_rst6
+			&cam_aon_standby_suspend>;
 		gpios = <&tlmm 104 0>,
-			<&tlmm 108 0>;
+			<&tlmm 108 0>,
+			<&tlmm 206 0>;
 		gpio-reset = <1>;
-		gpio-req-tbl-num = <0 1>;
-		gpio-req-tbl-flags = <1 0>;
+		gpio-custom1 = <2>;
+		gpio-req-tbl-num = <0 1 2>;
+		gpio-req-tbl-flags = <1 0 0>;
 		gpio-req-tbl-label = "CAMIF_MCLK4",
-					"CAM_RESET4";
+					"CAM_RESET4",
+					"CAM_AON_STANDBY";
 		cci-master = <1>;
 		clocks = <&clock_camcc CAM_CC_MCLK4_CLK>;
 		clock-names = "cam_clk";
