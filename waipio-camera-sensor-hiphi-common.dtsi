@@ -60,7 +60,7 @@
 };
 
 &soc {
-	led_flash_triple_rear: qcom,camera-flash@1 {
+	led_flash_rear: qcom,camera-flash@1 {
 		cell-index = <1>;
 		compatible = "qcom,camera-flash";
 		flash-source = <&pm8350c_flash0 &pm8350c_flash1>;
@@ -69,7 +69,7 @@
 		status = "ok";
 	};
 
-	led_flash_triple_rear_aux2: qcom,camera-flash@2 {
+	led_flash_uw: qcom,camera-flash@2 {
 		cell-index = <2>;
 		compatible = "qcom,camera-flash";
 		flash-source = <&pm8350c_flash0 &pm8350c_flash1>;
@@ -78,7 +78,7 @@
 		status = "ok";
 	};
 
-	led_flash_triple_rear_aux: qcom,camera-flash@3 {
+	led_flash_depth: qcom,camera-flash@3 {
 		cell-index = <3>;
 		compatible = "qcom,camera-flash";
 		flash-source = <&pm8350c_flash0 &pm8350c_flash1>;
@@ -114,6 +114,7 @@
 		sensor-position-roll = <90>;
 		sensor-position-pitch = <0>;
 		sensor-position-yaw = <180>;
+		led-flash-src = <&led_flash_rear>;
 		actuator-src = <&actuator_rear_main>;
 		cam_vio-supply = <&camera_ldo7>;
 		cam_vdig-supply = <&camera_ldo5>;
@@ -153,6 +154,7 @@
 		sensor-position-roll = <90>;
 		sensor-position-pitch = <0>;
 		sensor-position-yaw = <180>;
+		led-flash-src = <&led_flash_depth>;
 		cam_vio-supply = <&camera_ldo7>;
 		cam_vana-supply = <&camera_ldo2>;
 		cam_clk-supply = <&cam_cc_titan_top_gdsc>;
@@ -247,6 +249,7 @@
 		sensor-position-roll = <90>;
 		sensor-position-pitch = <0>;
 		sensor-position-yaw = <180>;
+		led-flash-src = <&led_flash_uw>;
 		actuator-src = <&actuator_rear_uw>;
 		cam_vio-supply = <&camera_ldo7>;
 		cam_clk-supply = <&cam_cc_titan_top_gdsc>;
