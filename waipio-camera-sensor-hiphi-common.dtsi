@@ -107,6 +107,34 @@
 		rgltr-load-current = <119000 0>;
 	};
 
+	ois_rear_main: qcom,ois0 {
+		cell-index = <0>;
+		reg = <0x0>;
+		compatible = "qcom,ois";
+		cci-master = <0>;
+		cam_vio-supply = <&camera_ldo7>;
+		cam_vaf-supply = <&camera_ldo4>;
+		regulator-names = "cam_vio", "cam_vaf";
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <1800000 2800000>;
+		rgltr-max-voltage = <1800000 2800000>;
+		rgltr-load-current = <14000 15000>;
+		status = "ok";
+	};
+
+	eeprom_rear_main: qcom,eeprom@0 {
+		cell-index = <0>;
+		reg = <0x0>;
+		compatible = "qcom,eeprom";
+		cci-master = <0>;
+		cam_vio-supply = <&camera_ldo7>;
+		regulator-names = "cam_vio";
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <1800000>;
+		rgltr-max-voltage = <1800000>;
+		rgltr-load-current = <0>;
+	};
+
 	rear_main: qcom,cam-sensor0 {
 		cell-index = <0>;
 		compatible = "qcom,cam-sensor";
@@ -116,6 +144,8 @@
 		sensor-position-yaw = <180>;
 		led-flash-src = <&led_flash_rear>;
 		actuator-src = <&actuator_rear_main>;
+		ois-src = <&ois_rear_main>;
+		eeprom-src = <&eeprom_rear_main>;
 		cam_vio-supply = <&camera_ldo7>;
 		cam_vdig-supply = <&camera_ldo5>;
 		cam_clk-supply = <&cam_cc_titan_top_gdsc>;
@@ -147,6 +177,38 @@
 		status = "ok";
 	};
 
+	eeprom_rear_depth: qcom,eeprom@3 {
+		cell-index = <3>;
+		reg = <0x3>;
+		compatible = "qcom,eeprom";
+		cam_vio-supply = <&camera_ldo7>;
+		cam_vana-supply = <&camera_ldo2>;
+		cam_clk-supply = <&cam_cc_titan_top_gdsc>;
+		regulator-names = "cam_vio", "cam_vana", "cam_clk";
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <1800000 2800000 0>;
+		rgltr-max-voltage = <1800000 2800000 0>;
+		rgltr-load-current = <20000 90000 0>;
+		gpio-no-mux = <0>;
+		pinctrl-names = "cam_default", "cam_suspend";
+		pinctrl-0 = <&cam_sensor_mclk1_active
+				 &cam_sensor_active_rst1>;
+		pinctrl-1 = <&cam_sensor_mclk1_suspend
+				 &cam_sensor_suspend_rst1>;
+		gpios = <&tlmm 101 0>,
+			<&tlmm 24 0>;
+		gpio-reset = <1>;
+		gpio-req-tbl-num = <0 1>;
+		gpio-req-tbl-flags = <1 0>;
+		gpio-req-tbl-label = "CAMIF_MCLK1",
+					"CAM_RESET1";
+		cci-master = <1>;
+		clocks = <&clock_camcc CAM_CC_MCLK1_CLK>;
+		clock-names = "cam_clk";
+		clock-cntl-level = "nominal";
+		clock-rates = <24000000>;
+	};
+
 	rear_depth: qcom,cam-sensor3 {
 		cell-index = <3>;
 		compatible = "qcom,cam-sensor";
@@ -155,6 +217,7 @@
 		sensor-position-pitch = <0>;
 		sensor-position-yaw = <180>;
 		led-flash-src = <&led_flash_depth>;
+		eeprom-src = <&eeprom_rear_depth>;
 		cam_vio-supply = <&camera_ldo7>;
 		cam_vana-supply = <&camera_ldo2>;
 		cam_clk-supply = <&cam_cc_titan_top_gdsc>;
@@ -186,6 +249,19 @@
 };
 
 &cam_cci1 {
+	eeprom_front: qcom,eeprom@1 {
+		cell-index = <1>;
+		reg = <0x1>;
+		compatible = "qcom,eeprom";
+		cci-master = <1>;
+		cam_vio-supply = <&L3J>;
+		regulator-names = "cam_vio";
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <1800000>;
+		rgltr-max-voltage = <1800000>;
+		rgltr-load-current = <0>;
+	};
+
 	front_main: qcom,cam-sensor1 {
 		cell-index = <1>;
 		compatible = "qcom,cam-sensor";
@@ -193,6 +269,7 @@
 		sensor-position-roll = <270>;
 		sensor-position-pitch = <0>;
 		sensor-position-yaw = <0>;
+		eeprom-src = <&eeprom_front>;
 		cam_vio-supply = <&L3J>;
 		cam_vdig-supply = <&L2J>;
 		cam_clk-supply = <&cam_cc_titan_top_gdsc>;
@@ -229,8 +306,8 @@
 		status = "ok";
 	};
 
-	actuator_rear_uw: qcom,actuator1 {
-		cell-index = <0>;
+	actuator_rear_uw: qcom,actuator2 {
+		cell-index = <2>;
 		compatible = "qcom,actuator";
 		cci-master = <0>;
 		cam_vaf-supply = <&L6J>;
@@ -242,6 +319,19 @@
 		rgltr-load-current = <119000 0>;
 	};
 
+	eeprom_rear_uw: qcom,eeprom@2 {
+		cell-index = <2>;
+		reg = <0x2>;
+		compatible = "qcom,eeprom";
+		cci-master = <0>;
+		cam_vio-supply = <&camera_ldo7>;
+		regulator-names = "cam_vio";
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <1800000>;
+		rgltr-max-voltage = <1800000>;
+		rgltr-load-current = <0>;
+	};
+
 	rear_uw: qcom,cam-sensor2 {
 		cell-index = <2>;
 		compatible = "qcom,cam-sensor";
@@ -251,6 +341,7 @@
 		sensor-position-yaw = <180>;
 		led-flash-src = <&led_flash_uw>;
 		actuator-src = <&actuator_rear_uw>;
+		eeprom-src = <&eeprom_rear_uw>;
 		cam_vio-supply = <&camera_ldo7>;
 		cam_clk-supply = <&cam_cc_titan_top_gdsc>;
 		cam_vana-supply = <&L7J>;
@@ -260,7 +351,7 @@
 		rgltr-cntrl-support;
 		rgltr-min-voltage = <1800000 3304000 1104000 0>;
 		rgltr-max-voltage = <1800000 3304000 1104000 0>;
-		rgltr-load-current = <128000 128000 50000 0>;
+		rgltr-load-current = <3000 148000 212000 0>;
 		gpio-no-mux = <0>;
 		pinctrl-names = "cam_default", "cam_suspend";
 		pinctrl-0 = <&cam_sensor_mclk3_active
