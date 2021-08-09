@@ -7,7 +7,7 @@
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
 
-#include "waipio-camera-sensor-hiphi-evb1-common.dtsi"
+#include "waipio-camera-sensor-hiphic-evb1-common.dtsi"
 / {
 	model = "hiphic";
 	compatible = "qcom,waipio", "qcom,waipiop", "moto,hiphic";
