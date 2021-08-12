@@ -94,8 +94,8 @@
 };
 
 &cam_cci0 {
-	actuator_rear_main: qcom,actuator0 {
-		cell-index = <0>;
+	actuator_rear_main: qcom,actuator5 {
+		cell-index = <5>;
 		compatible = "qcom,actuator";
 		cci-master = <0>;
 		cam_vaf-supply = <&camera_ldo3>;
@@ -107,9 +107,9 @@
 		rgltr-load-current = <119000 0>;
 	};
 
-	ois_rear_main: qcom,ois0 {
-		cell-index = <0>;
-		reg = <0x0>;
+	ois_rear_main: qcom,ois5 {
+		cell-index = <5>;
+		reg = <0x5>;
 		compatible = "qcom,ois";
 		cci-master = <0>;
 		cam_vio-supply = <&camera_ldo7>;
@@ -122,9 +122,9 @@
 		status = "ok";
 	};
 
-	eeprom_rear_main: qcom,eeprom@0 {
-		cell-index = <0>;
-		reg = <0x0>;
+	eeprom_rear_main: qcom,eeprom@5 {
+		cell-index = <5>;
+		reg = <0x5>;
 		compatible = "qcom,eeprom";
 		cci-master = <0>;
 		cam_vio-supply = <&camera_ldo7>;
@@ -135,8 +135,8 @@
 		rgltr-load-current = <0>;
 	};
 
-	rear_main: qcom,cam-sensor0 {
-		cell-index = <0>;
+	rear_main: qcom,cam-sensor5 {
+		cell-index = <5>;
 		compatible = "qcom,cam-sensor";
 		csiphy-sd-index = <2>;
 		sensor-position-roll = <90>;
