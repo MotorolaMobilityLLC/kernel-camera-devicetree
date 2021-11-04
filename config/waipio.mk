@@ -9,7 +9,8 @@ else
 # Li camera bringup
 ifeq ($(CONFIG_LI_DTB),y)
 dtbo-$(CONFIG_MMI_DEVICE_DTBS) += \
-	waipio-camera-sensor-li-evb1.dtbo
+	waipio-camera-sensor-li-evb1.dtbo \
+	waipio-camera-sensor-li-evb2.dtbo
 else
 dtbo-$(CONFIG_MMI_DEVICE_DTBS) += \
 	waipio-camera-sensor-hiphi-evb1.dtbo \
