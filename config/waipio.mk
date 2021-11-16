@@ -16,7 +16,8 @@ dtbo-$(CONFIG_MMI_DEVICE_DTBS) += \
 	waipio-camera-sensor-hiphi-evt1.dtbo \
 	waipio-camera-sensor-hiphic-evb1.dtbo \
 	waipio-camera-sensor-hiphic-evt1.dtbo \
-	waipio-camera-sensor-hiphic-dvt1.dtbo
+	waipio-camera-sensor-hiphic-dvt1.dtbo \
+	waipio-camera-sensor-hiphid-pvt.dtbo
 endif  #($(CONFIG_LI_DTB),y)
 endif  #($(CONFIG_MMI_DEVICE_DTBS),y)
 
