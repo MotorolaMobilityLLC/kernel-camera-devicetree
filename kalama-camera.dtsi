@@ -1107,6 +1107,9 @@
 			"tpg13", "tpg14", "tpg15";
 		sys-cache-names = "small-1", "small-2";
 		sys-cache-uids = <34 38>;
+		enable-smart-qos;
+		rt-wr-priority-min = <3>;
+		rt-wr-priority-max = <6>;
 		status = "ok";
 
 		camera-bus-nodes {
@@ -1118,6 +1121,7 @@
 					traffic-merge-type =
 					<CAM_CPAS_TRAFFIC_MERGE_SUM>;
 					ib-bw-voting-needed;
+					rt-axi-port;
 					qcom,axi-port-mnoc {
 						interconnect-names = "cam_hf_0";
 						interconnects =
@@ -1208,6 +1212,9 @@
 					parent-node = <&level2_rt_wr>;
 					traffic-merge-type =
 					<CAM_CPAS_TRAFFIC_MERGE_SUM>;
+					rt-wr-niu;
+					niu-size = <134>;
+					priority-lut-low-offset = <0x7630>;
 				};
 
 				level1_rt4_wr: level1-rt4-wr1 {
@@ -1216,6 +1223,9 @@
 					parent-node = <&level2_rt_wr>;
 					traffic-merge-type =
 					<CAM_CPAS_TRAFFIC_MERGE_SUM>;
+					rt-wr-niu;
+					niu-size = <134>;
+					priority-lut-low-offset = <0x7C30>;
 				};
 
 				level1_rt3_wr: level1-rt3-wr {
@@ -1224,6 +1234,9 @@
 					parent-node = <&level2_rt_wr>;
 					traffic-merge-type =
 					<CAM_CPAS_TRAFFIC_MERGE_SUM>;
+					rt-wr-niu;
+					niu-size = <92>;
+					priority-lut-low-offset = <0x7A30>;
 				};
 
 				level1_rt2_wr: level1-rt2-wr {
@@ -1232,6 +1245,9 @@
 					parent-node = <&level2_rt_wr>;
 					traffic-merge-type =
 					<CAM_CPAS_TRAFFIC_MERGE_SUM>;
+					rt-wr-niu;
+					niu-size = <36>;
+					priority-lut-low-offset = <0x7830>;
 				};
 
 				level1_rt0_rd: level1-rt0-rd {
