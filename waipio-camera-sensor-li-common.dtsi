@@ -44,31 +44,31 @@
 	};
 };
 
-&L1J {
+&L1I {
 	regulator-min-microvolt = <1104000>;
 	regulator-max-microvolt = <1104000>;
 	qcom,init-voltage = <1104000>;
 };
 
-&L2J {
+&L2I {
 	regulator-min-microvolt = <1104000>;
 	regulator-max-microvolt = <1104000>;
 	qcom,init-voltage = <1104000>;
 };
 
-&L3J {
+&L3I {
 	regulator-min-microvolt = <2800000>;
 	regulator-max-microvolt = <2800000>;
 	qcom,init-voltage = <2800000>;
 };
 
-&L5J {
+&L5I {
 	regulator-min-microvolt = <1800000>;
 	regulator-max-microvolt = <1800000>;
 	qcom,init-voltage = <1800000>;
 };
 
-&L7J {
+&L7I {
 	regulator-min-microvolt = <2800000>;
 	regulator-max-microvolt = <2800000>;
 	qcom,init-voltage = <2800000>;
@@ -136,8 +136,8 @@
 		//actuator-src = <&actuator_rear_main>;
 		//ois-src = <&ois_rear_main>;
 		//eeprom-src = <&eeprom_rear_main>;
-		cam_vio-supply = <&L5J>;
-		cam_vdig-supply = <&L1J>;
+		cam_vio-supply = <&L5I>;
+		cam_vdig-supply = <&L1I>;
 		cam_clk-supply = <&cam_cc_titan_top_gdsc>;
 		cam_vana-supply = <&cam_avdd_main>;
 		regulator-names = "cam_vio", "cam_vdig",
@@ -175,8 +175,8 @@
 		sensor-position-pitch = <0>;
 		sensor-position-yaw = <0>;
 		//eeprom-src = <&eeprom_front>;
-		cam_vio-supply = <&L5J>;
-		cam_vdig-supply = <&L2J>;
+		cam_vio-supply = <&L5I>;
+		cam_vdig-supply = <&L2I>;
 		cam_clk-supply = <&cam_cc_titan_top_gdsc>;
 		cam_vana-supply = <&cam_avdd_front>;
 		regulator-names = "cam_vio", "cam_vdig",
@@ -208,7 +208,6 @@
 };
 
 &cam_cci1 {
-/*
 	rear_uw: qcom,cam-sensor2 {
 		cell-index = <2>;
 		compatible = "qcom,cam-sensor";
@@ -219,9 +218,9 @@
 		//led-flash-src = <&led_flash_uw>;
 		//actuator-src = <&actuator_rear_uw>;
 		//eeprom-src = <&eeprom_rear_uw>;
-		cam_vio-supply = <&L5J>;
+		cam_vio-supply = <&L5I>;
 		cam_clk-supply = <&cam_cc_titan_top_gdsc>;
-		cam_vana-supply = <&L3J>;
+		cam_vana-supply = <&L3I>;
 		cam_vdig-supply = <&cam_dvdd_wide>;
 		regulator-names = "cam_vio", "cam_vana",
 			"cam_vdig", "cam_clk";
@@ -249,5 +248,4 @@
 		clock-rates = <24000000>;
 		status = "ok";
 	};
-*/
 };
