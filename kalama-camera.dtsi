@@ -2435,7 +2435,7 @@
 	cam_csiphy_tpg13: qcom,tpg13@acf6000 {
 		cell-index = <13>;
 		phy-id = <0>;
-		compatible = "qcom,cam-tpg103";
+		compatible = "qcom,cam-tpg1031";
 		reg-names = "tpg0", "cam_cpas_top";
 		reg = <0xacf6000 0x400>,
 			<0xac13000 0x1000>;
@@ -2462,7 +2462,7 @@
 	cam_csiphy_tpg14: qcom,tpg14@acf7000 {
 		cell-index = <14>;
 		phy-id = <1>;
-		compatible = "qcom,cam-tpg103";
+		compatible = "qcom,cam-tpg1031";
 		reg-names = "tpg1", "cam_cpas_top";
 		reg = <0xacf7000 0x400>,
 			<0xac13000 0x1000>;
@@ -2489,7 +2489,7 @@
 	cam_csiphy_tpg15: qcom,tpg15@acf8000 {
 		cell-index = <15>;
 		phy-id = <2>;
-		compatible = "qcom,cam-tpg103";
+		compatible = "qcom,cam-tpg1031";
 		reg-names = "tpg2", "cam_cpas_top";
 		reg = <0xacf8000 0x400>,
 			<0xac13000 0x1000>;
