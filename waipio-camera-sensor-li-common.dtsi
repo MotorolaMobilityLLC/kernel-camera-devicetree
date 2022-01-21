@@ -273,7 +273,7 @@
 		clocks = <&clock_camcc CAM_CC_MCLK1_CLK>;
 		clock-names = "cam_clk";
 		clock-cntl-level = "nominal";
-		clock-rates = <24000000>;
+		clock-rates = <19200000>;
 		status = "ok";
 	};
 };
