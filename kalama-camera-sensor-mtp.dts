@@ -10,7 +10,7 @@
 #include "kalama-camera-sensor-mtp.dtsi"
 / {
 	model = "Qualcomm Technologies, Inc. Kalama MTP";
-	compatible = "qcom,kalama-mtp", "qcom,kalama"
+	compatible = "qcom,kalama-mtp", "qcom,kalama";
 	qcom,msm-id = <519 0x10000>, <536 0x10000>;
 	qcom,board-id = <0x10008 0>;
 };
