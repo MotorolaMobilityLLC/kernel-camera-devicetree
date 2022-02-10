@@ -1,95 +1,179 @@
 #include <dt-bindings/msm-camera.h>
 
 &tlmm {
-	cci0_active: cci0_active {
+	cci_i2c_sda0_active: cci_i2c_sda0_active {
 		mux {
 			/* CLK, DATA */
-			pins = "gpio110","gpio111"; // Only 2
-			function = "cci_i2c";
+			pins = "gpio110";
+			function = "cci_i2c_sda0";
 		};
 
 		config {
-			pins = "gpio110","gpio111";
+			pins = "gpio110";
 			bias-pull-up; /* PULL UP*/
 			drive-strength = <2>; /* 2 MA */
 		};
 	};
 
-	cci0_suspend: cci0_suspend {
+	cci_i2c_sda0_suspend: cci_i2c_sda0_suspend {
 		mux {
 			/* CLK, DATA */
-			pins = "gpio110","gpio111";
-			function = "cci_i2c";
+			pins = "gpio110";
+			function = "cci_i2c_sda0";
 		};
 
 		config {
-			pins = "gpio110","gpio111";
+			pins = "gpio110";
 			bias-pull-down; /* PULL DOWN */
 			drive-strength = <2>; /* 2 MA */
 		};
 	};
 
-	cci1_active: cci1_active {
+	cci_i2c_scl0_active: cci_i2c_scl0_active {
 		mux {
 			/* CLK, DATA */
-			pins = "gpio112","gpio113";
-			function = "cci_i2c";
+			pins = "gpio111";
+			function = "cci_i2c_scl0";
 		};
 
 		config {
-			pins = "gpio112","gpio113";
+			pins = "gpio111";
 			bias-pull-up; /* PULL UP*/
 			drive-strength = <2>; /* 2 MA */
 		};
 	};
 
-	cci1_suspend: cci1_suspend {
+	cci_i2c_scl0_suspend: cci_i2c_scl0_suspend {
 		mux {
 			/* CLK, DATA */
-			pins = "gpio112","gpio113";
-			function = "cci_i2c";
+			pins = "gpio111";
+			function = "cci_i2c_scl0";
 		};
 
 		config {
-			pins = "gpio112","gpio113";
+			pins = "gpio111";
 			bias-pull-down; /* PULL DOWN */
 			drive-strength = <2>; /* 2 MA */
 		};
 	};
 
-	cci2_active: cci2_active {
+	cci_i2c_sda1_active: cci_i2c_sda1_active {
 		mux {
 			/* CLK, DATA */
-			pins = "gpio114","gpio115";
-			function = "cci_i2c";
+			pins = "gpio112";
+			function = "cci_i2c_sda1";
 		};
 
 		config {
-			pins = "gpio114","gpio115";
+			pins = "gpio112";
 			bias-pull-up; /* PULL UP*/
 			drive-strength = <2>; /* 2 MA */
 		};
 	};
 
-	cci2_suspend: cci2_suspend {
+	cci_i2c_sda1_suspend: cci_i2c_sda1_suspend {
 		mux {
 			/* CLK, DATA */
-			pins = "gpio114","gpio115";
-			function = "cci_i2c";
+			pins = "gpio112";
+			function = "cci_i2c_sda1";
 		};
 
 		config {
-			pins = "gpio114","gpio115";
+			pins = "gpio112";
 			bias-pull-down; /* PULL DOWN */
 			drive-strength = <2>; /* 2 MA */
 		};
 	};
 
-	cci3_active: cci3_active {
+	cci_i2c_scl1_active: cci_i2c_scl1_active {
+		mux {
+			/* CLK, DATA */
+			pins = "gpio113";
+			function = "cci_i2c_scl1";
+		};
+
+		config {
+			pins = "gpio113";
+			bias-pull-up; /* PULL UP*/
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
+	cci_i2c_scl1_suspend: cci_i2c_scl1_suspend {
+		mux {
+			/* CLK, DATA */
+			pins = "gpio113";
+			function = "cci_i2c_scl1";
+		};
+
+		config {
+			pins = "gpio113";
+			bias-pull-down; /* PULL DOWN */
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
+	cci_i2c_sda2_active: cci_i2c_sda2_active {
+		mux {
+			/* CLK, DATA */
+			pins = "gpio114";
+			function = "cci_i2c_sda2";
+		};
+
+		config {
+			pins = "gpio114";
+			bias-pull-up; /* PULL UP*/
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
+	cci_i2c_sda2_suspend: cci_i2c_sda2_suspend {
+		mux {
+			/* CLK, DATA */
+			pins = "gpio114";
+			function = "cci_i2c_sda2";
+		};
+
+		config {
+			pins = "gpio114";
+			bias-pull-down; /* PULL DOWN */
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
+	cci_i2c_scl2_active: cci_i2c_scl2_active {
+		mux {
+			/* CLK, DATA */
+			pins = "gpio115";
+			function = "cci_i2c_scl2";
+		};
+
+		config {
+			pins = "gpio115";
+			bias-pull-up; /* PULL UP*/
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
+	cci_i2c_scl2_suspend: cci_i2c_scl2_suspend {
+		mux {
+			/* CLK, DATA */
+			pins = "gpio115";
+			function = "cci_i2c_scl2";
+		};
+
+		config {
+			pins = "gpio115";
+			bias-pull-down; /* PULL DOWN */
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
+	cci_aon_i2c_active: cci_aon_i2c_active {
 		mux {
 			/* CLK, DATA */
 			pins = "gpio208","gpio209";
-			function = "cci_i2c";
+			function = "aon_cci";
 		};
 
 		config {
@@ -100,11 +184,11 @@
 		};
 	};
 
-	cci3_suspend: cci3_suspend {
+	cci_aon_i2c_suspend: cci_aon_i2c_suspend {
 		mux {
 			/* CLK, DATA */
 			pins = "gpio208","gpio209";
-			function = "cci_i2c";
+			function = "aon_cci";
 		};
 
 		config {
@@ -115,62 +199,116 @@
 		};
 	};
 
-	cci4_active: cci4_active {
+	cci_i2c_sda4_active: cci_i2c_sda4_active {
 		mux {
 			/* CLK, DATA */
-			pins = "gpio74","gpio75";
-			function = "cci_i2c";
+			pins = "gpio74";
+			function = "cci_i2c_sda4";
 		};
 
 		config {
-			pins = "gpio74","gpio75";
+			pins = "gpio74";
 			bias-pull-up; /* PULL UP*/
 			drive-strength = <2>; /* 2 MA */
 		};
 	};
 
-	cci4_suspend: cci4_suspend {
+	cci_i2c_sda4_suspend: cci_i2c_sda4_suspend {
 		mux {
 			/* CLK, DATA */
-			pins = "gpio74","gpio75";
-			function = "cci_i2c";
+			pins = "gpio74";
+			function = "cci_i2c_sda4";
 		};
 
 		config {
-			pins = "gpio74","gpio75";
+			pins = "gpio74";
 			bias-pull-down; /* PULL DOWN */
 			drive-strength = <2>; /* 2 MA */
 		};
-
 	};
 
-	cci5_active: cci5_active {
+	cci_i2c_scl4_active: cci_i2c_scl4_active {
 		mux {
 			/* CLK, DATA */
-			pins = "gpio0","gpio1";
-			function = "cci_i2c";
+			pins = "gpio75";
+			function = "cci_i2c_scl4";
 		};
 
 		config {
-			pins = "gpio0","gpio1";
+			pins = "gpio75";
 			bias-pull-up; /* PULL UP*/
 			drive-strength = <2>; /* 2 MA */
 		};
 	};
 
-	cci5_suspend: cci5_suspend {
+	cci_i2c_scl4_suspend: cci_i2c_scl4_suspend {
 		mux {
 			/* CLK, DATA */
-			pins = "gpio0","gpio1";
-			function = "cci_i2c";
+			pins = "gpio75";
+			function = "cci_i2c_scl4";
 		};
 
 		config {
-			pins = "gpio0","gpio1";
+			pins = "gpio75";
 			bias-pull-down; /* PULL DOWN */
 			drive-strength = <2>; /* 2 MA */
 		};
+	};
 
+	cci_i2c_sda5_active: cci_i2c_sda5_active {
+		mux {
+			/* CLK, DATA */
+			pins = "gpio0";
+			function = "cci_i2c_sda5";
+		};
+
+		config {
+			pins = "gpio0";
+			bias-pull-up; /* PULL UP*/
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
+	cci_i2c_sda5_suspend: cci_i2c_sda5_suspend {
+		mux {
+			/* CLK, DATA */
+			pins = "gpio0";
+			function = "cci_i2c_sda5";
+		};
+
+		config {
+			pins = "gpio0";
+			bias-pull-down; /* PULL DOWN */
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
+	cci_i2c_scl5_active: cci_i2c_scl5_active {
+		mux {
+			/* CLK, DATA */
+			pins = "gpio1";
+			function = "cci_i2c_scl5";
+		};
+
+		config {
+			pins = "gpio1";
+			bias-pull-up; /* PULL UP*/
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
+	cci_i2c_scl5_suspend: cci_i2c_scl5_suspend {
+		mux {
+			/* CLK, DATA */
+			pins = "gpio1";
+			function = "cci_i2c_scl5";
+		};
+
+		config {
+			pins = "gpio1";
+			bias-pull-down; /* PULL DOWN */
+			drive-strength = <2>; /* 2 MA */
+		};
 	};
 
 	cam_sensor_mclk0_active: cam_sensor_mclk0_active {
@@ -289,7 +427,7 @@
 		/* MCLK4 */
 		mux {
 			pins = "gpio104";
-			function = "cam_mclk";
+			function = "cam_aon_mclk4";
 		};
 
 		config {
@@ -303,7 +441,7 @@
 		/* MCLK4 */
 		mux {
 			pins = "gpio104";
-			function = "cam_mclk";
+			function = "cam_aon_mclk4";
 		};
 
 		config {
@@ -836,10 +974,10 @@
 		pctrl-map-names = "m0", "m1";
 		pinctrl-names = "m0_active", "m0_suspend",
 			"m1_active", "m1_suspend";
-		pinctrl-0 = <&cci0_active>;
-		pinctrl-1 = <&cci0_suspend>;
-		pinctrl-2 = <&cci1_active>;
-		pinctrl-3 = <&cci1_suspend>;
+		pinctrl-0 = <&cci_i2c_scl0_active &cci_i2c_sda0_active>;
+		pinctrl-1 = <&cci_i2c_scl0_suspend &cci_i2c_sda0_suspend>;
+		pinctrl-2 = <&cci_i2c_scl1_active &cci_i2c_sda1_active>;
+		pinctrl-3 = <&cci_i2c_scl1_suspend &cci_i2c_sda1_suspend>;
 		status = "ok";
 
 		i2c_freq_100Khz_cci0: qcom,i2c_standard_mode {
@@ -924,10 +1062,10 @@
 		pctrl-map-names = "m0", "m1";
 		pinctrl-names = "m0_active", "m0_suspend",
 			"m1_active", "m1_suspend";
-		pinctrl-0 = <&cci2_active>;
-		pinctrl-1 = <&cci2_suspend>;
-		pinctrl-2 = <&cci3_active>;
-		pinctrl-3 = <&cci3_suspend>;
+		pinctrl-0 = <&cci_i2c_scl2_active &cci_i2c_sda2_active>;
+		pinctrl-1 = <&cci_i2c_scl2_suspend &cci_i2c_sda2_suspend>;
+		pinctrl-2 = <&cci_aon_i2c_active>;
+		pinctrl-3 = <&cci_aon_i2c_suspend>;
 		status = "ok";
 
 		i2c_freq_100Khz_cci1: qcom,i2c_standard_mode {
@@ -1012,10 +1150,10 @@
 		pctrl-map-names = "m0", "m1";
 		pinctrl-names = "m0_active", "m0_suspend",
 			"m1_active", "m1_suspend";
-		pinctrl-0 = <&cci4_active>;
-		pinctrl-1 = <&cci4_suspend>;
-		pinctrl-2 = <&cci5_active>;
-		pinctrl-3 = <&cci5_suspend>;
+		pinctrl-0 = <&cci_i2c_scl4_active &cci_i2c_sda4_active>;
+		pinctrl-1 = <&cci_i2c_scl4_suspend &cci_i2c_sda4_suspend>;
+		pinctrl-2 = <&cci_i2c_scl5_active &cci_i2c_sda5_active>;
+		pinctrl-3 = <&cci_i2c_scl5_suspend &cci_i2c_sda5_suspend>;
 		status = "ok";
 
 		i2c_freq_100Khz_cci2: qcom,i2c_standard_mode {

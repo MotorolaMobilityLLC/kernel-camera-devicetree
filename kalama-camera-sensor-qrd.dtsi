@@ -353,7 +353,7 @@
 		cam_clk-supply = <&cam_cc_titan_top_gdsc>;
 		cam_vana-supply = <&L3M>;
 		cam_v_custom1-supply = <&L6M>;
-		regulator-names = "cam_vio", "cam_dig","cam_clk", "cam_vana",
+		regulator-names = "cam_vio", "cam_vdig","cam_clk", "cam_vana",
 			"cam_v_custom1";
 		rgltr-cntrl-support;
 		rgltr-min-voltage = <1800000 1056000 0 2800000 1800000>;
@@ -435,7 +435,7 @@
 		cam_clk-supply = <&cam_cc_titan_top_gdsc>;
 		cam_vana-supply = <&L3M>;
 		cam_v_custom1-supply = <&L6M>;
-		regulator-names = "cam_vio", "cam_dig","cam_clk", "cam_vana",
+		regulator-names = "cam_vio", "cam_vdig","cam_clk", "cam_vana",
 			"cam_v_custom1";
 		rgltr-cntrl-support;
 		aon-user;
@@ -460,7 +460,7 @@
 		gpio-req-tbl-label = "CAMIF_MCLK4",
 					"CAM_RESET4",
 					"CAM_STANDBY";
-		cci-master = <CCI_MASTER_0>;
+		cci-master = <CCI_MASTER_1>;
 		clocks = <&camcc CAM_CC_MCLK4_CLK>;
 		clock-names = "cam_clk";
 		clock-cntl-level = "nominal";
