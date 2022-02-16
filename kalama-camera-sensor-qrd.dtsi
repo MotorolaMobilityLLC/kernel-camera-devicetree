@@ -428,7 +428,7 @@
 		csiphy-sd-index = <4>;
 		sensor-position-roll = <90>;
 		sensor-position-pitch = <0>;
-		sensor-position-yaw = <180>;
+		sensor-position-yaw = <0>;
 		eeprom-src = <&eeprom_aon_front>;
 		cam_vio-supply = <&L5N>;
 		cam_vdig-supply = <&L1M>;
