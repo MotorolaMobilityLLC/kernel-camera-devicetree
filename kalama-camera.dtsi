@@ -1401,6 +1401,9 @@
 		clock-cntl-level = "suspend", "lowsvs", "svs", "svs_l1",
 			"nominal", "nominal_l1", "turbo";
 		src-clock-name = "camnoc_axi_clk_src";
+		clock-names-option =  "cam_icp_clk";
+		clocks-option = <&camcc CAM_CC_ICP_CLK>;
+		clock-rates-option = <400000000>;
 		control-camnoc-axi-clk;
 		camnoc-bus-width = <32>;
 		camnoc-axi-clk-bw-margin-perc = <20>;
