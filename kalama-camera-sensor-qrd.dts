@@ -10,7 +10,7 @@
 #include "kalama-camera-sensor-qrd.dtsi"
 / {
 	model = "Qualcomm Technologies, Inc. Kalama QRD";
-	compatible = "qcom,kalama-qrd", "qcom,kalama"
-	qcom,msm-id = <519 0x10000>, <536 0x10000>;
+	compatible = "qcom,kalama-qrd", "qcom,kalama", "qcom,qrd";
+	qcom,msm-id = <519 0x10000>, <536 0x10000>, <519 0x20000>, <536 0x20000>;
 	qcom,board-id = <0x1000B 0>;
 };
