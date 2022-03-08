@@ -26,6 +26,8 @@ dtbo-$(CONFIG_ARCH_DIWALI) += diwali-camera-sensor-idp.dtbo
 dtbo-$(CONFIG_ARCH_DIWALI) += diwali-camera-sensor-qrd.dtbo
 
 dtbo-$(CONFIG_ARCH_CAPE) += cape-camera.dtbo
+#remove useless qcom device tree in moto build
+ifneq ($(CONFIG_MMI_DEVICE_DTBS),y)
 dtbo-$(CONFIG_ARCH_CAPE) += cape-camera-sensor-mtp.dtbo \
 				cape-camera-sensor-cdp.dtbo \
 				cape-camera-sensor-qrd.dtbo
@@ -34,3 +36,9 @@ dtbo-$(CONFIG_ARCH_CAPE) += ukee-camera-sensor-mtp.dtbo \
 				ukee-camera-sensor-cdp.dtbo \
 				ukee-camera-sensor-qrd.dtbo
 dtbo-$(CONFIG_ARCH_CAPE) += ukee-camera.dtbo
+else
+ifeq ($(CONFIG_EQS_DTB),y)
+dtbo-$(CONFIG_ARCH_CAPE) += \
+	cape-camera-sensor-eqs-evt1.dtbo
+endif  #($(CONFIG_EQS_DTB),y)
+endif  #($(CONFIG_MMI_DEVICE_DTBS),y)
