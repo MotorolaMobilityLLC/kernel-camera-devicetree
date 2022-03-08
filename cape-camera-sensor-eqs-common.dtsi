@@ -71,6 +71,12 @@
 	qcom,init-voltage = <1104000>;
 };
 
+&L4J {
+	regulator-min-microvolt = <1800000>;
+	regulator-max-microvolt = <1800000>;
+	qcom,init-voltage = <1800000>;
+};
+
 &L5J {
 	regulator-min-microvolt = <2856000>;
 	regulator-max-microvolt = <2856000>;
@@ -290,7 +296,7 @@
 		sensor-position-roll = <270>;
 		sensor-position-pitch = <0>;
 		sensor-position-yaw = <0>;
-		eeprom-src = <&eeprom_front>;
+		//eeprom-src = <&eeprom_front>;
 		cam_vio-supply = <&L3J>;
 		cam_vdig-supply = <&L2J>;
 		cam_clk-supply = <&cam_cc_titan_top_gdsc>;
@@ -331,8 +337,8 @@
 		cell-index = <2>;
 		compatible = "qcom,actuator";
 		cci-master = <0>;
-		cam_vaf-supply = <&L6J>;
-		cam_vio-supply = <&camera_ldo7>;
+		cam_vaf-supply = <&L7J>;
+		cam_vio-supply = <&L4J>;
 		regulator-names = "cam_vaf", "cam_vio";
 		rgltr-cntrl-support;
 		rgltr-min-voltage = <2800000 1800000>;
@@ -345,7 +351,7 @@
 		reg = <0x2>;
 		compatible = "qcom,eeprom";
 		cci-master = <0>;
-		cam_vio-supply = <&camera_ldo7>;
+		cam_vio-supply = <&L4J>;
 		regulator-names = "cam_vio";
 		rgltr-cntrl-support;
 		rgltr-min-voltage = <1800000>;
@@ -360,12 +366,12 @@
 		sensor-position-roll = <90>;
 		sensor-position-pitch = <0>;
 		sensor-position-yaw = <180>;
-		led-flash-src = <&led_flash_uw>;
-		actuator-src = <&actuator_rear_uw>;
-		eeprom-src = <&eeprom_rear_uw>;
-		cam_vio-supply = <&camera_ldo7>;
+		//led-flash-src = <&led_flash_uw>;
+		//actuator-src = <&actuator_rear_uw>;
+		//eeprom-src = <&eeprom_rear_uw>;
+		cam_vio-supply = <&L4J>;
 		cam_clk-supply = <&cam_cc_titan_top_gdsc>;
-		cam_vana-supply = <&L7J>;
+		cam_vana-supply = <&L6J>;
 		cam_vdig-supply = <&L1J>;
 		regulator-names = "cam_vio", "cam_vana",
 			"cam_vdig", "cam_clk";
