@@ -313,7 +313,7 @@
 		sensor-position-pitch = <0>;
 		sensor-position-yaw = <180>;
 		//led-flash-src = <&led_flash_uw>;
-		//actuator-src = <&actuator_rear_uw>;
+		actuator-src = <&actuator_rear_uw>;
 		eeprom-src = <&eeprom_rear_uw>;
 		cam_vio-supply = <&L4J>;
 		cam_clk-supply = <&cam_cc_titan_top_gdsc>;
