@@ -766,7 +766,7 @@
 		regulator-names = "cam_vio", "cam_vana", "cam_clk", "cam_vdig",
 			"cam_bob";
 		rgltr-cntrl-support;
-		aon-user;
+		aon-camera-id = <AON_CAM1>;
 		rgltr-min-voltage = <1800000 2704000 0 952000 3008000>;
 		rgltr-max-voltage = <1800000 2896000 0 1144000 3960000>;
 		rgltr-load-current = <10000 14720 0 30000 7070000>;
