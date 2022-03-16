@@ -108,7 +108,7 @@
 		reg = <0x0>;
 		compatible = "qcom,eeprom";
 		cci-master = <0>;
-		cam_vio-supply = <&camera_ldo7>;
+		cam_vio-supply = <&camera_ldo5>;
 		regulator-names = "cam_vio";
 		rgltr-cntrl-support;
 		rgltr-min-voltage = <1800000>;
@@ -126,7 +126,7 @@
 		//led-flash-src = <&led_flash_rear>;
 		actuator-src = <&actuator_rear_main>;
 		//ois-src = <&ois_rear_main>;
-		//eeprom-src = <&eeprom_rear_main>;
+		eeprom-src = <&eeprom_rear_main>;
 		cam_vio-supply = <&camera_ldo5>;
 		cam_vdig-supply = <&camera_ldo1>;
 		cam_clk-supply = <&cam_cc_titan_top_gdsc>;
