@@ -166,9 +166,9 @@
 		cam_vio-supply = <&camera_ldo5>;
 		regulator-names = "cam_vaf", "cam_vio";
 		rgltr-cntrl-support;
-		rgltr-min-voltage = <3100000 1800000>;
-		rgltr-max-voltage = <3100000 1800000>;
-		rgltr-load-current = <119000 0>;
+		rgltr-min-voltage = <2800000 1800000>;
+		rgltr-max-voltage = <2800000 1800000>;
+		rgltr-load-current = <147000 0>;
 	};
 
 	eeprom_rear_tele: qcom,eeprom@3 {
@@ -192,8 +192,8 @@
 		sensor-position-pitch = <0>;
 		sensor-position-yaw = <180>;
 		//led-flash-src = <&led_flash_tele>;
-		//actuator-src = <&actuator_rear_tele>;
-		//eeprom-src = <&eeprom_rear_tele>;
+		actuator-src = <&actuator_rear_tele>;
+		eeprom-src = <&eeprom_rear_tele>;
 		cam_vio-supply = <&camera_ldo5>;
 		cam_clk-supply = <&cam_cc_titan_top_gdsc>;
 		cam_vana-supply = <&camera_ldo4>;
