@@ -7,7 +7,7 @@
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
 
-#include "cape-camera-sensor-eqs-common.dtsi"
+#include "cape-camera-sensor-eqs-common-evt1.dtsi"
 / {
 	model = "eqs";
 	compatible = "qcom,cape", "qcom,capep", "moto,eqs";
