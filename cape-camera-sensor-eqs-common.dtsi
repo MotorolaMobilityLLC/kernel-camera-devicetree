@@ -79,12 +79,12 @@
 		cell-index = <0>;
 		compatible = "qcom,actuator";
 		cci-master = <0>;
-		cam_vaf-supply = <&camera_ldo7>;
+		cam_vaf-supply = <&camera_ldo6>;
 		cam_vio-supply = <&camera_ldo5>;
 		regulator-names = "cam_vaf", "cam_vio";
 		rgltr-cntrl-support;
-		rgltr-min-voltage = <2800000 1800000>;
-		rgltr-max-voltage = <2800000 1800000>;
+		rgltr-min-voltage = <3100000 1800000>;
+		rgltr-max-voltage = <3104000 1800000>; /*step is 0.008V, can't exactly equal to 3.1V*/
 		rgltr-load-current = <119000 0>;
 	};
 
