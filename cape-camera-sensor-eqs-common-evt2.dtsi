@@ -122,6 +122,18 @@
 };
 
 &cam_cci0 {
+	i2c_freq_100Khz_cci0: qcom,i2c_standard_mode {
+		hw-scl-stretch-en = <0>;
+	};
+
+	i2c_freq_400Khz_cci0: qcom,i2c_fast_mode {
+		hw-scl-stretch-en = <0>;
+	};
+
+	i2c_freq_1Mhz_cci0: qcom,i2c_fast_plus_mode {
+		hw-scl-stretch-en = <1>;
+	};
+
 	actuator_rear_main: qcom,actuator0 {
 		cell-index = <0>;
 		compatible = "qcom,actuator";
@@ -141,7 +153,7 @@
 		compatible = "qcom,ois";
 		cci-master = <0>;
 		cam_vio-supply = <&camera_ldo5>;
-		cam_vaf-supply = <&camera_ldo7>;
+		cam_vaf-supply = <&camera_ldo6>;
 		regulator-names = "cam_vio", "cam_vaf";
 		rgltr-cntrl-support;
 		rgltr-min-voltage = <1800000 3100000>;
@@ -172,7 +184,7 @@
 		sensor-position-yaw = <180>;
 		led-flash-src = <&led_flash_rear>;
 		actuator-src = <&actuator_rear_main>;
-		//ois-src = <&ois_rear_main>;
+		ois-src = <&ois_rear_main>;
 		eeprom-src = <&eeprom_rear_main>;
 		cam_vio-supply = <&camera_ldo5>;
 		cam_vdig-supply = <&camera_ldo1>;
