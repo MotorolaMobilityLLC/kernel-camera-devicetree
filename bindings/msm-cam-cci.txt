@@ -369,6 +369,12 @@ Image sensor node contains properties of camera image sensor
   Value type: <phandle>
   Definition: should contain regulator from which BoB voltage is supplied
 
+- i3c-target
+  Usage: required for I3C targets
+  Value type: <boolean>
+  Definition: A boolean flag to indicate the target being used as an pure I3C
+	target on a I3C bus.
+
 - regulator-names
   Usage: required
   Value type: <string>
@@ -662,6 +668,12 @@ ACTUATOR MODULE
   Value type: <boolean>
   Definition: AON support detection
 
+- i3c-target
+  Usage: required for I3C Targets
+  Value type: <boolean>
+  Definition: A boolean flag to indicate the target being used as an pure I3C
+	target on a I3C bus.
+
 - rgltr-cntrl-support
   Usage: optional
   Value type: <boolean>
@@ -739,6 +751,12 @@ OIS MODULE
   Definition: It is booloean property. This property is required
 	if the code and regulator control parameters e.g. rgltr-min-voltage
 
+- i3c-target
+  Usage: required for I3C Targets
+  Value type: <boolean>
+  Definition: A boolean flag to indicate the target being used as an pure I3C
+	target on a I3C bus.
+
 - rgltr-min-voltage
   Usage: optional
   Value type: <u32>
@@ -764,6 +782,35 @@ OIS MODULE
   Definition: This property is required if the clk is shared clk between different
 	sensor and ois, if this device need to be opened together.
 
+=============================
+I3C ID Table MODULE
+=============================
+
+- i3c-sensor-id-table
+  Usage: optional
+  Value type: <u32 array>
+  Definition: Contains entries for supported I3C Sensors. One entry of this property is
+	of form <mid_num pid_num>.
+
+- i3c-eeprom-id-table
+  Usage: optional
+  Value type: <u32 array>
+  Definition: Contains entries for supported I3C EEPROMs. One entry of this property is
+	of form <mid_num pid_num>.
+
+- i3c-actuator-id-table
+  Usage: optional
+  Value type: <u32 array>
+  Definition: Contains entries for supported I3C actuators. One entry of this property is
+	of form <mid_num pid_num>.
+
+- i3c-ois-id-table
+  Usage: optional
+  Value type: <u32 array>
+  Definition: Contains entries for supported I3C OIS slaves. One entry of this property is
+	of form <mid_num pid_num>.
+
+
 Example:
 &soc {
     led_flash0: qcom,camera-flash@0 {
@@ -774,6 +821,14 @@ Example:
          switch-source = <&pmi8998_switch>;
          status = "ok";
     };
+
+    qcom,cam-i3c-id-table {
+         i3c-sensor-id-table = <0x1B0 0x0766>;
+         i3c-eeprom-id-table = <>;
+         i3c-actuator-id-table = <>;
+         i3c-ois-id-table = <>;
+         status = "disabled";
+ };
 };
 
 &cam_cci0 {
@@ -895,4 +950,108 @@ Example:
          clock-cntl-level = "turbo";
          clock-rates = <19200000>;
     };
+};
+
+&i3c0 {
+	se-clock-frequency = <100000000>;
+	i3c-scl-hz = <12500000>;
+	dfs-index = <0>;
+	i2c-scl-hz = <100000>;
+	compatible = "qcom,geni-i3c", "simple-bus";
+	status = "ok";
+
+	actuator_i3c_triple_wide: qcom,actuator1@c {
+		cell-index = <1>;
+		compatible = "qcom,cam-i2c-actuator";
+		reg = <0x0C 0x00 0x10>;
+		cam_vaf-supply = <&L7N>;
+		regulator-names = "cam_vaf";
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <2960000>;
+		rgltr-max-voltage = <2960000>;
+		rgltr-load-current = <103000>;
+		status = "ok";
+	};
+
+	eeprom_i3c_wide: qcom,eeprom2@50 {
+		cell-index = <2>;
+		reg = <0x50 0x00 0x10>;
+		compatible = "qcom,cam-i2c-eeprom";
+		cam_vio-supply = <&L5N>;
+		cam_vdig-supply = <&L1N>;
+		cam_clk-supply = <&cam_cc_titan_top_gdsc>;
+		cam_vana-supply = <&L7M>;
+		cam_vaf-supply = <&L7N>;
+		cam_v_custom1-supply = <&L5M>;
+		regulator-names = "cam_vio", "cam_vdig", "cam_clk", "cam_vana",
+			"cam_vaf", "cam_v_custom1";
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <1800000 1104000 0 2904000 2960000 1800000>;
+		rgltr-max-voltage = <1800000 1104000 0 2904000 2960000 1800000>;
+		rgltr-load-current = <3500 913200 0 91300 103000 63100>;
+		gpio-no-mux = <0>;
+		pinctrl-names = "cam_default", "cam_suspend";
+		pinctrl-0 = <&cam_sensor_mclk2_active
+				&cam_sensor_active_rst2>;
+		pinctrl-1 = <&cam_sensor_mclk2_suspend
+				&cam_sensor_suspend_rst2>;
+		gpios = <&tlmm 102 0>,
+			<&tlmm 118 0>;
+		gpio-reset = <1>;
+		gpio-req-tbl-num = <0 1>;
+		gpio-req-tbl-flags = <1 0>;
+		gpio-req-tbl-label = "CAMIF_MCLK2",
+					"CAM_RESET2";
+		clocks = <&camcc CAM_CC_MCLK2_CLK>;
+		clock-names = "cam_clk";
+		clock-cntl-level = "nominal";
+		clock-rates = <24000000>;
+		status = "ok";
+	};
+
+	qcom,cam-sensor@34,36007660000 {
+		cell-index = <2>;
+		reg = <0x34 0x360 0x07660000>;
+		assigned-address = <0xa>;
+		scl-hz = <4000000>;
+		compatible = "qcom,cam-sensor";
+		csiphy-sd-index = <2>;
+		sensor-position-roll = <90>;
+		sensor-position-pitch = <0>;
+		sensor-position-yaw = <180>;
+		actuator-src = <&actuator_i3c_triple_wide>;
+		eeprom-src = <&eeprom_i3c_wide>;
+		led-flash-src = <&led_flash_triple_rear_wide>;
+		cam_vio-supply = <&L5N>;
+		cam_vdig-supply = <&L1N>;
+		cam_clk-supply = <&cam_cc_titan_top_gdsc>;
+		cam_vana-supply = <&L7M>;
+		cam_vaf-supply = <&L7N>;
+		cam_v_custom1-supply = <&L5M>;
+		i3c-target;
+		regulator-names = "cam_vio", "cam_vdig", "cam_clk", "cam_vana",
+			"cam_vaf", "cam_v_custom1";
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <1800000 1104000 0 2904000 2960000 1800000>;
+		rgltr-max-voltage = <1800000 1104000 0 2904000 2960000 1800000>;
+		rgltr-load-current = <3500 913200 0 91300 103000 63100>;
+		gpio-no-mux = <0>;
+		pinctrl-names = "cam_default", "cam_suspend";
+		pinctrl-0 = <&cam_sensor_mclk2_active
+				 &cam_sensor_active_rst2>;
+		pinctrl-1 = <&cam_sensor_mclk2_suspend
+				 &cam_sensor_suspend_rst2>;
+		gpios = <&tlmm 102 0>,
+			<&tlmm 118 0>;
+		gpio-reset = <1>;
+		gpio-req-tbl-num = <0 1>;
+		gpio-req-tbl-flags = <1 0>;
+		gpio-req-tbl-label = "CAMIF_MCLK2",
+					"CAM_RESET2";
+		clocks = <&camcc CAM_CC_MCLK2_CLK>;
+		clock-names = "cam_clk";
+		clock-cntl-level = "nominal";
+		clock-rates = <24000000>;
+		status = "ok";
+	};
 };
