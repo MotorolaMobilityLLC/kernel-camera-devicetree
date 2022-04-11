@@ -1551,10 +1551,10 @@
 
 	qcom,cam-icp {
 		compatible = "qcom,cam-icp";
-		compat-hw-name = "qcom,a5",
+		compat-hw-name = "qcom,icp",
 			"qcom,ipe0",
 			"qcom,bps";
-		num-a5 = <1>;
+		num-icp = <1>;
 		num-ipe = <1>;
 		num-bps = <1>;
 		status = "ok";
@@ -1562,16 +1562,17 @@
 		ipe_bps_pc_en;
 	};
 
-	cam_a5: qcom,a5 {
+	cam_icp: qcom,icp {
 		cell-index = <0>;
-		compatible = "qcom,cam-a5";
+		compatible = "qcom,cam-icp_v1";
+		icp-version = <0x0100>;
 		reg = <0xac00000 0x6000>,
 			<0xac10000 0x8000>,
 			<0xac18000 0x3000>;
-		reg-names = "a5_qgic", "a5_sierra", "a5_csr";
+		reg-names = "icp_qgic", "icp_sierra", "icp_csr";
 		reg-cam-base = <0x00000 0x10000 0x18000>;
 		interrupts = <GIC_SPI 463 IRQ_TYPE_EDGE_RISING>;
-		interrupt-names = "a5";
+		interrupt-names = "icp";
 		regulator-names = "camss-vdd";
 		camss-vdd-supply = <&cam_cc_titan_top_gdsc>;
 		clock-names =
