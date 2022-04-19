@@ -36,7 +36,8 @@ ifeq ($(CONFIG_EQS_DTB),y)
 dtbo-$(CONFIG_ARCH_CAPE) += \
 	cape-camera-sensor-eqs-evt1.dtbo \
 	cape-camera-sensor-eqs-evt2.dtbo \
-	cape-camera-sensor-eqs-dvt1a.dtbo
+	cape-camera-sensor-eqs-dvt1a1.dtbo \
+	cape-camera-sensor-eqs-dvt1b1.dtbo
 endif  #($(CONFIG_EQS_DTB),y)
 ifeq ($(CONFIG_ONELI_DTB),y)
 dtbo-$(CONFIG_ARCH_CAPE) += \
