@@ -2,9 +2,10 @@
 
 The MSM camera ICP devices are implemented multiple device nodes.
 The root icp device node has properties defined to hint the driver
-about the number of A5, LX7, IPE and BPS nodes available during the
+about the number of ICP, IPE and BPS nodes available during the
 probe sequence. Each node has multiple properties defined
-for interrupts, clocks and regulators.
+for interrupts, clocks and regulators. icp_v1 and icp_v2 are names
+corresponding to a5 and lx7 processors respectively.
 
 =======================
 Required Node Structure
@@ -20,13 +21,13 @@ of A5, LX7, IPE and BPS devices present on the hardware.
 - compat-hw-name
   Usage: required
   Value type: <string>
-  Definition: Should be "qcom,a5", "qcom,lx7", "qcom,ipe0",
+  Definition: Should be "qcom,icp", "qcom,ipe0",
 	"qcom,ipe1" or "qcom,bps".
 
-- num-a5 or num-lx7
+- num-icp
   Usage: required
   Value type: <u32>
-  Definition: Number of supported A5 or LX7 processors.
+  Definition: Number of supported icp processors. ICP can either be a5 or lx7.
 
 - num-ipe
   Usage: required
@@ -41,9 +42,9 @@ of A5, LX7, IPE and BPS devices present on the hardware.
 Example:
 qcom,cam-icp {
 	compatible = "qcom,cam-icp";
-	compat-hw-name = "qcom,a5", "qcom,lx7", "qcom,ipe0",
+	compat-hw-name = "qcom,icp", "qcom,ipe0",
 		"qcom,ipe0", "qcom,bps";
-	num-a5 = <1>; or num-lx7 = <1>;
+	num-icp = <1>;
 	num-ipe = <2>;
 	num-bps = <1>;
 	status = "ok";
@@ -67,6 +68,13 @@ and name of firmware image.
   Definition: Should be "qcom,cam-a5", "qcom,cam-lx7",
 	"qcom,cam-ipe", "qcom,cam-ipe680", "qcom,cam-bps" or
 	"qcom,cam-bps680".
+
+- icp-version
+  Usage: required
+  Value type: <u32>
+  Definition: <0x0100> or <0x0200>. 0x0100 is a version tag for icp_v1 (a5).
+	0x0200 is a version tag for icp_v2 (lx7). [15:8] indicates major version.
+	[7:0] indicates minor version.
 
 - reg-names
   Usage: optional
