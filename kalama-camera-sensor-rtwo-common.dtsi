@@ -99,6 +99,7 @@
 		compatible = "qcom,cam-sensor";
 		csiphy-sd-index = <5>;
 		//eeprom-src = <&eeprom_rear_main>;
+		led-flash-src = <&led_flash_rear_main>;
 		sensor-position-roll = <90>;
 		sensor-position-pitch = <0>;
 		sensor-position-yaw = <180>;
@@ -145,7 +146,7 @@
 		sensor-position-yaw = <180>;
 		//eeprom-src = <&eeprom_rear_uw>;
 		//actuator-src = <&actuator_rear_uw>;
-		//led-flash-src = <&led_flash_rear_uw>;
+		led-flash-src = <&led_flash_rear_uw>;
 		//cam_vio-supply = <&L4B>;
 		cam_vdig-supply = <&camera_ldo2>;
 		cam_clk-supply = <&cam_cc_titan_top_gdsc>;
@@ -228,7 +229,7 @@
 		sensor-position-yaw = <180>;
 		//eeprom-src = <&eeprom_rear_tele>;
 		//actuator-src = <&actuator_rear_tele>;
-		//led-flash-src = <&led_flash_rear_tele>;
+		led-flash-src = <&led_flash_rear_tele>;
 		//cam_vio-supply = <&L4B>;
 		cam_vdig-supply = <&camera_ldo2>;
 		cam_clk-supply = <&cam_cc_titan_top_gdsc>;
