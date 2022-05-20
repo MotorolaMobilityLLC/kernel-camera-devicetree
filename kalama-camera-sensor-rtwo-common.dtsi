@@ -60,8 +60,8 @@
 		vin-supply = <&S4G>;
 	};
 
-	led_flash_rear_main: qcom,camera-flash1 {
-		cell-index = <1>;
+	led_flash_rear_main: qcom,camera-flash0 {
+		cell-index = <0>;
 		compatible = "qcom,camera-flash";
 		flash-source = <&pm8550_flash0 &pm8550_flash1>;
 		torch-source = <&pm8550_torch0 &pm8550_torch1>;
@@ -69,7 +69,7 @@
 		status = "ok";
 	};
 
-	led_flash_rear_tele: qcom,camera-flash2 {
+	led_flash_rear_uw: qcom,camera-flash2 {
 		cell-index = <2>;
 		compatible = "qcom,camera-flash";
 		flash-source = <&pm8550_flash0 &pm8550_flash1>;
@@ -78,7 +78,7 @@
 		status = "ok";
 	};
 
-	led_flash_rear_uw: qcom,camera-flash3 {
+	led_flash_rear_tele: qcom,camera-flash3 {
 		cell-index = <3>;
 		compatible = "qcom,camera-flash";
 		flash-source = <&pm8550_flash0 &pm8550_flash1>;
@@ -181,6 +181,19 @@
 };
 
 &cam_cci1 {
+	actuator_rear_tele: qcom,actuator3{
+		cell-index = <3>;
+		compatible = "qcom,actuator";
+		cci-master = <CCI_MASTER_0>;
+		cam_vaf-supply = <&camera_ldo7>;
+		regulator-names = "cam_vaf";
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <2800000>;
+		rgltr-max-voltage = <2804000>;
+		rgltr-load-current = <147000>;
+		status = "ok";
+	};
+
 	front_main: qcom,cam-sensor1 {
 		cell-index = <1>;
 		compatible = "qcom,cam-sensor";
@@ -228,7 +241,7 @@
 		sensor-position-pitch = <0>;
 		sensor-position-yaw = <180>;
 		//eeprom-src = <&eeprom_rear_tele>;
-		//actuator-src = <&actuator_rear_tele>;
+		actuator-src = <&actuator_rear_tele>;
 		led-flash-src = <&led_flash_rear_tele>;
 		//cam_vio-supply = <&L4B>;
 		cam_vdig-supply = <&camera_ldo2>;
