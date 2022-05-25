@@ -203,12 +203,20 @@ First Level Node - CAM CPAS device
 - sys-cache-names
   Usage: optional
   Value type: <string>
-  Definition: last level cache info for camera
+  Definition: last level cache info for camera. Specifies the type
+	of cache; small or large. Small cache is around 256K and its
+	read property is self-evict. Large cache is around 3.2M which
+	is pre-determined for a target based on the calulations done
+	for concerned use cases. Large cache is Non-self evict.
+	UIDs value and their usage can vary from target to target.
+	for example; same UID 38 is used as small and large in different
+	targets.
 
 - sys-cache-uids
   Usage: optional
   Value type: <u32>
-  Definition: Client ID for camera caches
+  Definition: Client ID for camera caches. ID is used to differentiate
+	the property of the cache like being Forget, Dealloc.
 
 - enable-smart-qos
   Usage: optional
@@ -406,8 +414,8 @@ Example:
 			"cpas-cdm2",
 			"bps0", "icp0", "jpeg-dma0", "jpeg-enc0",
 			"fd0";
-		sys-cache-names = "small-1", "small-2";
-		sys-cache-uids = <34 38>;
+		sys-cache-names = "small-1",  "large-1", "large-2", "large-3", "large-4";
+		sys-cache-uids = <34 38 50 51 52>;
 		enable-smart-qos;
 		rt-wr-priority-min = <3>;
 		rt-wr-priority-max = <6>;
