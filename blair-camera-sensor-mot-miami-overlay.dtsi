@@ -29,32 +29,6 @@
 		};
 	};
 
-	cam_sensor_mclk1_active: cam_sensor_mclk1_active {
-		mux {
-			pins = "gpio30";
-			function = "cam_mclk";
-		};
-
-		config {
-			pins = "gpio30";
-			bias-disable; /* No PULL */
-			drive-strength = <2>;
-		};
-	};
-
-	cam_sensor_mclk1_suspend: cam_sensor_mclk1_suspend {
-		mux {
-			pins = "gpio30";
-			function = "cam_mclk";
-		};
-
-		config {
-			pins = "gpio30";
-			bias-pull-down; /* PULL DOWN */
-			drive-strength = <2>;
-		};
-	};
-
 	cam_sensor_mclk2_active: cam_sensor_mclk2_active {
 		mux {
 			pins = "gpio31";
@@ -90,7 +64,7 @@
 		config {
 			pins = "gpio32";
 			bias-disable; /* No PULL */
-			drive-strength = <2>;
+			drive-strength = <4>;
 		};
 	};
 
@@ -103,7 +77,7 @@
 		config {
 			pins = "gpio32";
 			bias-pull-down; /* PULL DOWN */
-			drive-strength = <2>;
+			drive-strength = <4>;
 		};
 	};
 
@@ -188,62 +162,6 @@
 		};
 	};
 
-	cam_sensor_macro_reset_active: cam_sensor_macro_reset_active {
-		mux {
-			pins = "gpio37";
-			function = "gpio";
-		};
-
-		config {
-			pins = "gpio37";
-			bias-disable; /* No PULL */
-			drive-strength = <2>; /* 2 MA */
-		};
-	};
-
-	cam_sensor_macro_reset_suspend: cam_sensor_macro_reset_suspend {
-		mux {
-			pins = "gpio37";
-			function = "gpio";
-		};
-
-		config {
-			pins = "gpio37";
-			bias-pull-down; /* PULL DOWN */
-			drive-strength = <2>; /* 2 MA */
-			output-low;
-		};
-	};
-
-	flash_active: flash_active {
-		/* MCLK 0*/
-		mux {
-			pins = "gpio49";
-			function = "gpio";
-		};
-
-		config {
-			pins = "gpio49";
-			bias-disable; /* No PULL */
-			drive-strength = <2>; /* 2 MA */
-		};
-	};
-
-	flash_suspend: flash_suspend {
-		/* MCLK 0*/
-		mux {
-			pins = "gpio49";
-			function = "gpio";
-		};
-
-		config {
-			pins = "gpio49";
-			bias-pull-down; /* PULL DOWN */
-			drive-strength = <2>; /* 2 MA */
-			output-low;
-		};
-	};
-
 	cam_ois_vsync_irq_default: cam_ois_vsync_irq_default {
 		mux {
 			pins = "gpio51";
@@ -272,10 +190,6 @@
 	qcom,cam-res-mgr {
 		compatible = "qcom,cam-res-mgr";
 		status = "ok";
-		gpios-shared = <404>;
-		pinctrl-names = "flash_active", "flash_suspend";
-		pinctrl-0 = <&flash_active>;
-		pinctrl-1 = <&flash_suspend>;
 	};
 };
 
