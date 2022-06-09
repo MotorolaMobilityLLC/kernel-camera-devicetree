@@ -10,7 +10,7 @@
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
 
-#include "kalama-camera-sensor-rtwo-common.dtsi"
+#include "kalama-camera-sensor-rtwo-evt1.dtsi"
 / {
 	model = "rtwo";
 	compatible = "qcom,kalama-mtp", "qcom,kalama", "qcom,mtp", "mot,rtwo";
