@@ -203,17 +203,33 @@ First Level Node - CAM CPAS device
 - sys-cache-names
   Usage: optional
   Value type: <string>
-  Definition: last level cache info for camera
+  Definition: last level cache info for camera. Specifies the type
+	of cache; small or large. Small cache is around 256K and its
+	read property is self-evict. Large cache is around 3.2M which
+	is pre-determined for a target based on the calulations done
+	for concerned use cases. Large cache is Non-self evict.
+	UIDs value and their usage can vary from target to target.
+	for example; same UID 38 is used as small and large in different
+	targets.
 
 - sys-cache-uids
   Usage: optional
   Value type: <u32>
-  Definition: Client ID for camera caches
+  Definition: Client ID for camera caches. ID is used to differentiate
+	the property of the cache like being Forget, Dealloc.
 
 - enable-smart-qos
   Usage: optional
   Value type: <empty>
   Definition: Bool property specifying whether Smart Qos feature is enabled.
+
+- enable-cam-drv
+  Usage: optional
+  Value type: <u32>
+  Definition: Bit mask value specifying the DRV features enabled.
+  Supported: CAM_DDR_DRV
+			 Please refer dt-bindings/msm-camera.h for all supported
+             definitions.
 
 - rt-wr-priority-min
   Usage: optional
@@ -257,7 +273,7 @@ Fourth Level Node - Generic CAMNOC node properties
   Value type: <u32>
   Definition: Type of path data for a specific client.
   Supported : CAM_CPAS_PATH_DATA_IFE_LINEAR, CAM_CPAS_PATH_DATA_ALL, etc.
-              Please refer dt-bindings/msm/msm-camera.h for all supported
+              Please refer dt-bindings/msm-camera.h for all supported
               definitions.
 
 - path-transaction-type
@@ -277,7 +293,15 @@ Fourth Level Node - Generic CAMNOC node properties
   Value type: <u32>
   Definition: List of constituents of path data type of current node.
   Supported : CAM_CPAS_PATH_DATA_IFE_VID, CAM_CPAS_PATH_DATA_IFE_DISP, etc.
-              Please refer dt-bindings/msm/msm-camera.h for all supported
+              Please refer dt-bindings/msm-camera.h for all supported
+              definitions.
+
+- drv-voting-index
+  Usage: optional, applicable only to CAMNOC Level 0 Nodes
+  Value type: <u32>
+  Definition: Voting index pointing to Bus Ids for Camera DRV (HLOS DRV by default).
+  Supported : CAM_CPAS_PORT_DRV_0, CAM_CPAS_PORT_DRV_1, etc.
+              Please refer dt-bindings/msm-camera.h for all supported
               definitions.
 
 - traffic-merge-type
@@ -406,11 +430,12 @@ Example:
 			"cpas-cdm2",
 			"bps0", "icp0", "jpeg-dma0", "jpeg-enc0",
 			"fd0";
-		sys-cache-names = "small-1", "small-2";
-		sys-cache-uids = <34 38>;
+		sys-cache-names = "small-1",  "large-1", "large-2", "large-3", "large-4";
+		sys-cache-uids = <34 38 50 51 52>;
 		enable-smart-qos;
 		rt-wr-priority-min = <3>;
 		rt-wr-priority-max = <6>;
+		enable-cam-drv;
 		camera-bus-nodes {
 			level3-nodes {
 				level-index = <3>;
@@ -475,6 +500,8 @@ Example:
 					<CAM_CPAS_PATH_DATA_IFE_VID
 					CAM_CPAS_PATH_DATA_IFE_DISP
 					CAM_CPAS_PATH_DATA_IFE_STATS>;
+					drv-voting-index =
+						<CAM_CPAS_PORT_DRV_0>;
 					parent-node = <&level1_rt0_wr0>;
 				};
 			};

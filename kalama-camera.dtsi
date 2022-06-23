@@ -1230,6 +1230,7 @@
 			compatible = "qcom,msm-cam-smmu-cb";
 			iommus = <&apps_smmu 0x800 0x20>;
 			qcom,iommu-dma-addr-pool = <0x0 0x100000 0xf 0xffe00000>;
+			qcom,iommu-faults = "stall-disable", "non-fatal";
 			dma-coherent;
 			cam-smmu-label = "ife", "sfe";
 			multiple-client-devices;
@@ -1253,6 +1254,7 @@
 			compatible = "qcom,msm-cam-smmu-cb";
 			iommus = <&apps_smmu 0x18A0 0x00>;
 			cam-smmu-label = "jpeg";
+			qcom,iommu-faults = "stall-disable", "non-fatal";
 			qcom,iommu-dma-addr-pool = <0x0 0x100000 0x0 0xffe00000>;
 			dma-coherent;
 			jpeg_iova_mem_map: iova-mem-map {
@@ -1276,6 +1278,7 @@
 			iommus = <&apps_smmu 0x1800 0xC0>,
 				<&apps_smmu 0x1820 0x00>;
 			cam-smmu-label = "icp";
+			qcom,iommu-faults = "stall-disable", "non-fatal";
 			qcom,iommu-dma-addr-pool = <0x0 0xf8c00000 0xf 0x07300000>;
 			dma-coherent;
 			icp_iova_mem_map: iova-mem-map {
@@ -1330,6 +1333,7 @@
 			compatible = "qcom,msm-cam-smmu-cb";
 			iommus = <&apps_smmu 0x1860 0x00>;
 			cam-smmu-label = "rt-cdm";
+			qcom,iommu-faults = "stall-disable", "non-fatal";
 			qcom,iommu-dma-addr-pool = <0x0 0x100000 0x0 0xffe00000>;
 			dma-coherent;
 			multiple-client-devices;
@@ -1375,10 +1379,12 @@
 			"cam_cc_slow_ahb_clk_src",
 			"cpas_ahb_clk",
 			"cpas_core_ahb_clk",
+			"cam_cc_drv_ahb_clk",
 			"cam_cc_fast_ahb_clk_src",
 			"cam_cc_cpas_fast_ahb_clk",
 			"camnoc_axi_clk_src",
-			"camnoc_axi_clk";
+			"camnoc_axi_clk",
+			"cam_cc_drv_xo_clk";
 		clocks =
 			<&gcc GCC_CAMERA_AHB_CLK>,
 			<&gcc GCC_CAMERA_HF_AXI_CLK>,
@@ -1386,18 +1392,20 @@
 			<&camcc CAM_CC_SLOW_AHB_CLK_SRC>,
 			<&camcc CAM_CC_CPAS_AHB_CLK>,
 			<&camcc CAM_CC_CORE_AHB_CLK>,
+			<&camcc CAM_CC_DRV_AHB_CLK>,
 			<&camcc CAM_CC_FAST_AHB_CLK_SRC>,
 			<&camcc CAM_CC_CPAS_FAST_AHB_CLK>,
 			<&camcc CAM_CC_CAMNOC_AXI_CLK_SRC>,
-			<&camcc CAM_CC_CAMNOC_AXI_CLK>;
+			<&camcc CAM_CC_CAMNOC_AXI_CLK>,
+			<&camcc CAM_CC_DRV_XO_CLK>;
 		clock-rates =
-			<0 0 0 0 0 0 0 0 0 0>,
-			<0 0 0 80000000 0 0 300000000 0 300000000 0>,
-			<0 0 0 80000000 0 0 300000000 0 400000000 0>,
-			<0 0 0 80000000 0 0 300000000 0 400000000 0>,
-			<0 0 0 80000000 0 0 400000000 0 400000000 0>,
-			<0 0 0 80000000 0 0 400000000 0 400000000 0>,
-			<0 0 0 80000000 0 0 400000000 0 400000000 0>;
+			<0 0 0 0 0 0 0 0 0 0 0 0>,
+			<0 0 0 80000000 0 0 0 300000000 0 300000000 0 0>,
+			<0 0 0 80000000 0 0 0 300000000 0 400000000 0 0>,
+			<0 0 0 80000000 0 0 0 300000000 0 400000000 0 0>,
+			<0 0 0 80000000 0 0 0 400000000 0 400000000 0 0>,
+			<0 0 0 80000000 0 0 0 400000000 0 400000000 0 0>,
+			<0 0 0 80000000 0 0 0 400000000 0 400000000 0 0>;
 		clock-cntl-level = "suspend", "lowsvs", "svs", "svs_l1",
 			"nominal", "nominal_l1", "turbo";
 		src-clock-name = "camnoc_axi_clk_src";
@@ -1441,7 +1449,7 @@
 			"jpeg-dma0", "jpeg-enc0", "jpeg-dma1", "jpeg-enc1",
 			"tpg13", "tpg14", "tpg15";
 		sys-cache-names = "small-1", "large-1", "large-2", "large-3", "large-4";
-		sys-cache-uids = <34 38 50 51 52>;
+		sys-cache-uids = <34 50 38 51 52>;
 		enable-smart-qos;
 		rt-wr-priority-min = <3>;
 		rt-wr-priority-max = <6>;
@@ -1458,10 +1466,19 @@
 					ib-bw-voting-needed;
 					rt-axi-port;
 					qcom,axi-port-mnoc {
-						interconnect-names = "cam_hf_0";
+						interconnect-names = "cam_hf_0",
+							"cam_ife_0_drv",
+							"cam_ife_1_drv",
+							"cam_ife_2_drv";
 						interconnects =
-						<&mmss_noc MASTER_CAMNOC_HF
-						&mc_virt SLAVE_EBI1>;
+							<&mmss_noc MASTER_CAMNOC_HF
+							&mc_virt SLAVE_EBI1>,
+							<&mmss_noc MASTER_CAMNOC_HF_CAM_IFE_0
+							&mc_virt SLAVE_EBI1_CAM_IFE_0>,
+							<&mmss_noc MASTER_CAMNOC_HF_CAM_IFE_1
+							&mc_virt SLAVE_EBI1_CAM_IFE_1>,
+							<&mmss_noc MASTER_CAMNOC_HF_CAM_IFE_2
+							&mc_virt SLAVE_EBI1_CAM_IFE_2>;
 					};
 				};
 
@@ -1648,6 +1665,8 @@
 					<CAM_CPAS_PATH_DATA_IFE_VID
 					CAM_CPAS_PATH_DATA_IFE_DISP
 					CAM_CPAS_PATH_DATA_IFE_LINEAR>;
+					drv-voting-index =
+						<CAM_CPAS_PORT_DRV_0>;
 					parent-node = <&level1_rt1_wr>;
 				};
 
@@ -1663,6 +1682,8 @@
 					<CAM_CPAS_PATH_DATA_IFE_VID
 					CAM_CPAS_PATH_DATA_IFE_DISP
 					CAM_CPAS_PATH_DATA_IFE_LINEAR>;
+					drv-voting-index =
+						<CAM_CPAS_PORT_DRV_1>;
 					parent-node = <&level1_rt1_wr>;
 				};
 
@@ -1678,6 +1699,8 @@
 					<CAM_CPAS_PATH_DATA_IFE_VID
 					CAM_CPAS_PATH_DATA_IFE_DISP
 					CAM_CPAS_PATH_DATA_IFE_LINEAR>;
+					drv-voting-index =
+						<CAM_CPAS_PORT_DRV_2>;
 					parent-node = <&level1_rt1_wr>;
 				};
 
@@ -1694,6 +1717,8 @@
 					CAM_CPAS_PATH_DATA_IFE_RDI1
 					CAM_CPAS_PATH_DATA_IFE_RDI2
 					CAM_CPAS_PATH_DATA_IFE_PIXEL_RAW>;
+					drv-voting-index =
+						<CAM_CPAS_PORT_DRV_0>;
 					parent-node = <&level1_rt4_wr>;
 				};
 
@@ -1710,6 +1735,8 @@
 					CAM_CPAS_PATH_DATA_IFE_RDI1
 					CAM_CPAS_PATH_DATA_IFE_RDI2
 					CAM_CPAS_PATH_DATA_IFE_PIXEL_RAW>;
+					drv-voting-index =
+						<CAM_CPAS_PORT_DRV_1>;
 					parent-node = <&level1_rt4_wr>;
 				};
 
@@ -1726,6 +1753,8 @@
 					CAM_CPAS_PATH_DATA_IFE_RDI1
 					CAM_CPAS_PATH_DATA_IFE_RDI2
 					CAM_CPAS_PATH_DATA_IFE_PIXEL_RAW>;
+					drv-voting-index =
+						<CAM_CPAS_PORT_DRV_2>;
 					parent-node = <&level1_rt4_wr>;
 				};
 
@@ -1744,6 +1773,8 @@
 					CAM_CPAS_PATH_DATA_SFE_RDI2
 					CAM_CPAS_PATH_DATA_SFE_RDI3
 					CAM_CPAS_PATH_DATA_SFE_RDI4>;
+					drv-voting-index =
+						<CAM_CPAS_PORT_DRV_DYN>;
 					parent-node = <&level1_rt4_wr>;
 				};
 
@@ -1762,6 +1793,8 @@
 					CAM_CPAS_PATH_DATA_SFE_RDI2
 					CAM_CPAS_PATH_DATA_SFE_RDI3
 					CAM_CPAS_PATH_DATA_SFE_RDI4>;
+					drv-voting-index =
+						<CAM_CPAS_PORT_DRV_DYN>;
 					parent-node = <&level1_rt4_wr>;
 				};
 
@@ -1793,6 +1826,8 @@
 					<CAM_CPAS_PATH_DATA_IFE_PDAF>;
 					traffic-transaction-type =
 					<CAM_CPAS_TRANSACTION_WRITE>;
+					drv-voting-index =
+						<CAM_CPAS_PORT_DRV_0>;
 					parent-node = <&level1_rt3_wr>;
 				};
 
@@ -1804,6 +1839,8 @@
 					<CAM_CPAS_PATH_DATA_IFE_PDAF>;
 					traffic-transaction-type =
 					<CAM_CPAS_TRANSACTION_WRITE>;
+					drv-voting-index =
+						<CAM_CPAS_PORT_DRV_1>;
 					parent-node = <&level1_rt3_wr>;
 				};
 
@@ -1815,6 +1852,8 @@
 					<CAM_CPAS_PATH_DATA_IFE_PDAF>;
 					traffic-transaction-type =
 					<CAM_CPAS_TRANSACTION_WRITE>;
+					drv-voting-index =
+						<CAM_CPAS_PORT_DRV_2>;
 					parent-node = <&level1_rt3_wr>;
 				};
 
@@ -1862,6 +1901,8 @@
 					<CAM_CPAS_PATH_DATA_IFE_STATS>;
 					traffic-transaction-type =
 					<CAM_CPAS_TRANSACTION_WRITE>;
+					drv-voting-index =
+						<CAM_CPAS_PORT_DRV_0>;
 					parent-node = <&level1_rt2_wr>;
 				};
 
@@ -1873,6 +1914,8 @@
 					<CAM_CPAS_PATH_DATA_IFE_STATS>;
 					traffic-transaction-type =
 					<CAM_CPAS_TRANSACTION_WRITE>;
+					drv-voting-index =
+						<CAM_CPAS_PORT_DRV_1>;
 					parent-node = <&level1_rt2_wr>;
 				};
 
@@ -1884,6 +1927,8 @@
 					<CAM_CPAS_PATH_DATA_IFE_STATS>;
 					traffic-transaction-type =
 					<CAM_CPAS_TRANSACTION_WRITE>;
+					drv-voting-index =
+						<CAM_CPAS_PORT_DRV_2>;
 					parent-node = <&level1_rt2_wr>;
 				};
 
@@ -1903,6 +1948,8 @@
 					CAM_CPAS_PATH_DATA_SFE_RDI2
 					CAM_CPAS_PATH_DATA_SFE_RDI3
 					CAM_CPAS_PATH_DATA_SFE_RDI4>;
+					drv-voting-index =
+						<CAM_CPAS_PORT_DRV_DYN>;
 					parent-node = <&level1_rt0_rd>;
 				};
 
@@ -1922,6 +1969,8 @@
 					CAM_CPAS_PATH_DATA_SFE_RDI2
 					CAM_CPAS_PATH_DATA_SFE_RDI3
 					CAM_CPAS_PATH_DATA_SFE_RDI4>;
+					drv-voting-index =
+						<CAM_CPAS_PORT_DRV_DYN>;
 					parent-node = <&level1_rt0_rd>;
 				};
 
