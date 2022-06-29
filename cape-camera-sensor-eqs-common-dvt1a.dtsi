@@ -246,12 +246,14 @@
 		cam_vdig-supply = <&camera_ldo1>;
 		cam_clk-supply = <&cam_cc_titan_top_gdsc>;
 		cam_vana-supply = <&camera_ldo3>;
+		cam_vaf-supply = <&camera_ldo7>;
+		cam_v_custom1-supply = <&L3C>;
 		regulator-names = "cam_vio", "cam_vdig",
-			"cam_clk", "cam_vana";
+			"cam_clk", "cam_vana", "cam_vaf", "cam_v_custom1";
 		rgltr-cntrl-support;
-		rgltr-min-voltage = <1800000 1000000 0 2200000>;
-		rgltr-max-voltage = <1800000 1000000 0 2200000>;
-		rgltr-load-current = <3000 675000 0 112000>;
+		rgltr-min-voltage = <1800000 1000000 0 2200000 3100000 3100000>;
+		rgltr-max-voltage = <1800000 1000000 0 2200000 3104000 3104000>;
+		rgltr-load-current = <3000 675000 0 112000 15000 15000>;
 		gpio-no-mux = <0>;
 		pinctrl-names = "cam_default", "cam_suspend";
 		pinctrl-0 = <&cam_sensor_mclk2_active
