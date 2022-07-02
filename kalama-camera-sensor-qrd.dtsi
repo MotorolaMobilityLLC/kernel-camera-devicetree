@@ -586,7 +586,7 @@
 		cam_vana-supply = <&L7M>;
 		cam_vaf-supply = <&L7N>;
 		cam_v_custom1-supply = <&L5M>;
-		i3c-i2c-taget;
+		i3c-i2c-target;
 		regulator-names = "cam_vio", "cam_vdig", "cam_clk", "cam_vana",
 			"cam_vaf", "cam_v_custom1";
 		rgltr-cntrl-support;
