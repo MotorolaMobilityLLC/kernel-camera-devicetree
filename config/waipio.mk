@@ -45,11 +45,7 @@ dtbo-$(CONFIG_ARCH_CAPE) += \
 	cape-camera-sensor-eqs-dvt1b1.dtbo
 endif  #($(CONFIG_EQS_DTB),y)
 ifeq ($(CONFIG_BRONCO_DTB),y)
-dtbo-$(CONFIG_ARCH_CAPE) += \
-        cape-camera-sensor-bronco-evt1.dtbo \
-        cape-camera-sensor-bronco-evt2.dtbo \
-        cape-camera-sensor-bronco-dvt1a1.dtbo \
-        cape-camera-sensor-bronco-dvt1b1.dtbo
+dtbo-$(CONFIG_ARCH_CAPE) += cape-camera-sensor-bronco-evb.dtbo
 endif  #($(CONFIG_BRONCO_DTB),y)
 ifeq ($(CONFIG_ONELI_DTB),y)
 dtbo-$(CONFIG_ARCH_CAPE) += \
