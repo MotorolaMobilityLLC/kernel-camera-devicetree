@@ -12,5 +12,5 @@
 	model = "oneli";
 	compatible = "qcom,cape", "qcom,capep", "moto,oneli";
 	qcom,msm-id = <530 0x10000>, <531 0x10000>, <540 0x10000>;
-	qcom,board-id = <0x45 0xB1B0>, <0x45 0xB2A0>;
+	qcom,board-id = <0x45 0xB1B0>, <0x45 0xB2A0>, <0x45 0xC000>;
 };
