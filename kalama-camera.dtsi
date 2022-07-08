@@ -689,6 +689,14 @@
 		status = "ok";
 	};
 
+	qcom,cam-i3c-id-table {
+		i3c-sensor-id-table = <0x1B0 0x0766>;
+		i3c-eeprom-id-table = <>;
+		i3c-actuator-id-table = <>;
+		i3c-ois-id-table = <>;
+		status = "disabled";
+	};
+
 	cam_csiphy0: qcom,csiphy0@ace4000 {
 		cell-index = <0>;
 		compatible = "qcom,csiphy-v2.1.2", "qcom,csiphy";

@@ -375,6 +375,12 @@ Image sensor node contains properties of camera image sensor
   Definition: A boolean flag to indicate the target being used as an pure I3C
 	target on a I3C bus.
 
+- i3c-i2c-target
+  Usage: required for I3C and I2C mixed bus targets
+  Value type: <boolean>
+  Definition: A boolean flag to indicate the target being used as a I3C as
+	well as I2C target on a I3C bus.
+
 - regulator-names
   Usage: required
   Value type: <string>
@@ -962,9 +968,10 @@ Example:
 
 	actuator_i3c_triple_wide: qcom,actuator1@c {
 		cell-index = <1>;
-		compatible = "qcom,cam-i2c-actuator";
+		compatible = "qcom,cam-i2c-actuator", "qcom,actuator";
 		reg = <0x0C 0x00 0x10>;
 		cam_vaf-supply = <&L7N>;
+		i3c-i2c-target;
 		regulator-names = "cam_vaf";
 		rgltr-cntrl-support;
 		rgltr-min-voltage = <2960000>;
@@ -976,13 +983,14 @@ Example:
 	eeprom_i3c_wide: qcom,eeprom2@50 {
 		cell-index = <2>;
 		reg = <0x50 0x00 0x10>;
-		compatible = "qcom,cam-i2c-eeprom";
+		compatible = "qcom,cam-i2c-eeprom", "qcom,eeprom";
 		cam_vio-supply = <&L5N>;
 		cam_vdig-supply = <&L1N>;
 		cam_clk-supply = <&cam_cc_titan_top_gdsc>;
 		cam_vana-supply = <&L7M>;
 		cam_vaf-supply = <&L7N>;
 		cam_v_custom1-supply = <&L5M>;
+		i3c-i2c-target;
 		regulator-names = "cam_vio", "cam_vdig", "cam_clk", "cam_vana",
 			"cam_vaf", "cam_v_custom1";
 		rgltr-cntrl-support;
