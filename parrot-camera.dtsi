@@ -796,6 +796,14 @@
 			<0 400000000 0 400000000 0 548000000 0>,
 			<0 400000000 0 400000000 0 630000000 0>,
 			<0 400000000 0 400000000 0 630000000 0>;
+		agg-clks =
+			<0 0>,
+			<0 0>,
+			<0 0>,
+			<0 0>,
+			<0 0>,
+			<1 CAM_COMMON_TFE_SRC_CLK>,
+			<0 0>;
 		clock-cntl-level = "lowsvs", "svs", "svs_l1", "nominal", "turbo";
 		src-clock-name = "tfe0_csid_clk_src";
 		clock-control-debugfs = "true";
@@ -826,6 +834,10 @@
 			<0 548000000 0>,
 			<0 630000000 0>,
 			<0 630000000 0>;
+		agg-clks =
+			<0 0>,
+			<1 CAM_COMMON_TFE_SRC_CLK>,
+			<0 0>;
 		clock-cntl-level = "lowsvs", "svs", "svs_l1", "nominal", "turbo";
 		src-clock-name = "tfe0_clk_src";
 		clock-control-debugfs = "true";
@@ -866,6 +878,14 @@
 			<0 400000000 0 400000000 0 548000000 0>,
 			<0 400000000 0 400000000 0 630000000 0>,
 			<0 400000000 0 400000000 0 630000000 0>;
+		agg-clks =
+			<0 0>,
+			<0 0>,
+			<0 0>,
+			<0 0>,
+			<0 0>,
+			<1 CAM_COMMON_TFE_SRC_CLK>,
+			<0 0>;
 		clock-cntl-level = "lowsvs", "svs", "svs_l1", "nominal", "turbo";
 		src-clock-name = "tfe1_csid_clk_src";
 		clock-control-debugfs = "true";
@@ -896,6 +916,10 @@
 			<0 548000000 0>,
 			<0 630000000 0>,
 			<0 630000000 0>;
+		agg-clks =
+			<0 0>,
+			<1 CAM_COMMON_TFE_SRC_CLK>,
+			<0 0>;
 		clock-cntl-level = "lowsvs", "svs", "svs_l1", "nominal", "turbo";
 		src-clock-name = "tfe1_clk_src";
 		clock-control-debugfs = "true";
@@ -936,6 +960,14 @@
 			<0 400000000 0 400000000 0 548000000 0>,
 			<0 400000000 0 400000000 0 630000000 0>,
 			<0 400000000 0 400000000 0 630000000 0>;
+		agg-clks =
+			<0 0>,
+			<0 0>,
+			<0 0>,
+			<0 0>,
+			<0 0>,
+			<1 CAM_COMMON_TFE_SRC_CLK>,
+			<0 0>;
 		clock-cntl-level = "lowsvs", "svs", "svs_l1", "nominal", "turbo";
 		src-clock-name = "tfe2_csid_clk_src";
 		clock-control-debugfs = "true";
@@ -966,6 +998,10 @@
 			<0 548000000 0>,
 			<0 630000000 0>,
 			<0 630000000 0>;
+		agg-clks =
+			<0 0>,
+			<1 CAM_COMMON_TFE_SRC_CLK>,
+			<0 0>;
 		clock-cntl-level = "lowsvs", "svs", "svs_l1", "nominal", "turbo";
 		src-clock-name = "tfe2_clk_src";
 		clock-control-debugfs = "true";
