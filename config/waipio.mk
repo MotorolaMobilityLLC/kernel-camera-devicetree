@@ -52,6 +52,10 @@ dtbo-$(CONFIG_ARCH_CAPE) += \
 	cape-camera-sensor-oneli-evt1.dtbo \
 	cape-camera-sensor-oneli-dvt1b.dtbo
 endif  #($(CONFIG_ONELI_DTB),y)
+ifeq ($(CONFIG_ZEEKR_DTB),y)
+dtbo-$(CONFIG_ARCH_CAPE) += \
+	cape-camera-sensor-zeekr-evb.dtbo
+endif  #($(CONFIG_ZEEKR_DTB),y)
 ifeq ($(CONFIG_FELIX_DTB),y)
 dtbo-$(CONFIG_ARCH_CAPE) += \
 	cape-camera-sensor-oneli-dvt1b.dtbo
