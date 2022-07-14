@@ -29,6 +29,18 @@
 			drive-strength = <2>; /* 2 MA */
 		};
 	};
+
+	cam_ois_vsync_irq_default: cam_ois_vsync_irq_default {
+		mux {
+			pins = "gpio72";
+			function = "gpio";
+		};
+		config {
+			pins = "gpio72";
+			drive-strength = <2>;
+			input-enable;
+		};
+	};
 };
 
 &pm8550_flash0 {
@@ -163,11 +175,11 @@
 		cell-index = <0>;
 		reg = <0x0>;
 		compatible = "qcom,ois";
-		//interrupt-parent = <&tlmm>;
-		//interrupts = <72 IRQ_TYPE_EDGE_RISING>;
-		//vsync-irq-support;
-		//pinctrl-names = "default";
-		//pinctrl-0 = <&cam_ois_vsync_irq_default>;
+		interrupt-parent = <&tlmm>;
+		interrupts = <72 IRQ_TYPE_EDGE_RISING>;
+		vsync-irq-support;
+		pinctrl-names = "default";
+		pinctrl-0 = <&cam_ois_vsync_irq_default>;
 		cci-master = <CCI_MASTER_0>;
 		cam_vio-supply = <&L4B>;
 		cam_vaf-supply = <&camera_ldo5>;
