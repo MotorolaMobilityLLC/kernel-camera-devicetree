@@ -562,8 +562,8 @@
 	compatible = "qcom,geni-i3c", "simple-bus";
 	status = "ok";
 
-	actuator_i3c_triple_wide: qcom,actuator1@c {
-		cell-index = <4>;
+	actuator_i3c_triple_wide: qcom,actuator@c {
+		cell-index = <8>;
 		compatible = "qcom,cam-i2c-actuator", "qcom,actuator";
 		reg = <0x0C 0x00 0x10>;
 		cam_vaf-supply = <&L7N>;
@@ -576,8 +576,8 @@
 		status = "ok";
 	};
 
-	eeprom_i3c_wide: qcom,eeprom2@50 {
-		cell-index = <7>;
+	eeprom_i3c_wide: qcom,eeprom@50 {
+		cell-index = <8>;
 		reg = <0x50 0x00 0x10>;
 		compatible = "qcom,cam-i2c-eeprom", "qcom,eeprom";
 		cam_vio-supply = <&L5N>;
