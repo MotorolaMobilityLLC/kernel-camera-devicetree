@@ -275,7 +275,7 @@
 		cell-index = <1>;
 		compatible = "qcom,cam-sensor";
 		csiphy-sd-index = <3>;
-		sensor-position-roll = <0>;
+		sensor-position-roll = <270>;
 		sensor-position-pitch = <0>;
 		sensor-position-yaw = <0>;
 		eeprom-src   = <&eeprom_front>;
@@ -285,9 +285,9 @@
 		cam_clk-supply  = <&cam_cc_titan_top_gdsc>;
 		regulator-names = "cam_vio", "cam_vana", "cam_vdig", "cam_clk";
 		rgltr-cntrl-support;
-		rgltr-min-voltage  = <1800000 2800000 1000000 0>;
-		rgltr-max-voltage  = <1800000 2800000 1000000 0>;
-		rgltr-load-current = <3000    132000  405000  0>;
+		rgltr-min-voltage  = <1800000 2800000 1100000 0>;
+		rgltr-max-voltage  = <1800000 2800000 1100000 0>;
+		rgltr-load-current = <300    39000  93000  0>;
 		gpio-no-mux = <0>;
 		pinctrl-names = "cam_default", "cam_suspend";
 		pinctrl-0 = <&cam_sensor_mclk4_active	&cam_sensor_active_rst6>;
