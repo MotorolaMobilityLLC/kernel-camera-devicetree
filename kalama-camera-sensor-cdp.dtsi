@@ -1,9 +1,5 @@
 #include <dt-bindings/msm-camera.h>
 
-&qupv3_2 {
-	compatible = "qcom,geni-se-qup", "simple-bus";
-};
-
 &soc {
 	led_flash_triple_rear_wide: qcom,camera-flash1 {
 		cell-index = <1>;
@@ -767,7 +763,6 @@
 	i3c-scl-hz = <12500000>;
 	dfs-index = <0>;
 	i2c-scl-hz = <100000>;
-	compatible = "qcom,geni-i3c", "simple-bus";
 	status = "ok";
 
 	actuator_i3c_triple_wide: qcom,actuator@c {
