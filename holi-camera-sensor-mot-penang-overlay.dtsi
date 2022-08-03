@@ -394,6 +394,11 @@
 		compatible = "qcom,cam-res-mgr";
 		status = "ok";
 	};
+
+	mot,cam-actuator {
+		compatible = "mot,actuator";
+		status = "ok";
+	};
 };
 
 &cam_cci0 {
@@ -409,6 +414,7 @@
 		rgltr-max-voltage = <2800000>;
 		rgltr-load-current = <100000>;
 		status = "ok";
+		multi-user-support;
 	};
 
 	eeprom_main: qcom,eeprom@0 {
