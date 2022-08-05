@@ -272,7 +272,7 @@
 		sensor-position-roll = <90>;
 		sensor-position-pitch = <0>;
 		sensor-position-yaw = <180>;
-		//led-flash-src = <&led_flash_main>;
+		led-flash-src = <&led_flash_main>;
 		//actuator-src = <&actuator_rear_main>;
 		//ois-src = <&ois_rear_main>;
 		//eeprom-src = <&eeprom_rear_main>;
@@ -351,6 +351,7 @@
 		sensor-position-roll = <90>;
 		sensor-position-pitch = <0>;
 		sensor-position-yaw = <180>;
+		led-flash-src = <&led_flash_uw>;
 		cam_vio-supply = <&cam_ldo7>;
 		cam_vdig-supply = <&cam_ldo1>;
 		cam_clk-supply = <&cam_cc_titan_top_gdsc>;
