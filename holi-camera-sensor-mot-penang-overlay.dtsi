@@ -470,6 +470,7 @@
 		sensor-mode = <0>;
 		cci-master = <1>;
 		status = "ok";
+		need-change-cci-master;
 		clocks = <&gcc GCC_CAMSS_MCLK1_CLK>;
 		clock-names = "cam_clk";
 		clock-cntl-level = "turbo";
