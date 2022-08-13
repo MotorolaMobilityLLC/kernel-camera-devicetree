@@ -11,6 +11,6 @@
 / {
 	model = "geneva";
 	compatible = "qcom,parrot", "qcom,cape", "qcom,mtp", "moto,geneva";
-	qcom,msm-id = <530 0x10000>, <531 0x10000>, <540 0x10000>;
-	qcom,board-id = <0x45 0xA100>;
+	qcom,msm-id = <537 0x10000>, <530 0x10000>, <531 0x10000>, <540 0x10000>;
+	qcom,board-id = <0x43 0x9000>;
 };
