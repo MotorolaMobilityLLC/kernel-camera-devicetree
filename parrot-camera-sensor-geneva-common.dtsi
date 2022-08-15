@@ -34,6 +34,24 @@
 		vin-supply = <&S8B>;
 	};
 
+	led_flash_rear_main: qcom,camera-flash@0 {
+		cell-index = <0>;
+		compatible = "qcom,camera-flash";
+		flash-source = <&pm6150l_flash0 &pm6150l_flash1>;
+		torch-source = <&pm6150l_torch0 &pm6150l_torch1>;
+		switch-source = <&pm6150l_switch2>;
+		status = "ok";
+	};
+
+	led_flash_rear_wide: qcom,camera-flash@1 {
+		cell-index = <1>;
+		compatible = "qcom,camera-flash";
+		flash-source = <&pm6150l_flash0 &pm6150l_flash1>;
+		torch-source = <&pm6150l_torch0 &pm6150l_torch1>;
+		switch-source = <&pm6150l_switch2>;
+		status = "ok";
+	};
+
 	qcom,cam-res-mgr {
 		compatible = "qcom,cam-res-mgr";
 		status = "ok";
@@ -48,6 +66,7 @@
 		sensor-position-roll = <90>;
 		sensor-position-pitch = <0>;
 		sensor-position-yaw = <180>;
+                led-flash-src = <&led_flash_rear_main>;
 		cam_vio-supply  = <&cam_ldo7>;
 		cam_vdig-supply = <&cam_dvdd_main>;
 		cam_clk-supply  = <&cam_cc_camss_top_gdsc>;
@@ -81,6 +100,7 @@
 		sensor-position-roll  = <90>;
 		sensor-position-pitch = <0>;
 		sensor-position-yaw   = <180>;
+                led-flash-src = <&led_flash_rear_wide>;
 		cam_vio-supply  = <&cam_ldo7>;
 		cam_vana-supply = <&cam_ldo6>;
 		cam_vdig-supply = <&cam_ldo2>;
