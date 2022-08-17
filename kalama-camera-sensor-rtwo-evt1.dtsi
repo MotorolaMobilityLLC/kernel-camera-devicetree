@@ -31,6 +31,19 @@
 	};
 };
 
+&pm8550_flash0 {
+    qcom,duration-ms = <400>;
+};
+&pm8550_flash1 {
+    qcom,duration-ms = <400>;
+};
+&pm8550_flash2 {
+    qcom,duration-ms = <400>;
+};
+&pm8550_flash3 {
+    qcom,duration-ms = <400>;
+};
+
 &soc {
 	cam_avdd_front: gpio-regulator@0 {
 		compatible = "regulator-fixed";
