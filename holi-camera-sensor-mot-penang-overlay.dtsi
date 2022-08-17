@@ -450,23 +450,27 @@
 		regulator-names = "cam_vio", "cam_vana", "cam_vaf", "cam_vdig",
 			"cam_clk";
 		rgltr-cntrl-support;
-		pwm-switch;
 		rgltr-min-voltage = <1800000 2800000 2800000 1056000 0>;
 		rgltr-max-voltage = <1800000 2800000 2800000 1056000 0>;
 		rgltr-load-current = <120000 80000 100000 1200000 0>;
 		gpio-no-mux = <0>;
 		pinctrl-names = "cam_default", "cam_suspend";
 		pinctrl-0 = <&cam_sensor_mclk1_active
-				&cam_sensor_main_reset_active>;
+				&cam_sensor_main_reset_active
+				&cam_flash_en_active>;
 		pinctrl-1 = <&cam_sensor_mclk1_suspend
-				&cam_sensor_main_reset_suspend>;
+				&cam_sensor_main_reset_suspend
+				&cam_flash_en_suspend>;
 		gpios = <&tlmm 30 0>,
-			<&tlmm 35 0>;
+			<&tlmm 35 0>,
+			<&tlmm 89 0>;
 		gpio-reset = <1>;
-		gpio-req-tbl-num = <0 1>;
-		gpio-req-tbl-flags = <1 0>;
+		gpio-custom1 = <2>;
+		gpio-req-tbl-num = <0 1 2>;
+		gpio-req-tbl-flags = <1 0 0>;
 		gpio-req-tbl-label = "CAMIF_MCLK1",
-					"CAM_RESET1";
+					"CAM_RESET1",
+					"CUSTOM_GPIO1";
 		sensor-mode = <0>;
 		cci-master = <1>;
 		status = "ok";
@@ -492,7 +496,6 @@
 		regulator-names = "cam_vio", "cam_vana", "cam_vdig",
 			"cam_clk";
 		rgltr-cntrl-support;
-		pwm-switch;
 		rgltr-min-voltage = <1800000 2800000 1200000 0>;
 		rgltr-max-voltage = <1800000 2800000 1200000 0>;
 		rgltr-load-current = <120000 80000 1200000 0>;
@@ -534,7 +537,6 @@
 		regulator-names = "cam_vio", "cam_vana", "cam_vdig",
 			"cam_clk";
 		rgltr-cntrl-support;
-		pwm-switch;
 		rgltr-min-voltage = <1800000 2800000 1200000 0>;
 		rgltr-max-voltage = <1800000 2800000 1200000 0>;
 		rgltr-load-current = <120000 80000 1200000 0>;
@@ -588,8 +590,8 @@
 		status = "ok";
 	};
 
-	led_flash_rear_aux: qcom,camera-flash@1 {
-		cell-index = <1>;
+	led_flash_rear_aux: qcom,camera-flash@2 {
+		cell-index = <2>;
 		compatible = "qcom,camera-flash";
 		cci-master = <0>;
 		flash-type = <CAM_FLASH_TYPE_I2C>;
@@ -625,7 +627,6 @@
 		cam_clk-supply = <&gcc_camss_top_gdsc>;
 		regulator-names = "cam_vio", "cam_vana", "cam_clk";
 		rgltr-cntrl-support;
-		pwm-switch;
 		rgltr-min-voltage = <1800000 2800000 0>;
 		rgltr-max-voltage = <1800000 2800000 0>;
 		rgltr-load-current = <120000 80000 0>;
@@ -666,23 +667,27 @@
 		cam_clk-supply = <&gcc_camss_top_gdsc>;
 		regulator-names = "cam_vio", "cam_vana", "cam_clk";
 		rgltr-cntrl-support;
-		pwm-switch;
 		rgltr-min-voltage = <1800000 2800000 0>;
 		rgltr-max-voltage = <1800000 2800000 0>;
 		rgltr-load-current = <120000 80000 0>;
 		gpio-no-mux = <0>;
 		pinctrl-names = "cam_default", "cam_suspend";
 		pinctrl-0 = <&cam_sensor_mclk3_active
-				&cam_sensor_macro_reset_active>;
+				&cam_sensor_macro_reset_active
+				&cam_flash_en_active>;
 		pinctrl-1 = <&cam_sensor_mclk3_suspend
-				&cam_sensor_macro_reset_suspend>;
+				&cam_sensor_macro_reset_suspend
+				&cam_flash_en_suspend>;
 		gpios = <&tlmm 32 0>,
-			<&tlmm 37 0>;
+			<&tlmm 37 0>,
+			<&tlmm 89 0>;
 		gpio-reset = <1>;
-		gpio-req-tbl-num = <0 1>;
-		gpio-req-tbl-flags = <1 0>;
+		gpio-custom1 = <2>;
+		gpio-req-tbl-num = <0 1 2>;
+		gpio-req-tbl-flags = <1 0 0>;
 		gpio-req-tbl-label = "CAMIF_MCLK3",
-					"CAM_RESET3";
+					"CAM_RESET3",
+					"CUSTOM_GPIO1";
 		sensor-mode = <0>;
 		cci-master = <0>;
 		status = "ok";
