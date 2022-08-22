@@ -43,6 +43,19 @@
 			drive-strength = <2>; /* 2 MA */
 		};
 	};
+
+	cam_ois_vsync_irq_default: cam_ois_vsync_irq_default {
+		mux {
+			pins = "gpio119";
+			function = "gpio";
+		};
+		config {
+			pins = "gpio119";
+			bias-pull-down; /* PULL UP */
+			drive-strength = <2>;
+			input-enable;
+		};
+	};
 };
 
 &soc {
@@ -145,6 +158,11 @@
 		cell-index = <0>;
 		reg = <0x0>;
 		compatible = "qcom,ois";
+		interrupt-parent = <&tlmm>;
+		interrupts = <119 IRQ_TYPE_EDGE_RISING>;
+		vsync-irq-support;
+		pinctrl-names = "default";
+		pinctrl-0 = <&cam_ois_vsync_irq_default>;
 		cci-master = <0>;
 		cam_vio-supply       = <&cam_ldo7>;
 		cam_vaf-supply       = <&cam_ldo3>;
