@@ -129,6 +129,7 @@
 		rgltr-min-voltage = <2800000>;
 		rgltr-max-voltage = <2804000>;
 		rgltr-load-current = <103000>;
+		af-drift-support;
 		status = "ok";
 	};
 
