@@ -1457,7 +1457,7 @@
 			"jpeg-dma0", "jpeg-enc0", "jpeg-dma1", "jpeg-enc1",
 			"tpg13", "tpg14", "tpg15";
 		sys-cache-names = "small-1", "large-1", "large-2", "large-3", "large-4";
-		sys-cache-uids = <34 50 38 51 52>;
+		sys-cache-uids = <34 52 38 51 50>;
 		enable-smart-qos;
 		rt-wr-priority-min = <3>;
 		rt-wr-priority-max = <6>;
