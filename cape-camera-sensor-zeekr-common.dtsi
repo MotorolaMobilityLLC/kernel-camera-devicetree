@@ -232,8 +232,8 @@
 		cam_v_custom2-supply = <&cam_ldo6>;
 		regulator-names = "cam_vio", "cam_vaf", "cam_v_custom2";
 		rgltr-cntrl-support;
-		rgltr-min-voltage = <1800000 2800000 2800000>;
-		rgltr-max-voltage = <1800000 2800000 2800000>;
+		rgltr-min-voltage = <1800000 2900000 2900000>;
+		rgltr-max-voltage = <1800000 2900000 2900000>;
 		rgltr-load-current = <15000 130000 200000>;
 		status = "ok";
 	};
@@ -248,8 +248,8 @@
 		cam_v_custom2-supply = <&cam_ldo6>;
 		regulator-names = "cam_vio", "cam_vaf", "cam_v_custom2";
 		rgltr-cntrl-support;
-		rgltr-min-voltage = <1800000 2800000 2800000>;
-		rgltr-max-voltage = <1800000 2800000 2800000>;
+		rgltr-min-voltage = <1800000 2900000 2900000>;
+		rgltr-max-voltage = <1800000 2900000 2900000>;
 		rgltr-load-current = <15000 130000 200000>;
 		status = "ok";
 	};
