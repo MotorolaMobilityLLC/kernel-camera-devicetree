@@ -358,7 +358,7 @@
 		regulator-max-microvolt = <1200000>;
 		regulator-enable-ramp-delay = <233>;
 		enable-active-high;
-		gpio = <&tlmm 6 0>;
+		gpio = <&tlmm 12 0>;
 		pinctrl-names = "default";
 		pinctrl-0 = <&camera_ldo_8m_dvdd_en>;
 		vin-supply = <&S6A>;
