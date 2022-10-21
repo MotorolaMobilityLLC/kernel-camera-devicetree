@@ -399,6 +399,21 @@
 		status = "ok";
 	};
 
+	//MOTO Rear 2M FLASH
+	led_flash_rear_aux: qcom,camera-flash@2 {
+		cell-index = <2>;
+		compatible = "qcom,camera-flash";
+		cci-master = <1>;
+		flash-type = <CAM_FLASH_TYPE_I2C>;
+		cam_v_custom1-supply = <&flash_ldo_dovdd>;
+		regulator-names = "cam_v_custom1";
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <1800000>;
+		rgltr-max-voltage = <1800000>;
+		rgltr-load-current = <120000>;
+		status = "ok";
+	};
+
 	//MOTO Rear 48M AF
 	actuator_rear: qcom,actuator0 {
 		cell-index = <0>;
@@ -520,7 +535,7 @@
 		sensor-position-pitch = <0>;
 		sensor-position-yaw = <180>;
 		eeprom-src = <&eeprom_macro>;
-		led-flash-src = <&led_flash_rear>;
+		led-flash-src = <&led_flash_rear_aux>;
 		cam_vio-supply = <&camera_ldo_dovdd>;
 		cam_vana-supply = <&camera_ldo_2m_avdd>;
 		cam_v_custom1-supply = <&flash_ldo_dovdd>;
