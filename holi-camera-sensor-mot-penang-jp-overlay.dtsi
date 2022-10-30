@@ -247,7 +247,7 @@
 		};
 	};
 
-	cam_flash_en_active: cam_flash_en_active {
+	flash_ldo_dovdd_en: flash_ldo_dovdd_en {
 		mux {
 			pins = "gpio89";
 			function = "gpio";
@@ -257,20 +257,6 @@
 			pins = "gpio89";
 			bias-disable; /* No PULL */
 			drive-strength = <2>; /* 2 MA */
-		};
-	};
-
-	cam_flash_en_suspend: cam_flash_en_suspend {
-		mux {
-			pins = "gpio89";
-			function = "gpio";
-		};
-
-		config {
-			pins = "gpio89";
-			bias-pull-down; /* PULL DOWN */
-			drive-strength = <2>; /* 2 MA */
-			output-low;
 		};
 	};
 
@@ -390,6 +376,20 @@
 		pinctrl-0 = <&camera_ldo_2m_avdd_en>;
 	};
 
+	flash_ldo_dovdd: gpio-regulator@6 {
+		compatible = "regulator-fixed";
+		reg = <0x06 0x00>;
+		regulator-name = "flash_ldo_dovdd";
+		regulator-min-microvolt = <1800000>;
+		regulator-max-microvolt = <1800000>;
+		regulator-enable-ramp-delay = <233>;
+		enable-active-high;
+		gpio = <&tlmm 89 0>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&flash_ldo_dovdd_en>;
+
+	};
+
 	qcom,cam-res-mgr {
 		compatible = "qcom,cam-res-mgr";
 		status = "ok";
@@ -447,30 +447,26 @@
 		cam_vaf-supply = <&L21A>;
 		cam_vdig-supply = <&camera_ldo_50m_dvdd>;
 		cam_clk-supply = <&gcc_camss_top_gdsc>;
-		regulator-names = "cam_vio", "cam_vana", "cam_vaf", "cam_vdig",
+		cam_v_custom1-supply = <&flash_ldo_dovdd>;
+		regulator-names = "cam_vio", "cam_vana", "cam_vaf", "cam_vdig", "cam_v_custom1",
 			"cam_clk";
 		rgltr-cntrl-support;
-		rgltr-min-voltage = <1800000 2800000 2800000 1056000 0>;
-		rgltr-max-voltage = <1800000 2800000 2800000 1056000 0>;
-		rgltr-load-current = <120000 80000 100000 1200000 0>;
+		rgltr-min-voltage = <1800000 2800000 2800000 1056000 1800000 0>;
+		rgltr-max-voltage = <1800000 2800000 2800000 1056000 1800000 0>;
+		rgltr-load-current = <120000 80000 100000 1200000 800000 0>;
 		gpio-no-mux = <0>;
 		pinctrl-names = "cam_default", "cam_suspend";
 		pinctrl-0 = <&cam_sensor_mclk1_active
-				&cam_sensor_main_reset_active
-				&cam_flash_en_active>;
+				&cam_sensor_main_reset_active>;
 		pinctrl-1 = <&cam_sensor_mclk1_suspend
-				&cam_sensor_main_reset_suspend
-				&cam_flash_en_suspend>;
+				&cam_sensor_main_reset_suspend>;
 		gpios = <&tlmm 30 0>,
-			<&tlmm 35 0>,
-			<&tlmm 89 0>;
+			<&tlmm 35 0>;
 		gpio-reset = <1>;
-		gpio-custom1 = <2>;
-		gpio-req-tbl-num = <0 1 2>;
-		gpio-req-tbl-flags = <1 0 0>;
+		gpio-req-tbl-num = <0 1>;
+		gpio-req-tbl-flags = <1 0>;
 		gpio-req-tbl-label = "CAMIF_MCLK1",
-					"CAM_RESET1",
-					"CUSTOM_GPIO1";
+					"CAM_RESET1";
 		sensor-mode = <0>;
 		cci-master = <1>;
 		status = "ok";
@@ -570,23 +566,21 @@
 		cci-master = <0>;
 		flash-type = <CAM_FLASH_TYPE_I2C>;
 		cam_vio-supply = <&camera_ldo_dovdd>;
-		regulator-names = "cam_vio";
+		cam_v_custom1-supply = <&flash_ldo_dovdd>;
+		regulator-names = "cam_vio","cam_v_custom1";
 		rgltr-cntrl-support;
-		rgltr-min-voltage = <1800000>;
-		rgltr-max-voltage = <1800000>;
-		rgltr-load-current = <120000>;
+		rgltr-min-voltage = <1800000 1800000>;
+		rgltr-max-voltage = <1800000 1800000>;
+		rgltr-load-current = <120000 800000>;
 		gpio-no-mux = <0>;
 		pinctrl-names = "cam_default","cam_suspend";
-		pinctrl-0 = <&cam_flash_en_active &cam_flash_torch_active>;
-		pinctrl-1 = <&cam_flash_en_suspend &cam_flash_torch_suspend>;
-		gpios = <&tlmm 89 0>,
-			<&tlmm 49 0>;
+		pinctrl-0 = <&cam_flash_torch_active>;
+		pinctrl-1 = <&cam_flash_torch_suspend>;
+		gpios = <&tlmm 49 0>;
 		gpio-custom1 = <0>;
-		gpio-custom2 = <1>;
-		gpio-req-tbl-num = <0 1>;
-		gpio-req-tbl-flags = <0 0>;
-		gpio-req-tbl-label = "CUSTOM_GPIO1",
-				"CUSTOM_GPIO2";
+		gpio-req-tbl-num = <0>;
+		gpio-req-tbl-flags = <0>;
+		gpio-req-tbl-label = "CUSTOM_GPIO1";
 		status = "ok";
 	};
 
@@ -596,23 +590,21 @@
 		cci-master = <0>;
 		flash-type = <CAM_FLASH_TYPE_I2C>;
 		cam_vio-supply = <&camera_ldo_dovdd>;
-		regulator-names = "cam_vio";
+		cam_v_custom1-supply = <&flash_ldo_dovdd>;
+		regulator-names = "cam_vio", "cam_v_custom1";
 		rgltr-cntrl-support;
-		rgltr-min-voltage = <1800000>;
-		rgltr-max-voltage = <1800000>;
-		rgltr-load-current = <120000>;
+		rgltr-min-voltage = <1800000 1800000>;
+		rgltr-max-voltage = <1800000 1800000>;
+		rgltr-load-current = <120000 800000>;
 		gpio-no-mux = <0>;
 		pinctrl-names = "cam_default","cam_suspend";
-		pinctrl-0 = <&cam_flash_en_active &cam_flash_torch_active>;
-		pinctrl-1 = <&cam_flash_en_suspend &cam_flash_torch_suspend>;
-		gpios = <&tlmm 89 0>,
-			<&tlmm 49 0>;
+		pinctrl-0 = <&cam_flash_torch_active>;
+		pinctrl-1 = <&cam_flash_torch_suspend>;
+		gpios = <&tlmm 49 0>;
 		gpio-custom1 = <0>;
-		gpio-custom2 = <1>;
-		gpio-req-tbl-num = <0 1>;
-		gpio-req-tbl-flags = <0 0>;
-		gpio-req-tbl-label = "CUSTOM_GPIO1",
-				"CUSTOM_GPIO2";
+		gpio-req-tbl-num = <0>;
+		gpio-req-tbl-flags = <0>;
+		gpio-req-tbl-label = "CUSTOM_GPIO1";
 		status = "ok";
 	};
 	eeprom_macro: qcom,eeprom@2 {
@@ -665,29 +657,25 @@
 		cam_vio-supply = <&camera_ldo_dovdd>;
 		cam_vana-supply = <&camera_ldo_2m_avdd>;
 		cam_clk-supply = <&gcc_camss_top_gdsc>;
-		regulator-names = "cam_vio", "cam_vana", "cam_clk";
+		cam_v_custom1-supply = <&flash_ldo_dovdd>;
+		regulator-names = "cam_vio", "cam_vana", "cam_v_custom1", "cam_clk";
 		rgltr-cntrl-support;
-		rgltr-min-voltage = <1800000 2800000 0>;
-		rgltr-max-voltage = <1800000 2800000 0>;
-		rgltr-load-current = <120000 80000 0>;
+		rgltr-min-voltage = <1800000 2800000 1800000 0>;
+		rgltr-max-voltage = <1800000 2800000 1800000 0>;
+		rgltr-load-current = <120000 80000 1200000 0>;
 		gpio-no-mux = <0>;
 		pinctrl-names = "cam_default", "cam_suspend";
 		pinctrl-0 = <&cam_sensor_mclk3_active
-				&cam_sensor_macro_reset_active
-				&cam_flash_en_active>;
+				&cam_sensor_macro_reset_active>;
 		pinctrl-1 = <&cam_sensor_mclk3_suspend
-				&cam_sensor_macro_reset_suspend
-				&cam_flash_en_suspend>;
+				&cam_sensor_macro_reset_suspend>;
 		gpios = <&tlmm 32 0>,
-			<&tlmm 37 0>,
-			<&tlmm 89 0>;
+			<&tlmm 37 0>;
 		gpio-reset = <1>;
-		gpio-custom1 = <2>;
-		gpio-req-tbl-num = <0 1 2>;
-		gpio-req-tbl-flags = <1 0 0>;
+		gpio-req-tbl-num = <0 1>;
+		gpio-req-tbl-flags = <1 0>;
 		gpio-req-tbl-label = "CAMIF_MCLK3",
-					"CAM_RESET3",
-					"CUSTOM_GPIO1";
+					"CAM_RESET3";
 		sensor-mode = <0>;
 		cci-master = <0>;
 		status = "ok";
