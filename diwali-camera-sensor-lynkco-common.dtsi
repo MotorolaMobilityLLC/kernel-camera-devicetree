@@ -133,9 +133,6 @@
 		sensor-position-roll = <90>;
 		sensor-position-pitch = <0>;
 		sensor-position-yaw = <180>;
-		//led-flash-src = <&led_flash_uw>;
-		//actuator-src = <&actuator_rear_uw>;
-		//eeprom-src = <&eeprom_rear_uw>;
 		cam_vio-supply = <&cam_ldo7>;
 		cam_clk-supply = <&cam_cc_titan_top_gdsc>;
 		cam_vana-supply = <&cam_ldo3>;
@@ -143,8 +140,8 @@
 		regulator-names = "cam_vio", "cam_vana",
 			"cam_vdig", "cam_clk";
 		rgltr-cntrl-support;
-		rgltr-min-voltage = <1800000 2800000 1200000 0>;
-		rgltr-max-voltage = <1800000 2800000 1200000 0>;
+		rgltr-min-voltage = <1800000 2800000 1100000 0>;
+		rgltr-max-voltage = <1800000 2800000 1100000 0>;
 		rgltr-load-current = <7000 132000 405000 0>;
 		gpio-no-mux = <0>;
 		pinctrl-names = "cam_default", "cam_suspend";
@@ -169,7 +166,7 @@
 };
 
 &cam_cci1 {
-	front_main: qcom,cam-sensor1 {
+	front_main: qcom,cam-sensor@1 {
 		cell-index = <1>;
 		compatible = "qcom,cam-sensor";
 		csiphy-sd-index = <3>;
