@@ -38,6 +38,21 @@
 		};
 };
 
+&tlmm {
+		cam_ois_vsync_irq_default: cam_ois_vsync_irq_default {
+			mux {
+				pins = "gpio68";
+				function = "gpio";
+			};
+			config {
+				pins = "gpio68";
+				bias-pull-down; /* PULL DOWN */
+				drive-strength = <2>;
+				input-enable;
+			};
+		};
+};
+
 &pm8350c_flash0 {
 	qcom,max-current-ma = <1200>;
 	qcom,duration-ms = <500>;
@@ -159,6 +174,11 @@
 	ois_rear_main: qcom,ois@0 {
 		cell-index = <0>;
 		compatible = "qcom,ois";
+		interrupt-parent = <&tlmm>;
+		interrupts = <68 IRQ_TYPE_EDGE_RISING>;
+		vsync-irq-support;
+		pinctrl-names = "default";
+		pinctrl-0 = <&cam_ois_vsync_irq_default>;
 		cam_vio-supply = <&cam_ldo7>;
 		cam_vaf-supply = <&cam_ldo5>;
 		cam_v_custom1-supply = <&cam_ldo6>;
