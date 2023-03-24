@@ -435,6 +435,21 @@
 };
 
 &cam_cci1 {
+	/*Front ov16a1q eeprom*/
+	eeprom_front: qcom,eeprom@1 {
+		cell-index = <1>;
+		reg = <0x1>;
+		compatible = "qcom,eeprom";
+		cam_vio-supply = <&camera_ldo_dovdd>;
+		regulator-names = "cam_vio";
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <1800000>;
+		rgltr-max-voltage = <1800000>;
+		rgltr-load-current = <120000>;
+		cci-master = <0>;
+		status = "ok";
+	};
+
 	/*Front ov16a1q*/
 	qcom,cam-sensor1 {
 		cell-index = <1>;
@@ -445,7 +460,7 @@
 		sensor-position-yaw = <0>;
 		//actuator-src = <&actuator_rear>;
 		//led-flash-src = <&led_flash_rear>;
-		//eeprom-src = <&eeprom_rear>;
+		eeprom-src = <&eeprom_front>;
 		cam_vio-supply = <&camera_ldo_dovdd>;
 		cam_vana-supply = <&camera_ldo_16m_avdd>;
 		cam_vdig-supply = <&camera_ldo_16m_dvdd>;
