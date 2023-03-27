@@ -346,6 +346,36 @@
 };
 
 &cam_cci0 {
+        //Rear 50M FLASH
+        led_flash_rear: qcom,camera-flash@0 {
+                cell-index = <0>;
+                reg = <0x0>;
+                compatible = "qcom,camera-flash";
+                cam_vio-supply = <&camera_ldo_dovdd>;
+                regulator-names = "cam_vio";
+                rgltr-cntrl-support;
+                rgltr-min-voltage = <1800000>;
+                rgltr-max-voltage = <1800000>;
+                rgltr-load-current = <100000>;
+                flash-type = <1>;
+                cci-master = <1>;
+                status = "ok";
+        };
+        //WIDE 8m FLASH
+        led_flash_wide: qcom,camera-flash@2 {
+                cell-index = <2>;
+                reg = <0x2>;
+                compatible = "qcom,camera-flash";
+                cam_vio-supply = <&camera_ldo_dovdd>;
+                regulator-names = "cam_vio";
+                rgltr-cntrl-support;
+                rgltr-min-voltage = <1800000>;
+                rgltr-max-voltage = <1800000>;
+                rgltr-load-current = <100000>;
+                flash-type = <1>;
+                cci-master = <1>;
+                status = "ok";
+        };
 	/* Rear s5kgn9*/
 	qcom,cam-sensor0 {
 		cell-index = <0>;
@@ -355,7 +385,7 @@
 		sensor-position-pitch = <0>;
 		sensor-position-yaw = <180>;
 		//actuator-src = <&actuator_rear>;
-		//led-flash-src = <&led_flash_rear>;
+		led-flash-src = <&led_flash_rear>;
 		//eeprom-src = <&eeprom_rear>;
 		cam_vio-supply = <&camera_ldo_dovdd>;
 		cam_vana-supply = <&camera_ldo_50m_avdd>;
@@ -398,7 +428,7 @@
 		sensor-position-pitch = <0>;
 		sensor-position-yaw = <180>;
 		//actuator-src = <&actuator_rear>;
-		//led-flash-src = <&led_flash_rear>;
+		led-flash-src = <&led_flash_wide>;
 		//eeprom-src = <&eeprom_rear>;
 		cam_vio-supply = <&camera_ldo_dovdd>;
 		cam_vana-supply = <&camera_ldo_8m_avdd>;
