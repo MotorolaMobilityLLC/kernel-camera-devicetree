@@ -435,7 +435,8 @@
 	i2c_freq_1Mhz_cci0: qcom,i2c_fast_plus_mode {
 		hw-scl-stretch-en = <1>;
 	};
-	/*Rear 50M AF*/
+
+	/* Rear 50M AF */
 	actuator_rear_main:qcom,actuator0{
 		cell-index = <0>;
 		compatible = "qcom,actuator";
@@ -450,6 +451,7 @@
 		rgltr-load-current = <500 300000 30000>;
 		status = "ok";
 	};
+
 	/* Rear 50M OIS */
 	ois_rear_main: qcom,ois@0 {
 		cell-index = <0>;
@@ -466,7 +468,8 @@
 		status = "ok";
 		ois-name = "mot_bangkk_aw86006";
 	};
-        //Rear 50M FLASH
+
+        /* Rear 50M FLASH */
         led_flash_rear: qcom,camera-flash@0 {
                 cell-index = <0>;
                 reg = <0x0>;
@@ -481,7 +484,8 @@
                 cci-master = <1>;
                 status = "ok";
         };
-        //WIDE 8m FLASH
+
+        /* WIDE 8m FLASH */
         led_flash_wide: qcom,camera-flash@2 {
                 cell-index = <2>;
                 reg = <0x2>;
@@ -496,6 +500,7 @@
                 cci-master = <1>;
                 status = "ok";
         };
+
         actuator_wide: qcom,actuator@1 {
                 cell-index = <2>;
                 compatible = "qcom,actuator";
@@ -509,7 +514,23 @@
                 cci-master = <1>;
                 status = "ok";
         };
-	/* Rear s5kgn9*/
+
+	/* Rear s5kgn9 eeprom */
+	eeprom_rear: qcom,eeprom@0 {
+		cell-index = <0>;
+		reg = <0x0>;
+		compatible = "qcom,eeprom";
+		cam_vio-supply = <&camera_ldo_dovdd>;
+		regulator-names = "cam_vio";
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <1800000>;
+		rgltr-max-voltage = <1800000>;
+		rgltr-load-current = <120000>;
+		cci-master = <0>;
+		status = "ok";
+	};
+
+	/* Rear s5kgn9 */
 	qcom,cam-sensor0 {
 		cell-index = <0>;
 		compatible = "qcom,cam-sensor";
@@ -520,7 +541,7 @@
 		actuator-src = <&actuator_rear_main>;
 		ois-src = <&ois_rear_main>;
 		led-flash-src = <&led_flash_rear>;
-		//eeprom-src = <&eeprom_rear>;
+		eeprom-src = <&eeprom_rear>;
 		cam_vio-supply = <&camera_ldo_dovdd>;
 		cam_vana-supply = <&camera_ldo_50m_avdd>;
 		cam_vdig-supply = <&camera_ldo_50m_dvdd>;
