@@ -26,7 +26,7 @@
 			compatible = "qcom,msm-cam-smmu-cb";
 			iommus = <&apps_smmu 0x08A0 0x020>,
 				<&apps_smmu 0x0880 0x020>;
-			qcom,iommu-faults = "non-fatal";
+			qcom,iommu-faults = "fatal";
 			qcom,iommu-dma-addr-pool = <0x100000 0xffe00000>;
 			dma-coherent;
 			cam-smmu-label = "tfe";
@@ -52,6 +52,7 @@
 				<&apps_smmu 0x1860 0x00A0>,
 				<&apps_smmu 0x18E0 0x00A0>,
 				<&apps_smmu 0x1900 0x0000>;
+			qcom,iommu-faults = "fatal";
 			cam-smmu-label = "icp";
 			qcom,iommu-dma-addr-pool = <0x14c00000 0xee300000>;
 			dma-coherent;
@@ -99,7 +100,7 @@
 			compatible = "qcom,msm-cam-smmu-cb";
 			iommus = <&apps_smmu 0x1800 0x000>;
 			cam-smmu-label = "rt-cdm";
-			qcom,iommu-faults = "non-fatal";
+			qcom,iommu-faults = "fatal";
 			qcom,iommu-dma-addr-pool = <0x100000 0xffe00000>;
 			multiple-client-devices;
 			dma-coherent;
@@ -107,9 +108,8 @@
 				iova-mem-region-io {
 					iova-region-name = "io";
 					/* 1 MB pad for start */
-					iova-region-start = <0x0 0x100000>;
-					/* 1 MB pad for end */
-					iova-region-len = <0x0 0xffe00000>;
+					iova-region-start = <0x100000>;
+					iova-region-len = <0xffe00000>;
 					iova-region-id = <0x3>;
 					status = "ok";
 				};
@@ -120,7 +120,7 @@
 			compatible = "qcom,msm-cam-smmu-cb";
 			iommus = <&apps_smmu 0x1920 0x000>,
 				<&apps_smmu 0x1940 0x000>;
-			qcom,iommu-faults = "non-fatal";
+			qcom,iommu-faults = "fatal";
 			multiple-client-devices;
 			qcom,iommu-dma-addr-pool = <0x100000 0xffe00000>;
 			cam-smmu-label = "cre";
@@ -131,7 +131,6 @@
 					iova-region-name = "io";
 					/* 1 MB pad for start */
 					iova-region-start = <0x100000>;
-					/* 1 MB pad for end */
 					iova-region-len = <0xffe00000>;
 					iova-region-id = <0x3>;
 					status = "ok";
@@ -142,6 +141,7 @@
 		msm_cam_smmu_jpeg {
 			compatible = "qcom,msm-cam-smmu-cb";
 			iommus = <&apps_smmu 0x1960 0x000>;
+			qcom,iommu-faults = "fatal";
 			cam-smmu-label = "jpeg";
 			qcom,iommu-dma-addr-pool = <0x100000 0xffe00000>;
 			dma-coherent;
@@ -693,7 +693,7 @@
 
 	qcom,rt-cdm0@ac24000 {
 		cell-index = <0>;
-		compatible = "qcom,cam-cpas-cdm2_1";
+		compatible = "qcom,cam-rt-cdm2_1";
 		label = "rt-cdm";
 		reg = <0xac24000 0x400>;
 		reg-names = "rt-cdm0";
@@ -717,7 +717,7 @@
 
 	qcom,rt-cdm1@ac25000 {
 		cell-index = <1>;
-		compatible = "qcom,cam-cpas-cdm2_1";
+		compatible = "qcom,cam-rt-cdm2_1";
 		label = "rt-cdm";
 		reg = <0xac25000 0x400>;
 		reg-names = "rt-cdm1";
@@ -741,7 +741,7 @@
 
 	qcom,rt-cdm2@ac26000 {
 		cell-index = <2>;
-		compatible = "qcom,cam-cpas-cdm2_1";
+		compatible = "qcom,cam-rt-cdm2_1";
 		label = "rt-cdm";
 		reg = <0xac26000 0x400>;
 		reg-names = "rt-cdm2";
@@ -810,6 +810,7 @@
 		reg-names = "tfe0";
 		reg = <0xac62000 0xD000>;
 		reg-cam-base = <0x62000>;
+		rt-wrapper-base = <0x62000>;
 		interrupt-names = "tfe0";
 		interrupts = <GIC_SPI 602 IRQ_TYPE_EDGE_RISING>;
 		regulator-names = "camss";
@@ -876,6 +877,7 @@
 		reg-names = "tfe1";
 		reg = <0xac71000 0xD000>;
 		reg-cam-base = <0x71000>;
+		rt-wrapper-base = <0x62000>;
 		interrupt-names = "tfe1";
 		interrupts = <GIC_SPI 604 IRQ_TYPE_EDGE_RISING>;
 		regulator-names = "camss";
@@ -942,6 +944,7 @@
 		reg-names = "tfe2";
 		reg = <0xac80000 0xD000>;
 		reg-cam-base = <0x80000>;
+		rt-wrapper-base = <0x62000>;
 		interrupt-names = "tfe2";
 		interrupts = <GIC_SPI 688 IRQ_TYPE_EDGE_RISING>;
 		regulator-names = "camss";
@@ -1008,6 +1011,7 @@
 		reg-names = "tfe-lite0";
 		reg = <0xac8F000 0xD000>;
 		reg-cam-base = <0x8F000>;
+		rt-wrapper-base = <0x62000>;
 		interrupt-names = "tfe-lite0";
 		interrupts = <GIC_SPI 156 IRQ_TYPE_EDGE_RISING>;
 		regulator-names = "camss";
