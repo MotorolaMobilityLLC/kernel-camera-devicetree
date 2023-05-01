@@ -1460,6 +1460,10 @@
 		sys-cache-uids = <34 52 38 51 50>;
 		enable-smart-qos;
 		rt-wr-priority-min = <3>;
+		num-ifes = <3>;
+		num-ife-lites = <2>;
+		num-sfes = <2>;
+		num-custom = <0>;
 		rt-wr-priority-max = <6>;
 		status = "ok";
 
