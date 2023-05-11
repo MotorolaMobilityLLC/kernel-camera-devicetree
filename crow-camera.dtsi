@@ -222,10 +222,10 @@
 		interconnects =<&gem_noc MASTER_APPSS_PROC
 			&config_noc SLAVE_CAMERA_CFG>;
 		rpmh-bcm-info = <12 0x4 0x800 0 4>;
-		cam-ahb-num-cases = <6>;
+		cam-ahb-num-cases = <8>;
 		cam-ahb-bw-KBps =
 			<0 0>, <0 150000>, <0 150000>, <0 150000>,<0 300000>,
-			<0 300000>;
+			<0 300000>,  <0 300000>,  <0 300000>;
 		vdd-corners = <RPMH_REGULATOR_LEVEL_RETENTION
 			RPMH_REGULATOR_LEVEL_MIN_SVS
 			RPMH_REGULATOR_LEVEL_LOW_SVS
