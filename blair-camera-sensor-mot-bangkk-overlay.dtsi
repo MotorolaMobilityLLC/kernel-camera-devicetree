@@ -331,7 +331,7 @@
 		config {
 			pins = "gpio38";
 			bias-disable; /* No PULL */
-			drive-strength = <2>; /* 4 MA */
+			drive-strength = <2>; /* 2 MA */
 		};
 	};
 	camera_ldo_50m_avdd_en: camera_ldo_50m_avdd_en {
@@ -343,7 +343,7 @@
 		config {
 			pins = "gpio6";
 			bias-disable; /* No PULL */
-			drive-strength = <2>; /* 4 MA */
+			drive-strength = <2>; /* 2 MA */
 		};
 	};
 	camera_ldo_50m_dvdd_en: camera_ldo_50m_dvdd_en {
@@ -367,7 +367,7 @@
 		config {
 			pins = "gpio37";
 			bias-disable; /* No PULL */
-			drive-strength = <2>; /* 4 MA */
+			drive-strength = <2>; /* 2 MA */
 		};
 	};
 
@@ -380,7 +380,7 @@
 		config {
 			pins = "gpio92";
 			bias-disable; /* No PULL */
-			drive-strength = <2>; /* 4 MA */
+			drive-strength = <2>; /* 2 MA */
 		};
 	};
 	camera_ldo_8m_avdd_en: camera_ldo_8m_avdd_en {
@@ -392,7 +392,7 @@
 		config {
 			pins = "gpio36";
 			bias-disable; /* No PULL */
-			drive-strength = <2>; /* 4 MA */
+			drive-strength = <2>; /* 2 MA */
 		};
 	};
 
@@ -405,7 +405,7 @@
 		config {
 			pins = "gpio51";
 			bias-disable; /* No PULL */
-			drive-strength = <2>; /* 4 MA */
+			drive-strength = <2>; /* 2 MA */
 		};
 	};
 
@@ -444,9 +444,38 @@
 		config {
 			pins = "gpio50";
 			bias-disable; /* No PULL */
-			drive-strength = <2>; /* 4 MA */
+			drive-strength = <2>; /* 2 MA */
 		};
 	};
+
+	cam_ois_vsync_irq_default: cam_ois_vsync_irq_default {
+		mux {
+			pins = "gpio86";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio86";
+			bias-pull-down; /* PULL DOWN */
+			output-low;
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
+	cam_ois_vsync_irq_suspend: cam_ois_vsync_irq_suspend {
+		mux {
+			pins = "gpio86";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio86";
+			bias-pull-down; /* PULL DOWN */
+			output-low;
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
 };
 
 &cam_cci0 {
@@ -491,6 +520,15 @@
 		rgltr-min-voltage = <1800000 3300000 3300000>;
 		rgltr-max-voltage = <1800000 3300000 3300000>;
 		rgltr-load-current = <500 300000 30000>;
+		gpio-no-mux = <0>;
+		pinctrl-names = "cam_default","cam_suspend";
+		pinctrl-0 = <&cam_ois_vsync_irq_default>;
+		pinctrl-1 = <&cam_ois_vsync_irq_suspend>;
+		gpios = <&tlmm 86 0>;
+		gpio-custom2 = <0>;
+		gpio-req-tbl-num = <0>;
+		gpio-req-tbl-flags = <0>;
+		gpio-req-tbl-label = "CUSTOM_GPIO2";
 		status = "ok";
 		ois-name = "mot_bangkk_aw86006";
 	};
