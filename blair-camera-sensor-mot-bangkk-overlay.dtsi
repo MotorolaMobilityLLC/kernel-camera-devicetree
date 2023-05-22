@@ -134,10 +134,6 @@
 	qcom,cam-res-mgr {
 		compatible = "qcom,cam-res-mgr";
 		status = "ok";
-		gpios-shared = <407>;
-		pinctrl-names = "cam_res_mgr_default", "cam_res_mgr_suspend";
-		pinctrl-0 = <&cam_flash_hwen_active>;
-		pinctrl-1 = <&cam_flash_hwen_suspend>;
 	};
 };
 
@@ -504,6 +500,7 @@
 		rgltr-min-voltage = <1800000 3300000 3300000>;
 		rgltr-max-voltage = <1800000 3300000 3300000>;
 		rgltr-load-current = <500 300000 30000>;
+		af-drift-support;
 		status = "ok";
 	};
 
