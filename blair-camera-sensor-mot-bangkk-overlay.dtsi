@@ -145,6 +145,19 @@
 		pinctrl-0 = <&flash_ldo_dovdd_en>;
 	};
 
+	ois_vsync_dovdd: gpio-regulator@11 {
+		compatible = "regulator-fixed";
+		reg = <0x11 0x00>;
+		regulator-name = "ois_vsync_dovdd";
+		regulator-min-microvolt = <1800000>;
+		regulator-max-microvolt = <1800000>;
+		regulator-enable-ramp-delay = <233>;
+		enable-active-high;
+		gpio = <&tlmm 86 0>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&cam_ois_vsync_dovdd_default>;
+	};
+
 	qcom,cam-res-mgr {
 		compatible = "qcom,cam-res-mgr";
 		status = "ok";
@@ -445,7 +458,7 @@
 		};
 	};
 
-	cam_ois_vsync_irq_default: cam_ois_vsync_irq_default {
+	cam_ois_vsync_dovdd_default: cam_ois_vsync_dovdd_default {
 		mux {
 			pins = "gpio86";
 			function = "gpio";
@@ -458,21 +471,6 @@
 			drive-strength = <2>; /* 2 MA */
 		};
 	};
-
-	cam_ois_vsync_irq_suspend: cam_ois_vsync_irq_suspend {
-		mux {
-			pins = "gpio86";
-			function = "gpio";
-		};
-
-		config {
-			pins = "gpio86";
-			bias-pull-down; /* PULL DOWN */
-			output-low;
-			drive-strength = <2>; /* 2 MA */
-		};
-	};
-
 };
 
 &cam_cci0 {
@@ -513,20 +511,12 @@
 		cam_vio-supply = <&camera_ldo_dovdd>;
 		cam_vaf-supply = <&camera_ldo_50m_afvdd>;
 		cam_v_custom1-supply = <&camera_ldo_50m_oisvdd>;
-		regulator-names = "cam_vio", "cam_vaf", "cam_v_custom1";
+		cam_v_custom2-supply = <&ois_vsync_dovdd>;
+		regulator-names = "cam_vio", "cam_vaf", "cam_v_custom1", "cam_v_custom2";
 		rgltr-cntrl-support;
-		rgltr-min-voltage = <1800000 3300000 3300000>;
-		rgltr-max-voltage = <1800000 3300000 3300000>;
-		rgltr-load-current = <500 300000 30000>;
-		gpio-no-mux = <0>;
-		pinctrl-names = "cam_default","cam_suspend";
-		pinctrl-0 = <&cam_ois_vsync_irq_default>;
-		pinctrl-1 = <&cam_ois_vsync_irq_suspend>;
-		gpios = <&tlmm 86 0>;
-		gpio-custom2 = <0>;
-		gpio-req-tbl-num = <0>;
-		gpio-req-tbl-flags = <0>;
-		gpio-req-tbl-label = "CUSTOM_GPIO2";
+		rgltr-min-voltage = <1800000 3300000 3300000 1800000>;
+		rgltr-max-voltage = <1800000 3300000 3300000 1800000>;
+		rgltr-load-current = <500 300000 30000 120000>;
 		status = "ok";
 		ois-name = "mot_bangkk_aw86006";
 	};
