@@ -176,6 +176,7 @@
 			<0xac19000 0xB000>,
 			<0xbbf0000 0x1F00>;
 		reg-cam-base = <0x13000 0x19000 0x0bbf0000>;
+		cam_hw_fuse = <CAM_CPAS_ISP_LITE_FUSE 0x221C8138 0x1 CAM_CPAS_FEATURE_TYPE_ENABLE 0x8>;
 		interrupt-names = "cpas_camnoc";
 		interrupts = <GIC_SPI 459 IRQ_TYPE_EDGE_RISING>;
 		camnoc-axi-min-ib-bw = <3000000000>;
