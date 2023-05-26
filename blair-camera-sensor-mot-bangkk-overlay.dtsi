@@ -1,6 +1,187 @@
 #include <dt-bindings/clock/qcom,gcc-blair.h>
 #include <dt-bindings/msm/msm-camera.h>
 &soc {
+	cam_cci0: qcom,cci0 {
+		cell-index = <0>;
+		compatible = "qcom,cci", "simple-bus";
+		reg = <0x05C1B000 0x1000>;
+		reg-names = "cci";
+		reg-cam-base = <0x1B000>;
+		interrupt-names = "cci";
+		interrupts = <GIC_SPI 206 IRQ_TYPE_EDGE_RISING>;
+		status = "ok";
+		gdscr-supply = <&gcc_camss_top_gdsc>;
+		regulator-names = "gdscr";
+		clocks = <&gcc GCC_CAMSS_CCI_0_CLK>,
+			<&gcc GCC_CAMSS_CCI_0_CLK_SRC>;
+		clock-names = "cci_0_clk",
+				"cci_0_clk_src";
+		src-clock-name = "cci_0_clk_src";
+		clock-cntl-level = "svs";
+		clock-rates = <0 37500000>;
+		pinctrl-names = "cam_default", "cam_suspend";
+		pinctrl-0 = <&cci0_active &cci1_active>;
+		pinctrl-1 = <&cci0_suspend &cci1_suspend>;
+		gpios = <&tlmm 39 0>,
+			<&tlmm 40 0>,
+			<&tlmm 41 0>,
+			<&tlmm 42 0>;
+		gpio-req-tbl-num = <0 1 2 3>;
+		gpio-req-tbl-flags = <1 1 1 1>;
+		gpio-req-tbl-label = "CCI_I2C_DATA0",
+			"CCI_I2C_CLK0",
+			"CCI_I2C_DATA1",
+			"CCI_I2C_CLK1";
+
+		i2c_freq_100Khz_cci0: qcom,i2c_standard_mode {
+			hw-thigh = <201>;
+			hw-tlow = <174>;
+			hw-tsu-sto = <204>;
+			hw-tsu-sta = <231>;
+			hw-thd-dat = <22>;
+			hw-thd-sta = <162>;
+			hw-tbuf = <227>;
+			hw-scl-stretch-en = <0>;
+			hw-trdhld = <6>;
+			hw-tsp = <3>;
+			cci-clk-src = <37500000>;
+			status = "ok";
+		};
+
+		i2c_freq_400Khz_cci0: qcom,i2c_fast_mode {
+			hw-thigh = <38>;
+			hw-tlow = <56>;
+			hw-tsu-sto = <40>;
+			hw-tsu-sta = <40>;
+			hw-thd-dat = <22>;
+			hw-thd-sta = <35>;
+			hw-tbuf = <62>;
+			hw-scl-stretch-en = <0>;
+			hw-trdhld = <6>;
+			hw-tsp = <3>;
+			cci-clk-src = <37500000>;
+			status = "ok";
+		};
+
+		i2c_freq_custom_cci0: qcom,i2c_custom_mode {
+			hw-thigh = <38>;
+			hw-tlow = <56>;
+			hw-tsu-sto = <40>;
+			hw-tsu-sta = <40>;
+			hw-thd-dat = <22>;
+			hw-thd-sta = <35>;
+			hw-tbuf = <62>;
+			hw-scl-stretch-en = <1>;
+			hw-trdhld = <6>;
+			hw-tsp = <3>;
+			cci-clk-src = <37500000>;
+			status = "ok";
+		};
+
+		i2c_freq_1Mhz_cci0: qcom,i2c_fast_plus_mode {
+			hw-thigh = <16>;
+			hw-tlow = <22>;
+			hw-tsu-sto = <17>;
+			hw-tsu-sta = <18>;
+			hw-thd-dat = <16>;
+			hw-thd-sta = <15>;
+			hw-tbuf = <24>;
+			hw-scl-stretch-en = <0>;
+			hw-trdhld = <3>;
+			hw-tsp = <3>;
+			cci-clk-src = <37500000>;
+			status = "ok";
+		};
+	};
+
+	cam_cci1: qcom,cci1 {
+		cell-index = <1>;
+		compatible = "qcom,cci", "simple-bus";
+		reg = <0x05C1C000 0x1000>;
+		reg-names = "cci";
+		reg-cam-base = <0x1C000>;
+		interrupt-names = "cci";
+		interrupts = <GIC_SPI 214 IRQ_TYPE_EDGE_RISING>;
+		status = "ok";
+		gdscr-supply = <&gcc_camss_top_gdsc>;
+		regulator-names = "gdscr";
+		clocks = <&gcc GCC_CAMSS_CCI_1_CLK>,
+			<&gcc GCC_CAMSS_CCI_1_CLK_SRC>;
+		clock-names = "cci_1_clk",
+				"cci_1_clk_src";
+		src-clock-name = "cci_1_clk_src";
+		clock-cntl-level = "svs";
+		clock-rates = <0 37500000>;
+		pinctrl-names = "cam_default", "cam_suspend";
+		pinctrl-0 = <&cci2_active>;
+		pinctrl-1 = <&cci2_suspend>;
+		gpios = <&tlmm 43 0>,
+			<&tlmm 44 0>;
+		gpio-req-tbl-num = <0 1>;
+		gpio-req-tbl-flags = <1 1>;
+		gpio-req-tbl-label = "CCI_I2C_DATA2",
+			"CCI_I2C_CLK2";
+
+		i2c_freq_100Khz_cci1: qcom,i2c_standard_mode {
+			hw-thigh = <201>;
+			hw-tlow = <174>;
+			hw-tsu-sto = <204>;
+			hw-tsu-sta = <231>;
+			hw-thd-dat = <22>;
+			hw-thd-sta = <162>;
+			hw-tbuf = <227>;
+			hw-scl-stretch-en = <0>;
+			hw-trdhld = <6>;
+			hw-tsp = <3>;
+			cci-clk-src = <37500000>;
+			status = "ok";
+		};
+
+		i2c_freq_400Khz_cci1: qcom,i2c_fast_mode {
+			hw-thigh = <38>;
+			hw-tlow = <56>;
+			hw-tsu-sto = <40>;
+			hw-tsu-sta = <40>;
+			hw-thd-dat = <22>;
+			hw-thd-sta = <35>;
+			hw-tbuf = <62>;
+			hw-scl-stretch-en = <0>;
+			hw-trdhld = <6>;
+			hw-tsp = <3>;
+			cci-clk-src = <37500000>;
+			status = "ok";
+		};
+
+		i2c_freq_custom_cci1: qcom,i2c_custom_mode {
+			hw-thigh = <38>;
+			hw-tlow = <56>;
+			hw-tsu-sto = <40>;
+			hw-tsu-sta = <40>;
+			hw-thd-dat = <22>;
+			hw-thd-sta = <35>;
+			hw-tbuf = <62>;
+			hw-scl-stretch-en = <1>;
+			hw-trdhld = <6>;
+			hw-tsp = <3>;
+			cci-clk-src = <37500000>;
+			status = "ok";
+		};
+
+		i2c_freq_1Mhz_cci1: qcom,i2c_fast_plus_mode {
+			hw-thigh = <16>;
+			hw-tlow = <22>;
+			hw-tsu-sto = <17>;
+			hw-tsu-sta = <18>;
+			hw-thd-dat = <16>;
+			hw-thd-sta = <15>;
+			hw-tbuf = <24>;
+			hw-scl-stretch-en = <0>;
+			hw-trdhld = <3>;
+			hw-tsp = <3>;
+			cci-clk-src = <37500000>;
+			status = "ok";
+		};
+	};
 	/*s5kgn9 ov16a1a s5k4h7 iovdd*/
 	camera_ldo_dovdd: gpio-regulator@0 {
 		compatible = "regulator-fixed";
@@ -468,6 +649,90 @@
 			pins = "gpio86";
 			bias-pull-down; /* PULL DOWN */
 			output-low;
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+	/* Camera GPIOs  CCI*/
+	cci0_active: cci0_active {
+		mux {
+			/* CLK, DATA */
+			pins = "gpio39", "gpio40";
+			function = "CCI_I2C";
+		};
+
+		config {
+			pins = "gpio39", "gpio40";
+			bias-disable; /*NOT PULL*/
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
+	cci0_suspend: cci0_suspend {
+		mux {
+			/* CLK, DATA */
+			pins = "gpio39", "gpio40";
+			function = "CCI_I2C";
+		};
+
+		config {
+			pins = "gpio39", "gpio40";
+			bias-pull-down; /* PULL DOWN */
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
+	cci1_active: cci1_active {
+		mux {
+			/* CLK, DATA */
+			pins = "gpio41", "gpio42";
+			function = "CCI_I2C";
+		};
+
+		config {
+			pins = "gpio41", "gpio42";
+			bias-disable; /*NOT PULL*/
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
+	cci1_suspend: cci1_suspend {
+		mux {
+			/* CLK, DATA */
+			pins = "gpio41", "gpio42";
+			function = "CCI_I2C";
+		};
+
+		config {
+			pins = "gpio41", "gpio42";
+			bias-pull-down; /* PULL DOWN */
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
+	cci2_active: cci2_active {
+		mux {
+			/* CLK, DATA */
+			pins = "gpio43", "gpio44";
+			function = "CCI_I2C";
+		};
+
+		config {
+			pins = "gpio43", "gpio44";
+			bias-disable; /*NOT PULL*/
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
+	cci2_suspend: cci2_suspend {
+		mux {
+			/* CLK, DATA */
+			pins = "gpio43", "gpio44";
+			function = "CCI_I2C";
+		};
+
+		config {
+			pins = "gpio43", "gpio44";
+			bias-pull-down; /* PULL DOWN */
 			drive-strength = <2>; /* 2 MA */
 		};
 	};
