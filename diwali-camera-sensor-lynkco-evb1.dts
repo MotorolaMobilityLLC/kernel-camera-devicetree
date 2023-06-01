@@ -8,9 +8,13 @@
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
 
 #include "diwali-camera-sensor-lynkco-common.dtsi"
+
+#define LYNKCO_RADIO_ROW 2
 / {
 	model = "lynkco";
 	compatible = "qcom,diwali", "moto,lynkco";
 	qcom,msm-id = <506 0x10000>, <547 0x10000>, <564 0x10000>;
-	qcom,board-id = <0x41 0x9100>, <0x41 0xA100>, <0x41 0xB100>, <0x41 0xB2C0>, <0x41 0xC000>;
+	qcom,board-id = <0x41 0x9100>, <0x41 0xA100>, <0x41 0xB100>, <0x41 0xB2C0>, <0x41 0xC000>,
+                    <(LYNKCO_RADIO_ROW << 8 | 0x41) 0xB200>, <(LYNKCO_RADIO_ROW << 8 | 0x41) 0xB2C0>,
+                    <(LYNKCO_RADIO_ROW << 8 | 0x41) 0xC000>;
 };
