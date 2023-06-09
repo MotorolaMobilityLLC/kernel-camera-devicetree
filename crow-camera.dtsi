@@ -26,7 +26,7 @@
 			compatible = "qcom,msm-cam-smmu-cb";
 			iommus = <&apps_smmu 0x08A0 0x020>,
 				<&apps_smmu 0x0880 0x020>;
-			qcom,iommu-faults = "non-fatal";
+			qcom,iommu-faults = "fatal";
 			qcom,iommu-dma-addr-pool = <0x100000 0xffe00000>;
 			dma-coherent;
 			cam-smmu-label = "tfe";
@@ -52,15 +52,15 @@
 				<&apps_smmu 0x1860 0x00A0>,
 				<&apps_smmu 0x18E0 0x00A0>,
 				<&apps_smmu 0x1900 0x0000>;
+			qcom,iommu-faults = "fatal";
 			cam-smmu-label = "icp";
-			qcom,iommu-dma-addr-pool = <0x10c00000 0xee300000>;
-			iova-region-discard = <0xe0000000 0x800000>;
+			qcom,iommu-dma-addr-pool = <0x14c00000 0xee300000>;
 			dma-coherent;
 			icp_iova_mem_map: iova-mem-map {
 				iova-mem-region-shared {
 					/* Shared region is ~250MB long */
 					iova-region-name = "shared";
-					iova-region-start = <0x800000>;
+					iova-region-start = <0x4800000>;
 					iova-region-len = <0xFC00000>;
 					iova-region-id = <0x1>;
 					status = "ok";
@@ -69,7 +69,7 @@
 				iova-mem-region-fwuncached-region {
 					/* FW uncached region is 7MB long */
 					iova-region-name = "fw_uncached";
-					iova-region-start = <0x10400000>;
+					iova-region-start = <0x14400000>;
 					iova-region-len = <0x700000>;
 					iova-region-id = <0x6>;
 					status = "ok";
@@ -78,17 +78,16 @@
 				iova-mem-region-io {
 					/* IO region is approximately 3.8 GB */
 					iova-region-name = "io";
-					iova-region-start = <0x10c00000>;
-					iova-region-len = <0xee300000>;
+					iova-region-start = <0x14c00000>;
+					iova-region-len = <0xea300000>;
 					iova-region-id = <0x3>;
-					iova-region-discard = <0xe0000000 0x800000>;
 					status = "ok";
 				};
 
 				iova-mem-qdss-region {
 					/* QDSS region is appropriate 1MB */
 					iova-region-name = "qdss";
-					iova-region-start = <0x10b00000>;
+					iova-region-start = <0x14b00000>;
 					iova-region-len = <0x100000>;
 					iova-region-id = <0x5>;
 					qdss-phy-addr = <0x16790000>;
@@ -101,7 +100,7 @@
 			compatible = "qcom,msm-cam-smmu-cb";
 			iommus = <&apps_smmu 0x1800 0x000>;
 			cam-smmu-label = "rt-cdm";
-			qcom,iommu-faults = "non-fatal";
+			qcom,iommu-faults = "fatal";
 			qcom,iommu-dma-addr-pool = <0x100000 0xffe00000>;
 			multiple-client-devices;
 			dma-coherent;
@@ -109,9 +108,8 @@
 				iova-mem-region-io {
 					iova-region-name = "io";
 					/* 1 MB pad for start */
-					iova-region-start = <0x0 0x100000>;
-					/* 1 MB pad for end */
-					iova-region-len = <0x0 0xffe00000>;
+					iova-region-start = <0x100000>;
+					iova-region-len = <0xffe00000>;
 					iova-region-id = <0x3>;
 					status = "ok";
 				};
@@ -122,7 +120,7 @@
 			compatible = "qcom,msm-cam-smmu-cb";
 			iommus = <&apps_smmu 0x1920 0x000>,
 				<&apps_smmu 0x1940 0x000>;
-			qcom,iommu-faults = "non-fatal";
+			qcom,iommu-faults = "fatal";
 			multiple-client-devices;
 			qcom,iommu-dma-addr-pool = <0x100000 0xffe00000>;
 			cam-smmu-label = "cre";
@@ -133,7 +131,6 @@
 					iova-region-name = "io";
 					/* 1 MB pad for start */
 					iova-region-start = <0x100000>;
-					/* 1 MB pad for end */
 					iova-region-len = <0xffe00000>;
 					iova-region-id = <0x3>;
 					status = "ok";
@@ -144,6 +141,7 @@
 		msm_cam_smmu_jpeg {
 			compatible = "qcom,msm-cam-smmu-cb";
 			iommus = <&apps_smmu 0x1960 0x000>;
+			qcom,iommu-faults = "fatal";
 			cam-smmu-label = "jpeg";
 			qcom,iommu-dma-addr-pool = <0x100000 0xffe00000>;
 			dma-coherent;
@@ -178,6 +176,7 @@
 			<0xac19000 0xB000>,
 			<0xbbf0000 0x1F00>;
 		reg-cam-base = <0x13000 0x19000 0x0bbf0000>;
+		cam_hw_fuse = <CAM_CPAS_ISP_LITE_FUSE 0x221C8138 0x1 CAM_CPAS_FEATURE_TYPE_ENABLE 0x8>;
 		interrupt-names = "cpas_camnoc";
 		interrupts = <GIC_SPI 459 IRQ_TYPE_EDGE_RISING>;
 		camnoc-axi-min-ib-bw = <3000000000>;
@@ -224,10 +223,10 @@
 		interconnects =<&gem_noc MASTER_APPSS_PROC
 			&config_noc SLAVE_CAMERA_CFG>;
 		rpmh-bcm-info = <12 0x4 0x800 0 4>;
-		cam-ahb-num-cases = <6>;
+		cam-ahb-num-cases = <8>;
 		cam-ahb-bw-KBps =
 			<0 0>, <0 150000>, <0 150000>, <0 150000>,<0 300000>,
-			<0 300000>;
+			<0 300000>,  <0 300000>,  <0 300000>;
 		vdd-corners = <RPMH_REGULATOR_LEVEL_RETENTION
 			RPMH_REGULATOR_LEVEL_MIN_SVS
 			RPMH_REGULATOR_LEVEL_LOW_SVS
@@ -695,7 +694,7 @@
 
 	qcom,rt-cdm0@ac24000 {
 		cell-index = <0>;
-		compatible = "qcom,cam-cpas-cdm2_1";
+		compatible = "qcom,cam-rt-cdm2_1";
 		label = "rt-cdm";
 		reg = <0xac24000 0x400>;
 		reg-names = "rt-cdm0";
@@ -719,7 +718,7 @@
 
 	qcom,rt-cdm1@ac25000 {
 		cell-index = <1>;
-		compatible = "qcom,cam-cpas-cdm2_1";
+		compatible = "qcom,cam-rt-cdm2_1";
 		label = "rt-cdm";
 		reg = <0xac25000 0x400>;
 		reg-names = "rt-cdm1";
@@ -743,7 +742,7 @@
 
 	qcom,rt-cdm2@ac26000 {
 		cell-index = <2>;
-		compatible = "qcom,cam-cpas-cdm2_1";
+		compatible = "qcom,cam-rt-cdm2_1";
 		label = "rt-cdm";
 		reg = <0xac26000 0x400>;
 		reg-names = "rt-cdm2";
@@ -812,6 +811,7 @@
 		reg-names = "tfe0";
 		reg = <0xac62000 0xD000>;
 		reg-cam-base = <0x62000>;
+		rt-wrapper-base = <0x62000>;
 		interrupt-names = "tfe0";
 		interrupts = <GIC_SPI 602 IRQ_TYPE_EDGE_RISING>;
 		regulator-names = "camss";
@@ -878,6 +878,7 @@
 		reg-names = "tfe1";
 		reg = <0xac71000 0xD000>;
 		reg-cam-base = <0x71000>;
+		rt-wrapper-base = <0x62000>;
 		interrupt-names = "tfe1";
 		interrupts = <GIC_SPI 604 IRQ_TYPE_EDGE_RISING>;
 		regulator-names = "camss";
@@ -944,6 +945,7 @@
 		reg-names = "tfe2";
 		reg = <0xac80000 0xD000>;
 		reg-cam-base = <0x80000>;
+		rt-wrapper-base = <0x62000>;
 		interrupt-names = "tfe2";
 		interrupts = <GIC_SPI 688 IRQ_TYPE_EDGE_RISING>;
 		regulator-names = "camss";
@@ -1010,6 +1012,7 @@
 		reg-names = "tfe-lite0";
 		reg = <0xac8F000 0xD000>;
 		reg-cam-base = <0x8F000>;
+		rt-wrapper-base = <0x62000>;
 		interrupt-names = "tfe-lite0";
 		interrupts = <GIC_SPI 156 IRQ_TYPE_EDGE_RISING>;
 		regulator-names = "camss";
@@ -1032,6 +1035,68 @@
 		src-clock-name = "tfe3_clk_src";
 		clock-control-debugfs = "true";
 		cam_hw_pid = <11>;
+		status = "ok";
+	};
+
+	cam_csiphy_tpg13: qcom,tpg13@acf6000 {
+		cell-index = <13>;
+		phy-id = <2>;
+		compatible = "qcom,cam-tpg1031";
+		reg-names = "tpg0", "cam_cpas_top";
+		reg = <0xacf6000 0x400>,
+			<0xac13000 0x1000>;
+		reg-cam-base = <0xf6000 0x13000>;
+		regulator-names = "camss";
+		camss-supply = <&cam_cc_camss_top_gdsc>;
+		interrupt-names = "tpg0";
+		interrupts = <GIC_SPI 413 IRQ_TYPE_EDGE_RISING>;
+		shared-clks = <1 0 0 0>;
+		clock-names = "cphy_rx_clk_src",
+			"csiphy2_clk",
+			"csi2phytimer_clk_src",
+			"csi2phytimer_clk";
+		clocks = <&camcc CAM_CC_CPHY_RX_CLK_SRC>,
+			<&camcc CAM_CC_CSIPHY2_CLK>,
+			<&camcc CAM_CC_CSI2PHYTIMER_CLK_SRC>,
+			<&camcc CAM_CC_CSI2PHYTIMER_CLK>;
+		clock-rates =
+			<300000000 0 300000000 0>,
+			<400000000 0 300000000 0>,
+			<400000000 0 300000000 0>,
+			<400000000 0 300000000 0>;
+		clock-cntl-level = "lowsvs", "svs", "svs_l1", "nominal";
+		src-clock-name = "cphy_rx_clk_src";
+		status = "ok";
+	};
+
+	cam_csiphy_tpg14: qcom,tpg14@acf7000 {
+		cell-index = <14>;
+		phy-id = <3>;
+		compatible = "qcom,cam-tpg1031";
+		reg-names = "tpg1", "cam_cpas_top";
+		reg = <0xacf7000 0x400>,
+			<0xac13000 0x1000>;
+		reg-cam-base = <0xf7000 0x13000>;
+		regulator-names = "camss";
+		camss-supply = <&cam_cc_camss_top_gdsc>;
+		interrupt-names = "tpg1";
+		interrupts = <GIC_SPI 416 IRQ_TYPE_EDGE_RISING>;
+		shared-clks = <1 0 0 0>;
+		clock-names = "cphy_rx_clk_src",
+			"csiphy3_clk",
+			"csi3phytimer_clk_src",
+			"csi3phytimer_clk";
+		clocks = <&camcc CAM_CC_CPHY_RX_CLK_SRC>,
+			<&camcc CAM_CC_CSIPHY3_CLK>,
+			<&camcc CAM_CC_CSI3PHYTIMER_CLK_SRC>,
+			<&camcc CAM_CC_CSI3PHYTIMER_CLK>;
+		clock-rates =
+			<300000000 0 300000000 0>,
+			<400000000 0 300000000 0>,
+			<400000000 0 300000000 0>,
+			<400000000 0 300000000 0>;
+		clock-cntl-level = "lowsvs", "svs", "svs_l1", "nominal";
+		src-clock-name = "cphy_rx_clk_src";
 		status = "ok";
 	};
 
