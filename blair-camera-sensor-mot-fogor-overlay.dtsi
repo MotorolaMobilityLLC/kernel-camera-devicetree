@@ -1,0 +1,248 @@
+#include <dt-bindings/clock/qcom,gcc-blair.h>
+#include <dt-bindings/msm/msm-camera.h>
+
+/*s5kjns afvdd en*/
+
+/*s5kjns s5k4h7 sc202acs iovdd*/
+
+/*s5kjns dvdd*/
+
+
+&soc {
+
+  /*s5kjns avdd*/
+
+  /*sc202acs avdd*/
+
+  /*s5k4h7 avdd*/
+
+  /*s5k4h7 dvdd*/
+
+  /* s5kjns afvdd */
+
+  /* flash iovdd */
+
+  qcom,cam-res-mgr {
+    compatible = "qcom,cam-res-mgr";
+    status = "ok";
+  };
+};
+
+&tlmm {
+/* flash iovdd enable */
+
+  cam_sensor_mclk0_active: cam_sensor_mclk0_active {
+    mux {
+      pins = "gpio29";
+      function = "cam_mclk";
+    };
+
+    config {
+      pins = "gpio29";
+      bias-disable; /* No PULL */
+      drive-strength = <2>; /* 2 MA */
+    };
+  };
+
+  cam_sensor_mclk0_suspend: cam_sensor_mclk0_suspend {
+    mux {
+      pins = "gpio29";
+      function = "cam_mclk";
+    };
+
+    config {
+      pins = "gpio29";
+      bias-pull-down; /* PULL DOWN */
+      drive-strength = <2>; /* 2 MA */
+    };
+  };
+
+  cam_sensor_mclk1_active: cam_sensor_mclk1_active {
+    mux {
+      pins = "gpio30";
+      function = "cam_mclk";
+    };
+
+    config {
+      pins = "gpio30";
+      bias-disable; /* No PULL */
+      drive-strength = <2>; /* 2 MA */
+    };
+  };
+
+  cam_sensor_mclk1_suspend: cam_sensor_mclk1_suspend {
+    mux {
+      pins = "gpio30";
+      function = "cam_mclk";
+    };
+
+    config {
+      pins = "gpio30";
+      bias-pull-down; /* PULL DOWN */
+      drive-strength = <2>; /* 2 MA */
+    };
+  };
+
+  cam_sensor_mclk2_active: cam_sensor_mclk2_active {
+    mux {
+      pins = "gpio31";
+      function = "cam_mclk";
+    };
+
+    config {
+      pins = "gpio31";
+      bias-disable; /* No PULL */
+      drive-strength = <2>;
+    };
+  };
+
+  cam_sensor_mclk2_suspend: cam_sensor_mclk2_suspend {
+    mux {
+      pins = "gpio31";
+      function = "cam_mclk";
+    };
+
+    config {
+      pins = "gpio31";
+      bias-pull-down; /* PULL DOWN */
+      drive-strength = <2>;
+    };
+  };
+
+  cam_sensor_main_reset_active: cam_sensor_main_reset_active {
+    mux {
+      pins = "gpio35";
+      function = "gpio";
+    };
+
+    config {
+      pins = "gpio35";
+      bias-disable; /* No PULL */
+      drive-strength = <2>; /* 2 MA */
+    };
+  };
+
+  cam_sensor_main_reset_suspend: cam_sensor_main_reset_suspend {
+    mux {
+      pins = "gpio35";
+      function = "gpio";
+    };
+
+    config {
+      pins = "gpio35";
+      bias-pull-down; /* PULL DOWN */
+      drive-strength = <2>; /* 2 MA */
+      output-low;
+    };
+  };
+  cam_sensor_macro_reset_active: cam_sensor_macro_reset_active {
+    mux {
+      pins = "gpio37";
+      function = "gpio";
+    };
+
+    config {
+      pins = "gpio37";
+      bias-disable; /* No PULL */
+      drive-strength = <2>; /* 2 MA */
+    };
+  };
+
+  cam_sensor_macro_reset_suspend: cam_sensor_macro_reset_suspend {
+    mux {
+      pins = "gpio37";
+      function = "gpio";
+    };
+
+    config {
+      pins = "gpio37";
+      bias-pull-down; /* PULL DOWN */
+      drive-strength = <2>; /* 2 MA */
+      output-low;
+    };
+  };
+  cam_sensor_front_reset_active: cam_sensor_front_reset_active {
+    mux {
+      pins = "gpio34";
+      function = "gpio";
+    };
+
+    config {
+      pins = "gpio34";
+      bias-disable; /* No PULL */
+      drive-strength = <2>; /* 2 MA */
+    };
+  };
+
+  cam_sensor_front_reset_suspend: cam_sensor_front_reset_suspend {
+    mux {
+      pins = "gpio34";
+      function = "gpio";
+    };
+
+    config {
+      pins = "gpio34";
+      bias-pull-down; /* PULL DOWN */
+      drive-strength = <2>; /* 2 MA */
+      output-low;
+    };
+  };
+/* s5kjns avdd enable */
+
+/* sc202acs avdd enable */
+
+/* s5k4h7 dvdd enable */
+
+/* s5k4h7 avdd enable */
+
+};
+
+&cam_cci0 {
+  /* Rear 50M AF */
+  actuator_rear_main:qcom,actuator@0{
+
+  };
+
+  /* Rear 50M FLASH */
+  led_flash_rear: qcom,camera-flash@0 {
+
+  };
+
+  /* MACRO 2m FLASH */
+  led_flash_macro: qcom,camera-flash@2 {
+
+  };
+
+  /* Rear s5kjns eeprom */
+  eeprom_rear: qcom,eeprom@0 {
+
+  };
+
+  /* Rear s5kjns */
+  rear_main: qcom,cam-sensor@0 {
+
+  };
+
+  /* Rear sc202acs otp */
+  eeprom_macro: qcom,eeprom@2 {
+
+  };
+
+  /* Rear sc202acs */
+  rear_macro: qcom,cam-sensor@2 {
+
+  };
+
+};
+
+&cam_cci1 {
+  /* Front s5k4h7 otp */
+  eeprom_front: qcom,eeprom@1 {
+
+  };
+
+  /*Front s5k4h7*/
+  front_main: qcom,cam-sensor@1 {
+
+  };
+};
