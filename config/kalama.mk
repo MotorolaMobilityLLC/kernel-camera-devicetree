@@ -16,3 +16,6 @@ endif
 #Moto camera sensor dtbo
 dtbo-$(CONFIG_RTWO_DTB) += kalama-camera-sensor-rtwo-evb1.dtbo \
 							kalama-camera-sensor-rtwo-evt1.dtbo
+
+#Moto camera sensor dtbo
+dtbo-$(CONFIG_CTWO_DTB) += kalama-camera-sensor-ctwo-evb.dtbo
