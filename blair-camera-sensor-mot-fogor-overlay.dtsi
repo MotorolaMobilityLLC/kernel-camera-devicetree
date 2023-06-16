@@ -280,6 +280,21 @@
     status = "ok";
   };
 
+  /* Rear s5kjns eeprom */
+  eeprom_rear: qcom,eeprom@0 {
+    cell-index = <0>;
+    reg = <0x0>;
+    compatible = "qcom,eeprom";
+    cam_vio-supply = <&L13A>;
+    regulator-names = "cam_vio";
+    rgltr-cntrl-support;
+    rgltr-min-voltage = <1800000>;
+    rgltr-max-voltage = <1800000>;
+    rgltr-load-current = <120000>;
+    cci-master = <0>;
+    status = "ok";
+  };
+
   /* Rear s5kjns */
   rear_main: qcom,cam-sensor@0 {
     cell-index = <0>;
@@ -289,7 +304,7 @@
     sensor-position-pitch = <0>;
     sensor-position-yaw = <180>;
     actuator-src = <&actuator_rear_main>;
-    // eeprom-src = <&eeprom_rear>;
+    eeprom-src = <&eeprom_rear>;
     cam_vio-supply = <&L13A>;
     cam_vana-supply = <&camera_ldo_50m_avdd>;
     cam_vdig-supply = <&L3A>;
