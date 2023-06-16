@@ -1,6 +1,18 @@
 #include <dt-bindings/clock/qcom,gcc-blair.h>
 #include <dt-bindings/msm/msm-camera.h>
 
+&pm6125_gpios {
+  camera_ldo_50m_afvdd_en: camera_ldo_50m_afvdd_en {
+    pins = "gpio5";
+    function = "normal";
+    input-disable;
+    output-enable;
+    bias-pull-down; /* PULL DOWN */
+    power-source = <0>; /* 1.8V */
+    qcom,drive-strength = <2>; /* Medium */
+  };
+};
+
 /*s5kjns s5k4h7 sc202acs iovdd*/
 &L13A{
   regulator-min-microvolt = <1800000>;
@@ -30,7 +42,6 @@
     gpio = <&tlmm 38 0>;
     pinctrl-names = "default";
     pinctrl-0 = <&camera_ldo_50m_avdd_en>;
-    // vin-supply = <&vph_pwr>;
   };
 
   /*s5k4h7 dvdd*/
@@ -46,6 +57,20 @@
     pinctrl-names = "default";
     pinctrl-0 = <&camera_ldo_8m_dvdd_en>;
   };
+
+  camera_ldo_50m_afvdd: gpio-regulator@2 {
+    compatible = "regulator-fixed";
+    reg = <0x02 0x00>;
+    regulator-name = "camera_ldo_50m_afvdd";
+    regulator-min-microvolt = <2800000>;
+    regulator-max-microvolt = <2800000>;
+    regulator-enable-ramp-delay = <233>;
+    enable-active-high;
+    gpio = <&pm6125_gpios 5 0>;
+    pinctrl-names = "default";
+    pinctrl-0 = <&camera_ldo_50m_afvdd_en>;
+  };
+
 
   qcom,cam-res-mgr {
     compatible = "qcom,cam-res-mgr";
@@ -241,6 +266,20 @@
 };
 
 &cam_cci0 {
+  /* Rear 50M AF */
+  actuator_rear_main: qcom,actuator@0{
+    cell-index = <0>;
+    compatible = "qcom,actuator";
+    cci-master = <0>;
+    cam_vaf-supply = <&camera_ldo_50m_afvdd>;
+    regulator-names = "cam_vaf";
+    rgltr-cntrl-support;
+    rgltr-min-voltage = <2800000>;
+    rgltr-max-voltage = <2800000>;
+    rgltr-load-current = <103000>;
+    status = "ok";
+  };
+
   /* Rear s5kjns */
   rear_main: qcom,cam-sensor@0 {
     cell-index = <0>;
@@ -249,31 +288,27 @@
     sensor-position-roll = <90>;
     sensor-position-pitch = <0>;
     sensor-position-yaw = <180>;
-    // actuator-src = <&actuator_rear_main>;
+    actuator-src = <&actuator_rear_main>;
     // eeprom-src = <&eeprom_rear>;
     cam_vio-supply = <&L13A>;
     cam_vana-supply = <&camera_ldo_50m_avdd>;
     cam_vdig-supply = <&L3A>;
     cam_clk-supply = <&gcc_camss_top_gdsc>;
-    regulator-names ="cam_vio", "cam_vana", "cam_vdig",
-      "cam_clk";
+    cam_vaf-supply = <&camera_ldo_50m_afvdd>;
+    regulator-names ="cam_vio", "cam_vana", "cam_vdig", "cam_clk", "cam_vaf";
     rgltr-cntrl-support;
-    rgltr-min-voltage = <1800000 2800000 1050000 0>;
-    rgltr-max-voltage = <1800000 2800000 1050000 0>;
-    rgltr-load-current = <120000 80000 1200000 0>;
+    rgltr-min-voltage = <1800000 2800000 1050000 0 2800000>;
+    rgltr-max-voltage = <1800000 2800000 1050000 0 2800000>;
+    rgltr-load-current = <120000 80000 1200000 0 103000>;
     gpio-no-mux = <0>;
     pinctrl-names = "cam_default", "cam_suspend";
-    pinctrl-0 = <&cam_sensor_mclk0_active
-        &cam_sensor_main_reset_active>;
-    pinctrl-1 = <&cam_sensor_mclk0_suspend
-        &cam_sensor_main_reset_suspend>;
-    gpios = <&tlmm 29 0>,
-      <&tlmm 35 0>;
+    pinctrl-0 = <&cam_sensor_mclk0_active &cam_sensor_main_reset_active>;
+    pinctrl-1 = <&cam_sensor_mclk0_suspend &cam_sensor_main_reset_suspend>;
+    gpios = <&tlmm 29 0>, <&tlmm 35 0>;
     gpio-reset = <1>;
     gpio-req-tbl-num = <0 1>;
     gpio-req-tbl-flags = <1 0>;
-    gpio-req-tbl-label = "CAMIF_MCLK0",
-          "CAM_RESET1";
+    gpio-req-tbl-label = "CAMIF_MCLK0", "CAM_RESET1";
     cci-master = <0>;
     status = "ok";
     clocks = <&gcc GCC_CAMSS_MCLK0_CLK>;
