@@ -1,8 +1,6 @@
 #include <dt-bindings/clock/qcom,gcc-blair.h>
 #include <dt-bindings/msm/msm-camera.h>
 
-/*s5kjns afvdd en*/
-
 /*s5kjns s5k4h7 sc202acs iovdd*/
 &L13A{
   regulator-min-microvolt = <1800000>;
@@ -35,15 +33,19 @@
     // vin-supply = <&vph_pwr>;
   };
 
-  /*sc202acs avdd*/
-
-  /*s5k4h7 avdd*/
-
   /*s5k4h7 dvdd*/
-
-  /* s5kjns afvdd */
-
-  /* flash iovdd */
+  camera_ldo_8m_dvdd: gpio-regulator@1 {
+    compatible = "regulator-fixed";
+    reg = <0x01 0x00>;
+    regulator-name = "camera_ldo_8m_dvdd";
+    regulator-min-microvolt = <1200000>;
+    regulator-max-microvolt = <1200000>;
+    regulator-enable-ramp-delay = <233>;
+    enable-active-high;
+    gpio = <&tlmm 6 0>;
+    pinctrl-names = "default";
+    pinctrl-0 = <&camera_ldo_8m_dvdd_en>;
+  };
 
   qcom,cam-res-mgr {
     compatible = "qcom,cam-res-mgr";
@@ -52,8 +54,6 @@
 };
 
 &tlmm {
-/* flash iovdd enable */
-
   cam_sensor_mclk0_active: cam_sensor_mclk0_active {
     mux {
       pins = "gpio29";
@@ -225,35 +225,22 @@
     };
   };
 
-/* sc202acs avdd enable */
-
 /* s5k4h7 dvdd enable */
+  camera_ldo_8m_dvdd_en: camera_ldo_8m_dvdd_en {
+    mux {
+      pins = "gpio6";
+      function = "gpio";
+    };
 
-/* s5k4h7 avdd enable */
-
+    config {
+      pins = "gpio6";
+      bias-disable; /* No PULL */
+      drive-strength = <2>; /* 2 MA */
+    };
+  };
 };
 
 &cam_cci0 {
-  /* Rear 50M AF */
-  actuator_rear_main:qcom,actuator@0{
-
-  };
-
-  /* Rear 50M FLASH */
-  led_flash_rear: qcom,camera-flash@0 {
-
-  };
-
-  /* MACRO 2m FLASH */
-  led_flash_macro: qcom,camera-flash@2 {
-
-  };
-
-  /* Rear s5kjns eeprom */
-  eeprom_rear: qcom,eeprom@0 {
-
-  };
-
   /* Rear s5kjns */
   rear_main: qcom,cam-sensor@0 {
     cell-index = <0>;
@@ -294,27 +281,47 @@
     clock-cntl-level = "turbo";
     clock-rates = <24000000>;
   };
-
-  /* Rear sc202acs otp */
-  eeprom_macro: qcom,eeprom@2 {
-
-  };
-
-  /* Rear sc202acs */
-  rear_macro: qcom,cam-sensor@2 {
-
-  };
-
 };
 
 &cam_cci1 {
-  /* Front s5k4h7 otp */
-  eeprom_front: qcom,eeprom@1 {
-
-  };
-
   /*Front s5k4h7*/
   front_main: qcom,cam-sensor@1 {
-
+    cell-index = <1>;
+    compatible = "qcom,cam-sensor";
+    csiphy-sd-index = <3>;
+    sensor-position-roll = <270>;
+    sensor-position-pitch = <0>;
+    sensor-position-yaw = <0>;
+    //eeprom-src = <&eeprom_front>;
+    cam_vio-supply = <&L13A>;
+    cam_vana-supply = <&camera_ldo_50m_avdd>;
+    cam_vdig-supply = <&camera_ldo_8m_dvdd>;
+    cam_clk-supply = <&gcc_camss_top_gdsc>;
+    regulator-names = "cam_vio", "cam_vana", "cam_vdig",
+      "cam_clk";
+    rgltr-cntrl-support;
+    rgltr-min-voltage = <1800000 2800000 1200000 0>;
+    rgltr-max-voltage = <1800000 2800000 1200000 0>;
+    rgltr-load-current = <120000 80000 1200000 0>;
+    gpio-no-mux = <0>;
+    pinctrl-names = "cam_default", "cam_suspend";
+    pinctrl-0 = <&cam_sensor_mclk1_active
+        &cam_sensor_front_reset_active>;
+    pinctrl-1 = <&cam_sensor_mclk1_suspend
+        &cam_sensor_front_reset_suspend>;
+    gpios = <&tlmm 30 0>,
+      <&tlmm 34 0>;
+    gpio-reset = <1>;
+    gpio-req-tbl-num = <0 1 >;
+    gpio-req-tbl-flags = <1 0 >;
+    gpio-req-tbl-label = "CAMIF_MCLK1",
+          "CAM_RESET0";
+    sensor-mode = <1>;
+    cci-master = <0>;
+    status = "ok";
+    clocks = <&gcc GCC_CAMSS_MCLK1_CLK>;
+    clock-names = "cam_clk";
+    clock-cntl-level = "turbo";
+    clock-rates = <24000000>;
   };
 };
