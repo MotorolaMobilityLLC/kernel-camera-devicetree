@@ -39,7 +39,7 @@
     regulator-max-microvolt = <2800000>;
     regulator-enable-ramp-delay = <233>;
     enable-active-high;
-    gpio = <&tlmm 38 0>;
+    gpio = <&tlmm 8 0>;
     pinctrl-names = "default";
     pinctrl-0 = <&camera_ldo_50m_avdd_en>;
   };
@@ -82,6 +82,19 @@
     gpio = <&tlmm 24 0>;
     pinctrl-names = "default";
     pinctrl-0 = <&flash_ldo_dovdd_en>;
+  };
+
+  camera_ldo_8m_avdd: gpio-regulator@4 {
+    compatible = "regulator-fixed";
+    reg = <0x04 0x00>;
+    regulator-name = "camera_ldo_8m_avdd";
+    regulator-min-microvolt = <2800000>;
+    regulator-max-microvolt = <2800000>;
+    regulator-enable-ramp-delay = <233>;
+    enable-active-high;
+    gpio = <&tlmm 38 0>;
+    pinctrl-names = "default";
+    pinctrl-0 = <&camera_ldo_8m_avdd_en>;
   };
 
   qcom,cam-res-mgr {
@@ -264,6 +277,19 @@
 /* s5kjns avdd enable */
   camera_ldo_50m_avdd_en: camera_ldo_50m_avdd_en {
     mux {
+      pins = "gpio8";
+      function = "gpio";
+    };
+
+    config {
+      pins = "gpio8";
+      bias-disable; /* No PULL */
+      drive-strength = <2>; /* 2 MA */
+    };
+  };
+
+  camera_ldo_8m_avdd_en: camera_ldo_8m_avdd_en {
+    mux {
       pins = "gpio38";
       function = "gpio";
     };
@@ -357,12 +383,13 @@
     status = "ok";
   };
 
+  /* Rear sc202acs eeprom */
   eeprom_macro: qcom,eeprom@2 {
     cell-index = <2>;
     reg = <0x2>;
     compatible = "qcom,eeprom";
     cam_vio-supply = <&L13A>;
-    cam_vana-supply = <&camera_ldo_50m_avdd>;
+    cam_vana-supply = <&camera_ldo_8m_avdd>;
     cam_clk-supply = <&gcc_camss_top_gdsc>;
     regulator-names = "cam_vio", "cam_vana", "cam_clk";
     rgltr-cntrl-support;
@@ -438,7 +465,7 @@
     led-flash-src = <&led_flash_macro>;
     cam_v_custom2-supply = <&flash_ldo_dovdd>;
     cam_vio-supply = <&L13A>;
-    cam_vana-supply = <&camera_ldo_50m_avdd>;
+    cam_vana-supply = <&camera_ldo_8m_avdd>;
     cam_clk-supply = <&gcc_camss_top_gdsc>;
     regulator-names = "cam_v_custom2", "cam_vio", "cam_vana", "cam_clk";
     rgltr-cntrl-support;
@@ -471,7 +498,7 @@
     reg = <0x1>;
     compatible = "qcom,eeprom";
     cam_vio-supply = <&L13A>;
-    cam_vana-supply = <&camera_ldo_50m_avdd>;
+    cam_vana-supply = <&camera_ldo_8m_avdd>;
     cam_vdig-supply = <&camera_ldo_8m_dvdd>;
     cam_clk-supply = <&gcc_camss_top_gdsc>;
     regulator-names = "cam_vio", "cam_vana", "cam_vdig", "cam_clk";
@@ -507,7 +534,7 @@
     sensor-position-yaw = <0>;
     eeprom-src = <&eeprom_front>;
     cam_vio-supply = <&L13A>;
-    cam_vana-supply = <&camera_ldo_50m_avdd>;
+    cam_vana-supply = <&camera_ldo_8m_avdd>;
     cam_vdig-supply = <&camera_ldo_8m_dvdd>;
     cam_clk-supply = <&gcc_camss_top_gdsc>;
     regulator-names = "cam_vio", "cam_vana", "cam_vdig", "cam_clk";
