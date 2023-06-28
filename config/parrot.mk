@@ -15,4 +15,7 @@ endif  #($(CONFIG_GENEVA_DTB),y)
 ifeq ($(CONFIG_GENEVN_DTB),y)
 dtbo-$(CONFIG_ARCH_PARROT) += parrot-camera-sensor-genevn-evb.dtbo
 endif  #($(CONFIG_GENEVN_DTB),y)
+ifeq ($(CONFIG_AVATRN_DTB),y)
+dtbo-$(CONFIG_ARCH_PARROT) += parrot-camera-sensor-avatrn-evb.dtbo
+endif  #($(CONFIG_AVATRN_DTB),y)
 endif  #($(CONFIG_MMI_DEVICE_DTBS),y)
