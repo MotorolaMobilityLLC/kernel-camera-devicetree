@@ -1,0 +1,89 @@
+/*
+   This base is original from "diwali-camera-sensor-idp.dtsi"
+*/
+#include <dt-bindings/clock/qcom,camcc-parrot.h>
+#include <dt-bindings/msm-camera.h>
+
+&pm6150l_gpios {
+
+		cam_dvdd_main_en_default: cam_dvdd_main_en_default {
+			pins = "gpio5";
+			function = "normal";
+			input-disable;
+			output-enable;
+			bias-pull-down; /* PULL DOWN */
+			power-source = <0>;
+			qcom,drive-strength = <2>;	/* Medium */
+		};
+};
+
+&soc {
+	qcom,cam-res-mgr {
+		compatible = "qcom,cam-res-mgr";
+		status = "ok";
+	};
+
+	mot,cam-actuator {
+		compatible = "mot,actuator";
+		status = "ok";
+	};
+
+	cam_dvdd_main: gpio-regulator@2 {
+		compatible = "regulator-fixed";
+		reg = <0x00 0x00>;
+		regulator-name = "cam_dvdd_main";
+		regulator-min-microvolt = <1100000>;
+		regulator-max-microvolt = <1100000>;
+		regulator-enable-ramp-delay = <233>;
+		enable-active-high;
+		gpio = <&pm6150l_gpios 5 0>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&cam_dvdd_main_en_default>;
+		vin-supply = <&S8B>;
+	};
+};
+
+&cam_cci0 {
+	rear_main: qcom,cam-sensor@0 {
+		cell-index = <0>;
+		compatible = "qcom,cam-sensor";
+		csiphy-sd-index = <1>;
+		sensor-position-roll = <90>;
+		sensor-position-pitch = <0>;
+		sensor-position-yaw = <180>;
+		//led-flash-src = <&led_flash_rear>;
+		//actuator-src = <&actuator_rear_main>;
+		//ois-src = <&ois_rear_main>;
+		//eeprom-src = <&eeprom_rear_main>;
+		cam_vio-supply = <&cam_ldo7>;
+		cam_vdig-supply = <&cam_dvdd_main>;
+		cam_clk-supply = <&cam_cc_camss_top_gdsc>;
+		cam_vana-supply = <&cam_ldo4>;
+		cam_vaf-supply  = <&cam_ldo5>;
+		regulator-names = "cam_vio", "cam_vdig",
+			"cam_clk", "cam_vana", "cam_vaf";
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <1800000 1100000 0 2800000 2800000>;
+		rgltr-max-voltage = <1800000 1100000 0 2800000 2800000>;
+		rgltr-load-current = <155000 680000 0 119000 103000>;
+		gpio-no-mux = <0>;
+		pinctrl-names = "cam_default", "cam_suspend";
+		pinctrl-0 = <&cam_sensor_mclk1_active
+			&cam_sensor_active_rst1>;
+		pinctrl-1 = <&cam_sensor_mclk1_suspend
+			&cam_sensor_suspend_rst1>;
+		gpios = <&tlmm 40 0>,
+			<&tlmm 45 0>;
+		gpio-reset = <1>;
+		gpio-req-tbl-num = <0 1>;
+		gpio-req-tbl-flags = <1 0>;
+		gpio-req-tbl-label = "CAMIF_MCLK1",
+					"CAM_RESET1";
+		cci-master = <CCI_MASTER_1>;
+		clocks = <&camcc CAM_CC_MCLK1_CLK>;
+		clock-names = "cam_clk";
+		clock-cntl-level = "nominal";
+		clock-rates = <24000000>;
+		status = "ok";
+	};
+};
