@@ -1,0 +1,19 @@
+/*
+   This base is original from "khaje-camera-sensor-idp.dtsi"
+*/
+#include <dt-bindings/clock/qcom,gcc-khaje.h>
+#include <dt-bindings/msm-camera.h>
+
+&tlmm {
+};
+
+&soc {
+        qcom,cam-res-mgr {
+          compatible = "qcom,cam-res-mgr";
+          status = "ok";
+        };
+};
+
+&cam_cci0 {
+
+};
