@@ -1,0 +1,22 @@
+#include <dt-bindings/clock/qcom,gcc-blair.h>
+#include <dt-bindings/msm/msm-camera.h>
+
+&tlmm {
+
+};
+
+&soc {
+    qcom,cam-res-mgr {
+        compatible = "qcom,cam-res-mgr";
+        status = "ok";
+    };
+
+};
+
+&cam_cci0 {
+
+};
+
+&cam_cci1 {
+
+};
