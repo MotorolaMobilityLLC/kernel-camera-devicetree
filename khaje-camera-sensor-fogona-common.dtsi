@@ -3,6 +3,7 @@
 */
 #include <dt-bindings/clock/qcom,gcc-khaje.h>
 #include <dt-bindings/msm-camera.h>
+#include "khaje-camera-flash-pwm.dtsi"
 
 &tlmm {
   cam_sensor_mclk0_active: cam_sensor_mclk0_active {
@@ -180,13 +181,77 @@
       drive-strength = <2>; /* 2 MA */
     };
   };
+  flash_active: flash_active {
+    /* FLASH */
+    mux {
+      pins = "gpio85";
+      function = "gpio";
+    };
 
+    config {
+      pins = "gpio85";
+      bias-disable; /* No PULL */
+      drive-strength = <2>; /* 2 MA */
+    };
+  };
+
+  flash_suspend: cam_flash_suspend {
+    /* FLASH */
+    mux {
+      pins = "gpio85";
+      function = "gpio";
+    };
+
+    config {
+      pins = "gpio85";
+      bias-pull-down; /* PULL DOWN */
+      drive-strength = <2>; /* 2 MA */
+      output-low;
+    };
+  };
+
+  cam_res_mgr_default: cam_res_mgr_default {
+    /* FLASH */
+    mux {
+      pins = "gpio85";
+      function = "gpio";
+    };
+
+    config {
+      pins = "gpio85";
+      bias-disable; /* No PULL */
+      drive-strength = <2>; /* 2 MA */
+    };
+  };
+
+  cam_res_mgr_suspend: cam_res_mgr_suspend {
+    /* FLASH */
+    mux {
+      pins = "gpio85";
+      function = "gpio";
+    };
+
+    config {
+      pins = "gpio85";
+      bias-pull-down; /* PULL DOWN */
+      drive-strength = <2>; /* 2 MA */
+      output-low;
+    };
+  };
+};
+
+&pm6125_pwm {
+    status = "ok";
 };
 
 &soc {
   qcom,cam-res-mgr {
     compatible = "qcom,cam-res-mgr";
     status = "ok";
+    gpios = <&tlmm 85 0>;
+    pinctrl-names = "cam_res_mgr_default", "cam_res_mgr_suspend";
+    pinctrl-0 = <&cam_res_mgr_default>;
+    pinctrl-1 = <&cam_res_mgr_suspend>;
   };
 
   camera_ldo_iovdd: gpio-regulator@0 {
@@ -262,6 +327,23 @@
 };
 
 &cam_cci0 {
+  /* pwm  flash fogona*/
+  led_flash_rear: qcom,camera-flash@0 {
+    cell-index = <0>;
+    compatible = "qcom,camera-flash";
+    flash-type = <CAM_FLASH_TYPE_GPIO>;
+    gpio-no-mux = <0>;
+    pinctrl-names = "cam_default", "cam_suspend";
+    pinctrl-0 = <&flash_active>;
+    pinctrl-1 = <&flash_suspend>;
+    gpios = <&tlmm 85 0>;
+    gpio-custom1 = <0>;
+    gpio-req-tbl-num = <0>;
+    gpio-req-tbl-flags = <0>;
+    gpio-req-tbl-label = "CUSTOM_GPIO1";
+    status = "ok";
+  };
+
   /* Rear s5kjns eeprom */
   eeprom_rear: qcom,eeprom@0 {
     cell-index = <0>;
@@ -317,6 +399,7 @@
     sensor-position-pitch = <0>;
     sensor-position-yaw = <180>;
     eeprom-src = <&eeprom_rear>;
+    led-flash-src = <&led_flash_rear>;
     cam_vio-supply = <&camera_ldo_iovdd>;
     cam_vana-supply = <&camera_ldo_50m_avdd>;
     cam_vdig-supply = <&camera_ldo_50m_dvdd>;
