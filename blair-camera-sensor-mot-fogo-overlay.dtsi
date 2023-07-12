@@ -391,6 +391,21 @@
         status = "ok";
     };
 
+    /* Rear s5kjns eeprom */
+    eeprom_rear: qcom,eeprom@0 {
+        cell-index = <0>;
+        reg = <0x0>;
+        compatible = "qcom,eeprom";
+        cam_vio-supply = <&camera_ldo_iovdd>;
+        regulator-names = "cam_vio";
+        rgltr-cntrl-support;
+        rgltr-min-voltage = <1800000>;
+        rgltr-max-voltage = <1800000>;
+        rgltr-load-current = <120000>;
+        cci-master = <0>;
+        status = "ok";
+    };
+
     /*Macro sc202acs eeprom*/
     eeprom_macro: qcom,eeprom@2 {
         cell-index = <2>;
@@ -463,6 +478,7 @@
         sensor-position-yaw = <180>;
         actuator-src = <&actuator_rear_main>;
         led-flash-src = <&led_flash_rear>;
+        eeprom-src = <&eeprom_rear>;
         cam_vio-supply = <&camera_ldo_iovdd>;
         cam_vana-supply = <&camera_ldo_50m_avdd>;
         cam_vdig-supply = <&camera_ldo_50m_dvdd>;
