@@ -9,6 +9,14 @@
     status = "okay";
 };
 
+/*s5kjns afvdd*/
+&L21A{
+    regulator-min-microvolt = <2800000>;
+    regulator-max-microvolt = <2800000>;
+    qcom,init-voltage = <2800000>;
+    status = "okay";
+};
+
 &tlmm {
     cam_sensor_mclk0_active: cam_sensor_mclk0_active {
         mux {
@@ -317,6 +325,20 @@
 };
 
 &cam_cci0 {
+    /* Rear 50M AF */
+    actuator_rear_main: qcom,actuator@0{
+        cell-index = <0>;
+        compatible = "qcom,actuator";
+        cci-master = <0>;
+        cam_vaf-supply = <&L21A>;
+        regulator-names = "cam_vaf";
+        rgltr-cntrl-support;
+        rgltr-min-voltage = <2800000>;
+        rgltr-max-voltage = <2800000>;
+        rgltr-load-current = <103000>;
+        status = "ok";
+    };
+
     /* Rear s5kjns */
     rear_main: qcom,cam-sensor@0 {
         cell-index = <0>;
@@ -325,6 +347,7 @@
         sensor-position-roll = <90>;
         sensor-position-pitch = <0>;
         sensor-position-yaw = <180>;
+        actuator-src = <&actuator_rear_main>;
         cam_vio-supply = <&camera_ldo_iovdd>;
         cam_vana-supply = <&camera_ldo_50m_avdd>;
         cam_vdig-supply = <&camera_ldo_50m_dvdd>;
