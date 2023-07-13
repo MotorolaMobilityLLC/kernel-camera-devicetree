@@ -28,7 +28,7 @@
 		status = "ok";
 	};
 
-	cam_dvdd_main: gpio-regulator@2 {
+	cam_dvdd_main: gpio-regulator@0 {
 		compatible = "regulator-fixed";
 		reg = <0x00 0x00>;
 		regulator-name = "cam_dvdd_main";
@@ -118,7 +118,7 @@
 		cam_vio-supply = <&cam_ldo7>;
 		cam_vana-supply = <&cam_ldo6>;
 		cam_vdig-supply = <&cam_ldo2>;
-		cam_clk-supply = <&cam_cc_titan_top_gdsc>;
+		cam_clk-supply = <&cam_cc_camss_top_gdsc>;
 		regulator-names = "cam_vio", "cam_vana",
 			"cam_vdig", "cam_clk";
 		rgltr-cntrl-support;
