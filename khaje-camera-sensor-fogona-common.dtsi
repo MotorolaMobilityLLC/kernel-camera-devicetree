@@ -168,19 +168,6 @@
     };
   };
 
-/* s5k4h7 dvdd enable */
-  camera_ldo_8m_dvdd_en: camera_ldo_8m_dvdd_en {
-    mux {
-      pins = "gpio97";
-      function = "gpio";
-    };
-
-    config {
-      pins = "gpio97";
-      bias-disable; /* No PULL */
-      drive-strength = <2>; /* 2 MA */
-    };
-  };
   flash_active: flash_active {
     /* FLASH */
     mux {
@@ -242,6 +229,19 @@
 
 &pm6125_pwm {
     status = "ok";
+};
+
+/* s5k4h7 dvdd enable */
+&pm6125_gpios {
+  camera_ldo_8m_dvdd_en: camera_ldo_8m_dvdd_en {
+    pins = "gpio1";
+    function = "normal";
+    input-disable;
+    output-enable;
+    bias-pull-down; /* PULL DOWN */
+    power-source = <0>; /* 1.2V */
+    qcom,drive-strength = <2>; /* Medium */
+  };
 };
 
 &soc {
@@ -319,7 +319,7 @@
     regulator-max-microvolt = <1200000>;
     regulator-enable-ramp-delay = <233>;
     enable-active-high;
-    gpio = <&tlmm 97 0>;
+    gpio = <&pm6125_gpios 1 0>;
     pinctrl-names = "default";
     pinctrl-0 = <&camera_ldo_8m_dvdd_en>;
     vin-supply = <&S7A>;
