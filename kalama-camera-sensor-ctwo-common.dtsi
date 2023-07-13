@@ -88,6 +88,33 @@
 		pinctrl-names = "default";
 		pinctrl-0 = <&cam_ois_af_vdd_tele_en_default>;
 		vin-supply = <&BOB1>;
+        };
+
+	led_flash_rear_main: qcom,camera-flash0 {
+		cell-index = <0>;
+		compatible = "qcom,camera-flash";
+		flash-source = <&pm8550_flash0 &pm8550_flash1>;
+		torch-source = <&pm8550_torch0 &pm8550_torch1>;
+		switch-source = <&pm8550_switch2>;
+		status = "ok";
+	};
+
+	led_flash_rear_uw: qcom,camera-flash2 {
+		cell-index = <2>;
+		compatible = "qcom,camera-flash";
+		flash-source = <&pm8550_flash0 &pm8550_flash1>;
+		torch-source = <&pm8550_torch0 &pm8550_torch1>;
+		switch-source = <&pm8550_switch2>;
+		status = "ok";
+	};
+
+	led_flash_rear_tele: qcom,camera-flash3 {
+		cell-index = <3>;
+		compatible = "qcom,camera-flash";
+		flash-source = <&pm8550_flash0 &pm8550_flash1>;
+		torch-source = <&pm8550_torch0 &pm8550_torch1>;
+		switch-source = <&pm8550_switch2>;
+		status = "ok";
 	};
 
 	qcom,cam-res-mgr {
@@ -130,7 +157,7 @@
 		compatible = "qcom,cam-sensor";
 		csiphy-sd-index = <1>;
 		//eeprom-src = <&eeprom_rear_main>;
-		//led-flash-src = <&led_flash_rear_main>;
+		led-flash-src = <&led_flash_rear_main>;
 		//actuator-src = <&actuator_rear_main>;
 		sensor-position-roll = <90>;
 		sensor-position-pitch = <0>;
@@ -174,6 +201,7 @@
 		sensor-position-roll = <90>;
 		sensor-position-pitch = <0>;
 		sensor-position-yaw = <180>;
+		led-flash-src = <&led_flash_rear_uw>;
 		cam_vio-supply = <&L4B>;
 		cam_vdig-supply = <&cam_dvdd_uw>;
 		cam_clk-supply = <&cam_cc_titan_top_gdsc>;
@@ -331,6 +359,7 @@
 		actuator-src = <&actuator_tele>;
 		ois-src = <&ois_tele>;
 		eeprom-src = <&eeprom_tele>;
+		led-flash-src = <&led_flash_rear_tele>;
 		cam_vio-supply = <&L4B>;
 		cam_vdig-supply = <&camera_ldo2>;
 		cam_clk-supply = <&cam_cc_titan_top_gdsc>;
