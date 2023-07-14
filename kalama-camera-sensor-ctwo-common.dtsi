@@ -27,7 +27,13 @@
 		};
 	};
 };
-
+/*
+&L16B {
+	regulator-min-microvolt = <3300000>;
+	regulator-max-microvolt = <3300000>;
+	qcom,init-voltage = <3300000>;
+};
+*/
 &soc {
 	cam_dvdd_uw: gpio-regulator@0 {
 		compatible = "regulator-fixed";
@@ -64,6 +70,76 @@
 };
 
 &cam_cci0 {
+/*
+	actuator_rear_main: qcom,actuator0{
+		cell-index = <0>;
+		compatible = "qcom,actuator";
+		cci-master = <CCI_MASTER_0>;
+		cam_vaf-supply = <&L16B>;
+		regulator-names = "cam_vaf";
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <3300000>;
+		rgltr-max-voltage = <3300000>;
+		rgltr-load-current = <119000>;
+		status = "ok";
+	};
+
+	eeprom_rear_main: qcom,eeprom@0 {
+		cell-index = <0>;
+		reg = <0x0>;
+		compatible = "qcom,eeprom";
+		cci-master = <CCI_MASTER_0>;
+		cam_vio-supply = <&L4B>;
+		regulator-names = "cam_vio";
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <1800000>;
+		rgltr-max-voltage = <1800000>;
+		rgltr-load-current = <0>;
+		status = "ok";
+	};
+*/
+	rear_main: qcom,cam-sensor0 {
+		cell-index = <0>;
+		compatible = "qcom,cam-sensor";
+		csiphy-sd-index = <1>;
+		//eeprom-src = <&eeprom_rear_main>;
+		//led-flash-src = <&led_flash_rear_main>;
+		//actuator-src = <&actuator_rear_main>;
+		sensor-position-roll = <90>;
+		sensor-position-pitch = <0>;
+		sensor-position-yaw = <180>;
+		cam_vio-supply = <&L4B>;
+		cam_vdig-supply = <&camera_ldo1>;
+		cam_clk-supply = <&cam_cc_titan_top_gdsc>;
+		cam_vana-supply = <&camera_ldo3>;
+		//cam_vaf-supply = <&L16B>;
+		regulator-names = "cam_vana",
+			"cam_vdig","cam_clk","cam_vio";
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <2800000 1100000 0 1800000>;
+		rgltr-max-voltage = <2804000 1104000 0 1800000>;
+		rgltr-load-current = <101000 787000 0 1000>;
+		gpio-no-mux = <0>;
+		pinctrl-names = "cam_default", "cam_suspend";
+		pinctrl-0 = <&cam_sensor_mclk1_active
+			&cam_sensor_active_rst1>;
+		pinctrl-1 = <&cam_sensor_mclk1_suspend
+			&cam_sensor_suspend_rst1>;
+		gpios = <&tlmm 101 0>,
+			<&tlmm 117 0>;
+		gpio-reset = <1>;
+		gpio-req-tbl-num = <0 1>;
+		gpio-req-tbl-flags = <1 0>;
+		gpio-req-tbl-label = "CAMIF_MCLK1",
+					"CAM_RESET1";
+		cci-master = <CCI_MASTER_0>;
+		clocks = <&camcc CAM_CC_MCLK1_CLK>;
+		clock-names = "cam_clk";
+		clock-cntl-level = "nominal";
+		clock-rates = <19200000>;
+		status = "ok";
+	};
+
 	rear_uw:qcom,cam-sensor2 {
 		cell-index = <2>;
 		compatible = "qcom,cam-sensor";
