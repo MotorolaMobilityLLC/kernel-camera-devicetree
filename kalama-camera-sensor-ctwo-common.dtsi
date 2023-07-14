@@ -26,6 +26,19 @@
 			drive-strength = <2>; /* 2 MA */
 		};
 	};
+
+	cam_ois_af_vdd_tele_en_default: cam_ois_af_vdd_tele_en_default {
+		mux {
+			pins = "gpio4";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio4";
+			bias-pull-down; /* PULL DOWN */
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
 };
 /*
 &L16B {
@@ -61,6 +74,20 @@
 		pinctrl-names = "default";
 		pinctrl-0 = <&cam_dvdd_front_en_default>;
 		vin-supply = <&S4G>;
+	};
+
+	cam_ois_af_vdd_tele: gpio-regulator@2 {
+		compatible = "regulator-fixed";
+		reg = <0x02 0x00>;
+		regulator-name = "cam_ois_af_vdd_tele";
+		regulator-min-microvolt = <2800000>;
+		regulator-max-microvolt = <2800000>;
+		regulator-enable-ramp-delay = <233>;
+		enable-active-high;
+		gpio = <&tlmm 4 0>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&cam_ois_af_vdd_tele_en_default>;
+		vin-supply = <&BOB1>;
 	};
 
 	qcom,cam-res-mgr {
@@ -180,6 +207,22 @@
 };
 
 &cam_cci1 {
+	i2c_freq_100Khz_cci1: qcom,i2c_standard_mode {
+		hw-scl-stretch-en = <1>;
+	};
+
+	i2c_freq_400Khz_cci1: qcom,i2c_fast_mode {
+		hw-scl-stretch-en = <1>;
+	};
+
+	i2c_freq_custom_cci1: qcom,i2c_custom_mode {
+		hw-scl-stretch-en = <1>;
+	};
+
+	i2c_freq_1Mhz_cci1: qcom,i2c_fast_plus_mode {
+		hw-scl-stretch-en = <1>;
+	};
+
 	front_main: qcom,cam-sensor1 {
 		cell-index = <1>;
 		compatible = "qcom,cam-sensor";
@@ -218,6 +261,36 @@
 		status = "ok";
 	};
 
+	actuator_tele: qcom,actuator3{
+		cell-index = <3>;
+		compatible = "qcom,actuator";
+		cci-master = <CCI_MASTER_0>;
+		cam_vio-supply = <&L4B>;
+		cam_vaf-supply = <&camera_ldo7>;
+		cam_v_custom1-supply = <&cam_ois_af_vdd_tele>;
+		regulator-names = "cam_vio", "cam_vaf", "cam_v_custom1";
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <1800000 2800000 2800000>;
+		rgltr-max-voltage = <1800000 2804000 2800000>;
+		rgltr-load-current = <1000 227000 20000>;
+		status = "ok";
+	};
+
+	ois_tele: qcom,ois3 {
+		cell-index = <3>;
+		compatible = "qcom,ois";
+		cci-master = <CCI_MASTER_0>;
+		cam_vio-supply = <&L4B>;
+		cam_vaf-supply = <&camera_ldo7>;
+		cam_v_custom1-supply  = <&cam_ois_af_vdd_tele>;
+		regulator-names = "cam_vio", "cam_vaf", "cam_v_custom1";
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <1800000 2800000 2800000>;
+		rgltr-max-voltage = <1800000 2804000 2800000>;
+		rgltr-load-current = <1000 227000 20000>;
+		status = "ok";
+	};
+
 	rear_tele:qcom,cam-sensor3 {
 		cell-index = <3>;
 		compatible = "qcom,cam-sensor";
@@ -225,6 +298,8 @@
 		sensor-position-roll = <90>;
 		sensor-position-pitch = <0>;
 		sensor-position-yaw = <180>;
+		actuator-src = <&actuator_tele>;
+		ois-src = <&ois_tele>;
 		cam_vio-supply = <&L4B>;
 		cam_vdig-supply = <&camera_ldo2>;
 		cam_clk-supply = <&cam_cc_titan_top_gdsc>;
