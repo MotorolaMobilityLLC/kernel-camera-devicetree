@@ -157,7 +157,7 @@
 			"cam_clk", "cam_vana";
 		rgltr-cntrl-support;
 		rgltr-min-voltage = <1800000 1100000 0 2800000>;
-		rgltr-max-voltage = <1800000 1100000 0 2800000>;
+		rgltr-max-voltage = <1800000 1104000 0 2800000>;
 		rgltr-load-current = <155000 680000 0 50000>;
 		gpio-no-mux = <0>;
 		pinctrl-names = "cam_default", "cam_suspend";
