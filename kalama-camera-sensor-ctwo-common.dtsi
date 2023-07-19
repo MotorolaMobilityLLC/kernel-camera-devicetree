@@ -14,6 +14,19 @@
 		};
 	};
 
+	cam_afvdd_front_en_default: cam_afvdd_front_en_default {
+		mux {
+			pins = "gpio7";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio7";
+			bias-pull-down; /* PULL DOWN */
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
 	cam_dvdd_uw_en_default: cam_dvdd_uw_en_default {
 		mux {
 			pins = "gpio73";
@@ -87,6 +100,20 @@
 		gpio = <&tlmm 4 0>;
 		pinctrl-names = "default";
 		pinctrl-0 = <&cam_ois_af_vdd_tele_en_default>;
+		vin-supply = <&BOB1>;
+	};
+
+	cam_afvdd_front: gpio-regulator@3 {
+		compatible = "regulator-fixed";
+		reg = <0x03 0x00>;
+		regulator-name = "cam_afvdd_front";
+		regulator-min-microvolt = <2800000>;
+		regulator-max-microvolt = <2800000>;
+		regulator-enable-ramp-delay = <233>;
+		enable-active-high;
+		gpio = <&tlmm 7 0>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&cam_afvdd_front_en_default>;
 		vin-supply = <&BOB1>;
         };
 
@@ -265,6 +292,19 @@
 		hw-scl-stretch-en = <1>;
 	};
 
+	actuator_front: qcom,actuator1{
+		cell-index = <1>;
+		compatible = "qcom,actuator";
+		cci-master = <CCI_MASTER_1>;
+		cam_vaf-supply = <&cam_afvdd_front>;
+		regulator-names = "cam_vaf";
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <2800000>;
+		rgltr-max-voltage = <2800000>;
+		rgltr-load-current = <95000>;
+		status = "ok";
+	};
+
 	eeprom_front: qcom,eeprom@1 {
 		cell-index = <1>;
 		compatible = "qcom,eeprom";
@@ -282,10 +322,11 @@
 		cell-index = <1>;
 		compatible = "qcom,cam-sensor";
 		csiphy-sd-index = <3>;
-		sensor-position-roll = <90>;
+		sensor-position-roll = <270>;
 		sensor-position-pitch = <0>;
 		sensor-position-yaw = <0>;
 		eeprom-src = <&eeprom_front>;
+		actuator-src = <&actuator_front>;
 		cam_vio-supply = <&L4B>;
 		cam_vdig-supply = <&cam_dvdd_front>;
 		cam_clk-supply = <&cam_cc_titan_top_gdsc>;
