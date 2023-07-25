@@ -7,9 +7,10 @@
 #include <dt-bindings/regulator/qcom,rpm-smd-regulator.h>
 
 #include "blair-camera.dtsi"
+#include "blair-camera-sensor-mtp.dtsi"
 / {
 	model = "Qualcomm Technologies, Inc. Blair SoC";
-	compatible = "qcom,blair";
+	compatible = "qcom,blair-mtp", "qcom,blair", "qcom,mtp";
         qcom,msm-id = <507 0x10000>, <578 0x10000>;
-	qcom,board-id = <0 0>;
+        qcom,board-id = <8 0>, <8 1>;
 };

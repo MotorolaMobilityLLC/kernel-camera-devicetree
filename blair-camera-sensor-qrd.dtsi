@@ -1,5 +1,5 @@
 #include <dt-bindings/clock/qcom,gcc-blair.h>
-#include <dt-bindings/msm/msm-camera.h>
+#include <dt-bindings/msm-camera.h>
 
 &soc {
 	qcom,cam-res-mgr {
