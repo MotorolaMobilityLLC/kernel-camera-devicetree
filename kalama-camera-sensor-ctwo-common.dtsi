@@ -413,6 +413,7 @@
 		rgltr-min-voltage = <1800000 2800000 2800000>;
 		rgltr-max-voltage = <1800000 2804000 2800000>;
 		rgltr-load-current = <1000 227000 20000>;
+		af-ois-use-same-ic;
 		status = "ok";
 	};
 
