@@ -19,3 +19,6 @@ dtbo-$(CONFIG_RTWO_DTB) += kalama-camera-sensor-rtwo-evb1.dtbo \
 
 #Moto camera sensor dtbo
 dtbo-$(CONFIG_CTWO_DTB) += kalama-camera-sensor-ctwo-evb.dtbo
+
+#Moto camera sensor dtbo
+dtbo-$(CONFIG_ARC_DTB) += kalama-camera-sensor-arc-evb.dtbo
