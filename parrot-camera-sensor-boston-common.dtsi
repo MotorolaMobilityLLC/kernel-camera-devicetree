@@ -187,7 +187,7 @@
 		sensor-position-pitch = <0>;
 		sensor-position-yaw = <180>;
 		led-flash-src = <&led_flash_rear_wide>;
-		//actuator-src  = <&actuator_wide>;
+		actuator-src  = <&actuator_wide>;
 		//eeprom-src    = <&eeprom_wide>;
 		cam_vio-supply  = <&cam_ldo7>;
 		cam_vdig-supply = <&cam_ldo2>;
