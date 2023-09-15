@@ -10,12 +10,12 @@
 		regulator-names = "gdscr", "mipi-csi-vdd1",
 			"mipi-csi-vdd2";
 		gdscr-supply = <&gcc_camss_top_gdsc>;
-		mipi-csi-vdd1-supply = <&L7A>;
-		mipi-csi-vdd2-supply = <&L4A>;
+		mipi-csi-vdd1-supply = <&L18A>;
+		mipi-csi-vdd2-supply = <&L22A>;
 		rgltr-cntrl-support;
 		rgltr-min-voltage = <0 880000 1200000>;
-		rgltr-max-voltage = <0 1050000 1300000>;
-		rgltr-load-current = <0 15900 8900>;
+		rgltr-max-voltage = <0 1049000 1305000>;
+		rgltr-load-current = <0 0 15900 8900>;
 		clocks = <&gcc GCC_CAMSS_TFE_CPHY_RX_CLK_SRC>,
 			<&gcc GCC_CAMSS_CPHY_0_CLK>,
 			<&gcc GCC_CAMSS_CSI0PHYTIMER_CLK_SRC>,
@@ -45,11 +45,11 @@
 		regulator-names = "gdscr", "mipi-csi-vdd1",
 			"mipi-csi-vdd2";
 		gdscr-supply = <&gcc_camss_top_gdsc>;
-		mipi-csi-vdd1-supply = <&L7A>;
-		mipi-csi-vdd2-supply = <&L4A>;
+		mipi-csi-vdd1-supply = <&L18A>;
+		mipi-csi-vdd2-supply = <&L22A>;
 		rgltr-cntrl-support;
 		rgltr-min-voltage = <0 880000 1200000>;
-		rgltr-max-voltage = <0 1050000 1300000>;
+		rgltr-max-voltage = <0 1049000 1305000>;
 		rgltr-load-current = <0 15900 8900>;
 		clocks = <&gcc GCC_CAMSS_TFE_CPHY_RX_CLK_SRC>,
 			<&gcc GCC_CAMSS_CPHY_1_CLK>,
@@ -80,11 +80,11 @@
 		regulator-names = "gdscr", "mipi-csi-vdd1",
 			"mipi-csi-vdd2";
 		gdscr-supply = <&gcc_camss_top_gdsc>;
-		mipi-csi-vdd1-supply = <&L7A>;
-		mipi-csi-vdd2-supply = <&L4A>;
+		mipi-csi-vdd1-supply = <&L18A>;
+		mipi-csi-vdd2-supply = <&L22A>;
 		rgltr-cntrl-support;
 		rgltr-min-voltage = <0 880000 1200000>;
-		rgltr-max-voltage = <0 1050000 1300000>;
+		rgltr-max-voltage = <0 1049000 1305000>;
 		rgltr-load-current = <0 15900 8900>;
 		clocks = <&gcc GCC_CAMSS_TFE_CPHY_RX_CLK_SRC>,
 			<&gcc GCC_CAMSS_CPHY_2_CLK>,
@@ -115,11 +115,11 @@
 		regulator-names = "gdscr", "mipi-csi-vdd1",
 			"mipi-csi-vdd2";
 		gdscr-supply = <&gcc_camss_top_gdsc>;
-		mipi-csi-vdd1-supply = <&L7A>;
-		mipi-csi-vdd2-supply = <&L4A>;
+		mipi-csi-vdd1-supply = <&L18A>;
+		mipi-csi-vdd2-supply = <&L22A>;
 		rgltr-cntrl-support;
 		rgltr-min-voltage = <0 880000 1200000>;
-		rgltr-max-voltage = <0 1050000 1300000>;
+		rgltr-max-voltage = <0 1049000 1305000>;
 		rgltr-load-current = <0 15900 8900>;
 		clocks = <&gcc GCC_CAMSS_TFE_CPHY_RX_CLK_SRC>,
 			<&gcc GCC_CAMSS_CPHY_3_CLK>,

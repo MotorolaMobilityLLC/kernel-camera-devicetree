@@ -1,11 +1,11 @@
 #include <dt-bindings/clock/qcom,gcc-holi.h>
-#include <dt-bindings/msm/msm-camera.h>
+#include <dt-bindings/msm-camera.h>
 
 &soc {
 	qcom,cam-res-mgr {
 		compatible = "qcom,cam-res-mgr";
 		status = "ok";
-		gpios-shared = <407>;
+		gpios-shared = <378>;
 		pinctrl-names = "cam_res_mgr_default", "cam_res_mgr_suspend";
 		pinctrl-0 = <&cam_flash_hwen_active>;
 		pinctrl-1 = <&cam_flash_hwen_suspend>;
