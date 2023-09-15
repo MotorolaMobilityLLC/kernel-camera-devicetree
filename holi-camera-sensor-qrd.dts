@@ -6,6 +6,7 @@
  #include <dt-bindings/interrupt-controller/arm-gic.h>
  #include <dt-bindings/regulator/qcom,rpm-smd-regulator.h>
 
+ #include "holi-camera-overlay.dtsi"
  #include "holi-camera.dtsi"
  #include "holi-camera-sensor-qrd.dtsi"
  / {
