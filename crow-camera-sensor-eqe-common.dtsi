@@ -238,6 +238,19 @@
 };
 
 &cam_cci1 {
+    eeprom_front: qcom,eeprom@1 {
+        cell-index = <1>;
+        compatible = "qcom,eeprom";
+        cci-master = <CCI_MASTER_1>;
+        cam_vio-supply = <&cam_64c_ldo7>;
+        regulator-names = "cam_vio";
+        rgltr-cntrl-support;
+        rgltr-min-voltage = <1800000>;
+        rgltr-max-voltage = <1800000>;
+        rgltr-load-current = <3000>;
+        status = "ok";
+    };
+
     actuator_front: qcom,actuator@1 {
         cell-index = <1>;
         compatible = "qcom,actuator";
@@ -255,6 +268,7 @@
         cell-index = <1>;
         compatible = "qcom,cam-sensor";
         csiphy-sd-index = <3>;
+        eeprom-src = <&eeprom_front>;
         actuator-src = <&actuator_front>;
         sensor-position-roll = <270>;
         sensor-position-pitch = <0>;
