@@ -33,6 +33,11 @@
 
 };
 
+&pm6150l_flash0{
+	qcom,max-current-ma = <1200>;
+	qcom,duration-ms = <500>;
+};
+
 &soc {
 	cam_dvdd_main: gpio-regulator@0 {
 		compatible = "regulator-fixed";
