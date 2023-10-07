@@ -91,12 +91,26 @@
 };
 
 &cam_cci0 {
+
+  actuator_rear_main: qcom,actuator0{
+		cell-index = <0>;
+		compatible = "qcom,actuator";
+		cci-master = <CCI_MASTER_0>;
+		cam_vaf-supply = <&camera_ldo7>;
+		regulator-names = "cam_vaf";
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <2800000>;
+		rgltr-max-voltage = <2800000>;
+		rgltr-load-current = <119000>;
+		status = "ok";
+  };
+
   /* main s5kgn8 sensor*/
   qcom,cam-sensor0 {
   	cell-index = <0>;
 	compatible = "qcom,cam-sensor";
 	csiphy-sd-index = <4>;
-	//actuator-src= <&actuator_hp1>;
+	actuator-src = <&actuator_rear_main>;
 	sensor-position-roll = <90>;
 	sensor-position-pitch = <0>;
 	sensor-position-yaw = <180>;
@@ -104,7 +118,7 @@
 	cam_vdig-supply = <&camera_ldo1>;
 	cam_clk-supply = <&cam_cc_titan_top_gdsc>;
 	cam_vana-supply = <&camera_ldo3>;
-	//cam_vaf-supply = <&camera_ldo7>;
+	cam_vaf-supply = <&camera_ldo7>;
 	regulator-names = "cam_vana",
 		"cam_vdig","cam_clk","cam_vio";
 	rgltr-cntrl-support;
