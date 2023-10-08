@@ -186,6 +186,19 @@
 };
 
 &cam_cci1 {
+	eeprom_front: qcom,eeprom@1 {
+		cell-index = <1>;
+		compatible = "qcom,eeprom";
+		cci-master = <CCI_MASTER_0>;
+		cam_vio-supply = <&L4B>;
+		regulator-names = "cam_vio";
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <1800000>;
+		rgltr-max-voltage = <1800000>;
+		rgltr-load-current = <3000>;
+		status = "ok";
+	};
+
 	/* temp set ldo2 1.2V */
 	qcom,cam-sensor1 {
 		cell-index = <1>;
@@ -194,6 +207,7 @@
 		sensor-position-roll = <270>;
 		sensor-position-pitch = <0>;
 		sensor-position-yaw = <0>;
+		eeprom-src = <&eeprom_front>;
 		cam_vio-supply = <&L4B>;
 		cam_vdig-supply = <&camera_ldo2>;
 		cam_clk-supply = <&cam_cc_titan_top_gdsc>;
