@@ -1,3 +1,11 @@
+ifeq ($(CONFIG_MMI_DEVICE_DTBS),y)
+dtbo-$(CONFIG_ARCH_PINEAPPLE)  := pineapple-camera.dtbo
+dtbo-$(CONFIG_ARCH_PINEAPPLE)  += pineapple-camera-v2.dtbo
+
+dtbo-$(CONFIG_ARCF_DTB) += pineapple-camera-sensor-arcf-evt1a.dtbo
+dtbo-$(CONFIG_CTWOV_DTB) += pineapple-camera-sensor-ctwov-evb.dtbo
+
+else
 dtbo-$(CONFIG_ARCH_PINEAPPLE)	:= pineapple-camera.dtbo
 dtbo-$(CONFIG_ARCH_PINEAPPLE)	+= pineapple-camera-v2.dtbo \
 									pineapple-camera-sensor-cdp.dtbo \
@@ -15,3 +23,4 @@ dtbo-$(CONFIG_ARCH_VOLCANO)     += volcano-camera-qrd.dtbo
 dtbo-$(CONFIG_ARCH_VOLCANO)     += volcano-camera-sensor-mtp.dtbo
 dtbo-$(CONFIG_ARCH_VOLCANO)     += volcano-camera-sensor-idp.dtbo
 dtbo-$(CONFIG_ARCH_VOLCANO)     += volcano-camera-sensor-qrd.dtbo
+endif # end of CONFIG_MMI_DEVICE_DTBS
