@@ -92,7 +92,7 @@
 
 &cam_cci0 {
     /* main s5kgn8 sensor*/
-    qcom,cam-sensor0 {
+    rear_main: qcom,cam-sensor0 {
         cell-index = <0>;
         compatible = "qcom,cam-sensor";
         csiphy-sd-index = <4>;
@@ -131,9 +131,83 @@
         status = "ok";
     };
 
+    rear_main_cli: qcom,cam-sensor3 {
+        cell-index = <3>;
+        compatible = "qcom,cam-sensor";
+        csiphy-sd-index = <4>;
+        sensor-position-roll = <90>;
+        sensor-position-pitch = <0>;
+        sensor-position-yaw = <180>;
+        cam_vio-supply = <&L4B>;
+        cam_vdig-supply = <&camera_ldo1>;
+        cam_clk-supply = <&cam_cc_titan_top_gdsc>;
+        cam_vana-supply = <&camera_ldo3>;
+        regulator-names = "cam_vana",
+                "cam_vdig","cam_clk","cam_vio";
+        rgltr-cntrl-support;
+        rgltr-min-voltage = <2200000 1000000 0 1800000>;
+        rgltr-max-voltage = <2200000 1000000 0 1800000>;
+        rgltr-load-current = <101000 787000 0 1000>;
+        gpio-no-mux = <0>;
+
+        pinctrl-names = "cam_default", "cam_suspend";
+        pinctrl-0 = <&cam_sensor_mclk1_active
+                &cam_sensor_active_rst2>;
+        pinctrl-1 = <&cam_sensor_mclk1_suspend
+                &cam_sensor_suspend_rst2>;
+        gpios = <&tlmm 101 0>,
+                <&tlmm 3 0>;
+        gpio-reset = <1>;
+        gpio-req-tbl-num = <0 1>;
+        gpio-req-tbl-flags = <1 0>;
+        gpio-req-tbl-label = "CAMIF_MCLK1",
+                        "CAM_RESET2";
+        cci-master = <CCI_MASTER_0>;
+        clocks = <&camcc CAM_CC_MCLK1_CLK>;
+        clock-names = "cam_clk";
+        clock-cntl-level = "nominal";
+        clock-rates = <24000000>;
+        status = "ok";
+    };
+
     /* tele s5kjn1 sensor*/
-    qcom,cam-sensor2 {
+    rear_tele: qcom,cam-sensor2 {
         cell-index = <2>;
+        compatible = "qcom,cam-sensor";
+        csiphy-sd-index = <1>;
+        sensor-position-roll = <90>;
+        sensor-position-pitch = <0>;
+        sensor-position-yaw = <180>;
+
+        cam_vio-supply = <&L4B>;
+        cam_vdig-supply = <&cam_dvdd_tele>;
+        cam_clk-supply = <&cam_cc_titan_top_gdsc>;
+        cam_vana-supply = <&cam_avdd_tele>;
+        regulator-names = "cam_vio", "cam_vdig", "cam_clk", "cam_vana";
+        rgltr-cntrl-support;
+        rgltr-min-voltage = <1800000 1100000 0 2800000>;
+        rgltr-max-voltage = <1800000 1100000 0 2800000>;
+        rgltr-load-current = <3500 125000 0 95000>;
+
+        gpio-no-mux = <0>;
+        pinctrl-names = "cam_default", "cam_suspend";
+        pinctrl-0 = <&cam_sensor_mclk2_active &cam_sensor_active_rst1>;
+        pinctrl-1 = <&cam_sensor_mclk2_suspend &cam_sensor_suspend_rst1>;
+        gpios = <&tlmm 102 0>, <&tlmm 15 0>;
+        gpio-reset = <1>;
+        gpio-req-tbl-num = <0 1>;
+        gpio-req-tbl-flags = <1 0>;
+        gpio-req-tbl-label = "CAMIF_MCLK2", "CAM_RESET1";
+        cci-master = <CCI_MASTER_1>;
+        clocks = <&camcc CAM_CC_MCLK2_CLK>;
+        clock-names = "cam_clk";
+        clock-cntl-level = "nominal";
+        clock-rates = <24000000>;
+        status = "ok";
+    };
+
+    rear_tele_cli: qcom,cam-sensor4 {
+        cell-index = <4>;
         compatible = "qcom,cam-sensor";
         csiphy-sd-index = <1>;
         sensor-position-roll = <90>;
@@ -170,7 +244,7 @@
 
 &cam_cci1 {
     /* front ov32b40 sensor*/
-    qcom,cam-sensor1 {
+    front_main: qcom,cam-sensor1 {
         cell-index = <1>;
         compatible = "qcom,cam-sensor";
         csiphy-sd-index = <5>;
