@@ -335,6 +335,7 @@
 		hw-scl-stretch-en = <1>;
 	};
 
+	/*
 	actuator_front: qcom,actuator1{
 		cell-index = <1>;
 		compatible = "qcom,actuator";
@@ -400,6 +401,7 @@
 		clock-rates = <24000000>;
 		status = "ok";
 	};
+	*/
 
 	actuator_tele: qcom,actuator3{
 		cell-index = <3>;
