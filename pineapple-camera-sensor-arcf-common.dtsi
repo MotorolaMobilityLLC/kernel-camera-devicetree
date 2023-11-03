@@ -124,6 +124,21 @@
         status = "ok";
     };
 
+    /* main eeprom*/
+    eeprom_rear_main: qcom,eeprom@0 {
+        cell-index = <0>;
+        reg = <0x0>;
+        compatible = "qcom,eeprom";
+        cci-master = <CCI_MASTER_0>;
+        cam_vio-supply = <&L4B>;
+        regulator-names = "cam_vio";
+        rgltr-cntrl-support;
+        rgltr-min-voltage = <1800000>;
+        rgltr-max-voltage = <1800000>;
+        rgltr-load-current = <0>;
+        status = "ok";
+    };
+
     /* tele actuator*/
     actuator_rear_tele: qcom,actuator2{
         cell-index = <2>;
@@ -145,6 +160,7 @@
         csiphy-sd-index = <4>;
         led-flash-src = <&led_flash_rear_main>;
         actuator-src = <&actuator_rear_main>;
+        eeprom-src = <&eeprom_rear_main>;
         sensor-position-roll = <90>;
         sensor-position-pitch = <0>;
         sensor-position-yaw = <180>;
@@ -186,6 +202,7 @@
         csiphy-sd-index = <4>;
         led-flash-src = <&led_flash_rear_main>;
         actuator-src = <&actuator_rear_main>;
+        eeprom-src = <&eeprom_rear_main>;
         sensor-position-roll = <90>;
         sensor-position-pitch = <0>;
         sensor-position-yaw = <180>;
