@@ -41,6 +41,17 @@
 		};
 	};
 
+	cam_ois_main_en_default: cam_ois_main_en_default {
+		mux {
+			pins = "gpio131";
+			function = "gpio";
+		};
+		config {
+			pins = "gpio131";
+			bias-pull-down; /* PULL DOWN */
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
 };
 
 &soc {
@@ -80,7 +91,6 @@
 		pinctrl-0 = <&cam_dvdd_main_en_default>;
 		vin-supply = <&S8B>;
 	};
-
 	cam_avdd1_main: gpio-regulator@2 {
 		compatible = "regulator-fixed";
 		reg = <0x02 0x00>;
@@ -92,6 +102,19 @@
 		gpio = <&tlmm 46 0>;
 		pinctrl-names = "default";
 		pinctrl-0 = <&cam_avdd1_main_en_default>;
+		vin-supply = <&BOB>;
+	};
+	cam_ois_main: gpio-regulator@3 {
+		compatible = "regulator-fixed";
+		reg = <0x03 0x00>;
+		regulator-name = "cam_ois_main";
+		regulator-min-microvolt = <3300000>;
+		regulator-max-microvolt = <3300000>;
+		regulator-enable-ramp-delay = <233>;
+		enable-active-high;
+		gpio = <&tlmm 131 0>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&cam_ois_main_en_default>;
 		vin-supply = <&BOB>;
 	};
 
@@ -143,6 +166,22 @@
 		status = "ok";
 	};
 
+	ois_rear_main: qcom,ois@0 {
+		cell-index = <0>;
+		reg = <0x0>;
+		compatible = "qcom,ois";
+		cci-master = <CCI_MASTER_1>;
+		cam_vio-supply       = <&cam_ldo7>;
+		cam_vaf-supply       = <&cam_ldo5>;
+		cam_v_custom1-supply = <&cam_ois_main>;
+		regulator-names      = "cam_vio", "cam_vaf", "cam_v_custom1";
+		rgltr-cntrl-support;
+		rgltr-min-voltage  = <1800000 2800000 3300000>;
+		rgltr-max-voltage  = <1800000 2804000 3300000>;
+		rgltr-load-current = <14000    119000  119000>;
+		status = "ok";
+	};
+
 	rear_main: qcom,cam-sensor@0 {
 		cell-index = <0>;
 		compatible = "qcom,cam-sensor";
@@ -152,7 +191,7 @@
 		sensor-position-yaw = <180>;
 		led-flash-src = <&led_flash_rear>;
 		actuator-src = <&actuator_rear_main>;
-		//ois-src = <&ois_rear_main>;
+		ois-src = <&ois_rear_main>;
 		eeprom-src = <&eeprom_main>;
 		cam_vio-supply = <&cam_ldo7>;
 		cam_vdig-supply = <&cam_dvdd_main>;
