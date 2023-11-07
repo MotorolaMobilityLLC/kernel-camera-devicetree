@@ -124,6 +124,22 @@
         status = "ok";
     };
 
+    /*main ois*/
+    ois_rear_main: qcom,ois0{
+        cell-index = <0>;
+        compatible = "qcom,ois";
+        cci-master = <CCI_MASTER_0>;
+        cam_vio-supply = <&L4B>;
+        cam_vaf-supply = <&camera_ldo7>;
+        cam_v_custom1-supply = <&camera_ldo5>;
+        regulator-names = "cam_vio", "cam_vaf", "cam_v_custom1";
+        rgltr-cntrl-support;
+        rgltr-min-voltage = <1800000 2800000 2800000>;
+        rgltr-max-voltage = <1800000 2800000 2800000>;
+        rgltr-load-current = <14000 119000 119000>;
+        status = "ok";
+    };
+
     /* main eeprom*/
     eeprom_rear_main: qcom,eeprom@0 {
         cell-index = <0>;
@@ -160,6 +176,7 @@
         csiphy-sd-index = <4>;
         led-flash-src = <&led_flash_rear_main>;
         actuator-src = <&actuator_rear_main>;
+        ois-src = <&ois_rear_main>;
         eeprom-src = <&eeprom_rear_main>;
         sensor-position-roll = <90>;
         sensor-position-pitch = <0>;
