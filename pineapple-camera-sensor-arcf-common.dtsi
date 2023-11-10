@@ -155,6 +155,20 @@
         status = "ok";
     };
 
+    /* tele s5kjn1 eeprom*/
+    eeprom_rear_tele: qcom,eeprom@2 {
+        cell-index = <2>;
+        reg = <0x2>;
+        compatible = "qcom,eeprom";
+        cci-master = <CCI_MASTER_1>;
+        cam_vio-supply = <&L4B>;
+        regulator-names = "cam_vio";
+        rgltr-cntrl-support;
+        rgltr-min-voltage = <1800000>;
+        rgltr-max-voltage = <1800000>;
+        rgltr-load-current = <0>;
+    };
+
     /* tele actuator*/
     actuator_rear_tele: qcom,actuator2{
         cell-index = <2>;
@@ -262,6 +276,7 @@
         csiphy-sd-index = <1>;
         led-flash-src = <&led_flash_rear_tele>;
         actuator-src = <&actuator_rear_tele>;
+        eeprom-src = <&eeprom_rear_tele>;
         sensor-position-roll = <90>;
         sensor-position-pitch = <0>;
         sensor-position-yaw = <180>;
@@ -299,6 +314,7 @@
         csiphy-sd-index = <1>;
         led-flash-src = <&led_flash_rear_tele>;
         actuator-src = <&actuator_rear_tele>;
+        eeprom-src = <&eeprom_rear_tele>;
         sensor-position-roll = <90>;
         sensor-position-pitch = <0>;
         sensor-position-yaw = <180>;
