@@ -153,7 +153,7 @@
 		led-flash-src = <&led_flash_rear>;
 		actuator-src = <&actuator_rear_main>;
 		//ois-src = <&ois_rear_main>;
-		//eeprom-src = <&eeprom_main>;
+		eeprom-src = <&eeprom_main>;
 		cam_vio-supply = <&cam_ldo7>;
 		cam_vdig-supply = <&cam_dvdd_main>;
 		cam_clk-supply = <&cam_cc_camss_top_gdsc>;
