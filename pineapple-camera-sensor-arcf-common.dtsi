@@ -53,6 +53,19 @@
     };
 };
 
+&pm8550_flash0 {
+	qcom,duration-ms = <500>;
+};
+&pm8550_flash1 {
+	qcom,duration-ms = <500>;
+};
+&pm8550_flash2 {
+	qcom,duration-ms = <500>;
+};
+&pm8550_flash3 {
+	qcom,duration-ms = <500>;
+};
+
 &soc {
     /* tele s5kjn1 avdd*/
     cam_avdd_tele: gpio-regulator@0 {
