@@ -12,5 +12,5 @@
 	model = "arcf";
 	compatible = "qcom,pineapple-mtp", "qcom,pineapple", "qcom,mtp";
 	qcom,msm-id = <557 0x10000>, <557 0x20000>, <577 0x10000>, <577 0x20000>;
-	qcom,board-id = <0x43 0xA1A0>;
+	qcom,board-id = <0x43 0xA1A0>, <0x43 0xA200>;
 };
