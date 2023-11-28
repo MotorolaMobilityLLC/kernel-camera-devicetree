@@ -54,6 +54,11 @@
 	};
 };
 
+&pm6150l_flash0{
+        qcom,max-current-ma = <1200>;
+        qcom,duration-ms = <500>;
+};
+
 &soc {
 	qcom,cam-res-mgr {
 		compatible = "qcom,cam-res-mgr";
