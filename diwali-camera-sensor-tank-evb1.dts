@@ -1,0 +1,16 @@
+/dts-v1/;
+/plugin/;
+
+#include <dt-bindings/clock/qcom,gcc-diwali.h>
+#include <dt-bindings/clock/qcom,camcc-diwali.h>
+#include <dt-bindings/interconnect/qcom,diwali.h>
+#include <dt-bindings/interrupt-controller/arm-gic.h>
+#include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
+
+#include "diwali-camera-sensor-tank-common.dtsi"
+/ {
+	model = "tank";
+	compatible = "qcom,diwali", "moto,tank";
+	qcom,msm-id = <506 0x10000>, <547 0x10000>, <564 0x10000>;
+	qcom,board-id = <0x44 0x9100>;
+};
