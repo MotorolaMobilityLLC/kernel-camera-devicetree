@@ -294,7 +294,7 @@
         csiphy-sd-index = <3>;
         led-flash-src = <&led_flash_rear_tele>;
         actuator-src = <&actuator_rear_tele>;
-        //eeprom-src = <&eeprom_rear_tele>;
+        eeprom-src = <&eeprom_rear_tele>;
         sensor-position-roll = <90>;
         sensor-position-pitch = <0>;
         sensor-position-yaw = <180>;
@@ -332,7 +332,7 @@
         csiphy-sd-index = <3>;
         led-flash-src = <&led_flash_rear_tele>;
         actuator-src = <&actuator_rear_tele>;
-        //eeprom-src = <&eeprom_rear_tele>;
+        eeprom-src = <&eeprom_rear_tele>;
         sensor-position-roll = <90>;
         sensor-position-pitch = <0>;
         sensor-position-yaw = <180>;
