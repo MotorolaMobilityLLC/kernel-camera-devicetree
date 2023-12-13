@@ -1,0 +1,15 @@
+/dts-v1/;
+/plugin/;
+
+#include <dt-bindings/clock/qcom,gcc-blair.h>
+#include <dt-bindings/interconnect/qcom,blair.h>
+#include <dt-bindings/interrupt-controller/arm-gic.h>
+#include <dt-bindings/regulator/qcom,rpm-smd-regulator.h>
+
+#include "blair-camera-sensor-mot-malmo-common.dtsi"
+/ {
+    model = "malmo";
+    compatible = "qcom,blair-mtp", "qcom,blair", "qcom,mtp", "qcom,moto";
+    qcom,msm-id = <507 0x10000>, <578 0x10000>;
+    qcom,board-id = <0x43 0x9000>;
+};
