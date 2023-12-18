@@ -23,5 +23,6 @@ dtbo-$(CONFIG_ARCH_PARROT) += parrot-camera-sensor-boston-evb.dtbo
 endif  #($(CONFIG_BOSTON_DTB),y)
 ifeq ($(CONFIG_CUSCO_DTB),y)
 dtbo-$(CONFIG_ARCH_PARROT) += parrot-camera-sensor-cusco-evb.dtbo
+dtbo-$(CONFIG_ARCH_PARROT) += parrot-camera-sensor-cuscoi-evb.dtbo
 endif  #($(CONFIG_CUSCO_DTB),y)
 endif  #($(CONFIG_MMI_DEVICE_DTBS),y)
