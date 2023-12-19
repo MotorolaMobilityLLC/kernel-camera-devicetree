@@ -1,3 +1,54 @@
+/*
+   This base is original from "diwali-camera-sensor-idp.dtsi"
+*/
 
-#include "diwali-camera-sensor-tank-common-base.dtsi"
+#include <dt-bindings/clock/qcom,camcc-diwali.h>
+#include <dt-bindings/msm-camera.h>
 
+&soc {
+
+    qcom,cam-res-mgr {
+        compatible = "qcom,cam-res-mgr";
+        status = "ok";
+    };
+};
+
+&cam_cci0 {
+    rear_main: qcom,cam-sensor@0 {
+        cell-index = <0>;
+        compatible = "qcom,cam-sensor";
+        csiphy-sd-index = <3>;
+        sensor-position-roll = <90>;
+        sensor-position-pitch = <0>;
+        sensor-position-yaw = <180>;
+        cam_vio-supply  = <&cam_64c_ldo7>;
+        cam_vana-supply = <&cam_dio_ldo7>;
+        cam_vdig-supply = <&cam_dio_ldo1>;
+        cam_v_custom1-supply = <&cam_dio_ldo5>;
+        cam_clk-supply  = <&cam_cc_titan_top_gdsc>;
+        regulator-names = "cam_vio", "cam_vana", "cam_vdig", "cam_v_custom1", "cam_clk" ;
+        rgltr-cntrl-support;
+        rgltr-min-voltage  = <1800000 1804000 1104000 2804000 0>;
+        rgltr-max-voltage  = <1800000 1804000 1104000 2804000 0>;
+        rgltr-load-current = <155000 155000 680000 119000 0>;
+        gpio-no-mux = <0>;
+        pinctrl-names = "cam_default", "cam_suspend";
+        pinctrl-0 = <&cam_sensor_mclk0_active	&cam_sensor_active_rst0>;
+        pinctrl-1 = <&cam_sensor_mclk0_suspend	&cam_sensor_suspend_rst0>;
+        gpios = <&tlmm 64 0>, <&tlmm 20 0>;
+        gpio-reset = <1>;
+        gpio-req-tbl-num   = <0 1>;
+        gpio-req-tbl-flags = <1 0>;
+        gpio-req-tbl-label = "CAMIF_MCLK0", "CAM_RESET0";
+        cci-master = <CCI_MASTER_0>;
+        clocks = <&camcc CAM_CC_MCLK0_CLK>;
+        clock-names = "cam_clk";
+        clock-cntl-level = "nominal";
+        clock-rates = <24000000>;
+        status = "ok";
+    };
+};
+
+&cam_cci1 {
+
+};
