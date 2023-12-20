@@ -133,6 +133,32 @@
 		pinctrl-0 = <&camera_ldo_8m_afvdd_en>;
 	};
 
+	camera_flash: gpio-regulator@10 {
+		compatible = "regulator-fixed";
+		reg = <0x010 0x00>;
+		regulator-name = "camera_flash";
+		regulator-min-microvolt = <1800000>;
+		regulator-max-microvolt = <1800000>;
+		regulator-enable-ramp-delay = <233>;
+		enable-active-high;
+		gpio = <&tlmm 97 0>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&camera_flash_en>;
+	};
+
+	camera_flash_torch: gpio-regulator@11 {
+		compatible = "regulator-fixed";
+		reg = <0x11 0x00>;
+		regulator-name = "camera_flash_torch";
+		regulator-min-microvolt = <1800000>;
+		regulator-max-microvolt = <1800000>;
+		regulator-enable-ramp-delay = <233>;
+		enable-active-high;
+		gpio = <&tlmm 24 0>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&camera_flash_torch_en>;
+	};
+
 	qcom,cam-res-mgr {
 		compatible = "qcom,cam-res-mgr";
 		status = "ok";
@@ -140,6 +166,32 @@
 };
 
 &tlmm {
+	camera_flash_en: camera_flash_en {
+		mux {
+			pins = "gpio97";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio97";
+			bias-disable; /* No PULL */
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
+	camera_flash_torch_en:: camera_flash_torch_en {
+		mux {
+			pins = "gpio24";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio24";
+			bias-disable; /* No PULL */
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
 	cam_sensor_main_reset_active: cam_sensor_main_reset_active {
 		mux {
 			pins = "gpio35";
@@ -403,6 +455,36 @@
 		status = "ok";
 	};
 
+	led_flash_rear: qcom,camera-flash@0 {
+		cell-index = <0>;
+		reg = <0x0>;
+		compatible = "qcom,camera-flash";
+		flash-type = <CAM_FLASH_TYPE_I2C>;
+		cam_vio-supply = <&camera_ldo_dovdd>;
+		regulator-names = "cam_vio";
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <1800000>;
+		rgltr-max-voltage = <1800000>;
+		rgltr-load-current = <100000>;
+		cci-master = <1>;
+		status = "ok";
+	};
+
+	led_flash_wide: qcom,camera-flash@2 {
+		cell-index = <2>;
+		reg = <0x2>;
+		compatible = "qcom,camera-flash";
+		flash-type = <CAM_FLASH_TYPE_I2C>;
+		cam_vio-supply = <&camera_ldo_dovdd>;
+		regulator-names = "cam_vio";
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <1800000>;
+		rgltr-max-voltage = <1800000>;
+		rgltr-load-current = <100000>;
+		cci-master = <1>;
+		status = "ok";
+	};
+
 	qcom,cam-sensor0 {
 		cell-index = <0>;
 		compatible = "qcom,cam-sensor";
@@ -412,6 +494,7 @@
 		sensor-position-yaw = <180>;
 		//actuator-src = <&actuator_rear_main>;
 		//eeprom-src = <&eeprom_rear>;
+		led-flash-src = <&led_flash_rear>;
 		cam_vio-supply = <&camera_ldo_dovdd>;
 		cam_vana-supply = <&camera_ldo_50m_avdd>;
 		cam_vdig-supply = <&camera_ldo_50m_dvdd>;
@@ -489,6 +572,7 @@
 		sensor-position-yaw = <180>;
 		actuator-src = <&actuator_wide>;
 		//eeprom-src = <&eeprom_wide>;
+		led-flash-src = <&led_flash_wide>;
 		cam_vio-supply = <&camera_ldo_dovdd>;
 		cam_vana-supply = <&camera_ldo_8m_avdd>;
 		cam_vdig-supply = <&camera_ldo_8m_dvdd>;
