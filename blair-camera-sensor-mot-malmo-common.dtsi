@@ -179,7 +179,7 @@
 		};
 	};
 
-	camera_flash_torch_en:: camera_flash_torch_en {
+	camera_flash_torch_en: camera_flash_torch_en {
 		mux {
 			pins = "gpio24";
 			function = "gpio";
