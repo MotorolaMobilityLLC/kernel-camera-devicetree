@@ -11,6 +11,42 @@
         compatible = "qcom,cam-res-mgr";
         status = "ok";
     };
+
+    led_flash_rear: qcom,camera-flash@0 {
+        cell-index = <0>;
+        compatible = "qcom,camera-flash";
+        flash-source = <&pm8350c_flash0>;
+        torch-source = <&pm8350c_torch0>;
+        switch-source = <&pm8350c_switch0>;
+        status = "ok";
+    };
+
+    led_flash_uw: qcom,camera-flash@1 {
+        cell-index = <1>;
+        compatible = "qcom,camera-flash";
+        flash-source = <&pm8350c_flash0>;
+        torch-source = <&pm8350c_torch0>;
+        switch-source = <&pm8350c_switch0>;
+        status = "ok";
+    };
+
+    led_flash_tele: qcom,camera-flash@2 {
+        cell-index = <2>;
+        compatible = "qcom,camera-flash";
+        flash-source = <&pm8350c_flash0>;
+        torch-source = <&pm8350c_torch0>;
+        switch-source = <&pm8350c_switch0>;
+        status = "ok";
+    };
+};
+
+&pm8350c_flash0 {
+        qcom,max-current-ma = <1200>;
+        qcom,duration-ms = <500>;
+};
+
+&pm8350c_torch0 {
+        qcom,max-current-ma = <200>;
 };
 
 &cam_cci0 {
@@ -39,6 +75,7 @@
         cam_vana-supply = <&cam_dio_ldo7>;
         cam_vdig-supply = <&cam_dio_ldo1>;
         cam_v_custom1-supply = <&cam_dio_ldo5>;
+        led-flash-src = <&led_flash_rear>;
         cam_clk-supply  = <&cam_cc_titan_top_gdsc>;
         regulator-names = "cam_vio", "cam_vana", "cam_vdig", "cam_v_custom1", "cam_clk" ;
         rgltr-cntrl-support;
@@ -119,7 +156,7 @@
         sensor-position-yaw = <180>;
         actuator-src = <&actuator_rear_wide>;
         // eeprom-src = <&eeprom_triple_wide>;
-        // led-flash-src = <&led_flash_triple_rear_aux2>;
+        led-flash-src = <&led_flash_uw>;
         cam_vio-supply = <&cam_64c_ldo7>;
         cam_vana-supply = <&cam_dio_ldo4>;
         cam_vdig-supply = <&cam_dio_ldo2>;
@@ -159,6 +196,7 @@
         sensor-position-roll = <90>;
         sensor-position-pitch = <0>;
         sensor-position-yaw = <180>;
+        led-flash-src = <&led_flash_tele>;
         cam_vio-supply = <&cam_64c_ldo7>;
         cam_vdig-supply = <&cam_64c_ldo2>;
         cam_clk-supply = <&cam_cc_titan_top_gdsc>;
