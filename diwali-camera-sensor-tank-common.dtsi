@@ -203,6 +203,36 @@
         status = "ok";
     };
 
+    actuator_rear_tele: qcom,actuator@3 {
+        cell-index = <3>;
+        compatible = "qcom,actuator";
+        cci-master = <CCI_MASTER_1>;
+        cam_vio-supply = <&cam_64c_ldo7>;
+        cam_vaf-supply = <&cam_64c_ldo5>;
+        cam_v_custom1-supply = <&cam_64c_ldo6>;
+        regulator-names = "cam_vio", "cam_vaf", "cam_v_custom1";
+        rgltr-cntrl-support;
+        rgltr-min-voltage = <1800000 2800000 2800000>;
+        rgltr-max-voltage = <1800000 2800000 2800000>;
+        rgltr-load-current = <1500 130000 200000>;
+        af-ois-use-same-ic;
+        status = "ok";
+    };
+
+    ois_rear_tele: qcom,ois@3 {
+        cell-index = <3>;
+        compatible = "qcom,ois";
+        cci-master = <CCI_MASTER_1>;
+        cam_vio-supply = <&cam_64c_ldo7>;
+        cam_vaf-supply = <&cam_64c_ldo5>;
+        cam_v_custom1-supply = <&cam_64c_ldo6>;
+        regulator-names = "cam_vio", "cam_vaf", "cam_v_custom1";
+        rgltr-cntrl-support;
+        rgltr-min-voltage = <1800000 2800000 2800000>;
+        rgltr-max-voltage = <1800000 2800000 2800000>;
+        rgltr-load-current = <1500 130000 200000>;
+        status = "ok";
+    };
 
     rear_tele: qcom,cam-sensor@3 {
         cell-index = <3>;
@@ -212,6 +242,8 @@
         sensor-position-pitch = <0>;
         sensor-position-yaw = <180>;
         led-flash-src = <&led_flash_tele>;
+        actuator-src = <&actuator_rear_tele>;
+        ois-src = <&ois_rear_tele>;
         cam_vio-supply = <&cam_64c_ldo7>;
         cam_vdig-supply = <&cam_64c_ldo2>;
         cam_clk-supply = <&cam_cc_titan_top_gdsc>;
