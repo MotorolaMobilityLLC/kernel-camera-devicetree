@@ -162,6 +162,20 @@
         status = "ok";
     };
 
+    eeprom_rear_wide: qcom,eeprom@2 {
+        cell-index = <2>;
+        reg = <0x2>;
+        compatible = "qcom,eeprom";
+        cam_vio-supply = <&cam_64c_ldo7>;
+        regulator-names = "cam_vio";
+        rgltr-cntrl-support;
+        rgltr-min-voltage  = <1800000>;
+        rgltr-max-voltage  = <1800000>;
+        rgltr-load-current = <1200000>;
+        cci-master = <CCI_MASTER_0>;
+        status = "ok";
+    };
+
     rear_wide: qcom,cam-sensor2 {
         cell-index = <2>;
         compatible = "qcom,cam-sensor";
@@ -170,7 +184,7 @@
         sensor-position-pitch = <0>;
         sensor-position-yaw = <180>;
         actuator-src = <&actuator_rear_wide>;
-        // eeprom-src = <&eeprom_triple_wide>;
+        eeprom-src = <&eeprom_rear_wide>;
         led-flash-src = <&led_flash_uw>;
         cam_vio-supply = <&cam_64c_ldo7>;
         cam_vana-supply = <&cam_dio_ldo4>;
