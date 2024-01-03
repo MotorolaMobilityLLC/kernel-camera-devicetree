@@ -248,6 +248,20 @@
         status = "ok";
     };
 
+    eeprom_rear_tele: qcom,eeprom@3 {
+        cell-index = <3>;
+        reg = <0x3>;
+        compatible = "qcom,eeprom";
+        cci-master = <CCI_MASTER_1>;
+        cam_vio-supply = <&cam_64c_ldo7>;
+        regulator-names = "cam_vio";
+        rgltr-cntrl-support;
+        rgltr-min-voltage = <1800000>;
+        rgltr-max-voltage = <1800000>;
+        rgltr-load-current = <1000>;
+        status = "ok";
+    };
+
     rear_tele: qcom,cam-sensor@3 {
         cell-index = <3>;
         compatible = "qcom,cam-sensor";
@@ -258,6 +272,7 @@
         led-flash-src = <&led_flash_tele>;
         actuator-src = <&actuator_rear_tele>;
         ois-src = <&ois_rear_tele>;
+        eeprom-src = <&eeprom_rear_tele>;
         cam_vio-supply = <&cam_64c_ldo7>;
         cam_vdig-supply = <&cam_64c_ldo2>;
         cam_clk-supply = <&cam_cc_titan_top_gdsc>;
