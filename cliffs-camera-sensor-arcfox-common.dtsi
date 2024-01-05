@@ -45,16 +45,20 @@
 };
 
 &pmxr2230_flash0 {
-	qcom,duration-ms = <500>;
+	qcom,max-current-ma = <1100>;
+	qcom,duration-ms = <350>;
 };
 &pmxr2230_flash1 {
-	qcom,duration-ms = <500>;
+	qcom,max-current-ma = <1100>;
+	qcom,duration-ms = <350>;
 };
 &pmxr2230_flash2 {
-	qcom,duration-ms = <500>;
+	qcom,max-current-ma = <1100>;
+	qcom,duration-ms = <350>;
 };
 &pmxr2230_flash3 {
-	qcom,duration-ms = <500>;
+	qcom,max-current-ma = <1100>;
+	qcom,duration-ms = <350>;
 };
 
 &soc {
