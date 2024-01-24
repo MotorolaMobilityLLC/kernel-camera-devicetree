@@ -1201,7 +1201,7 @@
 		status = "ok";
 	};
 
-	cam_tfe_tpg1: qcom,tpg0@5c68000 {
+	cam_tfe_tpg1: qcom,tpg1@5c68000 {
 		cell-index = <1>;
 		compatible = "qcom,tpg101";
 		reg-names = "tpg1", "top";
