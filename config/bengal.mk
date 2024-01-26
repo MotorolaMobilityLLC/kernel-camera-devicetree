@@ -13,5 +13,6 @@ dtbo-$(CONFIG_ARCH_KHAJE) += khajeg-camera-idp.dtbo \
 
 ifeq ($(CONFIG_FOGONA_DTB),y)
 dtbo-$(CONFIG_ARCH_KHAJE) += \
-	khaje-camera-sensor-fogona-evb.dtbo
+	khaje-camera-sensor-fogona-evb.dtbo \
+	khaje-camera-sensor-fogona-att.dtbo
 endif  #($(CONFIG_FOGONA_DTB),y)
