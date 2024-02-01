@@ -293,7 +293,7 @@
 		clocks = <&gcc GCC_CAMSS_MCLK2_CLK>;
 		clock-names = "cam_clk";
 		clock-cntl-level = "turbo";
-		clock-rates = <24000000>;
+		clock-rates = <19200000>;
 	};
 
 	/*Front OV32C Sensor*/
@@ -335,6 +335,6 @@
 		clocks = <&gcc GCC_CAMSS_MCLK2_CLK>;
 		clock-names = "cam_clk";
 		clock-cntl-level = "turbo";
-		clock-rates = <24000000>;
+		clock-rates = <19200000>;
 	};
 };
