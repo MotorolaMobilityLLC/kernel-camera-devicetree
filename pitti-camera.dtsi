@@ -356,7 +356,7 @@
 		interrupt-names = "CSIPHY2";
 		interrupts = <GIC_SPI 74 IRQ_TYPE_EDGE_RISING>;
 		regulator-names = "camss", "csi-vdd-1p2", "csi-vdd-0p9";
-		gdscr-supply = <&gcc_camss_top_gdsc>;
+		camss-supply = <&gcc_camss_top_gdsc>;
 		csi-vdd-1p2-supply = <&L7A>;
 		csi-vdd-0p9-supply = <&L4A>;
 		rgltr-cntrl-support;
