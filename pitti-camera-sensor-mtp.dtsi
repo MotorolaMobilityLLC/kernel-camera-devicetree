@@ -1,6 +1,13 @@
 #include <dt-bindings/msm-camera.h>
 #include <dt-bindings/clock/qcom,gcc-pitti.h>
 
+&soc {
+	qcom,cam-res-mgr {
+		compatible = "qcom,cam-res-mgr";
+		status = "ok";
+	};
+};
+
 &cam_cci0 {
 	eeprom_rear_aux2: qcom,eeprom3 {
 		cell-index = <3>;
@@ -19,9 +26,9 @@
 		gpio-no-mux = <0>;
 		pinctrl-names = "cam_default", "cam_suspend";
 		pinctrl-0 = <&cam_sensor_mclk1_active
-				&cam_sensor_active_rst0>;
+				&cam_sensor_active_rst1>;
 		pinctrl-1 = <&cam_sensor_mclk1_suspend
-				&cam_sensor_suspend_rst0>;
+				&cam_sensor_suspend_rst1>;
 		gpios = <&tlmm 25 0>,
 			<&tlmm 28 0>;
 		gpio-reset = <1>;
