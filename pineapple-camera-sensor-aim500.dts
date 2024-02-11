@@ -12,5 +12,5 @@
 	model = "Qualcomm Technologies, Inc. Pineapple AIM500";
 	compatible = "qcom,pineapple-hdk", "qcom,pineapple", "qcom,hdk";
 	qcom,msm-id = <577 0x10000>, <577 0x20000>;
-	qcom,board-id = <0x1f 1>;
+	qcom,board-id = <0x1001f 1>, <0x1011f 1>;
 };
