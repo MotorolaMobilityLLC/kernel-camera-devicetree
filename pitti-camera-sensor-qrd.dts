@@ -12,5 +12,5 @@
 	model = "Qualcomm Technologies, Inc. Pitti SoC";
 	compatible = "qcom,pitti";
 	qcom,msm-id = <623 0x10000>;
-	qcom,board-id = <11 0x501>, <11 0x600>;
+	qcom,board-id = <11 0>, <11 0x501>, <11 0x600>;
 };
