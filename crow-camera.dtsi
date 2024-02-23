@@ -1322,7 +1322,8 @@
 					constituent-paths =
 					<CAM_CPAS_PATH_DATA_IPE_WR_VID
 					CAM_CPAS_PATH_DATA_IPE_WR_DISP
-					CAM_CPAS_PATH_DATA_IPE_WR_REF>;
+					CAM_CPAS_PATH_DATA_IPE_WR_REF
+					CAM_CPAS_PATH_DATA_IPE_WR_APP>;
 					parent-node = <&level1_nrt0_wr0>;
 				};
 
@@ -1965,6 +1966,9 @@
 		num-icp = <1>;
 		num-ipe = <1>;
 		num-bps = <1>;
+		icp-mask = <0x4>;
+		ipe0-mask = <0x10000>;
+		bps-mask = <0x8000>;
 		status = "ok";
 		icp_pc_en;
 		icp_use_pil;
