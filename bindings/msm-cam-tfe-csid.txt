@@ -15,7 +15,8 @@ First Level Node - CAM TFE CSID device
 - compatible
   Usage: required
   Value type: <string>
-  Definition: Should be "qcom,csid640", "qcom,csid530", "qcom,csid770", "qcom,csid-lite770".
+  Definition: Should be "qcom,csid640", "qcom,csid530", "qcom,csid770", "qcom,csid-lite770",
+              "qcom,csid665".
 
 - cell-index
   Usage: required
