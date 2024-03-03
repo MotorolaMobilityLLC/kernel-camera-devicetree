@@ -10,3 +10,4 @@ dtbo-$(CONFIG_ARCH_CLIFFS)	+= cliffs-camera-sensor-cdp.dtbo \
 								cliffs-camera-sensor-mtp.dtbo \
 								cliffs-camera-sensor-qrd.dtbo
 dtbo-$(CONFIG_ARCH_VOLCANO)     += volcano-camera.dtbo
+dtbo-$(CONFIG_ARCH_VOLCANO)     += volcano-camera-sensor-idp.dtbo
