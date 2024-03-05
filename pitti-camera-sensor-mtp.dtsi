@@ -1,6 +1,13 @@
 #include <dt-bindings/msm-camera.h>
 #include <dt-bindings/clock/qcom,gcc-pitti.h>
 
+&soc {
+	qcom,cam-res-mgr {
+		compatible = "qcom,cam-res-mgr";
+		status = "ok";
+	};
+};
+
 &cam_cci0 {
 	eeprom_rear_aux2: qcom,eeprom3 {
 		cell-index = <3>;
@@ -19,9 +26,9 @@
 		gpio-no-mux = <0>;
 		pinctrl-names = "cam_default", "cam_suspend";
 		pinctrl-0 = <&cam_sensor_mclk1_active
-				&cam_sensor_active_rst0>;
+				&cam_sensor_active_rst1>;
 		pinctrl-1 = <&cam_sensor_mclk1_suspend
-				&cam_sensor_suspend_rst0>;
+				&cam_sensor_suspend_rst1>;
 		gpios = <&tlmm 25 0>,
 			<&tlmm 28 0>;
 		gpio-reset = <1>;
@@ -235,28 +242,6 @@
 		clock-rates = <19200000>;
 	};
 
-	/*TPG2*/
-	qcom,cam-tpg2 {
-		cell-index = <6>;
-		compatible = "qcom,cam-sensor";
-		csiphy-sd-index = <6>;
-		sensor-position-roll = <270>;
-		sensor-position-pitch = <0>;
-		sensor-position-yaw = <180>;
-		gpios = <&tlmm 30 0>,
-			<&tlmm 35 0>;
-		gpio-reset = <1>;
-		gpio-req-tbl-num = <0 1>;
-		gpio-req-tbl-flags = <1 0>;
-		gpio-req-tbl-label = "CAMIF_MCLK1",
-					"CAM_RESET1";
-		sensor-mode = <0>;
-		status = "ok";
-		clocks = <&gcc GCC_CAMSS_MCLK1_CLK>;
-		clock-names = "cam_clk";
-		clock-cntl-level = "turbo";
-		clock-rates = <19200000>;
-	};
 };
 
 &cam_cci1 {
@@ -293,7 +278,7 @@
 		clocks = <&gcc GCC_CAMSS_MCLK2_CLK>;
 		clock-names = "cam_clk";
 		clock-cntl-level = "turbo";
-		clock-rates = <24000000>;
+		clock-rates = <19200000>;
 	};
 
 	/*Front OV32C Sensor*/
@@ -335,6 +320,6 @@
 		clocks = <&gcc GCC_CAMSS_MCLK2_CLK>;
 		clock-names = "cam_clk";
 		clock-cntl-level = "turbo";
-		clock-rates = <24000000>;
+		clock-rates = <19200000>;
 	};
 };
