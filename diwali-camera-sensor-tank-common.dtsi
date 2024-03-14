@@ -41,12 +41,8 @@
 };
 
 &pm8350c_flash0 {
-        qcom,max-current-ma = <1200>;
+        qcom,max-current-ma = <1300>;
         qcom,duration-ms = <500>;
-};
-
-&pm8350c_torch0 {
-        qcom,max-current-ma = <200>;
 };
 
 &cam_cci0 {
