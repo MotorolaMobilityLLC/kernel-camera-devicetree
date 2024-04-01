@@ -10,7 +10,7 @@
 #include "volcano-camera-sensor-idp.dtsi"
 / {
 	model = "Qualcomm Technologies, Inc. Volcano SoC";
-	compatible = "qcom,volcano";
+	compatible = "qcom,volcano", "qcom,volcano-idp", "qcom,volcanop-idp", "qcom,volcanop", "qcom,idp";
 	qcom,msm-id = <636 0x10000>, <640 0x10000>, <641 0x10000>;
-        qcom,board-id = <34 0>, <34 1>, <8 0>, <8 1>, <11 0>, <33 0>;
+        qcom,board-id = <34 0>, <34 1>, <8 0>, <8 1>, <33 0>;
 };
