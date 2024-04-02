@@ -1346,6 +1346,7 @@
 			"tpg13", "tpg14", "tpg15";
 		sys-cache-names = "small-1", "large-1";
 		sys-cache-uids = <34 38>;
+		enable-secure-qos-update;
 		enable-cam-drv = <(CAM_DDR_DRV | CAM_CLK_DRV)>;
 		rt-wr-priority-min = <4>;
 		rt-wr-priority-max = <5>;
