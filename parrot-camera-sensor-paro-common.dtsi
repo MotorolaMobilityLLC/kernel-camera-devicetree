@@ -79,8 +79,8 @@
 		sensor-position-yaw = <180>;
 		eeprom-src    = <&eeprom_main>;
 		cam_vio-supply  = <&L21B>;
-		cam_vana-supply = <&cam_ldo3>;
-		cam_vdig-supply = <&cam_ldo2>;
+		cam_vana-supply = <&et5904_ldo3>;
+		cam_vdig-supply = <&et5904_ldo2>;
 		cam_clk-supply  = <&cam_cc_camss_top_gdsc>;
 		regulator-names = "cam_vio", "cam_vana", "cam_vdig", "cam_clk" ;
 		rgltr-cntrl-support;
@@ -113,8 +113,8 @@
 		sensor-position-yaw = <0>;
 		eeprom-src   = <&eeprom_front>;
 		cam_vio-supply  = <&L21B>;
-		cam_vana-supply = <&cam_ldo4>;
-		cam_vdig-supply = <&cam_ldo1>;
+		cam_vana-supply = <&et5904_ldo4>;
+		cam_vdig-supply = <&et5904_ldo1>;
 		cam_clk-supply  = <&cam_cc_camss_top_gdsc>;
 		regulator-names = "cam_vio", "cam_vana", "cam_vdig", "cam_clk";
 		rgltr-cntrl-support;
