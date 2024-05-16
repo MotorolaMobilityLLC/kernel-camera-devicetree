@@ -1,4 +1,5 @@
 #include <dt-bindings/msm-camera.h>
+#include <dt-bindings/arm/msm/qti-smmu-proxy-dt-ids.h>
 &tlmm {
 	cci_i2c_sda0_active: cci_i2c_sda0_active {
 		mux {
@@ -906,6 +907,7 @@
 			compatible = "qcom,msm-cam-smmu-cb";
 			cam-smmu-label = "cam-secure";
 			qcom,secure-cb;
+			qti,smmu-proxy-cb-id = <QTI_SMMU_PROXY_CAMERA_CB>;
 		};
 	};
 
