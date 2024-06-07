@@ -128,6 +128,19 @@
     qcom,cam-res-mgr {
         compatible = "qcom,cam-res-mgr";
         status = "ok";
+        gpios-shared = <397 348 398 347>;
+        gpios-shared-pinctrl = <397 348 398 347>;
+        shared-pctrl-gpio-names = "mclk0", "rst0", "mclk1", "rst1";
+        pinctrl-names = "mclk0_active", "mclk0_suspend", "rst0_active", "rst0_suspend",
+         "mclk1_active", "mclk1_suspend", "rst1_active", "rst1_suspend";
+        pinctrl-0 = <&cam_sensor_mclk0_active>;
+        pinctrl-1 = <&cam_sensor_mclk0_suspend>;
+        pinctrl-2 = <&cam_sensor_active_rst0>;
+        pinctrl-3 = <&cam_sensor_suspend_rst0>;
+        pinctrl-4 = <&cam_sensor_mclk1_active>;
+        pinctrl-5 = <&cam_sensor_mclk1_suspend>;
+        pinctrl-6 = <&cam_sensor_active_rst1>;
+        pinctrl-7 = <&cam_sensor_suspend_rst1>;
   };
 };
 
@@ -231,11 +244,11 @@
         rgltr-load-current = <101000 787000 0 1000>;
         gpio-no-mux = <0>;
 
-        pinctrl-names = "cam_default", "cam_suspend";
-        pinctrl-0 = <&cam_sensor_mclk0_active
-                &cam_sensor_active_rst0>;
-        pinctrl-1 = <&cam_sensor_mclk0_suspend
-                &cam_sensor_suspend_rst0>;
+        // pinctrl-names = "cam_default", "cam_suspend";
+        // pinctrl-0 = <&cam_sensor_mclk0_active
+        //         &cam_sensor_active_rst0>;
+        // pinctrl-1 = <&cam_sensor_mclk0_suspend
+        //         &cam_sensor_suspend_rst0>;
         gpios = <&tlmm 64 0>,
                 <&tlmm 15 0>;
         gpio-reset = <1>;
@@ -274,11 +287,11 @@
         rgltr-load-current = <101000 787000 0 1000>;
         gpio-no-mux = <0>;
 
-        pinctrl-names = "cam_default", "cam_suspend";
-        pinctrl-0 = <&cam_sensor_mclk0_active
-                &cam_sensor_active_rst0>;
-        pinctrl-1 = <&cam_sensor_mclk0_suspend
-                &cam_sensor_suspend_rst0>;
+        // pinctrl-names = "cam_default", "cam_suspend";
+        // pinctrl-0 = <&cam_sensor_mclk0_active
+        //         &cam_sensor_active_rst0>;
+        // pinctrl-1 = <&cam_sensor_mclk0_suspend
+        //         &cam_sensor_suspend_rst0>;
         gpios = <&tlmm 64 0>,
                 <&tlmm 15 0>;
         gpio-reset = <1>;
@@ -317,9 +330,9 @@
         rgltr-load-current = <3500 125000 0 95000>;
 
         gpio-no-mux = <0>;
-        pinctrl-names = "cam_default", "cam_suspend";
-        pinctrl-0 = <&cam_sensor_mclk1_active &cam_sensor_active_rst1>;
-        pinctrl-1 = <&cam_sensor_mclk1_suspend &cam_sensor_suspend_rst1>;
+        // pinctrl-names = "cam_default", "cam_suspend";
+        // pinctrl-0 = <&cam_sensor_mclk1_active &cam_sensor_active_rst1>;
+        // pinctrl-1 = <&cam_sensor_mclk1_suspend &cam_sensor_suspend_rst1>;
         gpios = <&tlmm 65 0>, <&tlmm 14 0>;
         gpio-reset = <1>;
         gpio-req-tbl-num = <0 1>;
@@ -355,9 +368,9 @@
         rgltr-load-current = <3500 125000 0 95000>;
 
         gpio-no-mux = <0>;
-        pinctrl-names = "cam_default", "cam_suspend";
-        pinctrl-0 = <&cam_sensor_mclk1_active &cam_sensor_active_rst1>;
-        pinctrl-1 = <&cam_sensor_mclk1_suspend &cam_sensor_suspend_rst1>;
+        // pinctrl-names = "cam_default", "cam_suspend";
+        // pinctrl-0 = <&cam_sensor_mclk1_active &cam_sensor_active_rst1>;
+        // pinctrl-1 = <&cam_sensor_mclk1_suspend &cam_sensor_suspend_rst1>;
         gpios = <&tlmm 65 0>, <&tlmm 14 0>;
         gpio-reset = <1>;
         gpio-req-tbl-num = <0 1>;
