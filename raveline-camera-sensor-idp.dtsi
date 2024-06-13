@@ -1,4 +1,4 @@
-#include <dt-bindings/clock/qcom,camcc-ravelin.h>
+#include <dt-bindings/clock/qcom,sm4450-camcc.h>
 #include <dt-bindings/msm-camera.h>
 
 
