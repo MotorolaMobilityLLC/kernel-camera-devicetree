@@ -98,8 +98,8 @@
 		cam_v_custom1-supply = <&camera_ldo3>; // OISVDD
 		regulator-names = "cam_vio", "cam_vaf", "cam_v_custom1";
 		rgltr-cntrl-support;
-		rgltr-min-voltage = <1800000 2800000 3300000>;
-		rgltr-max-voltage = <1800000 2800000 3300000>;
+		rgltr-min-voltage = <1800000 2800000 3312000>;
+		rgltr-max-voltage = <1800000 2800000 3312000>;
 		rgltr-load-current = <400 300000 30000>;
 		status = "ok";
 	};
@@ -113,8 +113,8 @@
 		cam_v_custom1-supply = <&camera_ldo3>; // OISVDD
 		regulator-names = "cam_vio", "cam_vaf", "cam_v_custom1";
 		rgltr-cntrl-support;
-		rgltr-min-voltage = <1800000 2800000 3300000>;
-		rgltr-max-voltage = <1800000 2800000 3300000>;
+		rgltr-min-voltage = <1800000 2800000 3312000>;
+		rgltr-max-voltage = <1800000 2800000 3312000>;
 		rgltr-load-current = <400 300000 30000>;
 		status = "ok";
 	};
@@ -148,8 +148,8 @@
 		cam_clk-supply = <&cam_cc_camss_top_gdsc>;
 		regulator-names = "cam_vio", "cam_vdig", "cam_clk";
 		rgltr-cntrl-support;
-		rgltr-min-voltage = <1800000 1050000 0>;
-		rgltr-max-voltage = <1800000 1050000 0>;
+		rgltr-min-voltage = <1800000 1056000 0>;
+		rgltr-max-voltage = <1800000 1056000 0>;
 		rgltr-load-current = <0 0 0>; // power dependent
 		gpio-no-mux = <0>;
 		pinctrl-names = "cam_default", "cam_suspend";
