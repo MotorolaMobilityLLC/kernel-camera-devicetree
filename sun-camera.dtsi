@@ -3201,7 +3201,7 @@
 		clock-control-debugfs = "true";
 		fw_name = "CAMERA_ICP_1";
 		ubwc-ofe-fetch-cfg = <0x3f083 0x3f083>;
-		ubwc-ofe-write-cfg = <0x16209 0x16209>;
+		ubwc-ofe-write-cfg = <0x1620F 0x1620F>;
 		qos-val = <0x808>;
 		fw-pas-id = <50>;
 		cam_hw_pid = <10>;

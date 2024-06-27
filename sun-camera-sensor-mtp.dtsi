@@ -94,6 +94,20 @@
 		status = "ok";
 	};
 
+	lpai_ois: qcom,ois1 {
+		cell-index = <9>;
+		compatible = "qcom,ois";
+		cci-master = <CCI_MASTER_1>;
+		cam_vio-supply = <&L1I>;
+		cam_vaf-supply = <&L7M>;
+		regulator-names = "cam_vio","cam_vaf";
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <1200000 2960000>;
+		rgltr-max-voltage = <1200000 2960000>;
+		rgltr-load-current = <3000 220000>;
+		status = "ok";
+	};
+
 	eeprom_tof1: qcom,eeprom7 {
 		cell-index = <7>;
 		compatible = "qcom,eeprom";
@@ -324,6 +338,50 @@
 					"CAM_RESET0";
 		cci-master = <CCI_MASTER_0>;
 		clocks = <&cambistmclkcc CAM_BIST_MCLK_CC_MCLK0_CLK>;
+		clock-names = "cam_clk";
+		clock-cntl-level = "nominal";
+		clock-rates = <24000000>;
+		status = "ok";
+	};
+
+	qcom,cam-sensor9 {
+		cell-index = <9>;
+		compatible = "qcom,cam-sensor";
+		csiphy-sd-index = <1>;
+		sensor-position-roll = <270>;
+		sensor-position-pitch = <0>;
+		sensor-position-yaw = <180>;
+		eeprom-src = <&eeprom_wide>;
+		ois-src = <&lpai_ois>;
+		actuator-src = <&actuator_triple_wide>;
+		led-flash-src = <&led_flash_triple_rear_wide>;
+		cam_vio-supply = <&L5M>;
+		cam_vdig-supply = <&L1N>;
+		cam_clk-supply = <&cam_cc_titan_top_gdsc>;
+		cam_vana-supply = <&L6M>;
+		cam_vaf-supply = <&L7M>;
+		cam_v_custom1-supply = <&L3N>;
+		regulator-names = "cam_vio", "cam_vdig", "cam_clk", "cam_vana",
+			"cam_vaf", "cam_v_custom1";
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <1800000 1104000 0 2800000 2960000 1800000>;
+		rgltr-max-voltage = <1800000 1104000 0 2800000 2960000 1800000>;
+		rgltr-load-current = <4000 913000 0 91400 119000 63100>;
+		gpio-no-mux = <0>;
+		pinctrl-names = "cam_default", "cam_suspend";
+		pinctrl-0 = <&cam_sensor_mclk1_active
+				 &cam_sensor_active_rst1>;
+		pinctrl-1 = <&cam_sensor_mclk1_suspend
+				 &cam_sensor_suspend_rst1>;
+		gpios = <&tlmm 90 0>,
+			<&tlmm 15 0>;
+		gpio-reset = <1>;
+		gpio-req-tbl-num = <0 1>;
+		gpio-req-tbl-flags = <1 0>;
+		gpio-req-tbl-label = "CAMIF_MCLK1",
+					"CAM_RESET1";
+		cci-master = <CCI_MASTER_1>;
+		clocks = <&cambistmclkcc CAM_BIST_MCLK_CC_MCLK1_CLK>;
 		clock-names = "cam_clk";
 		clock-cntl-level = "nominal";
 		clock-rates = <24000000>;
