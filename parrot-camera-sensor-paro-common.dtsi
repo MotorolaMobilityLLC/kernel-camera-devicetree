@@ -154,8 +154,8 @@
 		eeprom-src    = <&eeprom_main>;
 		led-flash-src = <&led_flash_rear_main>;
 		cam_vio-supply  = <&L21B>;
-		cam_vana-supply = <&et5904_ldo3>;
-		cam_vdig-supply = <&et5904_ldo2>;
+		cam_vana-supply = <&dio8015_ldo3>;
+		cam_vdig-supply = <&dio8015_ldo2>;
 		cam_vaf-supply = <&L11E>;
 		cam_clk-supply  = <&cam_cc_camss_top_gdsc>;
 		regulator-names = "cam_vio", "cam_vana", "cam_vdig", "cam_vaf", "cam_clk" ;
@@ -189,8 +189,8 @@
 		sensor-position-yaw = <0>;
 		eeprom-src   = <&eeprom_front>;
 		cam_vio-supply  = <&L21B>;
-		cam_vana-supply = <&et5904_ldo4>;
-		cam_vdig-supply = <&et5904_ldo1>;
+		cam_vana-supply = <&dio8015_ldo4>;
+		cam_vdig-supply = <&dio8015_ldo1>;
 		cam_clk-supply  = <&cam_cc_camss_top_gdsc>;
 		regulator-names = "cam_vio", "cam_vana", "cam_vdig", "cam_clk";
 		rgltr-cntrl-support;
