@@ -21,7 +21,7 @@
 };
 
 &pm6150l_flash0{
-	qcom,max-current-ma = <1200>;
+	qcom,max-current-ma = <1500>;
 	qcom,duration-ms = <500>;
 };
 
