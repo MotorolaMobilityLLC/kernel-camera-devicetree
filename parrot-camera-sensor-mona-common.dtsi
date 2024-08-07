@@ -22,7 +22,7 @@
 		output-enable;
 		bias-pull-down; /* PULL DOWN */
 		power-source = <0>;
-		qcom,drive-strength = <2>;	/* Medium */
+		qcom,drive-strength = <2>;     /* Medium */
 	};
 };
 
@@ -53,7 +53,7 @@
 		output-enable;
 		bias-pull-down; /* PULL DOWN */
 		power-source = <0>;
-		qcom,drive-strength = <2>;	/* Medium */
+		qcom,drive-strength = <2>;         /* Medium */
 	};
 };
 
@@ -213,6 +213,20 @@
 		status = "ok";
 	};
 
+	eeprom_main: qcom,eeprom@0 {
+		cell-index = <0>;
+		reg = <0x0>;
+		compatible = "qcom,eeprom";
+		cci-master = <CCI_MASTER_1>;
+		cam_vio-supply  = <&cam_iovdd>;
+		regulator-names = "cam_vio";
+		rgltr-cntrl-support;
+		rgltr-min-voltage  = <1800000>;
+		rgltr-max-voltage  = <1800000>;
+		rgltr-load-current = <155000>;
+		status = "ok";
+	};
+
 	eeprom_rear_uw: qcom,eeprom@2 {
 		cell-index = <2>;
 		reg = <0x2>;
@@ -263,6 +277,7 @@
 		clock-rates = <24000000>;
 		status = "ok";
 	};
+
 	rear_main: qcom,cam-sensor@0 {
 		cell-index = <0>;
 		compatible = "qcom,cam-sensor";
@@ -272,7 +287,7 @@
 		sensor-position-yaw = <180>;
 		led-flash-src = <&led_flash_rear_main>;
 		actuator-src  = <&actuator_main>;
-		//eeprom-src    = <&eeprom_main>;
+		eeprom-src    = <&eeprom_main>;
 		cam_vio-supply  = <&cam_iovdd>;
 		cam_vana-supply = <&cam_avdd2_main>;
 		cam_vdig-supply = <&cam_dvdd_main>;
@@ -283,11 +298,11 @@
 		rgltr-cntrl-support;
 		rgltr-min-voltage  = <1800000 1800000 1100000 2800000 2800000 0>;
 		rgltr-max-voltage  = <1800000 1800000 1100000 2800000 2800000 0>;
-		rgltr-load-current = <155000 155000 680000 119000 103000 0>;
+		rgltr-load-current = <155000  155000  680000  119000  103000  0>;
 		gpio-no-mux = <0>;
 		pinctrl-names = "cam_default", "cam_suspend";
-		pinctrl-0 = <&cam_sensor_mclk1_active	&cam_sensor_active_rst1>;
-		pinctrl-1 = <&cam_sensor_mclk1_suspend	&cam_sensor_suspend_rst1>;
+		pinctrl-0 = <&cam_sensor_mclk1_active   &cam_sensor_active_rst1>;
+		pinctrl-1 = <&cam_sensor_mclk1_suspend  &cam_sensor_suspend_rst1>;
 		gpios = <&tlmm 40 0>, <&tlmm 45 0>;
 		gpio-reset = <1>;
 		gpio-req-tbl-num   = <0 1>;
