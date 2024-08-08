@@ -14,6 +14,32 @@
 		};
 	};
 
+	cam_afvdd_main_en_default: cam_afvdd_main_en_default {
+		mux {
+			pins = "gpio123";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio123";
+			bias-pull-down; /* PULL DOWN */
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
+	cam_vdd_cam_2p9_en_default: cam_vdd_cam_2p9_en_default {
+		mux {
+			pins = "gpio56";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio56";
+			bias-pull-down; /* PULL DOWN */
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
 	cam_sensor_active_rst0: cam_sensor_active_rst0 {
 		mux {
 			pins = "gpio2";
@@ -99,6 +125,35 @@
 		vin-supply = <&S7I>;
 	};
 
+	cam_vdd_2p9: gpio-regulator@1 {
+		compatible = "regulator-fixed";
+		reg = <0x01 0x00>;
+		regulator-name = "cam_vdd_2p9";
+		regulator-min-microvolt = <2900000>;
+		regulator-max-microvolt = <2900000>;
+		regulator-enable-ramp-delay = <233>;
+		enable-active-high;
+		regulator-always-on;
+		gpio = <&tlmm 56 0>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&cam_vdd_cam_2p9_en_default>;
+		vin-supply = <&BOB1>;
+	};
+
+	cam_afvdd_main: gpio-regulator@2 {
+		compatible = "regulator-fixed";
+		reg = <0x02 0x00>;
+		regulator-name = "cam_afvdd_main";
+		regulator-min-microvolt = <2800000>;
+		regulator-max-microvolt = <2800000>;
+		regulator-enable-ramp-delay = <233>;
+		enable-active-high;
+		gpio = <&tlmm 123 0>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&cam_afvdd_main_en_default>;
+		vin-supply = <&cam_vdd_2p9>;
+	};
+
 	led_flash_rear_main: qcom,camera-flash0 {
 		cell-index = <0>;
 		compatible = "qcom,camera-flash";
@@ -115,13 +170,26 @@
 };
 
 &cam_cci0 {
+	actuator_rear_main: qcom,actuator0 {
+		cell-index = <0>;
+		compatible = "qcom,actuator";
+		cci-master = <CCI_MASTER_0>;
+		cam_vaf-supply = <&cam_afvdd_main>;
+		regulator-names = "cam_vaf";
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <2800000>;
+		rgltr-max-voltage = <2800000>;
+		rgltr-load-current = <119000>;
+		status = "ok";
+	};
+
 	rear_main: qcom,cam-sensor0 {
 		cell-index = <0>;
 		compatible = "qcom,cam-sensor";
 		csiphy-sd-index = <0>;
 		//eeprom-src = <&eeprom_rear_main>;
 		led-flash-src = <&led_flash_rear_main>;
-		//actuator-src = <&actuator_rear_main>;
+		actuator-src = <&actuator_rear_main>;
 		sensor-position-roll = <90>;
 		sensor-position-pitch = <0>;
 		sensor-position-yaw = <180>;
