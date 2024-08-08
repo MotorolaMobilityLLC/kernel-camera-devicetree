@@ -98,6 +98,16 @@
 		pinctrl-0 = <&cam_dvdd_main_en_default>;
 		vin-supply = <&S7I>;
 	};
+
+	led_flash_rear_main: qcom,camera-flash0 {
+		cell-index = <0>;
+		compatible = "qcom,camera-flash";
+		flash-source = <&pm8550_flash0>;
+		torch-source = <&pm8550_torch0>;
+		switch-source = <&pm8550_switch0>;
+		status = "ok";
+	};
+
 	qcom,cam-res-mgr {
 		compatible = "qcom,cam-res-mgr";
 		status = "ok";
@@ -110,7 +120,7 @@
 		compatible = "qcom,cam-sensor";
 		csiphy-sd-index = <0>;
 		//eeprom-src = <&eeprom_rear_main>;
-		//led-flash-src = <&led_flash_rear_main>;
+		led-flash-src = <&led_flash_rear_main>;
 		//actuator-src = <&actuator_rear_main>;
 		sensor-position-roll = <90>;
 		sensor-position-pitch = <0>;
