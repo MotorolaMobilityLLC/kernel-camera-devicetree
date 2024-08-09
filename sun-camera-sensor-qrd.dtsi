@@ -585,8 +585,8 @@
 };
 
 &i3c3 {
-	se-clock-frequency = <100000000>;
-	i3c-scl-hz = <12500000>;
+	se-clock-frequency = <64000000>;
+	i3c-scl-hz = <8300000>;
 	dfs-index = <0>;
 	i2c-scl-hz = <1000000>;
 	qcom,pm-ctrl-client;
