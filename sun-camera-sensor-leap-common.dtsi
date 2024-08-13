@@ -171,6 +171,14 @@
 
 	qcom,cam-res-mgr {
 		compatible = "qcom,cam-res-mgr";
+		gpios-shared = <601 514>;
+		gpios-shared-pinctrl = <601 514>;
+		shared-pctrl-gpio-names = "mclk0", "rst0";
+		pinctrl-names = "mclk0_active", "mclk0_suspend", "rst0_active", "rst0_suspend";
+		pinctrl-0 = <&cam_sensor_mclk0_active>;
+		pinctrl-1 = <&cam_sensor_mclk0_suspend>;
+		pinctrl-2 = <&cam_sensor_active_rst0>;
+		pinctrl-3 = <&cam_sensor_suspend_rst0>;
 		status = "ok";
 	};
 };
@@ -210,11 +218,11 @@
 		rgltr-max-voltage = <1800000 1000000 0 2200000>;
 		rgltr-load-current = <101000 787000 0 1000>;
 		gpio-no-mux = <0>;
-		pinctrl-names = "cam_default", "cam_suspend";
-		pinctrl-0 = <&cam_sensor_mclk0_active
-			&cam_sensor_active_rst0>;
-		pinctrl-1 = <&cam_sensor_mclk0_suspend
-			&cam_sensor_suspend_rst0>;
+		//pinctrl-names = "cam_default", "cam_suspend";
+		//pinctrl-0 = <&cam_sensor_mclk0_active
+		//	&cam_sensor_active_rst0>;
+		//pinctrl-1 = <&cam_sensor_mclk0_suspend
+		//	&cam_sensor_suspend_rst0>;
 		gpios = <&tlmm 89 0>,
 			<&tlmm 2 0>;
 		gpio-reset = <1>;
