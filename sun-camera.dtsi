@@ -1734,6 +1734,7 @@
 		sys-cache-names = "ofe_ip", "ipe_rt_ip", "ipe_srt_ip", "ipe_rt_rf", "ipe_srt_rf";
 		sys-cache-uids = <71 72 73 74 75>;
 		sys-cache-concur = <1 1 1 0 0>;
+		enable-secure-qos-update;
 		enable-smart-qos;
 		enable-cam-drv = <(CAM_DDR_DRV | CAM_CLK_DRV)>;
 		rt-wr-priority-min = <4>;
@@ -2646,10 +2647,9 @@
 	cam_vfe0: qcom,ife0@ac86000{
 		cell-index = <0>;
 		compatible = "qcom,mc_tfe980";
-		reg-names = "ife", "cam_camnoc_rt";
-		reg = <0x0ac86000 0x10000>,
-			<0x0ad90000 0x9000>;
-		reg-cam-base = <0x86000 0x19000>;
+		reg-names = "ife";
+		reg = <0x0ac86000 0x10000>;
+		reg-cam-base = <0x86000>;
 		rt-wrapper-base = <0x86000>;
 		interrupt-names = "tfe0";
 		interrupts = <GIC_SPI 433 IRQ_TYPE_EDGE_RISING>;
@@ -2725,10 +2725,9 @@
 	cam_vfe1: qcom,ife1@ac96000 {
 		cell-index = <1>;
 		compatible = "qcom,mc_tfe980";
-		reg-names = "ife", "cam_camnoc_rt";
-		reg = <0x0ac96000 0x10000>,
-			<0x0ad90000 0x9000>;
-		reg-cam-base = <0x96000 0x19000>;
+		reg-names = "ife";
+		reg = <0x0ac96000 0x10000>;
+		reg-cam-base = <0x96000>;
 		rt-wrapper-base = <0x86000>;
 		interrupt-names = "tfe1";
 		interrupts = <GIC_SPI 436 IRQ_TYPE_EDGE_RISING>;
@@ -2804,10 +2803,9 @@
 	cam_vfe2: qcom,ife2@aca6000 {
 		cell-index = <2>;
 		compatible = "qcom,mc_tfe980";
-		reg-names = "ife", "cam_camnoc_rt";
-		reg = <0x0aca6000 0x10000>,
-			<0x0ad90000 0x9000>;
-		reg-cam-base = <0xa6000 0x19000>;
+		reg-names = "ife";
+		reg = <0x0aca6000 0x10000>;
+		reg-cam-base = <0xa6000>;
 		rt-wrapper-base = <0x86000>;
 		interrupt-names = "tfe2";
 		interrupts = <GIC_SPI 457 IRQ_TYPE_EDGE_RISING>;

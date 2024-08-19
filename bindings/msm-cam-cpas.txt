@@ -229,6 +229,11 @@ First Level Node - CAM CPAS device
   Definition: Client ID for camera caches. ID is used to differentiate
 	the property of the cache like being Forget, Dealloc.
 
+- enable-secure-qos-update
+  Usage: optional
+  Value type: <empty>
+  Definition: Bool property specifying whether secure camera Qos update feature is enabled.
+
 - enable-smart-qos
   Usage: optional
   Value type: <empty>
