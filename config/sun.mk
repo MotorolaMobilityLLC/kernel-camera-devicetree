@@ -1,7 +1,8 @@
 ifeq ($(CONFIG_MMI_DEVICE_DTBS),y)
 dtbo-$(CONFIG_ARCH_SUN)  := sun-camera.dtbo
 
-dtbo-$(CONFIG_LEAP_DTB) += sun-camera-sensor-leap-evb.dtbo
+dtbo-$(CONFIG_LEAP_DTB) += sun-camera-sensor-leap-evb.dtbo \
+                           sun-camera-sensor-leap-evt1.dtbo
 
 else
 
