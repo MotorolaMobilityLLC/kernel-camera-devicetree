@@ -99,20 +99,6 @@
 		status = "ok";
 	};
 
-	lpai_ois: qcom,ois1 {
-		cell-index = <9>;
-		compatible = "qcom,ois";
-		cci-master = <CCI_MASTER_1>;
-		cam_vio-supply = <&L1I>;
-		cam_vaf-supply = <&L7M>;
-		regulator-names = "cam_vio","cam_vaf";
-		rgltr-cntrl-support;
-		rgltr-min-voltage = <1200000 2960000>;
-		rgltr-max-voltage = <1200000 2960000>;
-		rgltr-load-current = <3000 220000>;
-		status = "ok";
-	};
-
 	eeprom_tof1: qcom,eeprom7 {
 		cell-index = <7>;
 		compatible = "qcom,eeprom";
@@ -665,6 +651,20 @@
 		rgltr-min-voltage = <2960000>;
 		rgltr-max-voltage = <2960000>;
 		rgltr-load-current = <100000>;
+		status = "ok";
+	};
+
+	lpai_ois: qcom,ois@E {
+		cell-index = <9>;
+		compatible = "qcom,cam-i2c-ois";
+		reg = <0x0E 0x00 0x10>;
+		cam_vio-supply = <&L1I>;
+		cam_vaf-supply = <&L7M>;
+		regulator-names = "cam_vio","cam_vaf";
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <1200000 2960000>;
+		rgltr-max-voltage = <1200000 2960000>;
+		rgltr-load-current = <3000 220000>;
 		status = "ok";
 	};
 
