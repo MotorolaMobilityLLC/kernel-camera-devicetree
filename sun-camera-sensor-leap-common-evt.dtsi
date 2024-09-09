@@ -220,6 +220,20 @@
 		status = "ok";
 	};
 
+	mot,cam-actuator {
+		compatible = "mot,actuator";
+		//gpio-no-mux = <0>;
+		//pinctrl-names = "cam_default", "cam_suspend";
+		//pinctrl-0 = <&cam_sensor_mclk1_active>;
+		//pinctrl-1 = <&cam_sensor_mclk1_suspend>;
+		//use-shared-clk = "true";
+		//clocks = <&camcc CAM_CC_MCLK1_CLK>;
+		//clock-names = "cam_clk";
+		//clock-cntl-level = "nominal";
+		//clock-rates = <19200000>;
+		status = "ok";
+	};
+
 	qcom,cam-res-mgr {
 		compatible = "qcom,cam-res-mgr";
 		gpios-shared = <601 514>;
@@ -246,6 +260,7 @@
 		rgltr-max-voltage = <2800000>;
 		rgltr-load-current = <119000>;
 		status = "ok";
+		multi-user-support;
 	};
 
 	eeprom_rear_main: qcom,eeprom@0 {
