@@ -146,6 +146,18 @@
 	qcom,init-voltage = <2800000>;
 };
 
+&pm8550_flash0 {
+	qcom,max-current-ma = <1100>;
+	qcom,duration-ms = <350>;
+};
+&pm8550_flash3 {
+	qcom,duration-ms = <350>;
+};
+
+&pm8550_torch0 {
+	qcom,max-current-ma = <150>;
+};
+
 &soc {
 	cam_dvdd_main: gpio-regulator@0 {
 		compatible = "regulator-fixed";
@@ -192,6 +204,15 @@
 
 	led_flash_rear_main: qcom,camera-flash0 {
 		cell-index = <0>;
+		compatible = "qcom,camera-flash";
+		flash-source = <&pm8550_flash0>;
+		torch-source = <&pm8550_torch0>;
+		switch-source = <&pm8550_switch0>;
+		status = "ok";
+	};
+
+	led_flash_rear_uw: qcom,camera-flash2 {
+		cell-index = <2>;
 		compatible = "qcom,camera-flash";
 		flash-source = <&pm8550_flash0>;
 		torch-source = <&pm8550_torch0>;
@@ -320,52 +341,6 @@
 		status = "ok";
 	};
 };
-/*
-&qupv3_se9_i2c {
-	status = "ok";
-	qcom,high-perf;
-	qcom,clk-freq-out = <1000000>;
-	qcom,pm-ctrl-client;
-
-	front_main: qcom,cam-sensor1 {
-		cell-index = <1>;
-		reg = <0x2d>;
-		compatible = "qcom,cam-i2c-sensor";
-		csiphy-sd-index = <4>;
-		sensor-position-roll = <270>;
-		sensor-position-pitch = <0>;
-		sensor-position-yaw = <0>;
-		cam_vio-supply = <&L1I>;
-		cam_vdig-supply = <&L2N>;
-		cam_clk-supply = <&cam_cc_titan_top_gdsc>;
-		cam_vana-supply = <&L6N>;
-		regulator-names = "cam_vio", "cam_vdig","cam_clk", "cam_vana";
-		rgltr-cntrl-support;
-		aon-camera-id = <AON_CAM1>;
-		rgltr-min-voltage = <1800000 1000000 0 2200000>;
-		rgltr-max-voltage = <1800000 1000000 0 2200000>;
-		rgltr-load-current = <3000 283000 0  50000>;
-		gpio-no-mux = <0>;
-		pinctrl-names = "cam_default", "cam_suspend";
-		pinctrl-0 = <&cam_sensor_mclk4_active
-				 &cam_sensor_active_rst4>;
-		pinctrl-1 = <&cam_sensor_mclk4_suspend
-				 &cam_sensor_suspend_rst4>;
-		gpios = <&tlmm 93 0>,
-			<&tlmm 7 0>;
-		gpio-reset = <1>;
-		gpio-req-tbl-num = <0 1>;
-		gpio-req-tbl-flags = <1 0>;
-		gpio-req-tbl-label = "CAMIF_MCLK4",
-					"CAM_RESET4";
-		clocks = <&cambistmclkcc CAM_BIST_MCLK_CC_MCLK4_CLK>;
-		clock-names = "cam_clk";
-		clock-cntl-level = "nominal";
-		clock-rates = <19200000>;
-		status = "ok";
-	};
-};
-*/
 
 &qupv3_se8_i2c {
 	status = "ok";
@@ -378,6 +353,7 @@
 		reg = <0x10>;
 		compatible = "qcom,cam-i2c-sensor";
 		csiphy-sd-index = <2>;
+		led-flash-src = <&led_flash_rear_uw>;
 		sensor-position-roll = <90>;
 		sensor-position-pitch = <0>;
 		sensor-position-yaw = <180>;
