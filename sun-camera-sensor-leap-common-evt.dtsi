@@ -362,12 +362,26 @@
 	qcom,clk-freq-out = <1000000>;
 	qcom,pm-ctrl-client;
 
+	eeprom_aon_uw: qcom,eeprom2 {
+		cell-index = <2>;
+		reg = <0x50>;
+		compatible = "qcom,cam-i2c-eeprom";
+		cam_vio-supply = <&L1I>;
+		regulator-names = "cam_vio";
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <1800000>;
+		rgltr-max-voltage = <1800000>;
+		rgltr-load-current = <6000>;
+		status = "ok";
+	};
+
 	uw_main: qcom,cam-sensor2 {
 		cell-index = <2>;
 		reg = <0x10>;
 		compatible = "qcom,cam-i2c-sensor";
 		csiphy-sd-index = <2>;
 		led-flash-src = <&led_flash_rear_uw>;
+		eeprom-src = <&eeprom_aon_uw>;
 		sensor-position-roll = <90>;
 		sensor-position-pitch = <0>;
 		sensor-position-yaw = <180>;
