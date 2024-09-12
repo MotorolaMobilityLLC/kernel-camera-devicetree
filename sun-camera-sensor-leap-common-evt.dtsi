@@ -199,7 +199,7 @@
 		gpio = <&tlmm 123 0>;
 		pinctrl-names = "default";
 		pinctrl-0 = <&cam_avdd_main_en_default>;
-		vin-supply = <&cam_vdd_2p33>;
+//		vin-supply = <&cam_vdd_2p33>;
 	};
 
 	led_flash_rear_main: qcom,camera-flash0 {
