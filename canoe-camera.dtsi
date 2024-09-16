@@ -1734,9 +1734,9 @@
 			"ipe0", "rt-cdm0", "rt-cdm1", "rt-cdm2", "rt-cdm3", "rt-cdm4",
 			"cam-cdm-intf0", "icp0", "icp1", "ofe0", "cre0",
 			"jpeg-dma0", "jpeg-enc0", "tpg13", "tpg14", "tpg15";
-		sys-cache-names = "ofe_ip", "ipe_rt_ip", "ipe_srt_ip", "ipe_rt_rf", "ipe_srt_rf";
-		sys-cache-uids = <71 72 73 74 75>;
-		sys-cache-concur = <1 1 1 0 0>;
+		sys-cache-names = "ofe_ip", "ipe_rt_ip", "ipe_srt_ip", "ipe_rt_rf", "ipe_srt_rf", "ipe_stripe_overlap_srt", "ipe_stripe_overlap_rt", "ofe_stripe_overlap";
+		sys-cache-uids = <71 72 72 74 75 92 92 92>;
+		sys-cache-concur = <1 1 1 0 0 1 1 1>;
 		enable-smart-qos;
 		enable-cam-drv = <(CAM_DDR_DRV | CAM_CLK_DRV)>;
 		rt-wr-priority-min = <4>;
@@ -1846,8 +1846,8 @@
 					<CAM_CPAS_TRAFFIC_MERGE_SUM>;
 					rt-wr-niu;
 					niu-size = <134>;
-					priority-lut-low-offset = <0x4830>;
-					priority-lut-high-offset = <0x4834>;
+					priority-lut-low-offset = <0x2C30>;
+					priority-lut-high-offset = <0x2C34>;
 				};
 
 				level1_rt2_wr: level1-rt2-wr {
@@ -1858,8 +1858,8 @@
 					<CAM_CPAS_TRAFFIC_MERGE_SUM>;
 					rt-wr-niu;
 					niu-size = <36>;
-					priority-lut-low-offset = <0x4A30>;
-					priority-lut-high-offset = <0x4A34>;
+					priority-lut-low-offset = <0x2E30>;
+					priority-lut-high-offset = <0x2E34>;
 				};
 
 				level1_rt3_wr: level1-rt3-wr {
@@ -1870,8 +1870,8 @@
 					<CAM_CPAS_TRAFFIC_MERGE_SUM>;
 					rt-wr-niu;
 					niu-size = <92>;
-					priority-lut-low-offset = <0x4C30>;
-					priority-lut-high-offset = <0x4C34>;
+					priority-lut-low-offset = <0x3030>;
+					priority-lut-high-offset = <0x3034>;
 				};
 
 				level1_rt4_rd: level1-rt4-rd {
@@ -1882,8 +1882,8 @@
 					<CAM_CPAS_TRAFFIC_MERGE_SUM>;
 					rt-wr-niu;
 					niu-size = <92>;
-					priority-lut-low-offset = <0x4C30>;
-					priority-lut-high-offset = <0x4C34>;
+					priority-lut-low-offset = <0x3230>;
+					priority-lut-high-offset = <0x3234>;
 				};
 
 				level1_nrt2_wr: level1-nrt2-wr {
@@ -3137,8 +3137,6 @@
 		regulator-names = "ofe0-vdd";
 		ofe0-vdd-supply = <&cam_cc_ofe_gdsc>;
 		clock-names =
-			"camnoc_nrt_ofe_anchor",
-			"camnoc_nrt_ofe_hdr",
 			"ofe_clk_src",
 			"ofe_main_clk",
 			"camnoc_nrt_ofe_main_clk",
@@ -3194,14 +3192,14 @@
 		interrupts = <GIC_SPI 475 IRQ_TYPE_EDGE_RISING>;
 		regulator-names = "gdsc";
 		gdsc-supply = <&cam_cc_titan_top_gdsc>;
-		shared-clks = <1 0 0>;
+		shared-clks = <1 0>;
 		clock-names =
 			"jpegenc_clk_src",
 			"jpegenc_clk";
 		clocks =
 			<&camcc CAM_CC_JPEG_CLK_SRC>,
 			<&camcc CAM_CC_JPEG_CLK>;
-		clock-rates = <600000000 0 0>;
+		clock-rates = <600000000 0>;
 		src-clock-name = "jpegenc_clk_src";
 		clock-cntl-level = "nominal";
 		nrt-device;
@@ -3222,14 +3220,14 @@
 		interrupts = <GIC_SPI 372 IRQ_TYPE_EDGE_RISING>;
 		regulator-names = "gdsc";
 		gdsc-supply = <&cam_cc_titan_top_gdsc>;
-		shared-clks = <1 0 0>;
+		shared-clks = <1 0>;
 		clock-names =
 			"jpegdma_clk_src",
 			"jpegdma_clk";
 		clocks =
 			<&camcc CAM_CC_JPEG_CLK_SRC>,
 			<&camcc CAM_CC_JPEG_CLK>;
-		clock-rates = <600000000 0 0>;
+		clock-rates = <600000000 0>;
 		src-clock-name = "jpegdma_clk_src";
 		clock-cntl-level = "nominal";
 		nrt-device;
