@@ -11,8 +11,15 @@
 / {
 	model = "Qualcomm Technologies, Inc. Volcano SoC";
 	compatible = "qcom,volcano";
-	qcom,msm-id = <636 0x10000>, <640 0x10000>, <641 0x10000>,
-			<0xc000291 0x10000>, <0xc000292 0x10000>,
-			<0x10000291 0x10000>, <0x10000292 0x10000>;
+	qcom,msm-id = <0x4000291 0x10000>, <0x4000292 0x10000>,
+	<0x8000291 0x10000>, <0x8000292 0x10000>;
 	qcom,board-id = <0 0>;
+};
+
+&cam_tfe_csid2 {
+	status = "disabled";
+};
+
+&cam_tfe2 {
+	status = "disabled";
 };
