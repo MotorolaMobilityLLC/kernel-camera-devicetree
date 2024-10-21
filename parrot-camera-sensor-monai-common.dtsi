@@ -72,6 +72,11 @@
 	};
 };
 
+&pm6150l_flash0{
+	qcom,max-current = <1300>;
+	qcom,duration-ms = <500>;
+};
+
 &soc {
 	led_flash_rear_main: qcom,camera-flash@0 {
 		cell-index = <0>;
