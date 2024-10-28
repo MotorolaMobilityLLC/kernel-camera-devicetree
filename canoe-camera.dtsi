@@ -2772,8 +2772,8 @@
 		cell-index = <3>;
 		compatible = "qcom,vfe-lite1080";
 		reg-names = "ife-lite";
-		reg = <0x0 0x092dc000 0x0 0x7000>;
-		reg-cam-base = <0x2dc000>;
+		reg = <0x0 0x092d3000 0x0 0x12000>;
+		reg-cam-base = <0x2d3000>;
 		rt-wrapper-base = <0x2d1000>;
 		interrupt-names = "ife-lite0";
 		interrupts = <GIC_SPI 606 IRQ_TYPE_EDGE_RISING>;
@@ -2853,8 +2853,8 @@
 		cell-index = <4>;
 		compatible = "qcom,vfe-lite1080";
 		reg-names = "ife-lite";
-		reg = <0x0 0x092f0000 0x0 0x7000>;
-		reg-cam-base = <0x2f0000>;
+		reg = <0x0 0x092e7000 0x0 0x12000>;
+		reg-cam-base = <0x2e70000>;
 		rt-wrapper-base = <0x2d1000>;
 		interrupt-names = "ife-lite1";
 		interrupts = <GIC_SPI 377 IRQ_TYPE_EDGE_RISING>;
