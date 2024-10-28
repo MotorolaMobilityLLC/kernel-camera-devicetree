@@ -793,6 +793,7 @@
 				<&apps_smmu 0x0880 0x020>;
 			qcom,iommu-faults = "fatal";
 			qcom,iommu-dma-addr-pool = <0x100000 0xffe00000>;
+			qcom,iova-best-fit;
 			dma-coherent;
 			cam-smmu-label = "tfe";
 			tfe_iova_mem_map: iova-mem-map {
@@ -820,6 +821,7 @@
 			qcom,iommu-faults = "fatal";
 			cam-smmu-label = "icp";
 			qcom,iommu-dma-addr-pool = <0x14c00000 0xee300000>;
+			qcom,iova-best-fit;
 			dma-coherent;
 			icp_iova_mem_map: iova-mem-map {
 				iova-mem-region-shared {
@@ -876,6 +878,7 @@
 			cam-smmu-label = "rt-cdm";
 			qcom,iommu-faults = "fatal";
 			qcom,iommu-dma-addr-pool = <0x100000 0xffe00000>;
+			qcom,iova-best-fit;
 			multiple-client-devices;
 			dma-coherent;
 			rt_cdm_iova_mem_map: iova-mem-map {
@@ -897,6 +900,7 @@
 			qcom,iommu-faults = "fatal";
 			multiple-client-devices;
 			qcom,iommu-dma-addr-pool = <0x100000 0xffe00000>;
+			qcom,iova-best-fit;
 			cam-smmu-label = "cre";
 			dma-coherent;
 			cre_iova_mem_map: iova-mem-map {
