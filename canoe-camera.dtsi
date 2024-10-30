@@ -854,8 +854,8 @@
 };
 
 &soc {
-	#address-cells = <1>;
-	#size-cells = <1>;
+	#address-cells = <2>;
+	#size-cells = <2>;
 	interrupt-parent = <&intc>;
 
 	qcom,cam-req-mgr {
@@ -876,22 +876,22 @@
 		status = "disabled";
 	};
 
-	cam_csiphy0: qcom,csiphy0@ada9000 {
+	cam_csiphy0: qcom,csiphy0@9523000 {
 		cell-index = <0>;
-		compatible = "qcom,csiphy-v2.3.0", "qcom,csiphy";
-		reg = <0x0ada9000 0x2000>;
+		compatible = "qcom,csiphy-v2.4.0", "qcom,csiphy";
+		reg = <0x0 0x09523000 0x0 0x2000>;
 		reg-names = "csiphy";
-		reg-cam-base = <0x1a9000>;
+		reg-cam-base = <0x523000>;
 		interrupt-names = "CSIPHY0";
 		interrupts = <GIC_SPI 477 IRQ_TYPE_EDGE_RISING>;
 		regulator-names = "gdscr", "csi-vdd-1p2", "csi-vdd-0p9";
 		gdscr-supply = <&cam_cc_titan_top_gdsc>;
-		csi-vdd-1p2-supply = <&L3G>;
-		csi-vdd-0p9-supply = <&L1F>;
+		csi-vdd-1p2-supply = <&L1D>;
+		csi-vdd-0p9-supply = <&L3I>;
 		rgltr-cntrl-support;
 		rgltr-min-voltage = <0 1200000 880000>;
 		rgltr-max-voltage = <0 1256000 920000>;
-		rgltr-load-current = <0 6200 88200>;
+		rgltr-load-current = <0 14660 151020>;
 		shared-clks = <1 0 0 0>;
 		clock-names = "cphy_rx_clk_src",
 			"csiphy0_clk",
@@ -910,22 +910,22 @@
 		status = "ok";
 	};
 
-	cam_csiphy1: qcom,csiphy1@adab000 {
+	cam_csiphy1: qcom,csiphy1@9525000 {
 		cell-index = <1>;
-		compatible = "qcom,csiphy-v2.3.0", "qcom,csiphy";
-		reg = <0x0adab000 0x2000>;
+		compatible = "qcom,csiphy-v2.4.0", "qcom,csiphy";
+		reg = <0x0 0x09525000 0x0 0x2000>;
 		reg-names = "csiphy";
-		reg-cam-base = <0x1ab000>;
+		reg-cam-base = <0x525000>;
 		interrupt-names = "CSIPHY1";
 		interrupts = <GIC_SPI 478 IRQ_TYPE_EDGE_RISING>;
 		regulator-names = "gdscr", "csi-vdd-1p2", "csi-vdd-0p9";
 		gdscr-supply = <&cam_cc_titan_top_gdsc>;
-		csi-vdd-1p2-supply = <&L3G>;
-		csi-vdd-0p9-supply = <&L1F>;
+		csi-vdd-1p2-supply = <&L1D>;
+		csi-vdd-0p9-supply = <&L3I>;
 		rgltr-cntrl-support;
 		rgltr-min-voltage = <0 1200000 880000>;
 		rgltr-max-voltage = <0 1256000 920000>;
-		rgltr-load-current = <0 6200 88200>;
+		rgltr-load-current = <0 14660 151020>;
 		shared-clks = <1 0 0 0>;
 		clock-names = "cphy_rx_clk_src",
 			"csiphy1_clk",
@@ -944,22 +944,22 @@
 		status = "ok";
 	};
 
-	cam_csiphy2: qcom,csiphy2@adad000 {
+	cam_csiphy2: qcom,csiphy2@9527000 {
 		cell-index = <2>;
-		compatible = "qcom,csiphy-v2.3.0", "qcom,csiphy";
-		reg = <0x0adad000 0x2000>;
+		compatible = "qcom,csiphy-v2.4.0", "qcom,csiphy";
+		reg = <0x0 0x09527000 0x0 0x2000>;
 		reg-names = "csiphy";
-		reg-cam-base = <0x1ad000>;
+		reg-cam-base = <0x527000>;
 		interrupt-names = "CSIPHY2";
 		interrupts = <GIC_SPI 479 IRQ_TYPE_EDGE_RISING>;
 		regulator-names = "gdscr", "csi-vdd-1p2", "csi-vdd-0p9";
 		gdscr-supply = <&cam_cc_titan_top_gdsc>;
-		csi-vdd-1p2-supply = <&L3G>;
-		csi-vdd-0p9-supply = <&L3I>;
+		csi-vdd-1p2-supply = <&L1D>;
+		csi-vdd-0p9-supply = <&L3D>;
 		rgltr-cntrl-support;
 		rgltr-min-voltage = <0 1200000 880000>;
 		rgltr-max-voltage = <0 1256000 912000>;
-		rgltr-load-current = <0 6200 88200>;
+		rgltr-load-current = <0 14660 151020>;
 		shared-clks = <1 0 0 0>;
 		clock-names = "cphy_rx_clk_src",
 			"csiphy2_clk",
@@ -978,22 +978,22 @@
 		status = "ok";
 	};
 
-	cam_csiphy3: qcom,csiphy3@adaf000 {
+	cam_csiphy3: qcom,csiphy3@9529000 {
 		cell-index = <3>;
-		compatible = "qcom,csiphy-v2.3.0", "qcom,csiphy";
-		reg = <0x0adaf000 0x2000>;
+		compatible = "qcom,csiphy-v2.4.0", "qcom,csiphy";
+		reg = <0x0 0x09529000 0x0 0x2000>;
 		reg-names = "csiphy";
-		reg-cam-base = <0x1af000>;
+		reg-cam-base = <0x529000>;
 		interrupt-names = "CSIPHY3";
 		interrupts = <GIC_SPI 448 IRQ_TYPE_EDGE_RISING>;
 		regulator-names = "gdscr", "csi-vdd-1p2", "csi-vdd-0p9";
 		gdscr-supply = <&cam_cc_titan_top_gdsc>;
-		csi-vdd-1p2-supply = <&L3G>;
-		csi-vdd-0p9-supply = <&L1F>;
+		csi-vdd-1p2-supply = <&L1D>;
+		csi-vdd-0p9-supply = <&L3I>;
 		rgltr-cntrl-support;
 		rgltr-min-voltage = <0 1200000 880000>;
 		rgltr-max-voltage = <0 1256000 920000>;
-		rgltr-load-current = <0 6200 88200>;
+		rgltr-load-current = <0 14660 151020>;
 		shared-clks = <1 0 0 0>;
 		clock-names = "cphy_rx_clk_src",
 			"csiphy3_clk",
@@ -1012,22 +1012,22 @@
 		status = "ok";
 	};
 
-	cam_csiphy4: qcom,csiphy4@adb1000 {
+	cam_csiphy4: qcom,csiphy4@952B000 {
 		cell-index = <4>;
-		compatible = "qcom,csiphy-v2.3.0", "qcom,csiphy";
-		reg = <0x0adb1000 0x2000>;
+		compatible = "qcom,csiphy-v2.4.0", "qcom,csiphy";
+		reg = <0x0 0x0952B000 0x0 0x2000>;
 		reg-names = "csiphy";
-		reg-cam-base = <0x1b1000>;
+		reg-cam-base = <0x52B000>;
 		interrupt-names = "CSIPHY4";
 		interrupts = <GIC_SPI 122 IRQ_TYPE_EDGE_RISING>;
 		regulator-names = "gdscr", "csi-vdd-1p2", "csi-vdd-0p9";
 		gdscr-supply = <&cam_cc_titan_top_gdsc>;
-		csi-vdd-1p2-supply = <&L3G>;
-		csi-vdd-0p9-supply = <&L3I>;
+		csi-vdd-1p2-supply = <&L1D>;
+		csi-vdd-0p9-supply = <&L3D>;
 		rgltr-cntrl-support;
 		rgltr-min-voltage = <0 1200000 880000>;
 		rgltr-max-voltage = <0 1256000 912000>;
-		rgltr-load-current = <0 6200 88200>;
+		rgltr-load-current = <0 14660 151020>;
 		shared-clks = <1 0 0 0>;
 		clock-names = "cphy_rx_clk_src",
 			"csiphy4_clk",
@@ -1046,22 +1046,22 @@
 		status = "ok";
 	};
 
-	cam_csiphy5: qcom,csiphy5@adb3000 {
+	cam_csiphy5: qcom,csiphy5@952D000 {
 		cell-index = <5>;
-		compatible = "qcom,csiphy-v2.3.0", "qcom,csiphy";
-		reg = <0x0adb3000 0x2000>;
+		compatible = "qcom,csiphy-v2.4.0", "qcom,csiphy";
+		reg = <0x0 0x0952D000 0x0 0x2000>;
 		reg-names = "csiphy";
-		reg-cam-base = <0x1b3000>;
+		reg-cam-base = <0x52D000>;
 		interrupt-names = "CSIPHY5";
 		interrupts = <GIC_SPI 89 IRQ_TYPE_EDGE_RISING>;
 		regulator-names = "gdscr", "csi-vdd-1p2", "csi-vdd-0p9";
 		gdscr-supply = <&cam_cc_titan_top_gdsc>;
-		csi-vdd-1p2-supply = <&L3G>;
-		csi-vdd-0p9-supply = <&L1F>;
+		csi-vdd-1p2-supply = <&L1D>;
+		csi-vdd-0p9-supply = <&L3I>;
 		rgltr-cntrl-support;
 		rgltr-min-voltage = <0 1200000 880000>;
 		rgltr-max-voltage = <0 1256000 920000>;
-		rgltr-load-current = <0 6200 88200>;
+		rgltr-load-current = <0 14660 151020>;
 		shared-clks = <1 0 0 0>;
 		clock-names = "cphy_rx_clk_src",
 			"csiphy5_clk",
@@ -1080,12 +1080,12 @@
 		status = "ok";
 	};
 
-	cam_cci0: qcom,cci0@ac7b000 {
+	cam_cci0: qcom,cci0@941b000 {
 		cell-index = <0>;
 		compatible = "qcom,cci", "simple-bus";
-		reg = <0x0ac7b000 0x1000>;
+		reg = <0x0 0x0941b000 0x0 0x1000>;
 		reg-names = "cci";
-		reg-cam-base = <0x7b000>;
+		reg-cam-base = <0x41b000>;
 		interrupt-names = "CCI0";
 		interrupts = <GIC_SPI 426 IRQ_TYPE_EDGE_RISING>;
 		regulator-names = "gdscr";
@@ -1168,12 +1168,12 @@
 		};
 	};
 
-	cam_cci1: qcom,cci1@ac7c000 {
+	cam_cci1: qcom,cci1@941c000 {
 		cell-index = <1>;
 		compatible = "qcom,cci", "simple-bus";
-		reg = <0x0ac7c000 0x1000>;
+		reg = <0x0 0x0941c000 0x0 0x1000>;
 		reg-names = "cci";
-		reg-cam-base = <0x7c000>;
+		reg-cam-base = <0x41c000>;
 		interrupt-names = "CCI1";
 		interrupts = <GIC_SPI 427 IRQ_TYPE_EDGE_RISING>;
 		regulator-names = "gdscr";
@@ -1256,12 +1256,12 @@
 		};
 	};
 
-	cam_cci2: qcom,cci2@ac7d000 {
+	cam_cci2: qcom,cci2@941d000 {
 		cell-index = <2>;
 		compatible = "qcom,cci", "simple-bus";
-		reg = <0x0ac7d000 0x1000>;
+		reg = <0x0 0x0941d000 0x0 0x1000>;
 		reg-names = "cci";
-		reg-cam-base = <0x7d000>;
+		reg-cam-base = <0x41d000>;
 		interrupt-names = "CCI2";
 		interrupts = <GIC_SPI 428 IRQ_TYPE_EDGE_RISING>;
 		regulator-names = "gdscr";

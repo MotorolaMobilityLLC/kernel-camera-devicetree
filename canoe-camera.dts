@@ -15,7 +15,12 @@
 #include "canoe-camera.dtsi"
 / {
 	model = "Qualcomm Technologies, Inc. canoe SoC";
-	compatible = "qcom,canoe";
-	qcom,msm-id = <660 0x10000>;
+	compatible = "qcom,canoe", "qcom,canoe-rcm", "qcom,canoep",
+		"qcom,canoep-rcm", "qcom,canoe-qrd", "qcom,canoe-cdp",
+		"qcom,canoep-cdp", "qcom,canoe-mtp", "qcom,canoe-atp",
+		"qcom,canoep-atp";
+	qcom,msm-id = <0x10294 0x10000>, <0x10294 0x20000>, <0x10295 0x10000>,
+		<0x10295 0x20000>, <0x1010294 0x10000>, <0x1010294 0x20000>,
+		<0x1010295 0x10000>, <0x1010295 0x20000>;
 	qcom,board-id = <0 0>;
 };
