@@ -1736,7 +1736,7 @@
 			"cam-cdm-intf0", "icp0", "icp1", "ofe0", "cre0",
 			"jpeg-dma0", "jpeg-enc0", "tpg13", "tpg14", "tpg15";
 		sys-cache-names = "ofe_ip", "ipe_rt_ip", "ipe_srt_ip", "ipe_rt_rf", "ipe_srt_rf", "ipe_stripe_overlap_srt", "ipe_stripe_overlap_rt", "ofe_stripe_overlap";
-		sys-cache-uids = <71 72 72 74 75 92 92 92>;
+		sys-cache-uids = <71 72 72 74 75 92 92 93>;
 		sys-cache-concur = <1 1 1 0 0 1 1 1>;
 		enable-smart-qos;
 		enable-cam-drv = <(CAM_DDR_DRV | CAM_CLK_DRV)>;
