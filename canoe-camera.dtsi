@@ -1469,10 +1469,10 @@
 					iova-mem-region-global-sync-region {
 						iova-region-name = "global_sync";
 						iova-region-start = <0x0 0x80400000>;
-						/* Length: 0x100000 */
-						iova-region-len = <0x0 0x100000>;
+						/* Length: 0x200000 */
+						iova-region-len = <0x0 0x200000>;
 						iova-region-id = <0x3>;
-						phy-addr = <0x82600000>;
+						phy-addr = <0xd7a00000>;
 					};
 				};
 
@@ -1501,9 +1501,9 @@
 						iova-region-name = "global_sync";
 						iova-region-start = <0x0 0x80900000>;
 						/* Length: 0x100000 */
-						iova-region-len = <0x0 0x100000>;
+						iova-region-len = <0x0 0x200000>;
 						iova-region-id = <0x3>;
-						phy-addr = <0x82600000>;
+						phy-addr = <0xd7a00000>;
 					};
 				};
 
