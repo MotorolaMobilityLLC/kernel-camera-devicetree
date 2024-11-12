@@ -12,6 +12,6 @@
 / {
 	model = "Qualcomm Technologies, Inc. Pineapple SoC";
 	compatible = "qcom,pineapple";
-	qcom,msm-id = <557 0x20000>, <577 0x20000>;
+	qcom,msm-id = <557 0x20000>, <577 0x20000>, <696 0x20000>;
 	qcom,board-id = <0 0>;
 };
