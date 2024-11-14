@@ -8,22 +8,22 @@
 
 #include <dt-bindings/clock/qcom,gcc-canoe.h>
 #include <dt-bindings/clock/qcom,camcc-canoe.h>
+#include <dt-bindings/clock/qcom,cambistmclkcc-canoe.h>
 #include <dt-bindings/interconnect/qcom,canoe.h>
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
+#include <dt-bindings/clock/qcom,rpmh.h>
 
-#include "canoe-camera.dtsi"
+#include "canoe-camera-sensor-qrd.dtsi"
 / {
-	model = "Qualcomm Technologies, Inc. canoe SoC";
-	compatible = "qcom,canoe", "qcom,canoe-rcm", "qcom,canoep",
-		"qcom,canoep-rcm", "qcom,canoe-qrd", "qcom,canoe-cdp",
-		"qcom,canoep-cdp", "qcom,canoe-mtp", "qcom,canoe-atp",
-		"qcom,canoep-atp", "qcom,mtp";
+	model = "Qualcomm Technologies, Inc. canoe/honu QRD";
+	compatible = "qcom,canoe", "qcom,canoep", "qcom,canoe-qrd",
+		"qcom,qrd";
 	qcom,msm-id = <660 0x10000>, <660 0x20000>, <661 0x10000>,
 		<661 0x20000>, <0x1000294 0x10000>, <0x1000294 0x20000>,
-		<0x1000295 0x10000>, <0x1000295 0x20000>, <0x10294 0x10000>,
+		<0x1000295 0x10000>, <0x1000295 0x20000>,<0x10294 0x10000>,
 		<0x10294 0x20000>, <0x10295 0x10000>, <0x10295 0x20000>,
 		<0x1010294 0x10000>, <0x1010294 0x20000>, <0x1010295 0x10000>,
 		<0x1010295 0x20000>;
-	qcom,board-id = <0 0>;
+	qcom,board-id = <11 0>, <0x1000B 0>, <0x2000B 0>;
 };

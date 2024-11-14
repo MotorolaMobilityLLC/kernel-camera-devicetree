@@ -6,16 +6,17 @@
 #include <dt-bindings/msm-camera.h>
 #include <dt-bindings/arm/msm/qti-smmu-proxy-dt-ids.h>
 
+
 &tlmm {
 	cci_i2c_sda0_active: cci_i2c_sda0_active {
 		mux {
 			/* CLK, DATA */
-			pins = "gpio113";
+			pins = "gpio109";
 			function = "cci_i2c_sda0";
 		};
 
 		config {
-			pins = "gpio113";
+			pins = "gpio109";
 			bias-pull-up; /* PULL UP*/
 			drive-strength = <2>; /* 2 MA */
 			qcom,i2c_pull;
@@ -25,12 +26,12 @@
 	cci_i2c_sda0_suspend: cci_i2c_sda0_suspend {
 		mux {
 			/* CLK, DATA */
-			pins = "gpio113";
+			pins = "gpio109";
 			function = "cci_i2c_sda0";
 		};
 
 		config {
-			pins = "gpio113";
+			pins = "gpio109";
 			bias-pull-down; /* PULL DOWN */
 			drive-strength = <2>; /* 2 MA */
 		};
@@ -39,12 +40,12 @@
 	cci_i2c_scl0_active: cci_i2c_scl0_active {
 		mux {
 			/* CLK, DATA */
-			pins = "gpio114";
+			pins = "gpio110";
 			function = "cci_i2c_scl0";
 		};
 
 		config {
-			pins = "gpio114";
+			pins = "gpio110";
 			bias-pull-up; /* PULL UP*/
 			drive-strength = <2>; /* 2 MA */
 			qcom,i2c_pull;
@@ -54,12 +55,12 @@
 	cci_i2c_scl0_suspend: cci_i2c_scl0_suspend {
 		mux {
 			/* CLK, DATA */
-			pins = "gpio114";
+			pins = "gpio110";
 			function = "cci_i2c_scl0";
 		};
 
 		config {
-			pins = "gpio114";
+			pins = "gpio110";
 			bias-pull-down; /* PULL DOWN */
 			drive-strength = <2>; /* 2 MA */
 		};
@@ -68,12 +69,12 @@
 	cci_i2c_sda1_active: cci_i2c_sda1_active {
 		mux {
 			/* CLK, DATA */
-			pins = "gpio115";
+			pins = "gpio111";
 			function = "cci_i2c_sda1";
 		};
 
 		config {
-			pins = "gpio115";
+			pins = "gpio111";
 			bias-pull-up; /* PULL UP*/
 			drive-strength = <2>; /* 2 MA */
 			qcom,i2c_pull;
@@ -83,12 +84,12 @@
 	cci_i2c_sda1_suspend: cci_i2c_sda1_suspend {
 		mux {
 			/* CLK, DATA */
-			pins = "gpio115";
+			pins = "gpio111";
 			function = "cci_i2c_sda1";
 		};
 
 		config {
-			pins = "gpio115";
+			pins = "gpio111";
 			bias-pull-down; /* PULL DOWN */
 			drive-strength = <2>; /* 2 MA */
 		};
@@ -97,12 +98,12 @@
 	cci_i2c_scl1_active: cci_i2c_scl1_active {
 		mux {
 			/* CLK, DATA */
-			pins = "gpio116";
+			pins = "gpio112";
 			function = "cci_i2c_scl1";
 		};
 
 		config {
-			pins = "gpio116";
+			pins = "gpio112";
 			bias-pull-up; /* PULL UP*/
 			drive-strength = <2>; /* 2 MA */
 			qcom,i2c_pull;
@@ -112,12 +113,12 @@
 	cci_i2c_scl1_suspend: cci_i2c_scl1_suspend {
 		mux {
 			/* CLK, DATA */
-			pins = "gpio116";
+			pins = "gpio112";
 			function = "cci_i2c_scl1";
 		};
 
 		config {
-			pins = "gpio116";
+			pins = "gpio112";
 			bias-pull-down; /* PULL DOWN */
 			drive-strength = <2>; /* 2 MA */
 		};
@@ -126,12 +127,12 @@
 	cci_i2c_sda2_active: cci_i2c_sda2_active {
 		mux {
 			/* CLK, DATA */
-			pins = "gpio117";
+			pins = "gpio113";
 			function = "cci_i2c_sda2";
 		};
 
 		config {
-			pins = "gpio117";
+			pins = "gpio113";
 			bias-pull-up; /* PULL UP*/
 			drive-strength = <2>; /* 2 MA */
 			qcom,i2c_pull;
@@ -141,12 +142,12 @@
 	cci_i2c_sda2_suspend: cci_i2c_sda2_suspend {
 		mux {
 			/* CLK, DATA */
-			pins = "gpio117";
+			pins = "gpio113";
 			function = "cci_i2c_sda2";
 		};
 
 		config {
-			pins = "gpio117";
+			pins = "gpio113";
 			bias-pull-down; /* PULL DOWN */
 			drive-strength = <2>; /* 2 MA */
 		};
@@ -155,12 +156,12 @@
 	cci_i2c_scl2_active: cci_i2c_scl2_active {
 		mux {
 			/* CLK, DATA */
-			pins = "gpio118";
+			pins = "gpio114";
 			function = "cci_i2c_scl2";
 		};
 
 		config {
-			pins = "gpio118";
+			pins = "gpio114";
 			bias-pull-up; /* PULL UP*/
 			drive-strength = <2>; /* 2 MA */
 			qcom,i2c_pull;
@@ -170,12 +171,12 @@
 	cci_i2c_scl2_suspend: cci_i2c_scl2_suspend {
 		mux {
 			/* CLK, DATA */
-			pins = "gpio118";
+			pins = "gpio114";
 			function = "cci_i2c_scl2";
 		};
 
 		config {
-			pins = "gpio118";
+			pins = "gpio114";
 			bias-pull-down; /* PULL DOWN */
 			drive-strength = <2>; /* 2 MA */
 		};
@@ -183,39 +184,12 @@
 
 	cci_i2c_scl3_active: cci_i2c_scl3_active {
 		mux {
-			pins = "gpio164";
+			pins = "gpio160";
 			function = "cci_i2c_scl3";
 		};
 
 		config {
-			pins = "gpio164";
-			bias-pull-up; /* PULL UP*/
-			drive-strength = <2>; /* 2 MA */
-			qcom,i2c_pull;
-		};
-	};
-
-	cci_i2c_sda3_suspend: cci_i2c_sda3_suspend {
-		mux {
-			pins = "gpio111";
-			function = "cci_i2c_sda3";
-		};
-
-		config {
-			pins = "gpio111";
-			bias-pull-down; /* PULL DOWN */
-			drive-strength = <2>; /* 2 MA */
-		};
-	};
-
-	cci_i2c_sda3_active: cci_i2c_sda3_active {
-		mux {
-			pins = "gpio111";
-			function = "cci_i2c_sda3";
-		};
-
-		config {
-			pins = "gpio111";
+			pins = "gpio160";
 			bias-pull-up; /* PULL UP*/
 			drive-strength = <2>; /* 2 MA */
 			qcom,i2c_pull;
@@ -224,12 +198,39 @@
 
 	cci_i2c_scl3_suspend: cci_i2c_scl3_suspend {
 		mux {
-			pins = "gpio164";
+			pins = "gpio160";
 			function = "cci_i2c_scl3";
 		};
 
 		config {
-			pins = "gpio164";
+			pins = "gpio160";
+			bias-pull-down; /* PULL DOWN */
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
+	cci_i2c_sda3_active: cci_i2c_sda3_active {
+		mux {
+			pins = "gpio107";
+			function = "cci_i2c_sda3";
+		};
+
+		config {
+			pins = "gpio107";
+			bias-pull-up; /* PULL UP*/
+			drive-strength = <2>; /* 2 MA */
+			qcom,i2c_pull;
+		};
+	};
+
+	cci_i2c_sda3_suspend: cci_i2c_sda3_suspend {
+		mux {
+			pins = "gpio107";
+			function = "cci_i2c_sda3";
+		};
+
+		config {
+			pins = "gpio107";
 			bias-pull-down; /* PULL DOWN */
 			drive-strength = <2>; /* 2 MA */
 		};
@@ -238,12 +239,12 @@
 	cci_i2c_sda4_active: cci_i2c_sda4_active {
 		mux {
 			/* CLK, DATA */
-			pins = "gpio112";
+			pins = "gpio108";
 			function = "cci_i2c_sda4";
 		};
 
 		config {
-			pins = "gpio112";
+			pins = "gpio108";
 			bias-pull-up; /* PULL UP*/
 			drive-strength = <2>; /* 2 MA */
 			qcom,i2c_pull;
@@ -253,12 +254,12 @@
 	cci_i2c_sda4_suspend: cci_i2c_sda4_suspend {
 		mux {
 			/* CLK, DATA */
-			pins = "gpio112";
+			pins = "gpio108";
 			function = "cci_i2c_sda4";
 		};
 
 		config {
-			pins = "gpio112";
+			pins = "gpio108";
 			bias-pull-down; /* PULL DOWN */
 			drive-strength = <2>; /* 2 MA */
 		};
@@ -267,12 +268,12 @@
 	cci_i2c_scl4_active: cci_i2c_scl4_active {
 		mux {
 			/* CLK, DATA */
-			pins = "gpio153";
+			pins = "gpio149";
 			function = "cci_i2c_scl4";
 		};
 
 		config {
-			pins = "gpio153";
+			pins = "gpio149";
 			bias-pull-up; /* PULL UP*/
 			drive-strength = <2>; /* 2 MA */
 			qcom,i2c_pull;
@@ -282,12 +283,12 @@
 	cci_i2c_scl4_suspend: cci_i2c_scl4_suspend {
 		mux {
 			/* CLK, DATA */
-			pins = "gpio153";
+			pins = "gpio149";
 			function = "cci_i2c_scl4";
 		};
 
 		config {
-			pins = "gpio153";
+			pins = "gpio149";
 			bias-pull-down; /* PULL DOWN */
 			drive-strength = <2>; /* 2 MA */
 		};
@@ -296,12 +297,12 @@
 	cci_i2c_sda5_active: cci_i2c_sda5_active {
 		mux {
 			/* CLK, DATA */
-			pins = "gpio119";
+			pins = "gpio115";
 			function = "cci_i2c_sda5";
 		};
 
 		config {
-			pins = "gpio119";
+			pins = "gpio115";
 			bias-pull-up; /* PULL UP*/
 			drive-strength = <2>; /* 2 MA */
 			qcom,i2c_pull;
@@ -311,12 +312,12 @@
 	cci_i2c_sda5_suspend: cci_i2c_sda5_suspend {
 		mux {
 			/* CLK, DATA */
-			pins = "gpio119";
+			pins = "gpio115";
 			function = "cci_i2c_sda5";
 		};
 
 		config {
-			pins = "gpio119";
+			pins = "gpio115";
 			bias-pull-down; /* PULL DOWN */
 			drive-strength = <2>; /* 2 MA */
 		};
@@ -325,12 +326,12 @@
 	cci_i2c_scl5_active: cci_i2c_scl5_active {
 		mux {
 			/* CLK, DATA */
-			pins = "gpio120";
+			pins = "gpio116";
 			function = "cci_i2c_scl5";
 		};
 
 		config {
-			pins = "gpio120";
+			pins = "gpio116";
 			bias-pull-up; /* PULL UP*/
 			drive-strength = <2>; /* 2 MA */
 			qcom,i2c_pull;
@@ -340,12 +341,40 @@
 	cci_i2c_scl5_suspend: cci_i2c_scl5_suspend {
 		mux {
 			/* CLK, DATA */
-			pins = "gpio120";
+			pins = "gpio116";
 			function = "cci_i2c_scl5";
 		};
 
 		config {
-			pins = "gpio120";
+			pins = "gpio116";
+			bias-pull-down; /* PULL DOWN */
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
+	cam_sensor_test_mclk0_active: cam_sensor_test_mclk0_active {
+		/* TEST_MCLK0 */
+		mux {
+			pins = "gpio89";
+			function = "cam_mclk";
+		};
+
+		config {
+			pins = "gpio89";
+			bias-disable; /* No PULL */
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
+	cam_sensor_test_mclk0_suspend: cam_sensor_test_mclk0_suspend {
+		/* TEST_MCLK0 */
+		mux {
+			pins = "gpio89";
+			function = "cam_mclk";
+		};
+
+		config {
+			pins = "gpio89";
 			bias-pull-down; /* PULL DOWN */
 			drive-strength = <2>; /* 2 MA */
 		};
@@ -354,12 +383,12 @@
 	cam_sensor_mclk0_active: cam_sensor_mclk0_active {
 		/* MCLK0 */
 		mux {
-			pins = "gpio89";
+			pins = "gpio8";
 			function = "cam_mclk";
 		};
 
 		config {
-			pins = "gpio89";
+			pins = "gpio8";
 			bias-disable; /* No PULL */
 			drive-strength = <2>; /* 2 MA */
 		};
@@ -368,12 +397,12 @@
 	cam_sensor_mclk0_suspend: cam_sensor_mclk0_suspend {
 		/* MCLK0 */
 		mux {
-			pins = "gpio89";
+			pins = "gpio8";
 			function = "cam_mclk";
 		};
 
 		config {
-			pins = "gpio89";
+			pins = "gpio8";
 			bias-pull-down; /* PULL DOWN */
 			drive-strength = <2>; /* 2 MA */
 		};
@@ -382,12 +411,12 @@
 	cam_sensor_mclk1_active: cam_sensor_mclk1_active {
 		/* MCLK1 */
 		mux {
-			pins = "gpio90";
+			pins = "gpio2";
 			function = "cam_mclk";
 		};
 
 		config {
-			pins = "gpio90";
+			pins = "gpio2";
 			bias-disable; /* No PULL */
 			drive-strength = <2>; /* 2 MA */
 		};
@@ -396,12 +425,12 @@
 	cam_sensor_mclk1_suspend: cam_sensor_mclk1_suspend {
 		/* MCLK1 */
 		mux {
-			pins = "gpio90";
+			pins = "gpio2";
 			function = "cam_mclk";
 		};
 
 		config {
-			pins = "gpio90";
+			pins = "gpio2";
 			bias-pull-down; /* PULL DOWN */
 			drive-strength = <2>; /* 2 MA */
 		};
@@ -577,12 +606,12 @@
 
 	cam_sensor_active_rst0: cam_sensor_active_rst0 {
 		mux {
-			pins = "gpio13";
+			pins = "gpio4";
 			function = "gpio";
 		};
 
 		config {
-			pins = "gpio13";
+			pins = "gpio4";
 			bias-disable; /* No PULL */
 			drive-strength = <2>; /* 2 MA */
 		};
@@ -590,12 +619,12 @@
 
 	cam_sensor_suspend_rst0: cam_sensor_suspend_rst0 {
 		mux {
-			pins = "gpio13";
+			pins = "gpio4";
 			function = "gpio";
 		};
 
 		config {
-			pins = "gpio13";
+			pins = "gpio4";
 			bias-pull-down; /* PULL DOWN */
 			drive-strength = <2>; /* 2 MA */
 			output-low;
@@ -660,12 +689,12 @@
 
 	cam_sensor_active_rst3: cam_sensor_active_rst3 {
 		mux {
-			pins = "gpio109";
+			pins = "gpio105";
 			function = "gpio";
 		};
 
 		config {
-			pins = "gpio109";
+			pins = "gpio105";
 			bias-disable; /* No PULL */
 			drive-strength = <2>; /* 2 MA */
 		};
@@ -673,12 +702,12 @@
 
 	cam_sensor_suspend_rst3: cam_sensor_suspend_rst3 {
 		mux {
-			pins = "gpio109";
+			pins = "gpio105";
 			function = "gpio";
 		};
 
 		config {
-			pins = "gpio109";
+			pins = "gpio105";
 			bias-pull-down; /* PULL DOWN */
 			drive-strength = <2>; /* 2 MA */
 			output-low;
@@ -789,34 +818,6 @@
 
 		config {
 			pins = "gpio164";
-			bias-pull-down; /* PULL DOWN */
-			drive-strength = <2>; /* 2 MA */
-			output-low;
-		};
-	};
-
-	cam_sensor_i3cSelect_active: cam_sensor_i3cSelect_active {
-		mux {
-			pins = "gpio6";
-			function = "gpio";
-		};
-
-		config {
-			pins = "gpio6";
-			bias-pull-down; /* PULL DOWN */
-			drive-strength = <2>; /* 2 MA */
-			output-low;
-		};
-	};
-
-	cam_sensor_i3cSelect_suspend: cam_sensor_i3cSelect_suspend {
-		mux {
-			pins = "gpio6";
-			function = "gpio";
-		};
-
-		config {
-			pins = "gpio6";
 			bias-pull-down; /* PULL DOWN */
 			drive-strength = <2>; /* 2 MA */
 			output-low;
@@ -1926,7 +1927,6 @@
 					traffic-merge-type =
 					<CAM_CPAS_TRAFFIC_MERGE_SUM>;
 				};
-
 			};
 
 			level0-nodes {
