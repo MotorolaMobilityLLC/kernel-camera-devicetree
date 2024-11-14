@@ -1460,7 +1460,7 @@
 					/* Used for HFI queues/sec heap */
 					iova-mem-region-generic-region {
 						iova-region-name = "icp_hfi";
-						iova-region-start = <0x0 0x80500000>;
+						iova-region-start = <0x0 0x80600000>;
 						/* Length: 0x200000 */
 						iova-region-len = <0x0 0x200000>;
 						iova-region-id = <0x0>;
@@ -1491,7 +1491,7 @@
 					/* Used for HFI queues/sec heap */
 					iova-mem-region-generic-region {
 						iova-region-name = "icp_hfi";
-						iova-region-start = <0x0 0x80a00000>;
+						iova-region-start = <0x0 0x80b00000>;
 						/* Length: 0x200000 */
 						iova-region-len = <0x0 0x200000>;
 						iova-region-id = <0x0>;
@@ -1501,7 +1501,7 @@
 					iova-mem-region-global-sync-region {
 						iova-region-name = "global_sync";
 						iova-region-start = <0x0 0x80900000>;
-						/* Length: 0x100000 */
+						/* Length: 0x200000 */
 						iova-region-len = <0x0 0x200000>;
 						iova-region-id = <0x3>;
 						phy-addr = <0xd7a00000>;
