@@ -2014,7 +2014,7 @@
 					CAM_CPAS_PATH_DATA_IFE_DS2
 					CAM_CPAS_PATH_DATA_IFE_DS4
 					CAM_CPAS_PATH_DATA_IFE_PDAF
-					CAM_CPAS_PATH_DATA_IFE_PDAF_3>;
+					CAM_CPAS_PATH_DATA_IFE_PDAF_2>;
 					drv-voting-index =
 						<CAM_CPAS_PORT_DRV_0>;
 					parent-node = <&level1_rt2_wr>;
@@ -2032,7 +2032,7 @@
 					<CAM_CPAS_PATH_DATA_IFE_DS2
 					CAM_CPAS_PATH_DATA_IFE_DS4
 					CAM_CPAS_PATH_DATA_IFE_PDAF
-					CAM_CPAS_PATH_DATA_IFE_PDAF_3
+					CAM_CPAS_PATH_DATA_IFE_PDAF_2
 					CAM_CPAS_PATH_DATA_IFE_FD>;
 					drv-voting-index =
 						<CAM_CPAS_PORT_DRV_1>;
@@ -2052,7 +2052,7 @@
 					CAM_CPAS_PATH_DATA_IFE_DS2
 					CAM_CPAS_PATH_DATA_IFE_DS4
 					CAM_CPAS_PATH_DATA_IFE_PDAF
-					CAM_CPAS_PATH_DATA_IFE_PDAF_3
+					CAM_CPAS_PATH_DATA_IFE_PDAF_2
 					CAM_CPAS_PATH_DATA_IFE_FD>;
 					drv-voting-index =
 						<CAM_CPAS_PORT_DRV_2>;
@@ -2855,7 +2855,7 @@
 		compatible = "qcom,vfe-lite1080";
 		reg-names = "ife-lite";
 		reg = <0x0 0x092e7000 0x0 0x12000>;
-		reg-cam-base = <0x2e70000>;
+		reg-cam-base = <0x2e7000>;
 		rt-wrapper-base = <0x2d1000>;
 		interrupt-names = "ife-lite1";
 		interrupts = <GIC_SPI 377 IRQ_TYPE_EDGE_RISING>;
