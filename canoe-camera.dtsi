@@ -2985,7 +2985,7 @@
 		status = "ok";
 		icp_pc_en;
 		icp_use_pil;
-		ipe_bps_pc_en;
+		interframe_pc_en;
 		synx_signaling_en;
 	};
 
@@ -2999,7 +2999,7 @@
 		status = "ok";
 		icp_pc_en;
 		icp_use_pil;
-		ipe_bps_pc_en;
+		interframe_pc_en;
 	};
 
 	cam_icp0: qcom,icp0@900d000 {
