@@ -1848,7 +1848,7 @@
 					traffic-merge-type =
 					<CAM_CPAS_TRAFFIC_MERGE_SUM>;
 					rt-wr-niu;
-					niu-size = <134>;
+					niu-size = <206>;
 					priority-lut-low-offset = <0x2C30>;
 					priority-lut-high-offset = <0x2C34>;
 				};
@@ -1860,7 +1860,7 @@
 					traffic-merge-type =
 					<CAM_CPAS_TRAFFIC_MERGE_SUM>;
 					rt-wr-niu;
-					niu-size = <36>;
+					niu-size = <97>;
 					priority-lut-low-offset = <0x2E30>;
 					priority-lut-high-offset = <0x2E34>;
 				};
@@ -1872,7 +1872,7 @@
 					traffic-merge-type =
 					<CAM_CPAS_TRAFFIC_MERGE_SUM>;
 					rt-wr-niu;
-					niu-size = <92>;
+					niu-size = <131>;
 					priority-lut-low-offset = <0x3030>;
 					priority-lut-high-offset = <0x3034>;
 				};
@@ -1883,8 +1883,6 @@
 					parent-node = <&level2_rt_rd>;
 					traffic-merge-type =
 					<CAM_CPAS_TRAFFIC_MERGE_SUM>;
-					rt-wr-niu;
-					niu-size = <92>;
 					priority-lut-low-offset = <0x3230>;
 					priority-lut-high-offset = <0x3234>;
 				};
