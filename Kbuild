@@ -6,6 +6,8 @@ CAMERA_TARGET_EXISTS := $(or $(and $(wildcard $(CAMERA_TARGET_MKFILE_PATH)),y),n
 # Since Kernel SI can support multiple ARCH's this allows only the current selected target ARCH
 # to compile.
 ifeq ($(CAMERA_TARGET_EXISTS), y)
+MSM_ARCH_UC=$(shell echo '$(MSM_ARCH)' | tr '[:lower:]' '[:upper:]')
+export CONFIG_ARCH_$(MSM_ARCH_UC)=y
 include $(CAMERA_TARGET_MKFILE_PATH)
 else
 # Print a warning but do not throw an error to allow bring-up of new targets!
