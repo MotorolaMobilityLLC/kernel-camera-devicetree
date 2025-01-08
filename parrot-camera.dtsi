@@ -518,12 +518,12 @@
 	#size-cells = <1>;
 	interrupt-parent = <&intc>;
 
-	qcom,cam-req-mgr {
+	cam_req_mgr: qcom,cam-req-mgr {
 		compatible = "qcom,cam-req-mgr";
 		status = "ok";
 	};
 
-	qcom,cam-sync {
+	cam_sync: qcom,cam-sync {
 		compatible = "qcom,cam-sync";
 		status = "ok";
 	};
@@ -856,7 +856,7 @@
 		};
 	};
 
-	qcom,cam_smmu {
+	cam_smmu: qcom,cam_smmu {
 		compatible = "qcom,msm-cam-smmu", "simple-bus";
 		status = "ok";
 		force_cache_allocs;
@@ -993,7 +993,7 @@
 		};
 	};
 
-	qcom,cam-cpas@ac13000 {
+	cam_cpas: qcom,cam-cpas@ac13000 {
 		cell-index = <0>;
 		compatible = "qcom,cam-cpas";
 		label = "cpas";
@@ -1417,7 +1417,7 @@
 		};
 	};
 
-	qcom,cam-cdm-intf {
+	cam_cdm_intf: qcom,cam-cdm-intf {
 		compatible = "qcom,cam-cdm-intf";
 		cell-index = <0>;
 		label = "cam-cdm-intf";
@@ -1426,7 +1426,7 @@
 		status = "ok";
 	};
 
-	qcom,cpas-cdm0@ac24000 {
+	cam_rt_cdm0: qcom,cpas-cdm0@ac24000 {
 		cell-index = <0>;
 		compatible = "qcom,cam-cpas-cdm2_1";
 		label = "cpas-cdm";
@@ -1450,7 +1450,7 @@
 		status = "ok";
 	};
 
-	qcom,cam-isp {
+	cam_isp: qcom,cam-isp {
 		compatible = "qcom,cam-isp";
 		arch-compat = "tfe";
 		status = "ok";
@@ -1726,7 +1726,7 @@
 		status = "ok";
 	};
 
-	qcom,cam-icp {
+	icp: qcom,cam-icp {
 		compatible = "qcom,cam-icp";
 		compat-hw-name = "qcom,lx7",
 			"qcom,ipe0",
@@ -1739,7 +1739,7 @@
 		icp_use_pil;
 	};
 
-	cam_lx7: qcom,lx7 {
+	cam_icp: qcom,lx7 {
 		cell-index = <0>;
 		compatible = "qcom,cam-lx7";
 		reg = <0xac01000 0x400>,
@@ -1779,7 +1779,7 @@
 		status = "ok";
 	};
 
-	qcom,cam-cre {
+	cam_cre: qcom,cam-cre {
 		compatible = "qcom,cam-cre";
 		compat-hw-name = "qcom,cre";
 		num-cre = <1>;
