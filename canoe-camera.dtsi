@@ -1848,7 +1848,7 @@
 					traffic-merge-type =
 					<CAM_CPAS_TRAFFIC_MERGE_SUM>;
 					rt-wr-niu;
-					niu-size = <134>;
+					niu-size = <206>;
 					priority-lut-low-offset = <0x2C30>;
 					priority-lut-high-offset = <0x2C34>;
 				};
@@ -1860,7 +1860,7 @@
 					traffic-merge-type =
 					<CAM_CPAS_TRAFFIC_MERGE_SUM>;
 					rt-wr-niu;
-					niu-size = <36>;
+					niu-size = <97>;
 					priority-lut-low-offset = <0x2E30>;
 					priority-lut-high-offset = <0x2E34>;
 				};
@@ -1872,7 +1872,7 @@
 					traffic-merge-type =
 					<CAM_CPAS_TRAFFIC_MERGE_SUM>;
 					rt-wr-niu;
-					niu-size = <92>;
+					niu-size = <131>;
 					priority-lut-low-offset = <0x3030>;
 					priority-lut-high-offset = <0x3034>;
 				};
@@ -1883,8 +1883,6 @@
 					parent-node = <&level2_rt_rd>;
 					traffic-merge-type =
 					<CAM_CPAS_TRAFFIC_MERGE_SUM>;
-					rt-wr-niu;
-					niu-size = <92>;
 					priority-lut-low-offset = <0x3230>;
 					priority-lut-high-offset = <0x3234>;
 				};
@@ -2547,27 +2545,36 @@
 		regulator-names = "gdsc", "tfe0";
 		gdsc-supply = <&cam_cc_titan_top_gdsc>;
 		tfe0-supply = <&cam_cc_tfe_0_gdsc>;
+		shared-clks = <0 1 1 1 0 0 0 0 0 0>;
 		clock-names =
 			"tfe_0_main_fast_ahb",
 			"tfe_0_clk_src",
+			"tfe_1_clk_src",
+			"tfe_2_clk_src",
 			"tfe_0_main_clk",
 			"cam_cc_camnoc_rt_tfe_0_main_clk",
+			"cam_cc_camnoc_rt_tfe_1_main_clk",
+			"cam_cc_camnoc_rt_tfe_2_main_clk",
 			"tfe_0_bayer_fast_ahb",
 			"tfe_0_bayer_clk";
 		clocks =
 			<&camcc CAM_CC_TFE_0_MAIN_FAST_AHB_CLK>,
 			<&camcc CAM_CC_TFE_0_CLK_SRC>,
+			<&camcc CAM_CC_TFE_1_CLK_SRC>,
+			<&camcc CAM_CC_TFE_2_CLK_SRC>,
 			<&camcc CAM_CC_TFE_0_MAIN_CLK>,
 			<&camcc CAM_CC_CAMNOC_RT_TFE_0_MAIN_CLK>,
+			<&camcc CAM_CC_CAMNOC_RT_TFE_1_MAIN_CLK>,
+			<&camcc CAM_CC_CAMNOC_RT_TFE_2_MAIN_CLK>,
 			<&camcc CAM_CC_TFE_0_BAYER_FAST_AHB_CLK>,
 			<&camcc CAM_CC_TFE_0_BAYER_CLK>;
 		clock-rates =
-			<0 360280000 0 0 0 0>,
-			<0 480000000 0 0 0 0>,
-			<0 630000000 0 0 0 0>,
-			<0 716000000 0 0 0 0>,
-			<0 833000000 0 0 0 0>,
-			<0 833000000 0 0 0 0>;
+			<0 360280000 360280000 360280000 0 0 0 0 0 0>,
+			<0 480000000 360280000 360280000 0 0 0 0 0 0>,
+			<0 630000000 360280000 360280000 0 0 0 0 0 0>,
+			<0 716000000 360280000 360280000 0 0 0 0 0 0>,
+			<0 833000000 360280000 360280000 0 0 0 0 0 0>,
+			<0 833000000 360280000 360280000 0 0 0 0 0 0>;
 		clock-cntl-level = "lowsvsd1", "lowsvs", "svs", "svs_l1", "nominal",
 			"turbo";
 		src-clock-name = "tfe_0_clk_src";
@@ -2623,27 +2630,36 @@
 		regulator-names = "gdsc", "tfe1";
 		gdsc-supply = <&cam_cc_titan_top_gdsc>;
 		tfe1-supply = <&cam_cc_tfe_1_gdsc>;
+		shared-clks = <0 1 1 1 0 0 0 0 0 0>;
 		clock-names =
 			"tfe_1_main_fast_ahb",
+			"tfe_0_clk_src",
 			"tfe_1_clk_src",
+			"tfe_2_clk_src",
 			"tfe_1_main_clk",
+			"cam_cc_camnoc_rt_tfe_0_main_clk",
 			"cam_cc_camnoc_rt_tfe_1_main_clk",
+			"cam_cc_camnoc_rt_tfe_2_main_clk",
 			"tfe_1_bayer_fast_ahb",
 			"tfe_1_bayer_clk";
 		clocks =
 			<&camcc CAM_CC_TFE_1_MAIN_FAST_AHB_CLK>,
+			<&camcc CAM_CC_TFE_0_CLK_SRC>,
 			<&camcc CAM_CC_TFE_1_CLK_SRC>,
+			<&camcc CAM_CC_TFE_2_CLK_SRC>,
 			<&camcc CAM_CC_TFE_1_MAIN_CLK>,
+			<&camcc CAM_CC_CAMNOC_RT_TFE_0_MAIN_CLK>,
 			<&camcc CAM_CC_CAMNOC_RT_TFE_1_MAIN_CLK>,
+			<&camcc CAM_CC_CAMNOC_RT_TFE_2_MAIN_CLK>,
 			<&camcc CAM_CC_TFE_1_BAYER_FAST_AHB_CLK>,
 			<&camcc CAM_CC_TFE_1_BAYER_CLK>;
 		clock-rates =
-			<0 360280000 0 0 0 0>,
-			<0 480000000 0 0 0 0>,
-			<0 630000000 0 0 0 0>,
-			<0 716000000 0 0 0 0>,
-			<0 833000000 0 0 0 0>,
-			<0 833000000 0 0 0 0>;
+			<0 360280000 360280000 360280000 0 0 0 0 0 0>,
+			<0 360280000 480000000 360280000 0 0 0 0 0 0>,
+			<0 360280000 630000000 360280000 0 0 0 0 0 0>,
+			<0 360280000 716000000 360280000 0 0 0 0 0 0>,
+			<0 360280000 833000000 360280000 0 0 0 0 0 0>,
+			<0 360280000 833000000 360280000 0 0 0 0 0 0>;
 		clock-cntl-level = "lowsvsd1", "lowsvs", "svs", "svs_l1", "nominal",
 			"turbo";
 		src-clock-name = "tfe_1_clk_src";
@@ -2699,27 +2715,36 @@
 		regulator-names = "gdsc", "tfe2";
 		gdsc-supply = <&cam_cc_titan_top_gdsc>;
 		tfe2-supply = <&cam_cc_tfe_2_gdsc>;
+		shared-clks = <0 1 1 1 0 0 0 0 0 0>;
 		clock-names =
 			"tfe_2_main_fast_ahb",
+			"tfe_0_clk_src",
+			"tfe_1_clk_src",
 			"tfe_2_clk_src",
 			"tfe_2_main_clk",
+			"cam_cc_camnoc_rt_tfe_0_main_clk",
+			"cam_cc_camnoc_rt_tfe_1_main_clk",
 			"cam_cc_camnoc_rt_tfe_2_main_clk",
 			"tfe_2_bayer_fast_ahb",
 			"tfe_2_bayer_clk";
 		clocks =
 			<&camcc CAM_CC_TFE_2_MAIN_FAST_AHB_CLK>,
+			<&camcc CAM_CC_TFE_0_CLK_SRC>,
+			<&camcc CAM_CC_TFE_1_CLK_SRC>,
 			<&camcc CAM_CC_TFE_2_CLK_SRC>,
 			<&camcc CAM_CC_TFE_2_MAIN_CLK>,
+			<&camcc CAM_CC_CAMNOC_RT_TFE_0_MAIN_CLK>,
+			<&camcc CAM_CC_CAMNOC_RT_TFE_1_MAIN_CLK>,
 			<&camcc CAM_CC_CAMNOC_RT_TFE_2_MAIN_CLK>,
 			<&camcc CAM_CC_TFE_2_BAYER_FAST_AHB_CLK>,
 			<&camcc CAM_CC_TFE_2_BAYER_CLK>;
 		clock-rates =
-			<0 360280000 0 0 0 0>,
-			<0 480000000 0 0 0 0>,
-			<0 630000000 0 0 0 0>,
-			<0 716000000 0 0 0 0>,
-			<0 833000000 0 0 0 0>,
-			<0 833000000 0 0 0 0>;
+			<0 360280000 360280000 360280000 0 0 0 0 0 0>,
+			<0 360280000 360280000 480000000 0 0 0 0 0 0>,
+			<0 360280000 360280000 630000000 0 0 0 0 0 0>,
+			<0 360280000 360280000 716000000 0 0 0 0 0 0>,
+			<0 360280000 360280000 833000000 0 0 0 0 0 0>,
+			<0 360280000 360280000 833000000 0 0 0 0 0 0>;
 		clock-cntl-level = "lowsvsd1", "lowsvs", "svs", "svs_l1", "nominal",
 			"turbo";
 		src-clock-name = "tfe_2_clk_src";
@@ -2985,7 +3010,7 @@
 		status = "ok";
 		icp_pc_en;
 		icp_use_pil;
-		ipe_bps_pc_en;
+		interframe_pc_en;
 		synx_signaling_en;
 	};
 
@@ -2999,7 +3024,7 @@
 		status = "ok";
 		icp_pc_en;
 		icp_use_pil;
-		ipe_bps_pc_en;
+		interframe_pc_en;
 	};
 
 	cam_icp0: qcom,icp0@900d000 {
