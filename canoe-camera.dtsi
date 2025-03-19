@@ -885,14 +885,14 @@
 		reg-cam-base = <0x523000>;
 		interrupt-names = "CSIPHY0";
 		interrupts = <GIC_SPI 477 IRQ_TYPE_EDGE_RISING>;
-		regulator-names = "gdscr", "csi-vdd-1p2", "csi-vdd-0p9";
-		gdscr-supply = <&cam_cc_titan_top_gdsc>;
+		regulator-names = "csi-vdd-1p2", "csi-vdd-0p9";
+		power-domains = <&camcc CAM_CC_TITAN_TOP_GDSC>;
 		csi-vdd-1p2-supply = <&L1D>;
 		csi-vdd-0p9-supply = <&L3I>;
 		rgltr-cntrl-support;
-		rgltr-min-voltage = <0 1200000 880000>;
-		rgltr-max-voltage = <0 1256000 920000>;
-		rgltr-load-current = <0 14660 151020>;
+		rgltr-min-voltage = <1200000 880000>;
+		rgltr-max-voltage = <1256000 920000>;
+		rgltr-load-current = <14660 151020>;
 		shared-clks = <1 0 0 0>;
 		clock-names = "cphy_rx_clk_src",
 			"csiphy0_clk",
@@ -919,14 +919,14 @@
 		reg-cam-base = <0x525000>;
 		interrupt-names = "CSIPHY1";
 		interrupts = <GIC_SPI 478 IRQ_TYPE_EDGE_RISING>;
-		regulator-names = "gdscr", "csi-vdd-1p2", "csi-vdd-0p9";
-		gdscr-supply = <&cam_cc_titan_top_gdsc>;
+		regulator-names = "csi-vdd-1p2", "csi-vdd-0p9";
+		power-domains = <&camcc CAM_CC_TITAN_TOP_GDSC>;
 		csi-vdd-1p2-supply = <&L1D>;
 		csi-vdd-0p9-supply = <&L3I>;
 		rgltr-cntrl-support;
-		rgltr-min-voltage = <0 1200000 880000>;
-		rgltr-max-voltage = <0 1256000 920000>;
-		rgltr-load-current = <0 14660 151020>;
+		rgltr-min-voltage = <1200000 880000>;
+		rgltr-max-voltage = <1256000 920000>;
+		rgltr-load-current = <14660 151020>;
 		shared-clks = <1 0 0 0>;
 		clock-names = "cphy_rx_clk_src",
 			"csiphy1_clk",
@@ -953,14 +953,14 @@
 		reg-cam-base = <0x527000>;
 		interrupt-names = "CSIPHY2";
 		interrupts = <GIC_SPI 479 IRQ_TYPE_EDGE_RISING>;
-		regulator-names = "gdscr", "csi-vdd-1p2", "csi-vdd-0p9";
-		gdscr-supply = <&cam_cc_titan_top_gdsc>;
+		regulator-names = "csi-vdd-1p2", "csi-vdd-0p9";
+		power-domains = <&camcc CAM_CC_TITAN_TOP_GDSC>;
 		csi-vdd-1p2-supply = <&L1D>;
 		csi-vdd-0p9-supply = <&L3D>;
 		rgltr-cntrl-support;
-		rgltr-min-voltage = <0 1200000 880000>;
-		rgltr-max-voltage = <0 1256000 912000>;
-		rgltr-load-current = <0 14660 151020>;
+		rgltr-min-voltage = <1200000 880000>;
+		rgltr-max-voltage = <1256000 912000>;
+		rgltr-load-current = <14660 151020>;
 		shared-clks = <1 0 0 0>;
 		clock-names = "cphy_rx_clk_src",
 			"csiphy2_clk",
@@ -987,14 +987,14 @@
 		reg-cam-base = <0x529000>;
 		interrupt-names = "CSIPHY3";
 		interrupts = <GIC_SPI 448 IRQ_TYPE_EDGE_RISING>;
-		regulator-names = "gdscr", "csi-vdd-1p2", "csi-vdd-0p9";
-		gdscr-supply = <&cam_cc_titan_top_gdsc>;
+		regulator-names = "csi-vdd-1p2", "csi-vdd-0p9";
+		power-domains = <&camcc CAM_CC_TITAN_TOP_GDSC>;
 		csi-vdd-1p2-supply = <&L1D>;
 		csi-vdd-0p9-supply = <&L3I>;
 		rgltr-cntrl-support;
-		rgltr-min-voltage = <0 1200000 880000>;
-		rgltr-max-voltage = <0 1256000 920000>;
-		rgltr-load-current = <0 14660 151020>;
+		rgltr-min-voltage = <1200000 880000>;
+		rgltr-max-voltage = <1256000 920000>;
+		rgltr-load-current = <14660 151020>;
 		shared-clks = <1 0 0 0>;
 		clock-names = "cphy_rx_clk_src",
 			"csiphy3_clk",
@@ -1021,14 +1021,14 @@
 		reg-cam-base = <0x52B000>;
 		interrupt-names = "CSIPHY4";
 		interrupts = <GIC_SPI 122 IRQ_TYPE_EDGE_RISING>;
-		regulator-names = "gdscr", "csi-vdd-1p2", "csi-vdd-0p9";
-		gdscr-supply = <&cam_cc_titan_top_gdsc>;
+		regulator-names = "csi-vdd-1p2", "csi-vdd-0p9";
+		power-domains = <&camcc CAM_CC_TITAN_TOP_GDSC>;
 		csi-vdd-1p2-supply = <&L1D>;
 		csi-vdd-0p9-supply = <&L3D>;
 		rgltr-cntrl-support;
-		rgltr-min-voltage = <0 1200000 880000>;
-		rgltr-max-voltage = <0 1256000 912000>;
-		rgltr-load-current = <0 14660 151020>;
+		rgltr-min-voltage = <1200000 880000>;
+		rgltr-max-voltage = <1256000 912000>;
+		rgltr-load-current = <14660 151020>;
 		shared-clks = <1 0 0 0>;
 		clock-names = "cphy_rx_clk_src",
 			"csiphy4_clk",
@@ -1055,14 +1055,14 @@
 		reg-cam-base = <0x52D000>;
 		interrupt-names = "CSIPHY5";
 		interrupts = <GIC_SPI 89 IRQ_TYPE_EDGE_RISING>;
-		regulator-names = "gdscr", "csi-vdd-1p2", "csi-vdd-0p9";
-		gdscr-supply = <&cam_cc_titan_top_gdsc>;
+		regulator-names = "csi-vdd-1p2", "csi-vdd-0p9";
+		power-domains = <&camcc CAM_CC_TITAN_TOP_GDSC>;
 		csi-vdd-1p2-supply = <&L1D>;
 		csi-vdd-0p9-supply = <&L3I>;
 		rgltr-cntrl-support;
-		rgltr-min-voltage = <0 1200000 880000>;
-		rgltr-max-voltage = <0 1256000 920000>;
-		rgltr-load-current = <0 14660 151020>;
+		rgltr-min-voltage = <1200000 880000>;
+		rgltr-max-voltage = <1256000 920000>;
+		rgltr-load-current = <14660 151020>;
 		shared-clks = <1 0 0 0>;
 		clock-names = "cphy_rx_clk_src",
 			"csiphy5_clk",
@@ -1089,8 +1089,7 @@
 		reg-cam-base = <0x41b000>;
 		interrupt-names = "CCI0";
 		interrupts = <GIC_SPI 426 IRQ_TYPE_EDGE_RISING>;
-		regulator-names = "gdscr";
-		gdscr-supply = <&cam_cc_titan_top_gdsc>;
+		power-domains = <&camcc CAM_CC_TITAN_TOP_GDSC>;
 		clock-names = "cci_0_clk_src",
 			"cci_0_clk";
 		clocks = <&camcc CAM_CC_CCI_0_CLK_SRC>,
@@ -1177,8 +1176,7 @@
 		reg-cam-base = <0x41c000>;
 		interrupt-names = "CCI1";
 		interrupts = <GIC_SPI 427 IRQ_TYPE_EDGE_RISING>;
-		regulator-names = "gdscr";
-		gdscr-supply = <&cam_cc_titan_top_gdsc>;
+		power-domains = <&camcc CAM_CC_TITAN_TOP_GDSC>;
 		clock-names = "cci_1_clk_src",
 			"cci_1_clk";
 		clocks = <&camcc CAM_CC_CCI_1_CLK_SRC>,
@@ -1265,8 +1263,7 @@
 		reg-cam-base = <0x41d000>;
 		interrupt-names = "CCI2";
 		interrupts = <GIC_SPI 428 IRQ_TYPE_EDGE_RISING>;
-		regulator-names = "gdscr";
-		gdscr-supply = <&cam_cc_titan_top_gdsc>;
+		power-domains = <&camcc CAM_CC_TITAN_TOP_GDSC>;
 		clock-names = "cci_2_clk_src",
 			"cci_2_clk";
 		clocks = <&camcc CAM_CC_CCI_2_CLK_SRC>,
@@ -1625,8 +1622,7 @@
 					<GIC_SPI 271 IRQ_TYPE_EDGE_RISING>;
 		camnoc-axi-min-ib-bw = <3000000000>;
 		cam-max-rt-axi-bw = <0x3 0x60447100>;
-		regulator-names = "top-gdsc";
-		top-gdsc-supply = <&cam_cc_titan_top_gdsc>;
+		power-domains = <&camcc CAM_CC_TITAN_TOP_GDSC>;
 		clock-names =
 			"gcc_ahb_clk",
 			"gcc_axi_hf_clk",
@@ -1740,8 +1736,7 @@
 		sys-cache-uids = <71 72 72 74 75 92 92 93>;
 		sys-cache-concur = <1 1 1 0 0 1 1 1>;
 		enable-smart-qos;
-		/*enable-cam-drv = <(CAM_DDR_DRV | CAM_CLK_DRV)>;*/
-		enable-cam-drv = <CAM_DDR_DRV>;
+		enable-cam-drv = <(CAM_DDR_DRV | CAM_CLK_DRV)>;
 		rt-wr-priority-min = <4>;
 		rt-wr-priority-max = <5>;
 		rt-wr-priority-clamp = <6>;
@@ -2377,8 +2372,7 @@
 		reg-cam-base = <0x147000>;
 		interrupt-names = "rt-cdm0";
 		interrupts = <GIC_SPI 456 IRQ_TYPE_EDGE_RISING>;
-		regulator-names = "gdsc";
-		gdsc-supply = <&cam_cc_titan_top_gdsc>;
+		power-domains = <&camcc CAM_CC_TITAN_TOP_GDSC>;
 		clock-names = "cam_cc_cam_top_ahb_clk";
 		clocks = <&camcc CAM_CC_CAM_TOP_AHB_CLK>;
 		clock-rates = <0>;
@@ -2402,8 +2396,7 @@
 		reg-cam-base = <0x148000>;
 		interrupt-names = "rt-cdm1";
 		interrupts = <GIC_SPI 664 IRQ_TYPE_EDGE_RISING>;
-		regulator-names = "gdsc";
-		gdsc-supply = <&cam_cc_titan_top_gdsc>;
+		power-domains = <&camcc CAM_CC_TITAN_TOP_GDSC>;
 		clock-names = "cam_cc_cam_top_ahb_clk";
 		clocks = <&camcc CAM_CC_CAM_TOP_AHB_CLK>;
 		clock-rates = <0>;
@@ -2427,8 +2420,7 @@
 		reg-cam-base = <0x149000>;
 		interrupt-names = "rt-cdm2";
 		interrupts = <GIC_SPI 702 IRQ_TYPE_EDGE_RISING>;
-		regulator-names = "gdsc";
-		gdsc-supply = <&cam_cc_titan_top_gdsc>;
+		power-domains = <&camcc CAM_CC_TITAN_TOP_GDSC>;
 		clock-names = "cam_cc_cam_top_ahb_clk";
 		clocks = <&camcc CAM_CC_CAM_TOP_AHB_CLK>;
 		clock-rates = <0>;
@@ -2452,8 +2444,7 @@
 		reg-cam-base = <0x14A000>;
 		interrupt-names = "rt-cdm3";
 		interrupts = <GIC_SPI 348 IRQ_TYPE_EDGE_RISING>;
-		regulator-names = "gdsc";
-		gdsc-supply = <&cam_cc_titan_top_gdsc>;
+		power-domains = <&camcc CAM_CC_TITAN_TOP_GDSC>;
 		clock-names = "cam_cc_cam_top_ahb_clk";
 		clocks = <&camcc CAM_CC_CAM_TOP_AHB_CLK>;
 		clock-rates = <0>;
@@ -2477,8 +2468,7 @@
 		reg-cam-base = <0x14B000>;
 		interrupt-names = "rt-cdm4";
 		interrupts = <GIC_SPI 349 IRQ_TYPE_EDGE_RISING>;
-		regulator-names = "gdsc";
-		gdsc-supply = <&cam_cc_titan_top_gdsc>;
+		power-domains = <&camcc CAM_CC_TITAN_TOP_GDSC>;
 		clock-names = "cam_cc_cam_top_ahb_clk";
 		clocks = <&camcc CAM_CC_CAM_TOP_AHB_CLK>;
 		clock-rates = <0>;
@@ -2508,8 +2498,7 @@
 		rt-wrapper-base = <0x151000>;
 		interrupt-names = "csid0";
 		interrupts = <GIC_SPI 601 IRQ_TYPE_EDGE_RISING>;
-		regulator-names = "gdsc";
-		gdsc-supply = <&cam_cc_titan_top_gdsc>;
+		power-domains = <&camcc CAM_CC_TITAN_TOP_GDSC>;
 		shared-clks = <1 0 0>;
 		clock-names =
 			"csid_clk_src",
@@ -2542,9 +2531,7 @@
 		rt-wrapper-base = <0x151000>;
 		interrupt-names = "tfe0";
 		interrupts = <GIC_SPI 433 IRQ_TYPE_EDGE_RISING>;
-		regulator-names = "gdsc", "tfe0";
-		gdsc-supply = <&cam_cc_titan_top_gdsc>;
-		tfe0-supply = <&cam_cc_tfe_0_gdsc>;
+		power-domains = <&camcc CAM_CC_TFE_0_GDSC>;
 		shared-clks = <0 1 1 1 0 0 0 0 0 0>;
 		clock-names =
 			"tfe_0_main_fast_ahb",
@@ -2593,8 +2580,7 @@
 		rt-wrapper-base = <0x151000>;
 		interrupt-names = "csid1";
 		interrupts = <GIC_SPI 603 IRQ_TYPE_EDGE_RISING>;
-		regulator-names = "gdsc";
-		gdsc-supply = <&cam_cc_titan_top_gdsc>;
+		power-domains = <&camcc CAM_CC_TITAN_TOP_GDSC>;
 		shared-clks = <1 0 0>;
 		clock-names =
 			"csid_clk_src",
@@ -2627,9 +2613,7 @@
 		rt-wrapper-base = <0x151000>;
 		interrupt-names = "tfe1";
 		interrupts = <GIC_SPI 436 IRQ_TYPE_EDGE_RISING>;
-		regulator-names = "gdsc", "tfe1";
-		gdsc-supply = <&cam_cc_titan_top_gdsc>;
-		tfe1-supply = <&cam_cc_tfe_1_gdsc>;
+		power-domains = <&camcc CAM_CC_TFE_1_GDSC>;
 		shared-clks = <0 1 1 1 0 0 0 0 0 0>;
 		clock-names =
 			"tfe_1_main_fast_ahb",
@@ -2678,8 +2662,7 @@
 		rt-wrapper-base = <0x151000>;
 		interrupt-names = "csid2";
 		interrupts = <GIC_SPI 431 IRQ_TYPE_EDGE_RISING>;
-		regulator-names = "gdsc";
-		gdsc-supply = <&cam_cc_titan_top_gdsc>;
+		power-domains = <&camcc CAM_CC_TITAN_TOP_GDSC>;
 		shared-clks = <1 0 0>;
 		clock-names =
 			"csid_clk_src",
@@ -2712,9 +2695,7 @@
 		rt-wrapper-base = <0x151000>;
 		interrupt-names = "tfe2";
 		interrupts = <GIC_SPI 457 IRQ_TYPE_EDGE_RISING>;
-		regulator-names = "gdsc", "tfe2";
-		gdsc-supply = <&cam_cc_titan_top_gdsc>;
-		tfe2-supply = <&cam_cc_tfe_2_gdsc>;
+		power-domains = <&camcc CAM_CC_TFE_2_GDSC>;
 		shared-clks = <0 1 1 1 0 0 0 0 0 0>;
 		clock-names =
 			"tfe_2_main_fast_ahb",
@@ -2763,8 +2744,7 @@
 		rt-wrapper-base = <0x2d1000>;
 		interrupt-names = "csid-lite0";
 		interrupts = <GIC_SPI 605 IRQ_TYPE_EDGE_RISING>;
-		regulator-names = "gdsc";
-		gdsc-supply = <&cam_cc_titan_top_gdsc>;
+		power-domains = <&camcc CAM_CC_TITAN_TOP_GDSC>;
 		shared-clks = <0 1 0 0 0 0>;
 		clock-names =
 			"ife_lite_ahb",
@@ -2803,8 +2783,7 @@
 		rt-wrapper-base = <0x2d1000>;
 		interrupt-names = "ife-lite0";
 		interrupts = <GIC_SPI 606 IRQ_TYPE_EDGE_RISING>;
-		regulator-names = "gdsc";
-		gdsc-supply = <&cam_cc_titan_top_gdsc>;
+		power-domains = <&camcc CAM_CC_TITAN_TOP_GDSC>;
 		shared-clks = <0 0 0 1 0 0>;
 		clock-names =
 			"ife_lite_ahb",
@@ -2844,8 +2823,7 @@
 		rt-wrapper-base = <0x2d1000>;
 		interrupt-names = "csid-lite1";
 		interrupts = <GIC_SPI 376 IRQ_TYPE_EDGE_RISING>;
-		regulator-names = "gdsc";
-		gdsc-supply = <&cam_cc_titan_top_gdsc>;
+		power-domains = <&camcc CAM_CC_TITAN_TOP_GDSC>;
 		shared-clks = <0 1 0 0 0 0>;
 		clock-names =
 			"ife_lite_ahb",
@@ -2884,8 +2862,7 @@
 		rt-wrapper-base = <0x2d1000>;
 		interrupt-names = "ife-lite1";
 		interrupts = <GIC_SPI 377 IRQ_TYPE_EDGE_RISING>;
-		regulator-names = "gdsc";
-		gdsc-supply = <&cam_cc_titan_top_gdsc>;
+		power-domains = <&camcc CAM_CC_TITAN_TOP_GDSC>;
 		shared-clks = <0 0 0 1 0 0>;
 		clock-names =
 			"ife_lite_ahb",
@@ -2924,8 +2901,7 @@
 		reg = <0x0 0x093fd000 0x0 0x400>,
 			<0x0 0x0900b000 0x0 0x1000>;
 		reg-cam-base = <0x3fd000 0x0b000>;
-		regulator-names = "gdsc";
-		gdsc-supply = <&cam_cc_titan_top_gdsc>;
+		power-domains = <&camcc CAM_CC_TITAN_TOP_GDSC>;
 		interrupt-names = "tpg0";
 		interrupts = <GIC_SPI 413 IRQ_TYPE_EDGE_RISING>;
 		shared-clks = <1 0>;
@@ -2952,8 +2928,7 @@
 		reg = <0x0 0x093fe000 0x0 0x400>,
 			<0x0 0x0900b000 0x0 0x1000>;
 		reg-cam-base = <0x3fe000 0x0b000>;
-		regulator-names = "gdsc";
-		gdsc-supply = <&cam_cc_titan_top_gdsc>;
+		power-domains = <&camcc CAM_CC_TITAN_TOP_GDSC>;
 		interrupt-names = "tpg1";
 		interrupts = <GIC_SPI 416 IRQ_TYPE_EDGE_RISING>;
 		shared-clks = <1 0>;
@@ -2980,8 +2955,7 @@
 		reg = <0x0 0x093ff000 0x0 0x400>,
 			<0x0 0x0900b000 0x0 0x1000>;
 		reg-cam-base = <0x3ff000 0xb000>;
-		regulator-names = "gdsc";
-		gdsc-supply = <&cam_cc_titan_top_gdsc>;
+		power-domains = <&camcc CAM_CC_TITAN_TOP_GDSC>;
 		interrupt-names = "tpg2";
 		interrupts = <GIC_SPI 417 IRQ_TYPE_EDGE_RISING>;
 		shared-clks = <1 0>;
@@ -3037,8 +3011,7 @@
 		reg-cam-base = <0xe000 0x11000>;
 		interrupt-names = "icp";
 		interrupts = <GIC_SPI 463 IRQ_TYPE_EDGE_RISING>;
-		regulator-names = "gdsc";
-		gdsc-supply = <&cam_cc_titan_top_gdsc>;
+		power-domains = <&camcc CAM_CC_TITAN_TOP_GDSC>;
 		memory-region = <&camera_mem>;
 		clock-names =
 			"icp_ahb_clk",
@@ -3081,8 +3054,7 @@
 		reg-cam-base = <0x2E000 0x31000>;
 		interrupt-names = "icp1";
 		interrupts = <GIC_SPI 657 IRQ_TYPE_EDGE_RISING>;
-		regulator-names = "gdsc";
-		gdsc-supply = <&cam_cc_titan_top_gdsc>;
+		power-domains = <&camcc CAM_CC_TITAN_TOP_GDSC>;
 		memory-region = <&camera_2_mem>;
 		clock-names =
 			"icp_1_ahb_clk",
@@ -3121,8 +3093,7 @@
 		reg = <0x0 0x090d7000 0x0 0x20000>;
 		reg-names = "ipe0_top";
 		reg-cam-base = <0xd7000>;
-		regulator-names = "ipe0-vdd";
-		ipe0-vdd-supply = <&cam_cc_ipe_0_gdsc>;
+		power-domains = <&camcc CAM_CC_IPE_0_GDSC>;
 		clock-names =
 			"ipe_nps_ahb_clk",
 			"ipe_nps_fast_ahb_clk",
@@ -3161,8 +3132,7 @@
 		reg = <0x0 0x09057000 0x0 0x40000>;
 		reg-names = "ofe0_top";
 		reg-cam-base = <0x57000>;
-		regulator-names = "ofe0-vdd";
-		ofe0-vdd-supply = <&cam_cc_ofe_gdsc>;
+		power-domains = <&camcc CAM_CC_OFE_GDSC>;
 		clock-names =
 			"ofe_clk_src",
 			"ofe_main_clk",
@@ -3217,8 +3187,7 @@
 		reg-cam-base = <0x4d000 0x117000>;
 		interrupt-names = "jpeg_enc0";
 		interrupts = <GIC_SPI 475 IRQ_TYPE_EDGE_RISING>;
-		regulator-names = "gdsc";
-		gdsc-supply = <&cam_cc_titan_top_gdsc>;
+		power-domains = <&camcc CAM_CC_TITAN_TOP_GDSC>;
 		shared-clks = <1 0>;
 		clock-names =
 			"jpegenc_clk_src",
@@ -3245,8 +3214,7 @@
 		reg-cam-base = <0x4e000 0x117000>;
 		interrupt-names = "jpeg_dma0";
 		interrupts = <GIC_SPI 372 IRQ_TYPE_EDGE_RISING>;
-		regulator-names = "gdsc";
-		gdsc-supply = <&cam_cc_titan_top_gdsc>;
+		power-domains = <&camcc CAM_CC_TITAN_TOP_GDSC>;
 		shared-clks = <1 0>;
 		clock-names =
 			"jpegdma_clk_src",
