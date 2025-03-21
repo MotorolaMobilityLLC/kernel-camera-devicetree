@@ -386,7 +386,7 @@
 		reg = <0x10>;
 		compatible = "qcom,cam-i2c-sensor";
 		csiphy-sd-index = <2>;
-		sensor-position-roll = <270>;
+		sensor-position-roll = <90>;
 		sensor-position-pitch = <0>;
 		sensor-position-yaw = <180>;
 		eeprom-src = <&eeprom_tele>;
