@@ -1,0 +1,24 @@
+// SPDX-License-Identifier: BSD-3-Clause
+/*
+ * Copyright (c) 2025 Qualcomm Innovation Center, Inc. All rights reserved.
+ */
+
+/dts-v1/;
+/plugin/;
+
+#include <dt-bindings/clock/qcom,gcc-canoe.h>
+#include <dt-bindings/clock/qcom,camcc-canoe.h>
+#include <dt-bindings/clock/qcom,cambistmclkcc-canoe.h>
+#include <dt-bindings/interconnect/qcom,canoe.h>
+#include <dt-bindings/interrupt-controller/arm-gic.h>
+#include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
+#include <dt-bindings/clock/qcom,rpmh.h>
+
+#include "canoe-camera-sensor-mtp.dtsi"
+/ {
+	model = "Qualcomm Technologies, Inc. Alor Interposer MTP";
+	compatible = "qcom,canoe-mtp", "qcom,canoe", "qcom,mtp";
+	qcom,msm-id = <704 0x10000>, <0x10002C0 0x10000>,
+		<704 0x20000>, <0x10002C0 0x20000>;
+	qcom,board-id = <8 0>;
+};
