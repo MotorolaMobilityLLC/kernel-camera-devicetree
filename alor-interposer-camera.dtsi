@@ -1047,40 +1047,6 @@
 		status = "ok";
 	};
 
-	cam_csiphy5: qcom,csiphy5@952D000 {
-		cell-index = <5>;
-		compatible = "qcom,csiphy-v2.4.0", "qcom,csiphy";
-		reg = <0x0 0x0952D000 0x0 0x2000>;
-		reg-names = "csiphy";
-		reg-cam-base = <0x52D000>;
-		interrupt-names = "CSIPHY5";
-		interrupts = <GIC_SPI 89 IRQ_TYPE_EDGE_RISING>;
-		regulator-names = "csi-vdd-1p2", "csi-vdd-0p9";
-		power-domains = <&camcc CAM_CC_TITAN_TOP_GDSC>;
-		csi-vdd-1p2-supply = <&L1D>;
-		csi-vdd-0p9-supply = <&L3I>;
-		rgltr-cntrl-support;
-		rgltr-min-voltage = <1200000 880000>;
-		rgltr-max-voltage = <1256000 920000>;
-		rgltr-load-current = <14660 151020>;
-		shared-clks = <1 0 0 0>;
-		clock-names = "cphy_rx_clk_src",
-			"csiphy5_clk",
-			"csi5phytimer_clk_src",
-			"csi5phytimer_clk";
-		clocks = <&camcc CAM_CC_CPHY_RX_CLK_SRC>,
-			<&camcc CAM_CC_CSIPHY5_CLK>,
-			<&camcc CAM_CC_CSI5PHYTIMER_CLK_SRC>,
-			<&camcc CAM_CC_CSI5PHYTIMER_CLK>;
-		src-clock-name = "cphy_rx_clk_src";
-		clock-cntl-level = "lowsvsd1", "lowsvs", "nominal";
-		clock-rates =
-			<266666667 0 400000000 0>,
-			<400000000 0 400000000 0>,
-			<480000000 0 400000000 0>;
-		status = "ok";
-	};
-
 	cam_cci0: qcom,cci0@941b000 {
 		cell-index = <0>;
 		compatible = "qcom,cci", "simple-bus";
@@ -1240,93 +1206,6 @@
 		};
 
 		i2c_freq_1Mhz_cci1: qcom,i2c_fast_plus_mode {
-			hw-thigh = <16>;
-			hw-tlow = <22>;
-			hw-tsu-sto = <17>;
-			hw-tsu-sta = <18>;
-			hw-thd-dat = <16>;
-			hw-thd-sta = <15>;
-			hw-tbuf = <24>;
-			hw-scl-stretch-en = <0>;
-			hw-trdhld = <3>;
-			hw-tsp = <3>;
-			cci-clk-src = <37500000>;
-			status = "ok";
-		};
-	};
-
-	cam_cci2: qcom,cci2@941d000 {
-		cell-index = <2>;
-		compatible = "qcom,cci", "simple-bus";
-		reg = <0x0 0x0941d000 0x0 0x1000>;
-		reg-names = "cci";
-		reg-cam-base = <0x41d000>;
-		interrupt-names = "CCI2";
-		interrupts = <GIC_SPI 428 IRQ_TYPE_EDGE_RISING>;
-		power-domains = <&camcc CAM_CC_TITAN_TOP_GDSC>;
-		clock-names = "cci_2_clk_src",
-			"cci_2_clk";
-		clocks = <&camcc CAM_CC_CCI_2_CLK_SRC>,
-			<&camcc CAM_CC_CCI_2_CLK>;
-		clock-rates = <37500000 0>, <37500000 0>;
-		clock-cntl-level = "lowsvsd1", "lowsvs";
-		src-clock-name = "cci_2_clk_src";
-		pctrl-idx-mapping = <CCI_MASTER_0 CCI_MASTER_1>;
-		pctrl-map-names = "m0", "m1";
-		pinctrl-names = "m0_active", "m0_suspend",
-			"m1_active", "m1_suspend";
-		pinctrl-0 = <&cci_i2c_scl4_active &cci_i2c_sda4_active>;
-		pinctrl-1 = <&cci_i2c_scl4_suspend &cci_i2c_sda4_suspend>;
-		pinctrl-2 = <&cci_i2c_scl5_active &cci_i2c_sda5_active>;
-		pinctrl-3 = <&cci_i2c_scl5_suspend &cci_i2c_sda5_suspend>;
-		status = "ok";
-
-		i2c_freq_100Khz_cci2: qcom,i2c_standard_mode {
-			hw-thigh = <201>;
-			hw-tlow = <174>;
-			hw-tsu-sto = <204>;
-			hw-tsu-sta = <231>;
-			hw-thd-dat = <22>;
-			hw-thd-sta = <162>;
-			hw-tbuf = <227>;
-			hw-scl-stretch-en = <0>;
-			hw-trdhld = <6>;
-			hw-tsp = <3>;
-			cci-clk-src = <37500000>;
-			status = "ok";
-		};
-
-		i2c_freq_400Khz_cci2: qcom,i2c_fast_mode {
-			hw-thigh = <38>;
-			hw-tlow = <56>;
-			hw-tsu-sto = <40>;
-			hw-tsu-sta = <40>;
-			hw-thd-dat = <22>;
-			hw-thd-sta = <35>;
-			hw-tbuf = <62>;
-			hw-scl-stretch-en = <0>;
-			hw-trdhld = <6>;
-			hw-tsp = <3>;
-			cci-clk-src = <37500000>;
-			status = "ok";
-		};
-
-		i2c_freq_custom_cci2: qcom,i2c_custom_mode {
-			hw-thigh = <16>;
-			hw-tlow = <22>;
-			hw-tsu-sto = <17>;
-			hw-tsu-sta = <18>;
-			hw-thd-dat = <16>;
-			hw-thd-sta = <15>;
-			hw-tbuf = <24>;
-			hw-scl-stretch-en = <1>;
-			hw-trdhld = <3>;
-			hw-tsp = <3>;
-			cci-clk-src = <37500000>;
-			status = "ok";
-		};
-
-		i2c_freq_1Mhz_cci2: qcom,i2c_fast_plus_mode {
 			hw-thigh = <16>;
 			hw-tlow = <22>;
 			hw-tsu-sto = <17>;
@@ -1726,8 +1605,8 @@
 			"turbo", "turbo";
 		client-id-based;
 		client-names =
-			"csiphy0", "csiphy1", "csiphy2", "csiphy3", "csiphy4", "csiphy5",
-			"cci0", "cci1", "cci2", "csid0", "csid1", "csid2", "csid3", "csid4",
+			"csiphy0", "csiphy1", "csiphy2", "csiphy3", "csiphy4",
+			"cci0", "cci1", "csid0", "csid1", "csid2", "csid3", "csid4",
 			"ife0", "ife1", "ife2", "ife3", "ife4",
 			"ipe0", "rt-cdm0", "rt-cdm1", "rt-cdm2", "rt-cdm3", "rt-cdm4",
 			"cam-cdm-intf0", "icp0", "icp1", "ofe0", "cre0",
