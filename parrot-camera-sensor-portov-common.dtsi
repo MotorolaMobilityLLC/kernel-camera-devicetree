@@ -111,6 +111,7 @@
 	};
 
 	cam_avdd_front: gpio-regulator@1 {
+		status = "disabled";
 		compatible = "regulator-fixed";
 		reg = <0x01 0x00>;
 		regulator-name = "cam_avdd_front";
