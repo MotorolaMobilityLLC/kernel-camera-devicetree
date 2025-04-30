@@ -6,7 +6,7 @@
 
 &soc {
 	/* imx882 afvdd */
-	/*camera_ldo_50m_afvdd: gpio-regulator@0 {
+	camera_ldo_50m_afvdd: gpio-regulator@0 {
 		compatible = "regulator-fixed";
 		reg = <0x00 0x00>;
 		regulator-name = "camera_ldo_50m_afvdd";
@@ -15,7 +15,7 @@
 		regulator-enable-ramp-delay = <233>;
 		enable-active-high;
 		gpio = <&tlmm 31 0>;
-	};*/
+	};
 
 	camera_ldo_dovdd: gpio-regulator@1 {
 		compatible = "regulator-fixed";
@@ -95,14 +95,14 @@
 		gpio = <&tlmm 58 0>;
 	};
 
-        /*led_flash_rear: qcom,camera-flash@1 {
+	led_flash_rear: qcom,camera-flash@1 {
 		cell-index = <1>;
 		compatible = "qcom,camera-flash";
 		flash-source = <&pm6150l_flash0 &pm6150l_flash1>;
 		torch-source = <&pm6150l_torch0 &pm6150l_torch1>;
 		switch-source = <&pm6150l_switch2>;
 		status = "ok";
-	};*/
+	};
 
 	qcom,cam-res-mgr {
 		compatible = "qcom,cam-res-mgr";
@@ -269,7 +269,7 @@
 };
 
 &cam_cci0 {
-	/*actuator_rear_main:qcom,actuator0{
+	actuator_rear_main:qcom,actuator0{
 		cell-index = <0>;
 		compatible = "qcom,actuator";
 		cci-master = <CCI_MASTER_1>;
@@ -279,7 +279,7 @@
 		rgltr-min-voltage = <2800000>;
 		rgltr-max-voltage = <2800000>;
 		rgltr-load-current = <0>;
-	};*/
+	};
 
 	/* Rear imx882 */
 	qcom,cam-sensor0 {
@@ -289,8 +289,8 @@
 		sensor-position-roll = <90>;
 		sensor-position-pitch = <0>;
 		sensor-position-yaw = <180>;
-		//actuator-src = <&actuator_rear_main>;
-		//led-flash-src = <&led_flash_rear>;
+		actuator-src = <&actuator_rear_main>;
+		led-flash-src = <&led_flash_rear>;
 		/* eeprom-src = <&eeprom_main>; */
 		cam_vio-supply = <&camera_ldo_dovdd>;
 		cam_vana-supply = <&camera_ldo_50m_avdd>;
