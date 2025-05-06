@@ -281,6 +281,20 @@
 		rgltr-load-current = <0>;
 	};
 
+	eeprom_main: qcom,eeprom@0 {
+		cell-index = <0>;
+		reg = <0x0>;
+		compatible = "qcom,eeprom";
+		cci-master = <CCI_MASTER_1>;
+		cam_vio-supply  = <&camera_ldo_dovdd>;
+		regulator-names = "cam_vio";
+		rgltr-cntrl-support;
+		rgltr-min-voltage  = <1800000>;
+		rgltr-max-voltage  = <1800000>;
+		rgltr-load-current = <155000>;
+		status = "ok";
+	};
+
 	/* Rear imx882 */
 	qcom,cam-sensor0 {
 		cell-index = <0>;
@@ -291,7 +305,7 @@
 		sensor-position-yaw = <180>;
 		actuator-src = <&actuator_rear_main>;
 		led-flash-src = <&led_flash_rear>;
-		/* eeprom-src = <&eeprom_main>; */
+		eeprom-src = <&eeprom_main>;
 		cam_vio-supply = <&camera_ldo_dovdd>;
 		cam_vana-supply = <&camera_ldo_50m_avdd>;
 		cam_vdig-supply = <&camera_ldo_50m_dvdd>;
@@ -367,6 +381,20 @@
 };
 
 &cam_cci1 {
+	eeprom_front: qcom,eeprom@1 {
+		cell-index = <1>;
+		reg = <0x1>;
+		compatible = "qcom,eeprom";
+		cci-master = <CCI_MASTER_1>;
+		cam_vio-supply  = <&camera_ldo_dovdd>;
+		regulator-names = "cam_vio";
+		rgltr-cntrl-support;
+		rgltr-min-voltage  = <1800000>;
+		rgltr-max-voltage  = <1800000>;
+		rgltr-load-current = <155000>;
+		status = "ok";
+	};
+
 	qcom,cam-sensor1 {
 		cell-index = <1>;
 		compatible = "qcom,cam-sensor";
@@ -374,6 +402,7 @@
 		sensor-position-roll = <270>;
 		sensor-position-pitch = <0>;
 		sensor-position-yaw = <0>;
+		eeprom-src = <&eeprom_front>;
 		cam_clk-supply = <&cam_cc_camss_top_gdsc>;
 		cam_vio-supply = <&camera_ldo_dovdd>;
 		cam_vana-supply = <&camera_ldo_32m_avdd>;
