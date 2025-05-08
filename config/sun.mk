@@ -4,6 +4,9 @@ dtbo-$(CONFIG_ARCH_SUN)  := sun-camera.dtbo
 dtbo-$(CONFIG_LEAP_DTB) += sun-camera-sensor-leap-evb.dtbo \
                            sun-camera-sensor-leap-evt1.dtbo
 
+dtbo-$(CONFIG_ARCH_KERA)   += kera-camera.dtbo
+dtbo-$(CONFIG_ROADSTR_DTB) += kera-camera-sensor-roadstr-evb.dtbo
+
 else
 
 dtbo-$(CONFIG_ARCH_SUN)   := sun-camera.dtbo
