@@ -2,7 +2,8 @@ dtbo-$(CONFIG_ARCH_CANOE)   += canoe-camera.dtbo \
 	alor-interposer-camera.dtbo \
 	alor-interposer-camera-sensor-cdp.dtbo \
 	alor-interposer-camera-sensor-mtp.dtbo \
-	alor-interposer-camera-sensor-qrd.dtbo
+	alor-interposer-camera-sensor-qrd.dtbo \
+	alor-camera.dtbo
 dtbo-$(CONFIG_ARCH_CANOE)   += canoe-camera-v2.dtbo \
 	alor-interposer-camera-v2.dtbo \
 	canoe-camera-sensor-mtp.dtbo \
