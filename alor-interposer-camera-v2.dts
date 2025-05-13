@@ -12,10 +12,10 @@
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
 
-#include "alor-interposer-camera.dtsi"
+#include "alor-interposer-camera-v2.dtsi"
 / {
 	model = "Qualcomm Technologies, Inc. Alor Interposer SoC";
 	compatible = "qcom,canoe", "qcom,canoe-rcm", "qcom,canoe-mtp", "qcom,mtp", "qcom,rcm";
-	qcom,msm-id = <704 0x10000>, <0x10002C0 0x10000>;
+	qcom,msm-id = <704 0x20000>, <0x10002C0 0x20000>;
 	qcom,board-id = <0 0>;
 };

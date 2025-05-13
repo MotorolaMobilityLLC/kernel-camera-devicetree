@@ -1,6 +1,6 @@
-// SPDX-License-Identifier: BSD-3-Clause
+// SPDX-License-Identifier: BSD-3-Clause-Clear
 /*
- * Copyright (c) 2025 Qualcomm Innovation Center, Inc. All rights reserved.
+ * Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
  */
 
 #include <dt-bindings/msm-camera.h>
@@ -2878,6 +2878,7 @@
 		icp_pc_en;
 		icp_use_pil;
 		interframe_pc_en;
+		synx_signaling_en;
 	};
 
 	cam_icp0: qcom,icp0@900d000 {
