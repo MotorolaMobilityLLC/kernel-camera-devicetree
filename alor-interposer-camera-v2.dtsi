@@ -1,0 +1,81 @@
+// SPDX-License-Identifier: BSD-3-Clause-Clear
+/*
+ * Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+ */
+
+#include "alor-interposer-camera.dtsi"
+
+&cam_vfe0 {
+	shared-clks = <0 0 0 0 0 0>;
+	clock-names =
+		"tfe_0_main_fast_ahb",
+		"tfe_0_clk_src",
+		"tfe_0_main_clk",
+		"cam_cc_camnoc_rt_tfe_0_main_clk",
+		"tfe_0_bayer_fast_ahb",
+		"tfe_0_bayer_clk";
+	clocks =
+		<&camcc CAM_CC_TFE_0_MAIN_FAST_AHB_CLK>,
+		<&camcc CAM_CC_TFE_0_CLK_SRC>,
+		<&camcc CAM_CC_TFE_0_MAIN_CLK>,
+		<&camcc CAM_CC_CAMNOC_RT_TFE_0_MAIN_CLK>,
+		<&camcc CAM_CC_TFE_0_BAYER_FAST_AHB_CLK>,
+		<&camcc CAM_CC_TFE_0_BAYER_CLK>;
+	clock-rates =
+		<0 360280000 0 0 0 0>,
+		<0 480000000 0 0 0 0>,
+		<0 630000000 0 0 0 0>,
+		<0 716000000 0 0 0 0>,
+		<0 833000000 0 0 0 0>,
+		<0 833000000 0 0 0 0>;
+};
+
+&cam_vfe1 {
+	shared-clks = <0 0 0 0 0 0>;
+	clock-names =
+		"tfe_1_main_fast_ahb",
+		"tfe_1_clk_src",
+		"tfe_1_main_clk",
+		"cam_cc_camnoc_rt_tfe_1_main_clk",
+		"tfe_1_bayer_fast_ahb",
+		"tfe_1_bayer_clk";
+	clocks =
+		<&camcc CAM_CC_TFE_1_MAIN_FAST_AHB_CLK>,
+		<&camcc CAM_CC_TFE_1_CLK_SRC>,
+		<&camcc CAM_CC_TFE_1_MAIN_CLK>,
+		<&camcc CAM_CC_CAMNOC_RT_TFE_1_MAIN_CLK>,
+		<&camcc CAM_CC_TFE_1_BAYER_FAST_AHB_CLK>,
+		<&camcc CAM_CC_TFE_1_BAYER_CLK>;
+	clock-rates =
+		<0 360280000 0 0 0 0>,
+		<0 480000000 0 0 0 0>,
+		<0 630000000 0 0 0 0>,
+		<0 716000000 0 0 0 0>,
+		<0 833000000 0 0 0 0>,
+		<0 833000000 0 0 0 0>;
+};
+
+&cam_vfe2 {
+	shared-clks = <0 0 0 0 0 0>;
+	clock-names =
+		"tfe_2_main_fast_ahb",
+		"tfe_2_clk_src",
+		"tfe_2_main_clk",
+		"cam_cc_camnoc_rt_tfe_2_main_clk",
+		"tfe_2_bayer_fast_ahb",
+		"tfe_2_bayer_clk";
+	clocks =
+		<&camcc CAM_CC_TFE_2_MAIN_FAST_AHB_CLK>,
+		<&camcc CAM_CC_TFE_2_CLK_SRC>,
+		<&camcc CAM_CC_TFE_2_MAIN_CLK>,
+		<&camcc CAM_CC_CAMNOC_RT_TFE_2_MAIN_CLK>,
+		<&camcc CAM_CC_TFE_2_BAYER_FAST_AHB_CLK>,
+		<&camcc CAM_CC_TFE_2_BAYER_CLK>;
+	clock-rates =
+		<0 360280000 0 0 0 0>,
+		<0 480000000 0 0 0 0>,
+		<0 630000000 0 0 0 0>,
+		<0 716000000 0 0 0 0>,
+		<0 833000000 0 0 0 0>,
+		<0 833000000 0 0 0 0>;
+};
