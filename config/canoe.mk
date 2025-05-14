@@ -1,3 +1,12 @@
+CONFIG_YES=y
+
+ifeq ($(CONFIG_MMI_DEVICE_DTBS),$(CONFIG_YES))
+dtbo-$(CONFIG_ARCH_CANOE)  := canoe-camera.dtbo
+
+dtbo-$(CONFIG_VANTG_DTB) += canoe-camera-sensor-vantg-evb.dtbo
+
+else
+
 dtbo-$(CONFIG_ARCH_CANOE)   += canoe-camera.dtbo \
 	alor-interposer-camera.dtbo \
 	alor-interposer-camera-sensor-cdp.dtbo \
@@ -17,3 +26,5 @@ dtbo-$(CONFIG_ARCH_CANOE)   += canoe-camera-v2.dtbo \
 	alor-camera-sensor-qrd.dtbo \
 	alor-camera-sensor-mtp-peach.dtbo \
 	alor-camera-sensor-rcm-peach.dtbo
+
+endif # end of CONFIG_MMI_DEVICE_DTBS
