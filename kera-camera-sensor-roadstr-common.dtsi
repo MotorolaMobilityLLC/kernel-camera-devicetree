@@ -206,6 +206,20 @@
 		status = "ok";
 	};
 
+	eeprom_rear_main: qcom,eeprom@0 {
+		cell-index = <0>;
+		reg = <0x0>;
+		compatible = "qcom,eeprom";
+		cci-master = <CCI_MASTER_1>;
+		cam_vio-supply = <&cam_iovdd>;
+		regulator-names = "cam_vio";
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <1800000>;
+		rgltr-max-voltage = <1800000>;
+		rgltr-load-current = <0>;
+		status = "ok";
+	};
+
 	rear_main: qcom,cam-sensor0 {
 		cell-index = <0>;
 		compatible = "qcom,cam-sensor";
@@ -215,6 +229,7 @@
 		sensor-position-yaw = <180>;
 		led-flash-src = <&led_flash_rear_main>;
 		actuator-src  = <&actuator_main>;
+		eeprom-src  = <&eeprom_rear_main>;
 		cam_vio-supply = <&cam_iovdd>;
 		cam_vdig-supply = <&cam_ldo1>;
 		cam_clk-supply = <&cam_cc_titan_top_gdsc>;
