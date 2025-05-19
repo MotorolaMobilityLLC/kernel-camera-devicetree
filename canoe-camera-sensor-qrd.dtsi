@@ -81,12 +81,13 @@
 		cell-index = <2>;
 		compatible = "qcom,actuator";
 		cci-master = <CCI_MASTER_1>;
+		cam_vio-supply = <&L4N>;
 		cam_vaf-supply = <&L7M>;
-		regulator-names = "cam_vaf";
+		regulator-names = "cam_vio","cam_vaf";
 		rgltr-cntrl-support;
-		rgltr-min-voltage = <2800000>;
-		rgltr-max-voltage = <2800000>;
-		rgltr-load-current = <103000>;
+		rgltr-min-voltage = <1800000 2800000>;
+		rgltr-max-voltage = <1800000 2800000>;
+		rgltr-load-current = <3500 103000>;
 		status = "ok";
 	};
 
@@ -94,12 +95,13 @@
 		cell-index = <8>;
 		compatible = "qcom,actuator";
 		cci-master = <CCI_MASTER_0>;
+		cam_vio-supply = <&L4N>;
 		cam_vaf-supply = <&L7N>;
-		regulator-names = "cam_vaf";
+		regulator-names = "cam_vio","cam_vaf";
 		rgltr-cntrl-support;
-		rgltr-min-voltage = <3304000>;
-		rgltr-max-voltage = <3304000>;
-		rgltr-load-current = <140000>;
+		rgltr-min-voltage = <1800000 3304000>;
+		rgltr-max-voltage = <1800000 3304000>;
+		rgltr-load-current = <3500 140000>;
 		status = "ok";
 	};
 
