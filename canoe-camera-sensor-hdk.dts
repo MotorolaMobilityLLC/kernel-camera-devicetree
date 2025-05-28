@@ -1,0 +1,24 @@
+// SPDX-License-Identifier: BSD-3-Clause
+/*
+ * Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+ */
+
+/dts-v1/;
+/plugin/;
+
+#include <dt-bindings/clock/qcom,gcc-canoe.h>
+#include <dt-bindings/clock/qcom,camcc-canoe.h>
+#include <dt-bindings/clock/qcom,cambistmclkcc-canoe.h>
+#include <dt-bindings/interconnect/qcom,canoe.h>
+#include <dt-bindings/interrupt-controller/arm-gic.h>
+#include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
+#include <dt-bindings/clock/qcom,rpmh.h>
+
+#include "canoe-camera-sensor-hdk.dtsi"
+/ {
+	model = "Qualcomm Technologies, Inc. CanoeP HDK + Pandeiro";
+	compatible = "qcom,canoep-hdk", "qcom,canoep", "qcom,hdk";
+	qcom,msm-id = <661 0x10000>, <661 0x20000>, <0x1000295 0x10000>,
+		      <0x1000295 0x20000>;
+	qcom,board-id = <0x1001F 0>;
+};
