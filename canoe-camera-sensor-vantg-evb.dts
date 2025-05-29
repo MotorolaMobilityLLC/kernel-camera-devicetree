@@ -16,7 +16,7 @@
 
 #include "canoe-camera-sensor-vantg-common.dtsi"
 / {
-	model = "Qualcomm Technologies, Inc. canoe/honu QRD";
+	model = "vantg";
 	compatible = "qcom,canoe", "qcom,canoep", "qcom,canoe-qrd",
 		"qcom,qrd";
 	qcom,msm-id = <660 0x10000>, <660 0x20000>, <661 0x10000>,
@@ -25,5 +25,5 @@
 		<0x10294 0x20000>, <0x10295 0x10000>, <0x10295 0x20000>,
 		<0x1010294 0x10000>, <0x1010294 0x20000>, <0x1010295 0x10000>,
 		<0x1010295 0x20000>;
-	qcom,board-id = <11 0>, <0x1000B 0>, <0x2000B 0>;
+	qcom,board-id = <0x41 0x9100>;
 };
