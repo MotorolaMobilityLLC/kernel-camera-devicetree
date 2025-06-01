@@ -11,6 +11,8 @@
 / {
 	model = "Qualcomm Technologies, Inc. Pineapple HDK";
 	compatible = "qcom,pineapple-hdk", "qcom,pineapple", "qcom,hdk";
-	qcom,msm-id = <577 0x10000>, <577 0x20000>;
+	qcom,msm-id = <577 0x10000>, <577 0x20000>,
+			<645 0x10000>, <645 0x20000>, <646 0x10000>, <646 0x20000>,
+			<702 0x10000>, <702 0x20000>;
 	qcom,board-id = <0x1f 0>;
 };
