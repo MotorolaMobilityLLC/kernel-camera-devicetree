@@ -6,15 +6,36 @@
 #include "alor-camera-sensor-mtp.dtsi"
 
 &eeprom_wide {
-	cam_vdig-supply = <&L2M>;
+	cam_vdig-supply = <&L2M_E0>;
 	rgltr-min-voltage = <1800000 1100000 2800000 2800000 1800000>;
 	rgltr-max-voltage = <1800000 1100000 2800000 2800000 1800000>;
 	rgltr-load-current = <3500 913200 91430 118930 63100>;
 };
 
 &sensor_wide {
-	cam_vdig-supply = <&L2M>;
+	cam_vdig-supply = <&L2M_E0>;
 	rgltr-min-voltage = <1800000 1100000 2800000 2800000 1800000>;
 	rgltr-max-voltage = <1800000 1100000 2800000 2800000 1800000>;
 	rgltr-load-current = <3500 913200 91430 118930 63100>;
+};
+
+&sensor_uw {
+	cam_vio-supply = <&L2N_E0>;
+	rgltr-min-voltage = <1200000 1100000 2800000 2800000>;
+	rgltr-max-voltage = <1200000 1100000 2800000 2800000>;
+	rgltr-load-current = <4330 523640 107500 103360>;
+};
+
+&actuator_UW_rear {
+	cam_vio-supply = <&L2N_E0>;
+	rgltr-min-voltage = <1200000 2800000>;
+	rgltr-max-voltage = <1200000 2800000>;
+	rgltr-load-current = <4330 103360>;
+};
+
+&eeprom_i3c_UltraWide {
+	cam_vio-supply = <&L2N_E0>;
+	rgltr-min-voltage = <1200000 1100000 2800000 2800000>;
+	rgltr-max-voltage = <1200000 1100000 2800000 2800000>;
+	rgltr-load-current = <4330 523640 107500 103360>;
 };
