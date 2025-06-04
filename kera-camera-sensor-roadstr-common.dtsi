@@ -80,10 +80,23 @@
 	};
 };
 
+&pmxr2230_torch0{
+    qcom,max-current-ma = <100>;
+};
+
 &soc {
 
 	led_flash_rear_main: qcom,camera-flash0 {
 		cell-index = <0>;
+		compatible = "qcom,camera-flash";
+		flash-source = <&pmxr2230_flash0>;
+		torch-source = <&pmxr2230_torch0>;
+		switch-source = <&pmxr2230_switch0>;
+		status = "ok";
+	};
+
+	led_flash_rear_uw: qcom,camera-flash2 {
+		cell-index = <2>;
 		compatible = "qcom,camera-flash";
 		flash-source = <&pmxr2230_flash0>;
 		torch-source = <&pmxr2230_torch0>;
@@ -286,7 +299,7 @@
 		sensor-position-pitch = <0>;
 		sensor-position-yaw   = <180>;
 
-		led-flash-src = <&led_flash_rear_main>;
+		led-flash-src = <&led_flash_rear_uw>;
 		actuator-src  = <&actuator_uw>;
 		eeprom-src    = <&eeprom_uw>;
 
