@@ -1,0 +1,22 @@
+// SPDX-License-Identifier: BSD-3-Clause
+/*
+ * Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+ */
+
+/dts-v1/;
+/plugin/;
+
+#include <dt-bindings/clock/qcom,alor-gcc.h>
+#include <dt-bindings/clock/qcom,alor-camcc.h>
+#include <dt-bindings/clock/qcom,alor-cambistmclkcc.h>
+#include <dt-bindings/interconnect/qcom,alor.h>
+#include <dt-bindings/interrupt-controller/arm-gic.h>
+#include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
+
+#include "alor-camera-sensor-mtp.dtsi"
+/ {
+	model = "Qualcomm Technologies, Inc. Alor QRD";
+	compatible = "qcom,alor", "qcom,alor-qrd", "qcom,qrd";
+	qcom,msm-id = <685 0x10000>;
+	qcom,board-id = <0x1000b 0>,<0x2000b 0>;
+};
