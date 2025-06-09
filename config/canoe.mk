@@ -10,4 +10,8 @@ dtbo-$(CONFIG_ARCH_CANOE)   += canoe-camera-v2.dtbo \
 	canoe-camera-sensor-cdp.dtbo \
 	canoe-camera-sensor-qrd.dtbo \
 	canoe-camera-sensor-hdk.dtbo \
-	canoe-camera-sensor-rumi.dtbo
+	canoe-camera-sensor-rumi.dtbo \
+	alor-camera-sensor-mtp.dtbo \
+	alor-camera-sensor-cdp.dtbo \
+	alor-camera-sensor-mtp-peach.dtbo \
+	alor-camera-sensor-rcm-peach.dtbo
