@@ -268,7 +268,7 @@
 		gpio = <&tlmm 164 0>;
 		pinctrl-names = "default";
 		pinctrl-0 = <&cam_dvdd_main_en_default>;
-		vin-supply = <&S7F>;
+		vin-supply = <&S7G>;
 	};
 
 	cam_afvdd_main: gpio-regulator@3 {
@@ -338,7 +338,7 @@
 		gpio = <&tlmm 29 0>;
 		pinctrl-names = "default";
 		pinctrl-0 = <&cam_dvdd_uw_en_default>;
-		vin-supply = <&S8F>;
+		vin-supply = <&S7F>;
 	};
 
 	cam_afvdd_uw: gpio-regulator@8 {
@@ -478,7 +478,7 @@
 		sensor-position-pitch = <0>;
 		sensor-position-yaw   = <180>;
 
-		//eeprom-src    = <&eeprom_main>;
+		eeprom-src    = <&eeprom_main>;
 		//ois-src       = <&ois_main>;
 		actuator-src  = <&actuator_main>;
 		led-flash-src = <&led_flash_main>;
