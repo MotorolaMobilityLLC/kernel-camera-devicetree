@@ -4,7 +4,56 @@
  */
 
 #include <dt-bindings/msm-camera.h>
+
+&pmiv010x_gpios {
+    cam_rw_avdd_en_default: cam_rw_avdd_en_default {
+        pins = "gpio3";
+        function = "normal";
+        input-disable;
+        output-enable;
+        bias-pull-down;
+        qcom,drive-strength = <2>;
+        power-source = <1>;
+    };
+
+    cam_rw_dvdd_en_default: cam_rw_dvdd_en_default {
+        pins = "gpio4";
+        function = "normal";
+        input-disable;
+        output-enable;
+        bias-pull-down;
+        qcom,drive-strength = <2>;
+        power-source = <1>;
+    };
+};
+
 &soc {
+    cam_avdd_wide: gpio-regulator@1 {
+        compatible = "regulator-fixed";
+        reg = <0x01 0x00>;
+        regulator-name = "cam_avdd_wide";
+        regulator-min-microvolt = <2800000>;
+        regulator-max-microvolt = <2800000>;
+        enable-active-high;
+        gpio = <&pmiv010x_gpios 3 0>;
+        pinctrl-names = "default";
+        pinctrl-0 = <&cam_rw_avdd_en_default>;
+        vin-supply = <&BOB>;
+    };
+
+    cam_dvdd_wide: gpio-regulator@2 {
+        compatible = "regulator-fixed";
+        reg = <0x02 0x00>;
+        regulator-name = "cam_dvdd_wide";
+        regulator-min-microvolt = <1050000>;
+        regulator-max-microvolt = <1050000>;
+        enable-active-high;
+        gpio = <&pmiv010x_gpios 4 0>;
+        pinctrl-names = "default";
+        pinctrl-0 = <&cam_rw_dvdd_en_default>;
+        vin-supply = <&S2B>;
+    };
+
 	led_flash_triple_rear_wide: qcom,camera-flash1 {
 		cell-index = <1>;
 		compatible = "qcom,camera-flash";
