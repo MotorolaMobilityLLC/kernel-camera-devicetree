@@ -16,6 +16,6 @@
 / {
 	model = "Qualcomm Technologies, Inc. Alor SoC";
 	compatible = "qcom,alor";
-	qcom,msm-id = <685 0x10000>;
+	qcom,msm-id = <685 0x10000>, <727 0x10000>;
 	qcom,board-id = <0 0>;
 };
