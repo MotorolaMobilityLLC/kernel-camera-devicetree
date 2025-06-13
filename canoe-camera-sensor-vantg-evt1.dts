@@ -14,7 +14,7 @@
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
 #include <dt-bindings/clock/qcom,rpmh.h>
 
-#include "canoe-camera-sensor-vantg-common.dtsi"
+#include "canoe-camera-sensor-vantg-evt1.dtsi"
 / {
 	model = "vantg";
 	compatible = "qcom,canoe", "qcom,canoep", "qcom,canoe-qrd",
