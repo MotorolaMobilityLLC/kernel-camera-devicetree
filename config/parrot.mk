@@ -43,4 +43,7 @@ endif  #($(CONFIG_MONAI_DTB),y)
 ifeq ($(CONFIG_PORTOV_DTB),y)
 dtbo-$(CONFIG_ARCH_PARROT) += parrot-camera-sensor-portov-evb.dtbo
 endif  #($(CONFIG_PORTOV_DTB),y)
+ifeq ($(CONFIG_MUMBA_DTB),y)
+dtbo-$(CONFIG_ARCH_PARROT) += parrot-camera-sensor-mumba-evb.dtbo
+endif  #($(CONFIG_MUMBA_DTB),y)
 endif  #($(CONFIG_MMI_DEVICE_DTBS),y)
