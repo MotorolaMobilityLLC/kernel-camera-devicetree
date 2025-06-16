@@ -18,6 +18,6 @@
 	model = "Qualcomm Technologies, Inc. Alor CDP/RCM";
 	compatible = "qcom,alor", "qcom,alor-cdp", "qcom,cdp",
 		"qcom,alor-rcm", "qcom,rcm";
-	qcom,msm-id = <685 0x10000>;
+	qcom,msm-id = <685 0x10000>, <727 0x10000>;
 	qcom,board-id = <0x10001 0>, <0x10015 0>;
 };
