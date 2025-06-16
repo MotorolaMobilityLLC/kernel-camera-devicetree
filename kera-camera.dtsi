@@ -1151,13 +1151,11 @@
 			"cam_cc_slow_ahb_clk_src",
 			"cpas_ahb_clk",
 			"cpas_core_ahb_clk",
-			"cam_cc_drv_ahb_clk",
 			"cam_cc_fast_ahb_clk_src",
 			"cam_cc_top_fast_ahb_clk",
 			"camnoc_rt_axi_clk_src",
 			"camnoc_rt_axi_clk",
 			"camnoc_nrt_axi_clk",
-			"cam_cc_drv_xo_clk",
 			"cam_cc_pll0",
 			"cam_cc_qdss_debug_xo_clk";
 		clocks =
@@ -1167,22 +1165,20 @@
 			<&camcc CAM_CC_SLOW_AHB_CLK_SRC>,
 			<&camcc CAM_CC_CAM_TOP_AHB_CLK>,
 			<&camcc CAM_CC_CORE_AHB_CLK>,
-			<&camcc CAM_CC_DRV_AHB_CLK>,
 			<&camcc CAM_CC_FAST_AHB_CLK_SRC>,
 			<&camcc CAM_CC_CAM_TOP_FAST_AHB_CLK>,
 			<&camcc CAM_CC_CAMNOC_RT_AXI_CLK_SRC>,
 			<&camcc CAM_CC_CAMNOC_RT_AXI_CLK>,
 			<&camcc CAM_CC_CAMNOC_NRT_AXI_CLK>,
-			<&camcc CAM_CC_DRV_XO_CLK>,
 			<&camcc CAM_CC_PLL0>,
 			<&camcc CAM_CC_QDSS_DEBUG_XO_CLK>;
 		clock-rates =
-			<0 0 0 0 0 0 0 0 0 0 0 0 0 0 0>,
-			<0 0 0 80000000 0 0 0 300000000 0 300000000 0 0 0 0 0>,
-			<0 0 0 80000000 0 0 0 300000000 0 400000000 0 0 0 0 0>,
-			<0 0 0 80000000 0 0 0 300000000 0 400000000 0 0 0 0 0>,
-			<0 0 0 80000000 0 0 0 400000000 0 400000000 0 0 0 0 0>,
-			<0 0 0 80000000 0 0 0 400000000 0 400000000 0 0 0 0 0>;
+			<0 0 0 0 0 0 0 0 0 0 0 0 0>,
+			<0 0 0 80000000 0 0 300000000 0 300000000 0 0 0 0>,
+			<0 0 0 80000000 0 0 300000000 0 400000000 0 0 0 0>,
+			<0 0 0 80000000 0 0 300000000 0 400000000 0 0 0 0>,
+			<0 0 0 80000000 0 0 400000000 0 400000000 0 0 0 0>,
+			<0 0 0 80000000 0 0 400000000 0 400000000 0 0 0 0>;
 		clock-cntl-level = "suspend", "lowsvs", "svs",
 			"svs_l1", "nominal", "turbo";
 		src-clock-name = "camnoc_rt_axi_clk_src";
@@ -1198,7 +1194,6 @@
 			<0>, <0>, <0>, <0>;
 		shared-clks-option = <0 0 0 1 0>;
 		control-camnoc-axi-clk;
-		cam-crmb-clk;
 		camnoc-bus-width = <32>;
 		camnoc-axi-clk-bw-margin-perc = <20>;
 		domain-id = <CAM_CPAS_SECURE_DOMAIN 16>,
@@ -2076,7 +2071,7 @@
 		clock-cntl-level = "lowsvs", "svs", "svs_l1", "nominal", "turbo";
 		src-clock-name = "tfe_0_clk_src";
 		clock-control-debugfs = "true";
-		ubwc-static-cfg = <0x1026 0x1026>;
+		ubwc-static-cfg = <0x1016 0x1026>;
 		cam_hw_pid = <0 9 16 4>;
 		status = "ok";
 	};
@@ -2152,7 +2147,7 @@
 			"turbo";
 		src-clock-name = "tfe_1_clk_src";
 		clock-control-debugfs = "true";
-		ubwc-static-cfg = <0x1026 0x1026>;
+		ubwc-static-cfg = <0x1016 0x1026>;
 		cam_hw_pid = <1 10 17 5>;
 		status = "ok";
 	};
@@ -2227,7 +2222,7 @@
 		clock-cntl-level = "lowsvs", "svs", "svs_l1", "nominal", "turbo";
 		src-clock-name = "tfe_2_clk_src";
 		clock-control-debugfs = "true";
-		ubwc-static-cfg = <0x1026 0x1026>;
+		ubwc-static-cfg = <0x1016 0x1026>;
 		cam_hw_pid = <2 8 18 6>;
 		status = "ok";
 	};
@@ -2370,8 +2365,8 @@
 		src-clock-name = "icp_clk_src";
 		clock-control-debugfs = "true";
 		fw_name = "CAMERA_ICP_970";
-		ubwc-ipe-fetch-cfg = <0x707B 0x707B>;
-		ubwc-ipe-write-cfg = <0x161EF 0x161EF>;
+		ubwc-ipe-fetch-cfg = <0x7073 0x707B>;
+		ubwc-ipe-write-cfg = <0x161CF 0x161EF>;
 		qos-val = <0x808>;
 		fw-pas-id = <33>;
 		cam_hw_pid = <11>;
@@ -2412,8 +2407,8 @@
 		src-clock-name = "icp_1_clk_src";
 		clock-control-debugfs = "true";
 		fw_name = "CAMERA_ICP_1_970";
-		ubwc-ofe-fetch-cfg = <0x707B 0x707B>;
-		ubwc-ofe-write-cfg = <0x161EF 0x161EF>;
+		ubwc-ofe-fetch-cfg = <0x7073 0x707B>;
+		ubwc-ofe-write-cfg = <0x161CF 0x161EF>;
 		qos-val = <0x808>;
 		fw-pas-id = <50>;
 		cam_hw_pid = <10>;
