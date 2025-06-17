@@ -50,22 +50,22 @@
 		enable-active-high;
 		gpio = <&tlmm 33 0>;
 	};
-	/* gc32e1 avdd */
-	camera_ldo_32m_avdd: gpio-regulator@4 {
+	/* ov08f avdd */
+	camera_ldo_8mf_avdd: gpio-regulator@4 {
 		compatible = "regulator-fixed";
 		reg = <0x04 0x00>;
-		regulator-name = "camera_ldo_32m_avdd";
+		regulator-name = "camera_ldo_8mf_avdd";
 		regulator-min-microvolt = <2800000>;
 		regulator-max-microvolt = <2800000>;
 		regulator-enable-ramp-delay = <233>;
 		enable-active-high;
 		gpio = <&tlmm 32 0>;
 	};
-	/* gc32e1 dvdd */
-	camera_ldo_32m_dvdd: gpio-regulator@5 {
+	/* ov08f dvdd */
+	camera_ldo_8mf_dvdd: gpio-regulator@5 {
 		compatible = "regulator-fixed";
 		reg = <0x05 0x00>;
-		regulator-name = "camera_ldo_32m_dvdd";
+		regulator-name = "camera_ldo_8mf_dvdd";
 		regulator-min-microvolt = <1200000>;
 		regulator-max-microvolt = <1200000>;
 		regulator-enable-ramp-delay = <233>;
@@ -449,8 +449,8 @@
 		eeprom-src = <&eeprom_front>;
 		cam_clk-supply = <&cam_cc_camss_top_gdsc>;
 		cam_vio-supply = <&camera_ldo_dovdd>;
-		cam_vana-supply = <&camera_ldo_32m_avdd>;
-		cam_vdig-supply = <&camera_ldo_32m_dvdd>;
+		cam_vana-supply = <&camera_ldo_8mf_avdd>;
+		cam_vdig-supply = <&camera_ldo_8mf_dvdd>;
 		regulator-names = "cam_vio", "cam_vana", "cam_vdig",
 			"cam_clk";
 		rgltr-cntrl-support;
