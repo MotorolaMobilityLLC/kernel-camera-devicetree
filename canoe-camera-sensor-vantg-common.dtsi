@@ -426,6 +426,21 @@
 };
 
 &cam_cci0 {
+	i2c_freq_100Khz_cci0: qcom,i2c_standard_mode {
+		hw-scl-stretch-en = <1>;
+	};
+
+	i2c_freq_400Khz_cci0: qcom,i2c_fast_mode {
+		hw-scl-stretch-en = <1>;
+	};
+
+	i2c_freq_custom_cci0: qcom,i2c_custom_mode {
+		hw-scl-stretch-en = <1>;
+	};
+
+	i2c_freq_1Mhz_cci0: qcom,i2c_fast_plus_mode {
+		hw-scl-stretch-en = <1>;
+	};
 
 	actuator_main: qcom,actuator@0 {
 		cell-index = <0>;
@@ -470,6 +485,23 @@
 		status = "ok";
 	};
 
+	ois_main: qcom,ois@0 {
+		cell-index = <0>;
+		compatible = "qcom,ois";
+		cci-master = <CCI_MASTER_0>;
+		cam_vio-supply = <&cam_iovdd_main>;
+		cam_v_custom2-supply = <&L4N>;
+		cam_vaf-supply = <&cam_oisavdd_main>;
+		cam_v_custom1-supply = <&cam_oisvdd_main>;
+		power-domains = <&camcc CAM_CC_TITAN_TOP_GDSC>;
+		regulator-names = "cam_vio", "cam_v_custom2", "cam_vaf", "cam_v_custom1";
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <1200000 1800000 2900000 3200000>;
+		rgltr-max-voltage = <1200000 1800000 2900000 3200000>;
+		rgltr-load-current = <3500 3000 140000 214290>;
+		status = "ok";
+	};
+
 	rear_main: qcom,cam-sensor@0 {
 		cell-index = <0>;
 		compatible = "qcom,cam-sensor";
@@ -480,7 +512,7 @@
 		sensor-position-yaw   = <180>;
 
 		eeprom-src    = <&eeprom_main>;
-		//ois-src       = <&ois_main>;
+		ois-src       = <&ois_main>;
 		actuator-src  = <&actuator_main>;
 		led-flash-src = <&led_flash_main>;
 
@@ -665,7 +697,7 @@
 		sensor-position-yaw   = <180>;
 
 		eeprom-src    = <&eeprom_tele>;
-		//ois-src       = <&ois_tele>;
+		ois-src       = <&ois_tele>;
 		actuator-src  = <&actuator_tele>;
 		led-flash-src = <&led_flash_tele>;
 
