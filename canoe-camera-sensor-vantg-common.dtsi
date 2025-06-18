@@ -224,8 +224,9 @@
 
 &pmh0101_flash_led0
 {
-	flash-max-microamp = <1100000>;
-	flash-max-timeout-us = <350000>;
+	led-max-microamp = <150000>;
+	flash-max-microamp = <1200000>;
+	flash-max-timeout-us = <500000>;
 };
 
 &soc {
