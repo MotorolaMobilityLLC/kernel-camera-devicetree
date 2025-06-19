@@ -323,32 +323,87 @@
 		};
 	};
 
-	cam_sensor_active_rst0: cam_sensor_active_rst0 {
-		/* RST0 */
+	cam_sensor_mclk3_active: cam_sensor_mclk3_active {
+		/* MCLK3 */
 		mux {
-			pins = "gpio13";
-			function = "gpio";
+			pins = "gpio92";
+			function = "cam_mclk";
 		};
 
 		config {
-			pins = "gpio13";
+			pins = "gpio92";
 			bias-disable; /* No PULL */
 			drive-strength = <2>; /* 2 MA */
 		};
 	};
 
-	cam_sensor_suspend_rst0: cam_sensor_suspend_rst0 {
-		/* RST0 */
+	cam_sensor_mclk3_suspend: cam_sensor_mclk3_suspend {
+		/* MCLK3 */
 		mux {
-			pins = "gpio13";
-			function = "gpio";
+			pins = "gpio92";
+			function = "cam_mclk";
 		};
 
 		config {
-			pins = "gpio13";
+			pins = "gpio92";
 			bias-pull-down; /* PULL DOWN */
 			drive-strength = <2>; /* 2 MA */
-			output-low;
+		};
+	};
+
+	cam_sensor_mclk4_active: cam_sensor_mclk4_active {
+		/* MCLK4 */
+		mux {
+			pins = "gpio93";
+			function = "cam_asc_mclk4";
+		};
+
+		config {
+			pins = "gpio93";
+			bias-disable; /* No PULL */
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
+	cam_sensor_mclk4_suspend: cam_sensor_mclk4_suspend {
+		/* MCLK4 */
+		mux {
+			pins = "gpio93";
+			function = "cam_asc_mclk4";
+		};
+
+		config {
+			pins = "gpio93";
+			bias-pull-down; /* PULL DOWN */
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
+	cam_sensor_mclk5_active: cam_sensor_mclk5_active {
+		/* MCLK5 */
+		mux {
+			pins = "gpio94";
+			function = "cam_mclk";
+		};
+
+		config {
+			pins = "gpio94";
+			bias-disable; /* No PULL */
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
+	cam_sensor_mclk5_suspend: cam_sensor_mclk5_suspend {
+		/* MCLK5 */
+		mux {
+			pins = "gpio94";
+			function = "cam_mclk";
+		};
+
+		config {
+			pins = "gpio94";
+			bias-pull-down; /* PULL DOWN */
+			drive-strength = <2>; /* 2 MA */
 		};
 	};
 
@@ -409,6 +464,66 @@
 			output-low;
 		};
 	};
+
+	cam_sensor_active_rst3: cam_sensor_active_rst3 {
+		/* RST3 */
+		mux {
+			pins = "gpio6";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio6";
+			bias-disable; /* No PULL */
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
+	cam_sensor_suspend_rst3: cam_sensor_suspend_rst3 {
+		/* RST3 */
+		mux {
+			pins = "gpio6";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio6";
+			bias-pull-down; /* PULL DOWN */
+			drive-strength = <2>; /* 2 MA */
+			output-low;
+		};
+	};
+
+	cam_sensor_active_rst4: cam_sensor_active_rst4 {
+		/* RST4 */
+		mux {
+			pins = "gpio3";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio3";
+			bias-disable; /* No PULL */
+			drive-strength = <2>; /* 2 MA */
+			qcom,apps;
+		};
+	};
+
+	cam_sensor_suspend_rst4: cam_sensor_suspend_rst4 {
+		/* RST4 */
+		mux {
+			pins = "gpio3";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio3";
+			bias-pull-down; /* PULL DOWN */
+			drive-strength = <2>; /* 2 MA */
+			output-low;
+			qcom,remote;
+		};
+	};
 };
 
 &soc {
@@ -423,6 +538,184 @@
 
 	cam_sync: qcom,cam-sync {
 		compatible = "qcom,cam-sync";
+		status = "ok";
+	};
+
+	qcom,cam-i3c-id-table {
+		i3c-sensor-id-table = <0x1B0 0x0858>;
+		i3c-eeprom-id-table = <>;
+		i3c-actuator-id-table = <>;
+		i3c-ois-id-table = <>;
+		status = "disabled";
+	};
+
+	cam_csiphy0: qcom,csiphy0@9523000 {
+		cell-index = <0>;
+		compatible = "qcom,csiphy-v2.3.0", "qcom,csiphy";
+		reg = <0x0 0x09523000 0x0 0x2000>;
+		reg-names = "csiphy";
+		reg-cam-base = <0x523000>;
+		interrupt-names = "CSIPHY0";
+		interrupts = <GIC_SPI 477 IRQ_TYPE_EDGE_RISING>;
+		regulator-names = "csi-vdd-1p2", "csi-vdd-0p9";
+		power-domains = <&camcc CAM_CC_TITAN_TOP_GDSC>;
+		csi-vdd-1p2-supply = <&L2F_E0>;
+		csi-vdd-0p9-supply = <&L2I_E0>;
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <1200000 880000>;
+		rgltr-max-voltage = <1256000 920000>;
+		rgltr-load-current = <7330 74500>;
+		shared-clks = <1 0 0 0>;
+		clock-names = "cphy_rx_clk_src",
+			"csiphy0_clk",
+			"csi0phytimer_clk_src",
+			"csi0phytimer_clk";
+		clocks = <&camcc CAM_CC_CPHY_RX_CLK_SRC>,
+			<&camcc CAM_CC_CSIPHY0_CLK>,
+			<&camcc CAM_CC_CSI0PHYTIMER_CLK_SRC>,
+			<&camcc CAM_CC_CSI0PHYTIMER_CLK>;
+		src-clock-name = "cphy_rx_clk_src";
+		clock-cntl-level = "lowsvsd1", "lowsvs", "nominal";
+		clock-rates =
+			<266666667 0 400000000 0>,
+			<400000000 0 400000000 0>,
+			<480000000 0 400000000 0>;
+		status = "ok";
+	};
+
+	cam_csiphy1: qcom,csiphy1@9525000 {
+		cell-index = <1>;
+		compatible = "qcom,csiphy-v2.3.0", "qcom,csiphy";
+		reg = <0x0 0x09525000 0x0 0x2000>;
+		reg-names = "csiphy";
+		reg-cam-base = <0x525000>;
+		interrupt-names = "CSIPHY1";
+		interrupts = <GIC_SPI 478 IRQ_TYPE_EDGE_RISING>;
+		regulator-names = "csi-vdd-1p2", "csi-vdd-0p9";
+		power-domains = <&camcc CAM_CC_TITAN_TOP_GDSC>;
+		csi-vdd-1p2-supply = <&L2F_E0>;
+		csi-vdd-0p9-supply = <&L2I_E0>;
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <1200000 880000>;
+		rgltr-max-voltage = <1256000 920000>;
+		rgltr-load-current = <7330 74500>;
+		shared-clks = <1 0 0 0>;
+		clock-names = "cphy_rx_clk_src",
+			"csiphy1_clk",
+			"csi1phytimer_clk_src",
+			"csi1phytimer_clk";
+		clocks = <&camcc CAM_CC_CPHY_RX_CLK_SRC>,
+			<&camcc CAM_CC_CSIPHY1_CLK>,
+			<&camcc CAM_CC_CSI1PHYTIMER_CLK_SRC>,
+			<&camcc CAM_CC_CSI1PHYTIMER_CLK>;
+		src-clock-name = "cphy_rx_clk_src";
+		clock-cntl-level = "lowsvsd1", "lowsvs", "nominal";
+		clock-rates =
+			<266666667 0 400000000 0>,
+			<400000000 0 400000000 0>,
+			<480000000 0 400000000 0>;
+		status = "ok";
+	};
+
+	cam_csiphy2: qcom,csiphy2@9527000 {
+		cell-index = <2>;
+		compatible = "qcom,csiphy-v2.3.0", "qcom,csiphy";
+		reg = <0x0 0x09527000 0x0 0x2000>;
+		reg-names = "csiphy";
+		reg-cam-base = <0x527000>;
+		interrupt-names = "CSIPHY2";
+		interrupts = <GIC_SPI 479 IRQ_TYPE_EDGE_RISING>;
+		regulator-names = "csi-vdd-1p2", "csi-vdd-0p9";
+		power-domains = <&camcc CAM_CC_TITAN_TOP_GDSC>;
+		csi-vdd-1p2-supply = <&L2F_E0>;
+		csi-vdd-0p9-supply = <&L2I_E0>;
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <1200000 880000>;
+		rgltr-max-voltage = <1256000 920000>;
+		rgltr-load-current = <7330 74500>;
+		shared-clks = <1 0 0 0>;
+		clock-names = "cphy_rx_clk_src",
+			"csiphy2_clk",
+			"csi2phytimer_clk_src",
+			"csi2phytimer_clk";
+		clocks = <&camcc CAM_CC_CPHY_RX_CLK_SRC>,
+			<&camcc CAM_CC_CSIPHY2_CLK>,
+			<&camcc CAM_CC_CSI2PHYTIMER_CLK_SRC>,
+			<&camcc CAM_CC_CSI2PHYTIMER_CLK>;
+		src-clock-name = "cphy_rx_clk_src";
+		clock-cntl-level = "lowsvsd1", "lowsvs", "nominal";
+		clock-rates =
+			<266666667 0 400000000 0>,
+			<400000000 0 400000000 0>,
+			<480000000 0 400000000 0>;
+		status = "ok";
+	};
+
+	cam_csiphy3: qcom,csiphy3@9529000 {
+		cell-index = <3>;
+		compatible = "qcom,csiphy-v2.3.0", "qcom,csiphy";
+		reg = <0x0 0x09529000 0x0 0x2000>;
+		reg-names = "csiphy";
+		reg-cam-base = <0x529000>;
+		interrupt-names = "CSIPHY3";
+		interrupts = <GIC_SPI 448 IRQ_TYPE_EDGE_RISING>;
+		regulator-names = "csi-vdd-1p2", "csi-vdd-0p9";
+		power-domains = <&camcc CAM_CC_TITAN_TOP_GDSC>;
+		csi-vdd-1p2-supply = <&L2F_E0>;
+		csi-vdd-0p9-supply = <&L2I_E0>;
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <1200000 880000>;
+		rgltr-max-voltage = <1256000 920000>;
+		rgltr-load-current = <7330 74500>;
+		shared-clks = <1 0 0 0>;
+		clock-names = "cphy_rx_clk_src",
+			"csiphy3_clk",
+			"csi3phytimer_clk_src",
+			"csi3phytimer_clk";
+		clocks = <&camcc CAM_CC_CPHY_RX_CLK_SRC>,
+			<&camcc CAM_CC_CSIPHY3_CLK>,
+			<&camcc CAM_CC_CSI3PHYTIMER_CLK_SRC>,
+			<&camcc CAM_CC_CSI3PHYTIMER_CLK>;
+		src-clock-name = "cphy_rx_clk_src";
+		clock-cntl-level = "lowsvsd1", "lowsvs", "nominal";
+		clock-rates =
+			<266666667 0 400000000 0>,
+			<400000000 0 400000000 0>,
+			<480000000 0 400000000 0>;
+		status = "ok";
+	};
+
+	cam_csiphy4: qcom,csiphy4@952B000 {
+		cell-index = <4>;
+		compatible = "qcom,csiphy-v2.3.0", "qcom,csiphy";
+		reg = <0x0 0x0952B000 0x0 0x2000>;
+		reg-names = "csiphy";
+		reg-cam-base = <0x52B000>;
+		interrupt-names = "CSIPHY4";
+		interrupts = <GIC_SPI 122 IRQ_TYPE_EDGE_RISING>;
+		regulator-names = "csi-vdd-1p2", "csi-vdd-0p9";
+		power-domains = <&camcc CAM_CC_TITAN_TOP_GDSC>;
+		csi-vdd-1p2-supply = <&L2F_E0>;
+		csi-vdd-0p9-supply = <&L2I_E0>;
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <1200000 880000>;
+		rgltr-max-voltage = <1256000 920000>;
+		rgltr-load-current = <7330 74500>;
+		shared-clks = <1 0 0 0>;
+		clock-names = "cphy_rx_clk_src",
+			"csiphy4_clk",
+			"csi4phytimer_clk_src",
+			"csi4phytimer_clk";
+		clocks = <&camcc CAM_CC_CPHY_RX_CLK_SRC>,
+			<&camcc CAM_CC_CSIPHY4_CLK>,
+			<&camcc CAM_CC_CSI4PHYTIMER_CLK_SRC>,
+			<&camcc CAM_CC_CSI4PHYTIMER_CLK>;
+		src-clock-name = "cphy_rx_clk_src";
+		clock-cntl-level = "lowsvsd1", "lowsvs", "nominal";
+		clock-rates =
+			<266666667 0 400000000 0>,
+			<400000000 0 400000000 0>,
+			<480000000 0 400000000 0>;
 		status = "ok";
 	};
 
@@ -598,6 +891,87 @@
 			cci-clk-src = <37500000>;
 			status = "ok";
 		};
+	};
+
+	cam_csiphy_tpg13: qcom,tpg13@93fd000 {
+		cell-index = <13>;
+		phy-id = <0>;
+		compatible = "qcom,cam-tpg104";
+		reg-names = "tpg0", "cam_cpas_top";
+		reg = <0x0 0x093fd000 0x0 0x400>,
+			<0x0 0x0900b000 0x0 0x1000>;
+		reg-cam-base = <0x3fd000 0x0b000>;
+		power-domains = <&camcc CAM_CC_TITAN_TOP_GDSC>;
+		interrupt-names = "tpg0";
+		interrupts = <GIC_SPI 413 IRQ_TYPE_EDGE_RISING>;
+		shared-clks = <1 0>;
+		clock-names =
+			"cphy_rx_clk_src",
+			"csid_csiphy_rx_clk";
+		clocks =
+			<&camcc CAM_CC_CPHY_RX_CLK_SRC>,
+			<&camcc CAM_CC_CSID_CSIPHY_RX_CLK>;
+		clock-rates =
+			<266666667 0>,
+			<400000000 0>,
+			<480000000 0>;
+		clock-cntl-level = "lowsvsd1", "lowsvs", "nominal";
+		src-clock-name = "cphy_rx_clk_src";
+		status = "ok";
+	};
+
+	cam_csiphy_tpg14: qcom,tpg14@93fe000 {
+		cell-index = <14>;
+		phy-id = <1>;
+		compatible = "qcom,cam-tpg104";
+		reg-names = "tpg1", "cam_cpas_top";
+		reg = <0x0 0x093fe000 0x0 0x400>,
+			<0x0 0x0900b000 0x0 0x1000>;
+		reg-cam-base = <0x3fe000 0x0b000>;
+		power-domains = <&camcc CAM_CC_TITAN_TOP_GDSC>;
+		interrupt-names = "tpg1";
+		interrupts = <GIC_SPI 416 IRQ_TYPE_EDGE_RISING>;
+		shared-clks = <1 0>;
+		clock-names =
+			"cphy_rx_clk_src",
+			"csid_csiphy_rx_clk";
+		clocks =
+			<&camcc CAM_CC_CPHY_RX_CLK_SRC>,
+			<&camcc CAM_CC_CSID_CSIPHY_RX_CLK>;
+		clock-rates =
+			<266666667 0>,
+			<400000000 0>,
+			<480000000 0>;
+		clock-cntl-level = "lowsvsd1", "lowsvs", "nominal";
+		src-clock-name = "cphy_rx_clk_src";
+		status = "ok";
+	};
+
+	cam_csiphy_tpg15: qcom,tpg15@93ff000 {
+		cell-index = <15>;
+		phy-id = <2>;
+		compatible = "qcom,cam-tpg104";
+		reg-names = "tpg2", "cam_cpas_top";
+		reg = <0x0 0x093ff000 0x0 0x400>,
+			<0x0 0x0900b000 0x0 0x1000>;
+		reg-cam-base = <0x3ff000 0xb000>;
+		power-domains = <&camcc CAM_CC_TITAN_TOP_GDSC>;
+		interrupt-names = "tpg2";
+		interrupts = <GIC_SPI 417 IRQ_TYPE_EDGE_RISING>;
+		shared-clks = <1 0>;
+		clock-names =
+			"cphy_rx_clk_src",
+			"csid_csiphy_rx_clk";
+		clocks =
+			<&camcc CAM_CC_CPHY_RX_CLK_SRC>,
+			<&camcc CAM_CC_CSID_CSIPHY_RX_CLK>;
+		clock-rates =
+			<266666667 0>,
+			<400000000 0>,
+			<480000000 0>;
+		clock-cntl-level = "lowsvsd1", "lowsvs", "nominal";
+		src-clock-name = "cphy_rx_clk_src";
+		status = "ok";
 	};
 
 	cam_smmu: qcom,cam_smmu {
