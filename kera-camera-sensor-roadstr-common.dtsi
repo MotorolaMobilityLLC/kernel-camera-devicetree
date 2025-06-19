@@ -251,8 +251,8 @@
 		regulator-names = "cam_vio",
 			"cam_vdig","cam_clk","cam_vana","cam_v_custom1";
 		rgltr-cntrl-support;
-		rgltr-min-voltage = <1800000 1050000 0 2200000 2330000>;
-		rgltr-max-voltage = <1800000 1050000 0 2200000 2330000>;
+		rgltr-min-voltage = <1800000 1002000 0 2200000 2330000>;
+		rgltr-max-voltage = <1800000 1002000 0 2200000 2330000>;
 		rgltr-load-current = <101000 680000 0 1000 1000>;
 		gpio-no-mux = <0>;
 		pinctrl-names = "cam_default", "cam_suspend";
