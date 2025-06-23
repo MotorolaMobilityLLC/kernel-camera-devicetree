@@ -8,7 +8,7 @@
 
 #include <dt-bindings/clock/qcom,alor-gcc.h>
 #include <dt-bindings/clock/qcom,alor-camcc.h>
-#include <dt-bindings/clock/qcom,alor-cambistmclkcc.h>
+#include <dt-bindings/clock/qcom,cambistmclkcc-canoe.h>
 #include <dt-bindings/interconnect/qcom,alor.h>
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
