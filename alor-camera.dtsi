@@ -551,7 +551,7 @@
 
 	cam_csiphy0: qcom,csiphy0@9523000 {
 		cell-index = <0>;
-		compatible = "qcom,csiphy-v2.3.0", "qcom,csiphy";
+		compatible = "qcom,csiphy-v2.4.0", "qcom,csiphy";
 		reg = <0x0 0x09523000 0x0 0x2000>;
 		reg-names = "csiphy";
 		reg-cam-base = <0x523000>;
@@ -585,7 +585,7 @@
 
 	cam_csiphy1: qcom,csiphy1@9525000 {
 		cell-index = <1>;
-		compatible = "qcom,csiphy-v2.3.0", "qcom,csiphy";
+		compatible = "qcom,csiphy-v2.4.0", "qcom,csiphy";
 		reg = <0x0 0x09525000 0x0 0x2000>;
 		reg-names = "csiphy";
 		reg-cam-base = <0x525000>;
@@ -619,7 +619,7 @@
 
 	cam_csiphy2: qcom,csiphy2@9527000 {
 		cell-index = <2>;
-		compatible = "qcom,csiphy-v2.3.0", "qcom,csiphy";
+		compatible = "qcom,csiphy-v2.4.0", "qcom,csiphy";
 		reg = <0x0 0x09527000 0x0 0x2000>;
 		reg-names = "csiphy";
 		reg-cam-base = <0x527000>;
@@ -653,7 +653,7 @@
 
 	cam_csiphy3: qcom,csiphy3@9529000 {
 		cell-index = <3>;
-		compatible = "qcom,csiphy-v2.3.0", "qcom,csiphy";
+		compatible = "qcom,csiphy-v2.4.0", "qcom,csiphy";
 		reg = <0x0 0x09529000 0x0 0x2000>;
 		reg-names = "csiphy";
 		reg-cam-base = <0x529000>;
@@ -687,7 +687,7 @@
 
 	cam_csiphy4: qcom,csiphy4@952B000 {
 		cell-index = <4>;
-		compatible = "qcom,csiphy-v2.3.0", "qcom,csiphy";
+		compatible = "qcom,csiphy-v2.4.0", "qcom,csiphy";
 		reg = <0x0 0x0952B000 0x0 0x2000>;
 		reg-names = "csiphy";
 		reg-cam-base = <0x52B000>;
