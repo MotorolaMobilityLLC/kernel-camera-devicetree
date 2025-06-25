@@ -185,6 +185,12 @@ and name of firmware image.
   Definition: should specify vmrm resource id list order is mem label,
   mem tag, irq1 label, irq2 label.
 
+- agg-clks
+  Usage: optional
+  Value type: <u32>
+  Definition: Aggregate clks to group different src clks and consolidate
+              before setting clk rate on them
+
 Examples:
 cam_a5: qcom,a5 {
 	cell-index = <0>;
