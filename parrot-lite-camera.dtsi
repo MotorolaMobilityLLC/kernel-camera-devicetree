@@ -5,5 +5,8 @@
 	qcom,tfe2@ac80000 {
 		status = "disabled";
 	};
+	qcom,csiphy3@acea000 {
+		status = "disabled";
+	};
 };
 
