@@ -372,7 +372,7 @@
 		pinctrl-0 = <&cam_sensor_mclk3_active
 				 &cam_sensor_active_rst3>;
 		pinctrl-1 = <&cam_sensor_mclk3_suspend
-				 &cam_sensor_active_rst3>;
+				 &cam_sensor_suspend_rst3>;
 		gpios = <&tlmm 68 0>,
 			<&tlmm 126 0>;
 		gpio-reset = <1>;
