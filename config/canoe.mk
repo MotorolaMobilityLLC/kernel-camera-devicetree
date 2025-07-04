@@ -6,6 +6,8 @@ dtbo-$(CONFIG_ARCH_CANOE)  := canoe-camera.dtbo
 dtbo-$(CONFIG_VANTG_DTB) += canoe-camera-sensor-vantg-evb.dtbo \
                             canoe-camera-sensor-vantg-evt1.dtbo
 
+dtbo-$(CONFIG_BLANC_DTB) += canoe-camera-sensor-blanc-evb.dtbo
+
 else
 
 dtbo-$(CONFIG_ARCH_CANOE)   += canoe-camera.dtbo \

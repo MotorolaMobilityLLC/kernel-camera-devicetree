@@ -55,6 +55,7 @@ MSM_ARCH_UC=$(shell echo '$(MSM_ARCH)' | tr '[:lower:]' '[:upper:]')
 export CONFIG_ARCH_$(MSM_ARCH_UC)=y
 export CONFIG_MMI_DEVICE_DTBS=$(CONFIG_MMI_DEVICE_DTBS)
 export CONFIG_VANTG_DTB=$(CONFIG_VANTG_DTB)
+export CONFIG_BLANC_DTB=$(CONFIG_BLANC_DTB)
 include $(CAMERA_TARGET_MKFILE_PATH)
 else
 # Print a warning but do not throw an error to allow bring-up of new targets!
