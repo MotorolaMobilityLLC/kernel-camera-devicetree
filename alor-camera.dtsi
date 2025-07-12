@@ -1259,6 +1259,7 @@
 			"gcc_ahb_clk",
 			"gcc_axi_hf_clk",
 			"gcc_axi_sf_clk",
+			"gcc_camera_hf_axi_cloned_clk",
 			"cam_cc_slow_ahb_clk_src",
 			"cpas_ahb_clk",
 			"cpas_core_ahb_clk",
@@ -1275,6 +1276,7 @@
 			<&gcc GCC_CAMERA_AHB_CLK>,
 			<&gcc GCC_CAMERA_HF_AXI_CLK>,
 			<&gcc GCC_CAMERA_SF_AXI_CLK>,
+			<&gcc GCC_CAMERA_HF_AXI_CLONED_CLK>,
 			<&camcc CAM_CC_SLOW_AHB_CLK_SRC>,
 			<&camcc CAM_CC_CAM_TOP_AHB_CLK>,
 			<&camcc CAM_CC_CORE_AHB_CLK>,
@@ -1288,14 +1290,14 @@
 			<&camcc CAM_CC_PLL0>,
 			<&camcc CAM_CC_QDSS_DEBUG_XO_CLK>;
 		clock-rates =
-			<0 0 0 0 0 0 0 0 0 0 0 0 0 0 0>,
-			<0 0 0 56470588 0 0 0 213333333 0 200000000 0 0 0 0 0>,
-			<0 0 0 80000000 0 0 0 300000000 0 300000000 0 0 0 0 0>,
-			<0 0 0 80000000 0 0 0 300000000 0 400000000 0 0 0 0 0>,
-			<0 0 0 80000000 0 0 0 300000000 0 480000000 0 0 0 0 0>,
-			<0 0 0 80000000 0 0 0 400000000 0 480000000 0 0 0 0 0>,
-			<0 0 0 80000000 0 0 0 400000000 0 480000000 0 0 0 0 0>,
-			<0 0 0 80000000 0 0 0 400000000 0 480000000 0 0 0 0 0>;
+			<0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0>,
+			<0 0 0 0 56470588 0 0 0 213333333 0 200000000 0 0 0 0 0>,
+			<0 0 0 0 80000000 0 0 0 300000000 0 300000000 0 0 0 0 0>,
+			<0 0 0 0 80000000 0 0 0 300000000 0 400000000 0 0 0 0 0>,
+			<0 0 0 0 80000000 0 0 0 300000000 0 480000000 0 0 0 0 0>,
+			<0 0 0 0 80000000 0 0 0 400000000 0 480000000 0 0 0 0 0>,
+			<0 0 0 0 80000000 0 0 0 400000000 0 480000000 0 0 0 0 0>,
+			<0 0 0 0 80000000 0 0 0 400000000 0 480000000 0 0 0 0 0>;
 		clock-cntl-level = "suspend", "lowsvsd1", "lowsvs", "svs",
 			"svs_l1", "nominal", "nominal_l1", "turbo";
 		src-clock-name = "camnoc_rt_axi_clk_src";
