@@ -1,1 +1,193 @@
-#include "volcano-camera-qrd.dtsi"
+#include <dt-bindings/msm-camera.h>
+
+&tlmm {
+	cam_avdd_tele_en_default: cam_avdd_tele_en_default {
+		mux {
+			pins = "gpio17";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio17";
+			bias-pull-down; /* PULL DOWN */
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
+	cam_afvdd_tele_en_default: cam_afvdd_tele_en_default {
+		mux {
+			pins = "gpio16";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio16";
+			bias-pull-down; /* PULL DOWN */
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
+	cam_oisvdd_tele_en_default: cam_oisvdd_tele_en_default {
+		mux {
+			pins = "gpio18";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio18";
+			bias-pull-down; /* PULL DOWN */
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
+	cam_iovdd_en_default: cam_iovdd_en_default {
+		mux {
+			pins = "gpio21";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio21";
+			bias-pull-down; /* PULL DOWN */
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+};
+
+&soc {
+	cam_avdd_tele: gpio-regulator@0 {
+		compatible = "regulator-fixed";
+		reg = <0x00 0x00>;
+		regulator-name = "cam_avdd_tele";
+		regulator-min-microvolt = <2800000>;
+		regulator-max-microvolt = <2800000>;
+		regulator-enable-ramp-delay = <233>;
+		enable-active-high;
+		gpio = <&tlmm 17 0>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&cam_avdd_tele_en_default>;
+		vin-supply = <&BOB>;
+	};
+
+	cam_iovdd: gpio-regulator@1 {
+		compatible = "regulator-fixed";
+		reg = <0x01 0x00>;
+		regulator-name = "cam_iovdd";
+		regulator-min-microvolt = <1800000>;
+		regulator-max-microvolt = <1800000>;
+		regulator-enable-ramp-delay = <233>;
+		enable-active-high;
+		gpio = <&tlmm 21 0>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&cam_iovdd_en_default>;
+		vin-supply = <&S1B>;
+	};
+
+	cam_afvdd_tele: gpio-regulator@2 {
+		compatible = "regulator-fixed";
+		reg = <0x02 0x00>;
+		regulator-name = "cam_afvdd_tele";
+		regulator-min-microvolt = <2800000>;
+		regulator-max-microvolt = <2800000>;
+		regulator-enable-ramp-delay = <233>;
+		enable-active-high;
+		gpio = <&tlmm 16 0>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&cam_afvdd_tele_en_default>;
+		vin-supply = <&BOB>;
+	};
+
+	cam_oisvdd_tele: gpio-regulator@3 {
+		compatible = "regulator-fixed";
+		reg = <0x03 0x00>;
+		regulator-name = "cam_oisvdd_tele";
+		regulator-min-microvolt = <2800000>;
+		regulator-max-microvolt = <2800000>;
+		regulator-enable-ramp-delay = <233>;
+		enable-active-high;
+		gpio = <&tlmm 18 0>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&cam_oisvdd_tele_en_default>;
+		vin-supply = <&BOB>;
+	};
+
+	qcom,cam-res-mgr {
+		compatible = "qcom,cam-res-mgr";
+		status = "ok";
+	};
+};
+
+&cam_cci0 {
+	/* Sensor (Tele GC13B0) */
+	actuator_rear_tele: qcom,actuator3 {
+		cell-index = <3>;
+		compatible = "qcom,actuator";
+		cci-master = <CCI_MASTER_1>;
+		cam_vio-supply = <&cam_iovdd>;
+		cam_vaf-supply = <&cam_afvdd_tele>;
+		cam_v_custom2-supply = <&cam_oisvdd_tele>;
+		regulator-names = "cam_vio", "cam_vaf", "cam_v_custom2";
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <1800000 2800000 2800000>;
+		rgltr-max-voltage = <1800000 2800000 2800000>;
+		rgltr-load-current = <36000 120000 140000>;
+		af-ois-use-same-ic;
+		status = "ok";
+	};
+
+	ois_rear_tele: qcom,ois3 {
+		cell-index = <3>;
+		compatible = "qcom,ois";
+		cci-master = <CCI_MASTER_1>;
+		cam_vio-supply = <&cam_iovdd>;
+		cam_vaf-supply = <&cam_afvdd_tele>;
+		cam_v_custom2-supply = <&cam_oisvdd_tele>;
+		regulator-names = "cam_vio", "cam_vaf", "cam_v_custom2";
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <1800000 2800000 2800000>;
+		rgltr-max-voltage = <1800000 2800000 2800000>;
+		rgltr-load-current = <36000 120000 140000>;
+		af-ois-use-same-ic;
+		status = "ok";
+	};
+
+	qcom,cam-sensor3 {
+		cell-index = <3>;
+		compatible = "qcom,cam-sensor";
+		csiphy-sd-index = <1>;
+		sensor-position-roll = <90>;
+		sensor-position-pitch = <0>;
+		sensor-position-yaw = <180>;
+		//eeprom-src = <&eeprom_tele>;
+		actuator-src = <&actuator_rear_tele>;
+		ois-src = <&ois_rear_tele>;
+		cam_vio-supply = <&cam_iovdd>;
+		cam_vdig-supply = <&cam_ldo2_tl_dvdd>;
+		cam_clk-supply = <&cam_cc_camss_top_gdsc>;
+		cam_vana-supply = <&cam_avdd_tele>;
+		regulator-names = "cam_vio", "cam_vdig", "cam_clk", "cam_vana";
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <1800000 1150000 0 2800000>;
+		rgltr-max-voltage = <1800000 1152000 0 2800000>;
+		rgltr-load-current = <36000 162000 0 70000>;
+		gpio-no-mux = <0>;
+		pinctrl-names = "cam_default", "cam_suspend";
+		pinctrl-0 = <&cam_sensor_mclk1_active
+				 &cam_sensor_active_rst1>;
+		pinctrl-1 = <&cam_sensor_mclk1_suspend
+				 &cam_sensor_suspend_rst1>;
+		gpios = <&tlmm 84 0>,
+			<&tlmm 41 0>;
+		gpio-reset = <1>;
+		gpio-req-tbl-num = <0 1>;
+		gpio-req-tbl-flags = <1 0>;
+		gpio-req-tbl-label = "CAMIF_MCLK1",
+					"CAM_RESET1";
+		cci-master = <CCI_MASTER_1>;
+		clocks = <&camcc CAM_CC_MCLK1_CLK>;
+		clock-names = "cam_clk";
+		clock-cntl-level = "nominal";
+		clock-rates = <24000000>;
+		status = "ok";
+	};
+};
