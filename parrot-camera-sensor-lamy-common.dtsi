@@ -149,7 +149,7 @@
 		gpio = <&tlmm 106 0>;
 		pinctrl-names = "default";
 		pinctrl-0 = <&cam_avdd2_main_en_default>;
-		//vin-supply = <&BOB>;
+		vin-supply = <&S8E>;
 	};
 
 	cam_afvdd_rear_wide: gpio-regulator@4 {
