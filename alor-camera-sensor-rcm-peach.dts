@@ -16,7 +16,7 @@
 #include "alor-camera-sensor-mtp-peach.dtsi"
 / {
 	model = "Qualcomm Technologies, Inc. Alor RCM";
-	compatible = "qcom,alor", "qcom,alor-rcm", "qcom,rcm", "qcom,alor-cdp", "qcom,cdp";
+	compatible = "qcom,alor", "qcom,alor-rcm", "qcom,rcm";
 	qcom,msm-id = <685 0x10000>, <727 0x10000>;
-	qcom,board-id = <0x20015 0>, <0x20001 0>;
+	qcom,board-id = <0x20015 0>;
 };
