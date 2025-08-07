@@ -68,6 +68,33 @@
 };
 
 &soc {
+	led_flash_rear_main: qcom,camera-flash0 {
+		cell-index = <0>;
+		compatible = "qcom,camera-flash";
+		flash-source = <&pmxr2230_flash0>;
+		torch-source = <&pmxr2230_torch0>;
+		switch-source = <&pmxr2230_switch2>;
+		status = "ok";
+	};
+
+	led_flash_rear_uw: qcom,camera-flash2 {
+		cell-index = <2>;
+		compatible = "qcom,camera-flash";
+		flash-source = <&pmxr2230_flash0>;
+		torch-source = <&pmxr2230_torch0>;
+		switch-source = <&pmxr2230_switch2>;
+		status = "ok";
+	};
+
+	led_flash_rear_tele: qcom,camera-flash3 {
+		cell-index = <3>;
+		compatible = "qcom,camera-flash";
+		flash-source = <&pmxr2230_flash0>;
+		torch-source = <&pmxr2230_torch0>;
+		switch-source = <&pmxr2230_switch2>;
+		status = "ok";
+	};
+
 	cam_avdd_tele: gpio-regulator@0 {
 		compatible = "regulator-fixed";
 		reg = <0x00 0x00>;
@@ -168,7 +195,7 @@
 		sensor-position-pitch = <0>;
 		sensor-position-yaw   = <180>;
 
-		//led-flash-src = <&led_flash_rear_uw>;
+		led-flash-src = <&led_flash_rear_uw>;
 		actuator-src  = <&actuator_uw>;
 		//eeprom-src    = <&eeprom_uw>;
 
@@ -244,6 +271,7 @@
 		sensor-position-roll = <90>;
 		sensor-position-pitch = <0>;
 		sensor-position-yaw = <180>;
+		led-flash-src = <&led_flash_rear_tele>;
 		//eeprom-src = <&eeprom_tele>;
 		actuator-src = <&actuator_rear_tele>;
 		ois-src = <&ois_rear_tele>;
@@ -299,7 +327,7 @@
 		sensor-position-roll = <90>;
 		sensor-position-pitch = <0>;
 		sensor-position-yaw = <180>;
-		//led-flash-src = <&led_flash_rear_main>;
+		led-flash-src = <&led_flash_rear_main>;
 		actuator-src  = <&actuator_main>;
 		//eeprom-src    = <&eeprom_main>;
 		cam_vio-supply  = <&cam_iovdd>;
