@@ -143,8 +143,69 @@
 };
 
 &cam_cci0 {
+
+	/* Sensor (Wide S5KJNS/GC13A2) */
+	actuator_uw: qcom,actuator@2 {
+		cell-index = <2>;
+		compatible = "qcom,actuator";
+		cci-master = <0>;
+		cam_vaf-supply = <&cam_ldo4_rw_afvdd>;
+		regulator-names = "cam_vaf";
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <2800000>;
+		rgltr-max-voltage = <2800000>;
+		rgltr-load-current = <103000>;
+		status = "ok";
+	};
+
+	rear_uw: qcom,cam-sensor@2 {
+		cell-index = <2>;
+		compatible = "qcom,cam-sensor";
+
+		csiphy-sd-index = <0>;
+
+		sensor-position-roll  = <90>;
+		sensor-position-pitch = <0>;
+		sensor-position-yaw   = <180>;
+
+		//led-flash-src = <&led_flash_rear_uw>;
+		actuator-src  = <&actuator_uw>;
+		//eeprom-src    = <&eeprom_uw>;
+
+		cam_vio-supply  = <&cam_iovdd>;
+		cam_vdig-supply = <&cam_ldo1_rw_dvdd>;
+		cam_clk-supply  = <&cam_cc_camss_top_gdsc>;
+		cam_vana-supply = <&cam_ldo3_rw_avdd>;
+		regulator-names = "cam_vio","cam_vdig","cam_clk","cam_vana";
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <1800000 1050000 0 2800000>;
+		rgltr-max-voltage = <1800000 1050000 0 2800000>;
+		rgltr-load-current = <101000  680000 0 1000>;
+
+		gpio-no-mux = <0>;
+
+		pinctrl-names = "cam_default", "cam_suspend";
+		pinctrl-0 = <&cam_sensor_mclk0_active &cam_sensor_active_rst0>;
+		pinctrl-1 = <&cam_sensor_mclk0_suspend &cam_sensor_suspend_rst0>;
+
+		gpios              = <&tlmm 83 0>,<&tlmm 40 0>;
+		gpio-reset         = <1>;
+		gpio-req-tbl-num   = <0 1>;
+		gpio-req-tbl-flags = <1 0>;
+		gpio-req-tbl-label = "CAMIF_MCLK0","CAM_RESET0";
+
+		cci-master = <CCI_MASTER_0>;
+
+		clocks           = <&camcc CAM_CC_MCLK0_CLK>;
+		clock-names      = "cam_clk";
+		clock-cntl-level = "nominal";
+		clock-rates      = <24000000>;
+
+		status = "ok";
+	};
+
 	/* Sensor (Tele GC13B0) */
-	actuator_rear_tele: qcom,actuator3 {
+	actuator_rear_tele: qcom,actuator@3 {
 		cell-index = <3>;
 		compatible = "qcom,actuator";
 		cci-master = <CCI_MASTER_1>;
@@ -160,7 +221,7 @@
 		status = "ok";
 	};
 
-	ois_rear_tele: qcom,ois3 {
+	ois_rear_tele: qcom,ois@3 {
 		cell-index = <3>;
 		compatible = "qcom,ois";
 		cci-master = <CCI_MASTER_1>;
@@ -176,7 +237,7 @@
 		status = "ok";
 	};
 
-	qcom,cam-sensor3 {
+	qcom,cam-sensor@3 {
 		cell-index = <3>;
 		compatible = "qcom,cam-sensor";
 		csiphy-sd-index = <1>;
