@@ -402,7 +402,7 @@
 	};
 
 	/*sensor front s5kjns/gc32e1*/
-	/*eeprom_front: qcom,eeprom@1 {
+	eeprom_front: qcom,eeprom@1 {
 		cell-index = <1>;
 		reg = <0x1>;
 		compatible = "qcom,eeprom";
@@ -414,12 +414,12 @@
 		rgltr-max-voltage = <1800000>;
 		rgltr-load-current = <0>;
 		status = "ok";
-	};*/
+	};
 	front_main: qcom,cam-sensor1 {
 		cell-index = <1>;
 		compatible = "qcom,cam-sensor";
 		csiphy-sd-index = <3>;
-		//eeprom-src = <&eeprom_front>;
+		eeprom-src = <&eeprom_front>;
 		sensor-position-roll = <270>;
 		sensor-position-pitch = <0>;
 		sensor-position-yaw = <0>;
