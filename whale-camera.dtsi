@@ -4,3 +4,27 @@
  */
 
 #include "canoe-camera.dtsi"
+
+&cam_csiphy0 {
+	compatible = "qcom,csiphy-v2.3.0", "qcom,csiphy";
+};
+
+&cam_csiphy1 {
+	compatible = "qcom,csiphy-v2.3.0", "qcom,csiphy";
+};
+
+&cam_csiphy2 {
+	compatible = "qcom,csiphy-v2.3.0", "qcom,csiphy";
+};
+
+&cam_csiphy3 {
+	compatible = "qcom,csiphy-v2.3.0", "qcom,csiphy";
+};
+
+&cam_csiphy4 {
+	compatible = "qcom,csiphy-v2.3.0", "qcom,csiphy";
+};
+
+&cam_csiphy5 {
+	compatible = "qcom,csiphy-v2.3.0", "qcom,csiphy";
+};
