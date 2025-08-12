@@ -4,7 +4,7 @@
 &soc {
 	cam_res_mgr_label:qcom,cam-res-mgr {
 		compatible = "qcom,cam-res-mgr";
-		gpios-shared = <353>;
+		gpios-shared = <665>;
 		status = "ok";
 	};
 };
