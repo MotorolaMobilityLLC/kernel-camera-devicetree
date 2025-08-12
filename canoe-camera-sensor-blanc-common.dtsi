@@ -750,7 +750,7 @@
 		gpio-reset = <1>;
 		gpio-req-tbl-num = <0 1>;
 		gpio-req-tbl-flags = <1 0>;
-		gpio-req-tbl-label = "CAMIF_MCLK2","CAM_RESET4";
+		gpio-req-tbl-label = "CAMIF_MCLK2","CAM_RESET8";
 		clocks = <&cambistmclkcc CAM_BIST_MCLK_CC_MCLK2_CLK>;
 		clock-names = "cam_clk";
 		clock-cntl-level = "nominal";
