@@ -1,13 +1,16 @@
 CONFIG_YES=y
 
 ifeq ($(CONFIG_MMI_DEVICE_DTBS),$(CONFIG_YES))
-dtbo-$(CONFIG_ARCH_CANOE)  := canoe-camera.dtbo \
-                              canoe-camera-v2.dtbo
+dtbo-$(CONFIG_ARCH_CANOE)  += canoe-camera.dtbo \
+                              canoe-camera-v2.dtbo \
+                              alor-camera.dtbo
 
 dtbo-$(CONFIG_VANTG_DTB) += canoe-camera-sensor-vantg-evb.dtbo \
                             canoe-camera-sensor-vantg-evt1.dtbo
 
 dtbo-$(CONFIG_BLANC_DTB) += canoe-camera-sensor-blanc-evb.dtbo
+
+dtbo-$(CONFIG_VANTAGE_DTB) += alor-camera-sensor-vantage-dvt1b.dtbo
 
 else
 
