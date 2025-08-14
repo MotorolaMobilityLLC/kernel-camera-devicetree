@@ -723,8 +723,8 @@
 	qcom,clk-freq-out = <1000000>;
 	qcom,pm-ctrl-client;
 
-	front_fold: qcom,cam-sensor@1 {
-		cell-index = <1>;
+	front_fold: qcom,cam-sensor@4 {
+		cell-index = <4>;
 		reg = <0x36>;
 		compatible = "qcom,cam-i2c-sensor";
 		csiphy-sd-index = <1>;
