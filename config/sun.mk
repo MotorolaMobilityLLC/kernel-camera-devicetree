@@ -3,6 +3,7 @@ dtbo-$(CONFIG_ARCH_SUN)  := sun-camera.dtbo
 
 dtbo-$(CONFIG_LEAP_DTB) += sun-camera-sensor-leap-evb.dtbo \
                            sun-camera-sensor-leap-evt1.dtbo
+dtbo-$(CONFIG_LHOTSE_DTB) += sun-camera-sensor-lhotse-evt.dtbo
 
 else
 
