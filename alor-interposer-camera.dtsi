@@ -1488,14 +1488,15 @@
 		compatible = "qcom,cam-cpas";
 		label = "cpas";
 		arch-compat = "cpas_top";
-		reg-names = "cam_cpas_top", "cam_camnoc_nrt", "cam_camnoc_rt", "cam_camnoc_pdx", "cam_rpmh", "cam_cesta";
+		reg-names = "cam_cpas_top", "cam_camnoc_nrt", "cam_camnoc_rt", "cam_camnoc_pdx", "cam_rpmh", "cam_cesta", "llcc_regbase";
 		reg = <0x0 0x0900B000 0x0 0x1000>,
 			<0x0 0x09117000 0x0 0x10000>,
 			<0x0 0x09405000 0x0 0x10000>,
 			<0x0 0x09415000 0x0 0x4000>,
 			<0x0 0x0bbf0000 0x0 0x1f00>,
-			<0x0 0x09548000 0x0 0x5000>;
-		reg-cam-base = <0xB000 0x117000 0x405000 0x415000 0x0bbf0000 0x09548000>;
+			<0x0 0x09548000 0x0 0x5000>,
+			<0x0 0x34C00000 0x0 0x200000>;
+		reg-cam-base = <0xB000 0x117000 0x405000 0x415000 0x0bbf0000 0x09548000 0x34C00000>;
 		interrupt-names = "cpas_camnoc_rt", "cpas_camnoc_nrt";
 		interrupts = <GIC_SPI 277 IRQ_TYPE_EDGE_RISING>,
 					<GIC_SPI 271 IRQ_TYPE_EDGE_RISING>;
