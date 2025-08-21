@@ -123,6 +123,32 @@
 			drive-strength = <2>; /* 2 MA */
 		};
 	};
+
+	cam_oisvdd_main_en_default: cam_oisvdd_main_en_default {
+		mux {
+			pins = "gpio73";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio73";
+			bias-pull-down; /* PULL DOWN */
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
+	cam_oisavdd_main_en_default: cam_oisavdd_main_en_default {
+		mux {
+			pins = "gpio14";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio14";
+			bias-pull-down; /* PULL DOWN */
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
 };
 
 &soc {
@@ -250,6 +276,35 @@
 		pinctrl-names = "default";
 		pinctrl-0 = <&cam_vdd_0p9_en_default>;
 	};
+
+	cam_oisvdd_main: gpio-regulator@10 {
+		compatible = "regulator-fixed";
+		reg = <0x10 0x00>;
+		regulator-name = "cam_oisvdd_main";
+		regulator-min-microvolt = <3200000>;
+		regulator-max-microvolt = <3200000>;
+		regulator-enable-ramp-delay = <233>;
+		enable-active-high;
+		gpio = <&tlmm 73 0>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&cam_oisvdd_main_en_default>;
+		vin-supply = <&BOB1>;
+	};
+
+	cam_oisavdd_main: gpio-regulator@11 {
+		compatible = "regulator-fixed";
+		reg = <0x11 0x00>;
+		regulator-name = "cam_oisavdd_main";
+		regulator-min-microvolt = <2900000>;
+		regulator-max-microvolt = <2900000>;
+		regulator-enable-ramp-delay = <233>;
+		enable-active-high;
+		gpio = <&tlmm 14 0>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&cam_oisavdd_main_en_default>;
+		vin-supply = <&BOB1>;
+	};
+
 	qcom,cam-res-mgr {
 		compatible = "qcom,cam-res-mgr";
 		status = "ok";
@@ -302,6 +357,22 @@
 		status = "ok";
 	};
 
+	ois_main: qcom,ois0 {
+		cell-index = <0>;
+		compatible = "qcom,ois";
+		cci-master = <CCI_MASTER_0>;
+		cam_vio-supply = <&cam_iovdd>;
+		cam_vaf-supply = <&cam_oisavdd_main>;
+		cam_v_custom1-supply = <&cam_oisvdd_main>;
+		power-domains = <&camcc CAM_CC_TITAN_TOP_GDSC>;
+		regulator-names = "cam_vio","cam_vaf","cam_v_custom1";
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <1800000 2900000 3200000>;
+		rgltr-max-voltage = <1800000 2900000 3200000>;
+		rgltr-load-current = <3500 140000 214290>;
+		status = "ok";
+	};
+
 	rear_main: qcom,cam-sensor@0 {
 		cell-index = <0>;
 		compatible = "qcom,cam-sensor";
@@ -310,7 +381,7 @@
 		sensor-position-pitch = <0>;
 		sensor-position-yaw   = <180>;
 		eeprom-src    = <&eeprom_main>;
-		//ois-src       = <&ois_main>;
+		ois-src       = <&ois_main>;
 		actuator-src  = <&actuator_main>;
 		//led-flash-src = <&led_flash_main>;
 		cam_vio-supply       = <&cam_iovdd>;
