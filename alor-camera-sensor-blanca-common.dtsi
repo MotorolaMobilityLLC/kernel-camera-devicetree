@@ -599,7 +599,7 @@
 		sensor-position-yaw   = <0>;
 
 		cam_vio-supply  = <&cam_iovdd>;
-		cam_vdig-supply = <&cam_ldo2>;
+		cam_vdig-supply = <&cam2_ldo2>;
 		power-domains   = <&camcc CAM_CC_TITAN_TOP_GDSC>;
 		cam_vana-supply = <&cam_avdd_base_front>;
 		regulator-names = "cam_vio","cam_vdig","cam_vana";
