@@ -81,7 +81,10 @@
 };
 
 &pmxr2230_torch0{
-    qcom,max-current-ma = <100>;
+    qcom,max-current-ma = <120>;
+};
+&pmxr2230_flash0{
+    qcom,max-current-ma = <1300>;
 };
 
 &soc {
