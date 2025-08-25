@@ -78,6 +78,170 @@
 			drive-strength = <2>; /* 2 MA */
 		};
 	};
+
+	cci_i2c_sda0_active_overlay: cci_i2c_sda0_active_overlay {
+		mux {
+			/* CLK, DATA */
+			pins = "gpio70";
+			function = "cci_i2c_sda0";
+		};
+
+		config {
+			pins = "gpio70";
+			bias-disable; /* DISABLE*/
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
+	cci_i2c_sda0_suspend_overlay: cci_i2c_sda0_suspend_overlay {
+		mux {
+			/* CLK, DATA */
+			pins = "gpio70";
+			function = "cci_i2c_sda0";
+		};
+
+		config {
+			pins = "gpio70";
+			bias-disable; /* DISABLE */
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
+	cci_i2c_scl0_active_overlay: cci_i2c_scl0_active_overlay {
+		mux {
+			/* CLK, DATA */
+			pins = "gpio71";
+			function = "cci_i2c_scl0";
+		};
+
+		config {
+			pins = "gpio71";
+			bias-disable; /* DISABLE*/
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
+	cci_i2c_scl0_suspend_overlay: cci_i2c_scl0_suspend_overlay {
+		mux {
+			/* CLK, DATA */
+			pins = "gpio71";
+			function = "cci_i2c_scl0";
+		};
+
+		config {
+			pins = "gpio71";
+			bias-disable; /* DISABLE */
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
+	cci_i2c_sda1_active_overlay: cci_i2c_sda1_active_overlay {
+		mux {
+			/* CLK, DATA */
+			pins = "gpio72";
+			function = "cci_i2c_sda1";
+		};
+
+		config {
+			pins = "gpio72";
+			bias-disable; /* DISABLE*/
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
+	cci_i2c_sda1_suspend_overlay: cci_i2c_sda1_suspend_overlay {
+		mux {
+			/* CLK, DATA */
+			pins = "gpio72";
+			function = "cci_i2c_sda1";
+		};
+
+		config {
+			pins = "gpio72";
+			bias-disable; /* DISABLE */
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
+	cci_i2c_scl1_active_overlay: cci_i2c_scl1_active_overlay {
+		mux {
+			/* CLK, DATA */
+			pins = "gpio73";
+			function = "cci_i2c_scl1";
+		};
+
+		config {
+			pins = "gpio73";
+			bias-disable; /* DISABLE*/
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
+	cci_i2c_scl1_suspend_overlay: cci_i2c_scl1_suspend_overlay {
+		mux {
+			/* CLK, DATA */
+			pins = "gpio73";
+			function = "cci_i2c_scl1";
+		};
+
+		config {
+			pins = "gpio73";
+			bias-disable; /* DISABLE */
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
+	cci_i2c_sda3_active_overlay: cci_i2c_sda3_active_overlay {
+		mux {
+			pins = "gpio76";
+			function = "cci_i2c_sda3";
+		};
+
+		config {
+			pins = "gpio76";
+			bias-disable; /* DISABLE*/
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
+	cci_i2c_sda3_suspend_overlay: cci_i2c_sda3_suspend_overlay {
+		mux {
+			pins = "gpio76";
+			function = "cci_i2c_sda3";
+		};
+
+		config {
+			pins = "gpio76";
+			bias-disable; /* DISABLE */
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
+	cci_i2c_scl3_active_overlay: cci_i2c_scl3_active_overlay {
+		mux {
+			pins = "gpio77";
+			function = "cci_i2c_scl3";
+		};
+
+		config {
+			pins = "gpio77";
+			bias-disable; /* DISABLE*/
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
+	cci_i2c_scl3_suspend_overlay: cci_i2c_scl3_suspend_overlay {
+		mux {
+			pins = "gpio77";
+			function = "cci_i2c_scl3";
+		};
+
+		config {
+			pins = "gpio77";
+			bias-disable; /* DISABLE */
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
 };
 
 &pmxr2230_torch0{
@@ -193,6 +357,21 @@
 		compatible = "qcom,cam-res-mgr";
 		status = "ok";
 	};
+
+	cam_cci0: qcom,cci0@ac7b000 {
+		pinctrl-0 = <&cci_i2c_scl0_active_overlay &cci_i2c_sda0_active_overlay>;
+		pinctrl-1 = <&cci_i2c_scl0_suspend_overlay &cci_i2c_sda0_suspend_overlay>;
+		pinctrl-2 = <&cci_i2c_scl1_active_overlay &cci_i2c_sda1_active_overlay>;
+		pinctrl-3 = <&cci_i2c_scl1_suspend_overlay &cci_i2c_sda1_suspend_overlay>;
+		status = "ok";
+	};
+
+	cam_cci1: qcom,cci1@ac7c000 {
+		pinctrl-2 = <&cci_i2c_scl3_active_overlay &cci_i2c_sda3_active_overlay>;
+		pinctrl-3 = <&cci_i2c_scl3_suspend_overlay &cci_i2c_sda3_suspend_overlay>;
+		status = "ok";
+	};
+
 };
 
 &cam_cci0 {
