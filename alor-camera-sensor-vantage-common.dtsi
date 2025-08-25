@@ -439,7 +439,7 @@
 		status = "ok";
 	};
 
-	eeprom_tele: qcom,eeprom@3 {
+	/*eeprom_tele: qcom,eeprom@3 {
 		cell-index = <3>;
 		reg = <0x3>;
 		compatible = "qcom,eeprom";
@@ -481,7 +481,7 @@
 		rgltr-max-voltage = <1800000 2800000>;
 		rgltr-load-current = <3500 20000>;
 		status = "ok";
-	};
+	};*/
 
 	rear_tele: qcom,cam-sensor@3 {
 		cell-index = <3>;
@@ -492,21 +492,21 @@
 		sensor-position-pitch = <0>;
 		sensor-position-yaw   = <180>;
 
-		eeprom-src    = <&eeprom_tele>;
-		ois-src       = <&ois_tele>;
-		actuator-src  = <&actuator_tele>;
+		//eeprom-src    = <&eeprom_tele>;
+		//ois-src       = <&ois_tele>;
+		//actuator-src  = <&actuator_tele>;
 		led-flash-src = <&led_flash_tele>;
 
 		cam_vio-supply  = <&cam_iovdd>;
 		cam_vdig-supply = <&L2N>;
 		power-domains   = <&camcc CAM_CC_TITAN_TOP_GDSC>;
 		cam_vana-supply = <&cam_avdd_tele>;
-		cam_vaf-supply  = <&L5N>;
-		regulator-names = "cam_vio","cam_vdig","cam_vana","cam_vaf";
+		//cam_vaf-supply  = <&L5N>;
+		regulator-names = "cam_vio","cam_vdig","cam_vana";
 		rgltr-cntrl-support;
-		rgltr-min-voltage = <1800000 1100000 2800000 2800000>;
-		rgltr-max-voltage = <1800000 1100000 2800000 2800000>;
-		rgltr-load-current = <3500    913200   91430  103000>;
+		rgltr-min-voltage = <1800000 1100000 2800000>;
+		rgltr-max-voltage = <1800000 1100000 2800000>;
+		rgltr-load-current = <3500    913200   91430>;
 
 		gpio-no-mux = <0>;
 		pinctrl-names = "cam_default", "cam_suspend";
