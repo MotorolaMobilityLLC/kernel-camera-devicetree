@@ -303,8 +303,8 @@
 		compatible = "regulator-fixed";
 		reg = <0x07 0x00>;
 		regulator-name = "cam_dvdd_uw";
-		regulator-min-microvolt = <1100000>;
-		regulator-max-microvolt = <1100000>;
+		regulator-min-microvolt = <1050000>;
+		regulator-max-microvolt = <1050000>;
 		regulator-enable-ramp-delay = <233>;
 		enable-active-high;
 		gpio = <&tlmm 75 0>;
