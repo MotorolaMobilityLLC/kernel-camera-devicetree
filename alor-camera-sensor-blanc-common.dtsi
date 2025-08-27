@@ -234,7 +234,7 @@
 		pinctrl-0 = <&cam_afvdd_main_en_default>;
 		vin-supply = <&BOB1>;
 	};
-
+/*
 	cam_fold_front_iovdd: gpio-regulator@5 {
 		compatible = "regulator-fixed";
 		reg = <0x05 0x00>;
@@ -273,7 +273,7 @@
 		depends-on-supply = <&gpio_expander>;
 		vin-supply = <&BOB1>;
 	};
-
+*/
 	cam_iovdd: gpio-regulator@10 {
 		compatible = "regulator-fixed";
 		reg = <0x10 0x00>;
@@ -628,7 +628,7 @@
 		status = "ok";
 	};
 };
-
+/*
 &qupv3_se8_i2c {
 	status = "ok";
 	qcom,high-perf;
@@ -684,7 +684,7 @@
 		status = "ok";
 	};
 };
-
+*/
 &qupv3_se9_i2c {
 	status = "ok";
 	qcom,high-perf;
