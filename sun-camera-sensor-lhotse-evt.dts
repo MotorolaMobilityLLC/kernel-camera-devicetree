@@ -10,7 +10,7 @@
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
 
-#include "sun-camera-sensor-leap-common-evt.dtsi"
+#include "sun-camera-sensor-lhotse-common-evt.dtsi"
 / {
 	model = "Qualcomm Technologies, Inc. Sun QRD";
 	compatible = "qcom,sun-qrd", "qcom,sun", "qcom,qrd";
