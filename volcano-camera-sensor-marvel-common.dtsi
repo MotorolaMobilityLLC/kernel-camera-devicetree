@@ -304,6 +304,11 @@
 	};
 };
 
+&pmxr2230_flash0 {
+	qcom,duration-ms = <500>;
+	qcom,max-current-ma = <1200>;
+};
+
 &soc {
 	led_flash_rear_main: qcom,camera-flash0 {
 		cell-index = <0>;
