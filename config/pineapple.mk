@@ -10,6 +10,7 @@ dtbo-$(CONFIG_CTWOV_DTB) += pineapple-camera-sensor-ctwov-evb.dtbo
 dtbo-$(CONFIG_ARCFOX_DTB) += cliffs-camera-sensor-arcfox-evt3.dtbo
 dtbo-$(CONFIG_ARCFOX_DTB) += cliffs-camera-sensor-arcfox-dvt1b.dtbo
 dtbo-$(CONFIG_CTWO_DTB) += cliffs-camera-sensor-ctwo-evb3.dtbo
+dtbo-$(CONFIG_EIGER_DTB) += cliffs-camera-sensor-eiger-evt.dtbo
 
 dtbo-$(CONFIG_ARCH_VOLCANO) += volcano-camera.dtbo
 dtbo-$(CONFIG_MARVEL_DTB) += volcano-camera-sensor-marvel-evb.dtbo
