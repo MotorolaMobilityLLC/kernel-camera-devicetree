@@ -1,0 +1,21 @@
+// SPDX-License-Identifier: BSD-3-Clause
+/*
+ * Copyright (c) Qualcomm Technologies, Inc. and/or its subsidiaries.
+ */
+
+/dts-v1/;
+/plugin/;
+
+#include <dt-bindings/clock/qcom,gcc-canoe.h>
+#include <dt-bindings/clock/qcom,camcc-canoe.h>
+#include <dt-bindings/interconnect/qcom,canoe.h>
+#include <dt-bindings/interrupt-controller/arm-gic.h>
+#include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
+
+#include "whale-camera.dtsi"
+/ {
+	model = "Qualcomm Technologies, Inc. whale SoC";
+	compatible = "qcom,whale", "qcom,whalep";
+	qcom,msm-id = <722 0x30000>, <723 0x30000>;
+	qcom,board-id = <0 0>;
+};
