@@ -13,7 +13,7 @@
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
 
-#include "alor-camera-sensor-blanc-common.dtsi"
+#include "alor-camera-sensor-blanc-dvt1b.dtsi"
 / {
 	model = "blanc";
 	compatible = "qcom,alor-qrd", "qcom,alor", "qcom,qrd";
