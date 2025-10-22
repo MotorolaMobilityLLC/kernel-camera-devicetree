@@ -590,6 +590,12 @@
 		status = "ok";
 	};
 
+	/* main camera lens protection */
+	mot,cam-actuator {
+		compatible = "mot,actuator";
+		status = "ok";
+	};
+
 	qcom,cam-res-mgr {
 		compatible = "qcom,cam-res-mgr";
 		status = "ok";

@@ -755,6 +755,8 @@
 		leds = <&pm8550_flash_led0>;
 		status = "ok";
 	};
+
+	/* main camera lens protection */
 	mot,cam-actuator {
 		compatible = "mot,actuator";
 		status = "ok";
