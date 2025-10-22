@@ -18,5 +18,5 @@
 	model = "vantage";
 	compatible = "qcom,alor", "qcom,alor-qrd", "qcom,qrd";
 	qcom,msm-id = <685 0x10000>;
-	qcom,board-id = <0x41 0xB1B0>;
+	qcom,board-id = <0x41 0xB1B0>, <0x41 0xC000>;
 };
