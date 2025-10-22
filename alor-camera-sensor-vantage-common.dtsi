@@ -608,6 +608,22 @@
 	pinctrl-2 = <&cci_i2c_scl1_active_overlay &cci_i2c_sda1_active_overlay>;
 	pinctrl-3 = <&cci_i2c_scl1_suspend_overlay &cci_i2c_sda1_suspend_overlay>;
 
+	i2c_freq_100Khz_cci0: qcom,i2c_standard_mode {
+		hw-scl-stretch-en = <1>;
+	};
+
+	i2c_freq_400Khz_cci0: qcom,i2c_fast_mode {
+		hw-scl-stretch-en = <1>;
+	};
+
+	i2c_freq_custom_cci0: qcom,i2c_custom_mode {
+		hw-scl-stretch-en = <1>;
+	};
+
+	i2c_freq_1Mhz_cci0: qcom,i2c_fast_plus_mode {
+		hw-scl-stretch-en = <1>;
+	};
+
 	actuator_main: qcom,actuator@0 {
 		cell-index = <0>;
 		compatible = "qcom,actuator";
@@ -666,6 +682,7 @@
 		rgltr-min-voltage = <1800000 2900000 3200000>;
 		rgltr-max-voltage = <1800000 2900000 3200000>;
 		rgltr-load-current = <3500 140000 214290>;
+		af-drift-support;
 		status = "ok";
 	};
 
