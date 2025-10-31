@@ -9,7 +9,8 @@ dtbo-$(CONFIG_VANTG_DTB) += canoe-camera-sensor-vantg-evb.dtbo \
                             canoe-camera-sensor-vantg-evt1.dtbo
 
 dtbo-$(CONFIG_BLANC_DTB) += canoe-camera-sensor-blanc-evb.dtbo \
-                            alor-camera-sensor-blanc-evb.dtbo
+                            alor-camera-sensor-blanc-evb.dtbo \
+                            alor-camera-sensor-blanc-dvt1b.dtbo
 
 dtbo-$(CONFIG_VANTAGE_DTB) += alor-camera-sensor-vantage-dvt1b.dtbo
 
