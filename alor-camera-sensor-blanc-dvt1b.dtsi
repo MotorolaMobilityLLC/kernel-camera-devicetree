@@ -1101,6 +1101,9 @@
 		compatible = "qcom,cam-i2c-eeprom";
 		aon-custom-power-support;
 		gpio-no-mux = <0>;
+		pinctrl-names = "cam_default", "cam_suspend";
+		pinctrl-0 = <&cam_iovdd_fold_front_en_active>;
+		pinctrl-1 = <&cam_iovdd_fold_front_en_suspend>;
 		gpios = <&tlmm 202 0>;
 		gpio-vio = <0>;
 		gpio-req-tbl-num = <0>;
