@@ -118,34 +118,6 @@
 		};
 	};
 
-	cam_sensor_mclk5_active: cam_sensor_mclk5_active {
-		/* MCLK5 */
-		mux {
-			pins = "gpio94";
-			function = "cam_mclk";
-		};
-
-		config {
-			pins = "gpio94";
-			bias-disable; /* No PULL */
-			drive-strength = <4>; /* 4 MA */
-		};
-	};
-
-	cam_sensor_mclk5_suspend: cam_sensor_mclk5_suspend {
-		/* MCLK5 */
-		mux {
-			pins = "gpio94";
-			function = "cam_mclk";
-		};
-
-		config {
-			pins = "gpio94";
-			bias-pull-down; /* PULL DOWN */
-			drive-strength = <4>; /* 4 MA */
-		};
-	};
-
 	cci_i2c_sda0_active_overlay: cci_i2c_sda0_active_overlay {
 		/* SDA0 */
 		mux {
