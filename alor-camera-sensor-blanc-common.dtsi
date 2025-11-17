@@ -527,6 +527,13 @@
 	};
 };
 
+&pm8550_flash_led0
+{
+	led-max-microamp = <150000>;
+	flash-max-microamp = <1100000>;
+	flash-max-timeout-us = <500000>;
+};
+
 &soc {
 	cam_avdd_main: gpio-regulator@0 {
 		compatible = "regulator-fixed";
