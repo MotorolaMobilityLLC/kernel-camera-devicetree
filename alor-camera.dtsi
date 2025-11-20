@@ -2548,6 +2548,11 @@
 			<0 875000000 0 0>,
 			<0 1000000000 0 0>,
 			<0 1000000000 0 0>;
+		agg-clks =
+			<0 0>,
+			<1 CAM_COMMON_ICP_SRC_CLK>,
+			<0 0>,
+			<0 0>;
 		clock-cntl-level = "lowsvsd1", "lowsvs", "svs", "svs_l1", "nominal",
 			"turbo";
 		nrt-device;
@@ -2591,6 +2596,11 @@
 			<0 875000000 0 0>,
 			<0 1000000000 0 0>,
 			<0 1000000000 0 0>;
+		agg-clks =
+			<0 0>,
+			<1 CAM_COMMON_ICP_SRC_CLK>,
+			<0 0>,
+			<0 0>;
 		clock-cntl-level = "lowsvsd1", "lowsvs", "svs", "svs_l1", "nominal",
 			"turbo";
 		nrt-device;
