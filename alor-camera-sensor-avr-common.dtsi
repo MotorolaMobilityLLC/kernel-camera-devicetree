@@ -504,6 +504,19 @@
 	qcom,clk-freq-out = <1000000>;
 	qcom,pm-ctrl-client;
 
+	eeprom_front: qcom,cam-eeprom@1 {
+		cell-index = <1>;
+		reg = <0x51>;
+		compatible = "qcom,cam-i2c-eeprom";
+		cam_vio-supply = <&cam_iovdd>;
+		regulator-names ="cam_vio";
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <1800000>;
+		rgltr-max-voltage = <1800000>;
+		rgltr-load-current = <3500>;
+		status = "ok";
+	};
+
 	front_main: qcom,cam-sensor@1 {
 		cell-index = <1>;
 		reg = <0x4a>;
@@ -512,6 +525,7 @@
 		sensor-position-roll = <270>;
 		sensor-position-pitch = <0>;
 		sensor-position-yaw = <0>;
+		eeprom-src    = <&eeprom_front>;
 		cam_vio-supply = <&cam_iovdd>;
 		cam_vdig-supply = <&cam_ldo2>;
 		power-domains   = <&camcc CAM_CC_TITAN_TOP_GDSC>;
