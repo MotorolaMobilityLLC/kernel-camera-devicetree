@@ -100,7 +100,7 @@
 		config {
 			pins = "gpio93";
 			bias-disable; /* No PULL */
-			drive-strength = <6>; /* 6 MA */
+			drive-strength = <4>; /* 4 MA */
 		};
 	};
 
@@ -114,7 +114,7 @@
 		config {
 			pins = "gpio93";
 			bias-pull-down; /* PULL DOWN */
-			drive-strength = <6>; /* 6 MA */
+			drive-strength = <4>; /* 4 MA */
 		};
 	};
 
