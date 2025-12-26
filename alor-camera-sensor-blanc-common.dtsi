@@ -6,62 +6,6 @@
 #include <dt-bindings/msm-camera.h>
 
 &tlmm {
-	cam_sensor_mclk0_active: cam_sensor_mclk0_active {
-		/* MCLK0 */
-		mux {
-			pins = "gpio89";
-			function = "cam_mclk";
-		};
-
-		config {
-			pins = "gpio89";
-			bias-disable; /* No PULL */
-			drive-strength = <4>; /* 4 MA */
-		};
-	};
-
-	cam_sensor_mclk0_suspend: cam_sensor_mclk0_suspend {
-		/* MCLK0 */
-		mux {
-			pins = "gpio89";
-			function = "cam_mclk";
-		};
-
-		config {
-			pins = "gpio89";
-			bias-pull-down; /* PULL DOWN */
-			drive-strength = <4>; /* 4 MA */
-		};
-	};
-
-	cam_sensor_mclk2_active: cam_sensor_mclk2_active {
-		/* MCLK2 */
-		mux {
-			pins = "gpio91";
-			function = "cam_mclk";
-		};
-
-		config {
-			pins = "gpio91";
-			bias-disable; /* No PULL */
-			drive-strength = <4>; /* 4 MA */
-		};
-	};
-
-	cam_sensor_mclk2_suspend: cam_sensor_mclk2_suspend {
-		/* MCLK2 */
-		mux {
-			pins = "gpio91";
-			function = "cam_mclk";
-		};
-
-		config {
-			pins = "gpio91";
-			bias-pull-down; /* PULL DOWN */
-			drive-strength = <4>; /* 4 MA */
-		};
-	};
-
 	cam_sensor_mclk3_active: cam_sensor_mclk3_active {
 		/* MCLK3 */
 		mux {
@@ -85,34 +29,6 @@
 
 		config {
 			pins = "gpio92";
-			bias-pull-down; /* PULL DOWN */
-			drive-strength = <4>; /* 4 MA */
-		};
-	};
-
-	cam_sensor_mclk4_active: cam_sensor_mclk4_active {
-		/* MCLK4 */
-		mux {
-			pins = "gpio93";
-			function = "cam_asc_mclk4";
-		};
-
-		config {
-			pins = "gpio93";
-			bias-disable; /* No PULL */
-			drive-strength = <4>; /* 4 MA */
-		};
-	};
-
-	cam_sensor_mclk4_suspend: cam_sensor_mclk4_suspend {
-		/* MCLK4 */
-		mux {
-			pins = "gpio93";
-			function = "cam_asc_mclk4";
-		};
-
-		config {
-			pins = "gpio93";
 			bias-pull-down; /* PULL DOWN */
 			drive-strength = <4>; /* 4 MA */
 		};
