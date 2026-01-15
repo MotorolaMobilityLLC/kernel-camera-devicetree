@@ -41,7 +41,7 @@
 		};
 	};
 
-	cam_vdd_cam_2p33_en_default: cam_vdd_cam_2p33_en_default {
+	cam_vdd_cam_3p0_en_default: cam_vdd_cam_3p0_en_default {
 		mux {
 			pins = "gpio94";
 			function = "gpio";
@@ -186,18 +186,19 @@
 		vin-supply = <&S7I>;
 	};
 
-	cam_vdd_2p33: gpio-regulator@1 {
+	cam_vdd_3p0: gpio-regulator@1 {
 		compatible = "regulator-fixed";
 		reg = <0x01 0x00>;
-		regulator-name = "cam_vdd_2p33";
-		regulator-min-microvolt = <2330000>;
-		regulator-max-microvolt = <2330000>;
-		regulator-enable-ramp-delay = <233>;
+		regulator-name = "cam_vdd_3p0";
+		regulator-min-microvolt = <3000000>;
+		regulator-max-microvolt = <3000000>;
+		regulator-enable-ramp-delay = <300>;
 		enable-active-high;
-		//regulator-always-on;
+		regulator-always-on;
+		regulator-boot-on;
 		gpio = <&tlmm 94 0>;
 		pinctrl-names = "default";
-		pinctrl-0 = <&cam_vdd_cam_2p33_en_default>;
+		pinctrl-0 = <&cam_vdd_cam_3p0_en_default>;
 		//vin-supply = <&BOB1>;
 	};
 
