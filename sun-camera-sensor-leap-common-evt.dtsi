@@ -181,7 +181,8 @@
 		regulator-max-microvolt = <2330000>;
 		regulator-enable-ramp-delay = <233>;
 		enable-active-high;
-		//regulator-always-on;
+		regulator-always-on;
+		regulator-boot-on;
 		gpio = <&tlmm 94 0>;
 		pinctrl-names = "default";
 		pinctrl-0 = <&cam_vdd_cam_2p33_en_default>;
