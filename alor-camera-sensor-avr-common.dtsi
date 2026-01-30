@@ -227,6 +227,7 @@
 
 &pm8550_flash_led0
 {
+	led-max-microamp = <150000>;
 	flash-max-microamp = <1200000>;
 	flash-max-timeout-us = <500000>;
 };
