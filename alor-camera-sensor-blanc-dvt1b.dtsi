@@ -444,11 +444,11 @@
 
 	cam_avdd_fold_front_en_active: cam_avdd_fold_front_en_active {
 		mux {
-			pins = "gpio22";
+			pins = "gpio153";
 			function = "gpio";
 		};
 		config {
-			pins = "gpio22";
+			pins = "gpio153";
 			bias-disable;
 			drive-strength = <2>; /* 2 MA */
 			qcom,apps;
@@ -457,11 +457,11 @@
 
 	cam_avdd_fold_front_en_suspend: cam_avdd_fold_front_en_suspend {
 		mux {
-			pins = "gpio22";
+			pins = "gpio153";
 			function = "gpio";
 		};
 		config {
-			pins = "gpio22";
+			pins = "gpio153";
 			bias-pull-down; /* PULL DOWN */
 			drive-strength = <2>; /* 2 MA */
 			output-low;
@@ -471,11 +471,11 @@
 
 	cam_dvdd_fold_front_en_active: cam_dvdd_fold_front_en_active {
 		mux {
-			pins = "gpio153";
+			pins = "gpio22";
 			function = "gpio";
 		};
 		config {
-			pins = "gpio153";
+			pins = "gpio22";
 			bias-disable;
 			drive-strength = <2>; /* 2 MA */
 			qcom,apps;
@@ -484,11 +484,11 @@
 
 	cam_dvdd_fold_front_en_suspend: cam_dvdd_fold_front_en_suspend {
 		mux {
-			pins = "gpio153";
+			pins = "gpio22";
 			function = "gpio";
 		};
 		config {
-			pins = "gpio153";
+			pins = "gpio22";
 			bias-pull-down; /* PULL DOWN */
 			drive-strength = <2>; /* 2 MA */
 			output-low;
@@ -1025,8 +1025,8 @@
 		pinctrl-1 = <&cam_sensor_mclk4_suspend &cam_sensor_suspend_rst4 &cam_avdd_fold_front_en_suspend &cam_dvdd_fold_front_en_suspend &cam_iovdd_fold_front_en_suspend>;
 		gpios = <&tlmm 93 0>,
 			<&tlmm 3 0>,
-			<&tlmm 22 0>,
 			<&tlmm 153 0>,
+			<&tlmm 22 0>,
 			<&tlmm 202 0>;
 		gpio-reset = <1>;
 		gpio-vana = <2>;
