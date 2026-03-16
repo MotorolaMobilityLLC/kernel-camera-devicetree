@@ -1,0 +1,158 @@
+// SPDX-License-Identifier: BSD-3-Clause
+/*
+ * Copyright (c) 2024 Qualcomm Innovation Center, Inc. All rights reserved.
+ */
+
+#include <dt-bindings/msm-camera.h>
+
+&tlmm {
+	cam_fold_front_en_default: cam_fold_front_en_default {
+		mux {
+			pins = "gpio153";
+			function = "gpio";
+		};
+
+		config {
+			pins = "gpio153";
+			bias-pull-down; /* PULL DOWN */
+			drive-strength = <2>; /* 2 MA */
+		};
+	};
+
+	qupv3_se8_i2c_pins_overlay: qupv3_se8_i2c_pins_overlay {
+		qupv3_se8_i2c_sda_active_overlay: qupv3_se8_i2c_sda_active_overlay {
+			mux {
+				pins = "gpio0";
+				function = "qup2_se0_l0";
+			};
+
+			config {
+				pins = "gpio0";
+				drive-strength = <2>;
+				bias-disable;
+				qcom,apps;
+			};
+		};
+
+		qupv3_se8_i2c_scl_active_overlay: qupv3_se8_i2c_scl_active_overlay {
+			mux {
+				pins = "gpio1";
+				function = "qup2_se0_l1";
+			};
+
+			config {
+				pins = "gpio1";
+				drive-strength = <2>;
+				bias-disable;
+				qcom,apps;
+			};
+		};
+
+		qupv3_se8_i2c_sleep_overlay: qupv3_se8_i2c_sleep_overlay {
+			mux {
+				pins = "gpio0", "gpio1";
+				function = "gpio";
+			};
+
+			config {
+				pins = "gpio0", "gpio1";
+				drive-strength = <2>;
+				qcom,remote;
+			};
+		};
+	};
+};
+
+&soc {
+	cam_fold_front_iovdd: gpio-regulator@0 {
+		compatible = "regulator-fixed";
+		reg = <0x00 0x00>;
+		regulator-name = "cam_fold_front_iovdd";
+		regulator-min-microvolt = <1800000>;
+		regulator-max-microvolt = <1800000>;
+		regulator-enable-ramp-delay = <233>;
+		enable-active-high;
+		gpio = <&tlmm 153 0>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&cam_fold_front_en_default>;
+		vin-supply = <&S4D>;
+	};
+
+	cam_fold_front_vdd: gpio-regulator@1 {
+		compatible = "regulator-fixed";
+		reg = <0x01 0x00>;
+		regulator-name = "cam_fold_front_vdd";
+		regulator-min-microvolt = <1200000>;
+		regulator-max-microvolt = <1200000>;
+		regulator-enable-ramp-delay = <233>;
+		enable-active-high;
+		gpio = <&tlmm 153 0>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&cam_fold_front_en_default>;
+		vin-supply = <&S4F>;
+	};
+
+	cam_fold_front_avdd: gpio-regulator@2 {
+		compatible = "regulator-fixed";
+		reg = <0x02 0x00>;
+		regulator-name = "cam_fold_front_avdd";
+		regulator-min-microvolt = <2800000>;
+		regulator-max-microvolt = <2800000>;
+		regulator-enable-ramp-delay = <233>;
+		enable-active-high;
+		gpio = <&tlmm 153 0>;
+		pinctrl-names = "default";
+		pinctrl-0 = <&cam_fold_front_en_default>;
+		vin-supply = <&BOB1>;
+	};
+
+	qcom,cam-res-mgr {
+		compatible = "qcom,cam-res-mgr";
+		status = "ok";
+	};
+};
+
+&qupv3_se8_i2c {
+	pinctrl-0 = <&qupv3_se8_i2c_sda_active_overlay>, <&qupv3_se8_i2c_scl_active_overlay>;
+	pinctrl-1 = <&qupv3_se8_i2c_sleep_overlay>;
+
+	status = "ok";
+	qcom,high-perf;
+	qcom,clk-freq-out = <1000000>;
+	qcom,pm-ctrl-client;
+
+	front_fold: qcom,cam-sensor@3 {
+		cell-index = <3>;
+		reg = <0x36>;
+		compatible = "qcom,cam-i2c-sensor";
+		csiphy-sd-index = <4>;
+		sensor-position-roll = <270>;
+		sensor-position-pitch = <0>;
+		sensor-position-yaw = <0>;
+		//eeprom-src   = <&eeprom_fold>;
+		cam_vio-supply = <&cam_fold_front_iovdd>;
+		cam_vdig-supply = <&cam_fold_front_vdd>;
+		power-domains   = <&camcc CAM_CC_TITAN_TOP_GDSC>;
+		cam_vana-supply = <&cam_fold_front_avdd>;
+		regulator-names = "cam_vio", "cam_vdig", "cam_vana";
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <1800000 1200000 2800000>;
+		rgltr-max-voltage = <1800000 1200000 2800000>;
+		rgltr-load-current = <3500   913200  91430>;
+		gpio-no-mux = <0>;
+		pinctrl-names = "cam_default", "cam_suspend";
+		pinctrl-0 = <&cam_sensor_mclk4_active &cam_sensor_active_rst4>;
+		pinctrl-1 = <&cam_sensor_mclk4_suspend &cam_sensor_suspend_rst4>;
+		gpios = <&tlmm 93 0>,
+			<&tlmm 3 0>;
+		gpio-reset = <1>;
+		gpio-req-tbl-num = <0 1>;
+		gpio-req-tbl-flags = <1 0>;
+		gpio-req-tbl-label = "CAMIF_MCLK4","CAM_RESET4";
+		clocks = <&cambistmclkcc CAM_BIST_MCLK_CC_MCLK4_CLK>;
+		clock-names = "cam_clk";
+		clock-cntl-level = "nominal";
+		clock-rates = <19200000>;
+		status = "ok";
+	};
+};
