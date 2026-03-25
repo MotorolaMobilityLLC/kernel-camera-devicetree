@@ -552,6 +552,23 @@
 		status = "ok";
 	};
 
+	ois_main: qcom,ois@0 {
+		cell-index = <0>;
+		compatible = "qcom,ois";
+		cci-master = <CCI_MASTER_0>;
+		cam_vio-supply = <&L4B>;
+		cam_vaf-supply = <&cam_ldo4>;
+		cam_v_custom1-supply = <&L9B>;
+		power-domains = <&camcc CAM_CC_TITAN_TOP_GDSC>;
+		regulator-names = "cam_vio", "cam_vaf", "cam_v_custom1";
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <1800000 2900000 3200000>;
+		rgltr-max-voltage = <1800000 2900000 3200000>;
+		rgltr-load-current = <3500 140000 214290>;
+		af-drift-support;
+		status = "ok";
+	};
+
 	rear_main: qcom,cam-sensor@0 {
 		cell-index = <0>;
 		compatible = "qcom,cam-sensor";
@@ -560,7 +577,7 @@
 		sensor-position-pitch = <0>;
 		sensor-position-yaw   = <180>;
 		eeprom-src    = <&eeprom_main>;
-		//ois-src       = <&ois_main>;
+		ois-src       = <&ois_main>;
 		actuator-src  = <&actuator_main>;
 		led-flash-src = <&led_flash_main>;
 		cam_vio-supply       = <&L4B>;
