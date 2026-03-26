@@ -58,6 +58,7 @@ export CONFIG_VANTG_DTB=$(CONFIG_VANTG_DTB)
 export CONFIG_BLANC_DTB=$(CONFIG_BLANC_DTB)
 export CONFIG_VANTAGE_DTB=$(CONFIG_VANTAGE_DTB)
 export CONFIG_AVR_DTB=$(CONFIG_AVR_DTB)
+export CONFIG_MAKALU_DTB=$(CONFIG_MAKALU_DTB)
 include $(CAMERA_TARGET_MKFILE_PATH)
 else
 # Print a warning but do not throw an error to allow bring-up of new targets!
