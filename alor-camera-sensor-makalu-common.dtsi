@@ -612,6 +612,19 @@
 	pinctrl-2 = <&cci_i2c_scl3_active_overlay &cci_i2c_sda3_active_overlay>;
 	pinctrl-3 = <&cci_i2c_scl3_suspend_overlay &cci_i2c_sda3_suspend_overlay>;
 
+	eeprom_base: qcom,cam-eeprom@1 {
+		cell-index = <1>;
+		compatible = "qcom,eeprom";
+		cam_vio-supply = <&L4B>;
+		regulator-names ="cam_vio";
+		rgltr-cntrl-support;
+		rgltr-min-voltage = <1800000>;
+		rgltr-max-voltage = <1800000>;
+		rgltr-load-current = <3500>;
+		cci-master = <CCI_MASTER_1>;
+		status = "ok";
+	};
+
 	front_base: qcom,cam-sensor@1 {
 		cell-index = <1>;
 		compatible = "qcom,cam-sensor";
@@ -620,7 +633,7 @@
 		sensor-position-pitch = <0>;
 		sensor-position-yaw   = <0>;
 
-		//eeprom-src   = <&eeprom_base>;
+		eeprom-src   = <&eeprom_base>;
 		cam_vio-supply  = <&L4B>;
 		cam_vdig-supply = <&cam_ldo2>;
 		power-domains   = <&camcc CAM_CC_TITAN_TOP_GDSC>;
