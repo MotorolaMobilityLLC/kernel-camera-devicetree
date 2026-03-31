@@ -775,7 +775,7 @@
 		reg = <0x10>;
 		compatible = "qcom,cam-i2c-sensor";
 
-		csiphy-sd-index = <2>;
+		csiphy-sd-index = <3>;
 
 		sensor-position-roll  = <90>;
 		sensor-position-pitch = <0>;
