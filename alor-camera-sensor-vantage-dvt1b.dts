@@ -13,10 +13,12 @@
 #include <dt-bindings/interrupt-controller/arm-gic.h>
 #include <dt-bindings/regulator/qcom,rpmh-regulator-levels.h>
 
+#define VANTAGE_RADIO_JAPAN 3
+
 #include "alor-camera-sensor-vantage-common.dtsi"
 / {
 	model = "vantage";
 	compatible = "qcom,alor", "qcom,alor-qrd", "qcom,qrd";
 	qcom,msm-id = <685 0x10000>;
-	qcom,board-id = <0x41 0xB1B0>, <0x41 0xC000>;
+	qcom,board-id = <0x41 0xB1B0>, <0x41 0xC000>, <(VANTAGE_RADIO_JAPAN <<8 | 0x41) 0xA100>;
 };
